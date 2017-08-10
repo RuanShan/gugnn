@@ -1,0 +1,64 @@
+<h2>Welcome to new Rent page</h2>
+
+
+<%= form_for @rent, url: create_rent_path, :html => {:multipart => true} do |f| %>
+
+    <fieldset class="form-group">
+      <label for="name">Title</label>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="email">Descpription</label>
+      <%= f.text_area :body, class: "form-control", placeholder: "Descpription" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="name">Category</label>
+      <%= f.select :category, ["Apartment", "House", "Other" ], class: "form-control", placeholder: "Category" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="name">Price</label>
+      <%= f.number_field :price, :step => 0.01 , class: "form-control", placeholder: "Price" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="name">Square Footage</label>
+      <%= f.number_field :sqfootage, class: "form-control", placeholder: "Square Footage" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="name">Bedroom</label>
+      <%= f.number_field :bed, class: "form-control", placeholder: "Bedroom" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="name">Bathroom</label>
+      <%= f.number_field :bath, class: "form-control", placeholder: "Bathroom" %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="name">Address</label>
+      <%= f.number_field :address, class: "form-control", placeholder: "Address" %>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="name">Zipcode</label>
+      <%= f.number_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
+    </fieldset>
+
+    <%= f.fields_for :images do |builder| %>
+      <p>
+        <%= builder.label :caption, "Image Caption" %>
+        <%= builder.text_field :caption %>
+      </p>
+      <p>
+        <%= builder.label :photo, "Image File" %>
+        <%= builder.file_field :photo %>
+      </p>
+    <% end %>
+
+
+    <fieldset class="form-group">
+      <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= link_to "Cancel", all_rents_path, class: "btn btn-primary" %>
+    </fieldset>
+<% end %>

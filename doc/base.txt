@@ -1,0 +1,59 @@
+1. 地理信息，显示商家所在地图。
+2. 根据IP，显示相应地区的信息。
+3.
+
+
+
+1. 发布信息需要选择区域， 到区级  大连市->沙河口区
+
+
+##
+租赁品类
+1. 车 船 飞机
+汽车 （私家车 商务车 婚车 大巴） 船(汽艇 游轮) 私人飞机
+2. 人（他人时间）
+租女/男友  租家政（月嫂 钟点工）租各行人才………..
+3. 服装
+演出服装 舞蹈服 晚会服 会展服 民族服装及定制
+4. 婚庆 摄影
+婚庆公司 婚纱礼服 婚庆场地 彩妆造型 舞台灯具 司仪
+5. 办公设备
+电脑 手机通讯 相机 网络设备 复印机 打印机 传真机 投影机 显示器
+6. 家具 租赁
+办公桌椅  沙发  屏风 床/床铺
+7. 户外装备
+帐篷 遮阳伞 睡袋 渔具 烧烤用品 娱乐游戏装备
+8. 婴童用品
+玩具 童车 童床 摇篮
+9. 租宠物
+宠物猫/狗  水族宠物  展示宠物（羊驼 矮马 香猪 巨兔）
+
+##
+商品分类设计方案
+1. 产品表：定义产品基本属性，公用属性
+  product:
+
+2. 产品分类：
+  category: acts_as_nested_set
+
+3. 产品规格表：每个分类的产品分别定义各自的属性表。
+  产品发布时，先选择分类，再填写相应表单。
+  定义商品特别属性，如：汽车：牌照所在地，过户次数，车辆是否有抵押，是否定期4S店保养，年检到期
+  示例：http://zhanjiang.58.com/ershouche/30899123909451x.shtml?typos=gulRecomLsnoInfo_l2&comefrom=WBERSHOUCHE_119_448533104&lessResult=zhineng&infotype=gl_0_36332&iuType=gl_0&PGTID=0d305e6b-0009-3b65-7293-ceca857af9f5&ClickID=31
+
+  cars, pets, outings, babies, furnitures,
+
+4. 产品过滤属性表：每个分类的有相应的属性，以便用户查询/过滤数据。
+  option_types
+   如：  类型：不限 轿车 越野车/SUV MPV 跑车 客车 面包车 皮卡 新能源 货车 工程车 三轮机动车 老年代步车 平行进口车
+        品牌：不限 大众 本田 别克 丰田 福特 日产 奇瑞 宝马 现代 奥迪 马自达 比亚迪 铃木 雪铁龙 吉利 奔驰
+        车系：不限 捷达 雅阁 A6L 帕萨特 凯美瑞 5系 马自达6 卡罗拉 奥德赛 汉兰达 皇冠 迈腾 锐志 飞度
+   属性值表： 可能的取值
+   option_values
+   产品属性值表：产品属性值
+   product_option_values( product_id, category_id, option_id, option_value_id )
+
+#设计参考
+http://www.cnblogs.com/feihusurfer/p/4155911.html
+
+http://www.cnblogs.com/mazhiyuan/archive/2011/06/16/mazhiyuan.html

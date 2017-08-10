@@ -1,0 +1,4 @@
+postgresql help
+http://www.php230.com/1404272401.html
+
+http://www.cnblogs.com/eastday/archive/2013/05/31/3109804.html
