@@ -8,8 +8,8 @@ namespace :gugnn do
 
   end
 
-  desc "load samples"
-  task :load_samples  => :environment do
+  desc "load sample"
+  task :load_sample  => :environment do
      load File.join(Rails.root,'db/samples.rb')
   end
 

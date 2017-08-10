@@ -30,8 +30,8 @@ Getting Started
 ---------------
   rails db:create
   rails db:migrate
-  rails db:seeds
-  rails gugnn:load_samples
+  rails db:seed
+  rails gugnn:load_sample
 
 
 Documentation and Support
