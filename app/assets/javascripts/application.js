@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require underscore
+//= require underscore.min
 //= require gmaps/google
 //= require jquery.raty
 //= require ratyrate
