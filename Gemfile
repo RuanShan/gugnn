@@ -28,8 +28,14 @@ gem 'bourbon'
 gem 'devise'
 gem 'devise-i18n'
 gem 'pg'
-gem 'pundit'
+#gem 'pundit'
 gem 'simple_form'
+
+gem "paperclip"
+gem 'gmaps4rails'
+gem 'geocodio'
+gem 'ratyrate'
+
 group :development do
   gem 'foreman'
   gem 'hub', :require=>nil
@@ -38,5 +44,7 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'rubocop'
 end
