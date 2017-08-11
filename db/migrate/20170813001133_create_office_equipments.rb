@@ -20,6 +20,8 @@ class CreateOfficeEquipments < ActiveRecord::Migration[5.0]
       t.integer :owner_id
       t.integer :price
 
+      #无法建立所有过滤字段的索引，需要使用 category_options表。
+
       #通用
       t.integer :f_new, default: 0  # 成新
       # 电脑：笔记本  一体机  台式机  平板  组装机
@@ -47,9 +49,6 @@ class CreateOfficeEquipments < ActiveRecord::Migration[5.0]
       t.integer :f_resolution, default: 0  # 分辨率
       t.integer :f_luminance, default: 0  # 亮度
       t.integer :f_light, default: 0  # 光源
-
-      #m_type%5D=&PR%5Bq%5D=&PR%5Bprint_speed%5D=&PR%5Bspace%5D=20&PR%5Brental%5D=500%2C2000&PR%5Bmax_size%5D=&PR%5Bdeposit%5D=900%2C5000&PR%5Bblack_paper%5D=3.5%2C7&PR%5Bis_new%5D=&PR%5Btenancy%5D=2&PR%5Btwo_sided%5D=&PR%5Bcolor_type%5D=
-
 
       t.timestamps
     end

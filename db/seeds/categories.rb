@@ -72,14 +72,24 @@ end
 #新旧 ：全部全新95成新9成新8成新7成新及以下
 #区域 ：全大连西岗中山沙河口甘井子高新园旅顺金州开发区瓦房店普兰店庄河大连周边
 
-options = [
+category_options = [
+  {
+    category: "办公设备",
+    name: '类别',
+    title: "类别",
+    option_values: ['办公设备', '办公耗材','办公文仪', '办公家具', '公司转让', '其他办公用品']
+  },
   {
     :category=> "办公设备",
-    :title => "类别",
-    :values=>['办公设备', '办公耗材','办公文仪', '办公家具', '公司转让', '其他办公用品']
-  },
-  {
+    name: '价格',
     :title => "价格",
-    :values=>['办公设备', '办公耗材','办公文仪', '办公家具', '公司转让', '其他办公用品']
-  },
+    :option_values=>['办公设备', '办公耗材','办公文仪', '办公家具', '公司转让', '其他办公用品']
+  }
 ]
+category_options.each do |option_attrs|
+  option_attrs[:category] = Category.find_by_title!( option_attrs[:category])
+  option_attrs[:option_values] = option_attrs[:option_values].map do |value_title|
+    OptionValue.new(title: value_title)
+  end
+  CategoryOption.create!(option_attrs)
+end

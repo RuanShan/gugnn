@@ -4,7 +4,7 @@ class CreateCategoryOptions < ActiveRecord::Migration[5.0]
       t.belongs_to :category
       t.string :name # 内部名称
       t.string :title       # 网页上显示名词
-
+      t.string :values
       t.timestamps
     end
   end

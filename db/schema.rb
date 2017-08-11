@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170813001133) do
     t.integer  "category_id"
     t.string   "name"
     t.string   "title"
+    t.string   "values"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_category_options_on_category_id", using: :btree
@@ -107,15 +108,31 @@ ActiveRecord::Schema.define(version: 20170813001133) do
     t.string   "slugged"
     t.integer  "owner_id"
     t.integer  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "f_new",        default: 0
+    t.integer  "f_type",       default: 0
+    t.integer  "f_brand",      default: 0
+    t.integer  "f_memory",     default: 0
+    t.integer  "f_hd",         default: 0
+    t.integer  "f_cpu",        default: 0
+    t.integer  "f_screen",     default: 0
+    t.integer  "f_paper",      default: 0
+    t.integer  "f_color",      default: 0
+    t.integer  "f_speed",      default: 0
+    t.integer  "f_sides",      default: 0
+    t.integer  "f_resolution", default: 0
+    t.integer  "f_luminance",  default: 0
+    t.integer  "f_light",      default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["category_id"], name: "index_office_equipments_on_category_id", using: :btree
   end
 
   create_table "option_values", force: :cascade do |t|
+    t.integer  "category_option_id"
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["category_option_id"], name: "index_option_values_on_category_option_id", using: :btree
   end
 
   create_table "overall_averages", force: :cascade do |t|
