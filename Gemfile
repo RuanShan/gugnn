@@ -31,6 +31,7 @@ gem 'pg'
 #gem 'pundit'
 gem 'simple_form'
 
+gem 'awesome_nested_set'
 gem "paperclip"
 gem 'gmaps4rails'
 gem 'geocodio'

@@ -1,1 +1,9 @@
-1. 手机登陆
+#客户端
+1. 用户手机/email 登陆，注册，用户维护个人信息。
+
+*2. 用户发布信息，用户收藏信息，
+
+#管理端
+https://administrate-prototype.herokuapp.com/customizing_page_views
+
+1. 维护 category, user, category_option, option_values,

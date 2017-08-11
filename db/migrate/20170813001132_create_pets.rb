@@ -1,6 +1,8 @@
-class CreateProducts < ActiveRecord::Migration[5.0]
+class CreatePets < ActiveRecord::Migration[5.0]
   def change
-    create_table :products do |t|
+    create_table :pets do |t|
+      t.belongs_to :category
+
       t.string :title
       t.string :desc
       t.string :slugged

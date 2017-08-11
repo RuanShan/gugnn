@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @office_equipment.title %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @office_equipment.desc %>
+</p>
+
+<p>
+  <strong>Slugged:</strong>
+  <%= @office_equipment.slugged %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @office_equipment.owner_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @office_equipment.price %>
+</p>
+
+<%= link_to 'Edit', edit_office_equipment_path(@office_equipment) %> |
+<%= link_to 'Back', office_equipments_path %>

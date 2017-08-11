@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Office Equipments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Desc</th>
+      <th>Slugged</th>
+      <th>Owner</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @office_equipments.each do |office_equipment| %>
+      <tr>
+        <td><%= office_equipment.title %></td>
+        <td><%= office_equipment.desc %></td>
+        <td><%= office_equipment.slugged %></td>
+        <td><%= office_equipment.owner_id %></td>
+        <td><%= office_equipment.price %></td>
+        <td><%= link_to 'Show', office_equipment %></td>
+        <td><%= link_to 'Edit', edit_office_equipment_path(office_equipment) %></td>
+        <td><%= link_to 'Destroy', office_equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Office Equipment', new_office_equipment_path %>

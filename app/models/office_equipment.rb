@@ -1,0 +1,2 @@
+class OfficeEquipment < ApplicationRecord
+end

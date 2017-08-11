@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Option Values</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @option_values.each do |option_value| %>
+      <tr>
+        <td><%= option_value.title %></td>
+        <td><%= link_to 'Show', option_value %></td>
+        <td><%= link_to 'Edit', edit_option_value_path(option_value) %></td>
+        <td><%= link_to 'Destroy', option_value, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Option Value', new_option_value_path %>

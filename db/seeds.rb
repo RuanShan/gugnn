@@ -8,3 +8,5 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 # Environment variables (ENV['...']) can be set in the file .env file.
+
+load File.dirname(__FILE__)+ "/seeds/seed.rb"

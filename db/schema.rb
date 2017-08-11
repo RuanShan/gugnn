@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813001122) do
+ActiveRecord::Schema.define(version: 20170813001133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,31 @@ ActiveRecord::Schema.define(version: 20170813001122) do
     t.float    "avg",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.string   "desc"
+    t.string   "slugged"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["lft"], name: "index_categories_on_lft", using: :btree
+    t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
+    t.index ["rgt"], name: "index_categories_on_rgt", using: :btree
+  end
+
+  create_table "category_options", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.string   "title"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_category_options_on_category_id", using: :btree
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -75,12 +100,42 @@ ActiveRecord::Schema.define(version: 20170813001122) do
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
+  create_table "office_equipments", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.string   "desc"
+    t.string   "slugged"
+    t.integer  "owner_id"
+    t.integer  "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_office_equipments_on_category_id", using: :btree
+  end
+
+  create_table "option_values", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "overall_averages", force: :cascade do |t|
     t.string   "rateable_type"
     t.integer  "rateable_id"
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.string   "desc"
+    t.string   "slugged"
+    t.integer  "owner_id"
+    t.integer  "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_pets_on_category_id", using: :btree
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -93,6 +148,32 @@ ActiveRecord::Schema.define(version: 20170813001122) do
     t.index ["event_id"], name: "index_pictures_on_event_id", using: :btree
     t.index ["rent_id"], name: "index_pictures_on_rent_id", using: :btree
     t.index ["sale_id"], name: "index_pictures_on_sale_id", using: :btree
+  end
+
+  create_table "product_option_values", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.string   "product_type"
+    t.integer  "product_id"
+    t.integer  "category_option_id"
+    t.integer  "option_value_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["category_id"], name: "index_product_option_values_on_category_id", using: :btree
+    t.index ["category_option_id"], name: "index_product_option_values_on_category_option_id", using: :btree
+    t.index ["option_value_id"], name: "index_product_option_values_on_option_value_id", using: :btree
+    t.index ["product_type", "product_id"], name: "index_product_option_values_on_product_type_and_product_id", using: :btree
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.string   "desc"
+    t.string   "slugged"
+    t.integer  "owner_id"
+    t.integer  "price"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "rates", force: :cascade do |t|
@@ -161,6 +242,10 @@ ActiveRecord::Schema.define(version: 20170813001122) do
     t.inet     "last_sign_in_ip"
     t.string   "nickname"
     t.string   "realname"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.float    "rating"
     t.string   "city"
     t.integer  "balance",                default: 0

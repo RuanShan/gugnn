@@ -1,4 +1,29 @@
 Rails.application.routes.draw do
+  resources :office_equipments
+  namespace :admin do
+    resources :users
+    resources :categories
+    resources :office_equipments
+    resources :pets
+    resources :category_options
+    resources :images
+    resources :pictures
+    resources :messages
+    resources :conversations
+    resources :option_values
+    resources :product_option_values
+    resources :rents
+    resources :sales
+    resources :events
+
+    root to: "categories#index"
+  end
+
+  resources :pets
+  resources :product_option_values
+  resources :category_options
+  resources :option_values
+  resources :categories
   resources :products
   devise_for :users
 
