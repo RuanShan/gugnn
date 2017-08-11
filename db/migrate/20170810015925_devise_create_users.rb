@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :cellphone
       t.string :nickname
       t.string :realname
+      t.attachment :avatar
       t.float :rating
       t.string :city
 
