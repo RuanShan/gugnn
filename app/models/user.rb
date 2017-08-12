@@ -22,4 +22,12 @@ class User < ApplicationRecord
    has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'http://i.imgur.com/7Yc9GZf.png'
    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+   attr_accessor :validate_code
+
+
+  private
+  
+  def email_required?
+    false
+  end
 end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #captcha
+  mount RuCaptcha::Engine => "/rucaptcha"
+
+
   resources :office_equipments
   namespace :admin do
     resources :users
@@ -25,8 +29,14 @@ Rails.application.routes.draw do
   resources :option_values
   resources :categories
   resources :products
-  devise_for :users
+  devise_for :users, controllers: {  sessions: 'sessions', registrations: 'registrations' }
 
+  devise_scope :user do
+    get 'prepare', to: 'registrations#prepare'
+    post 'validate_captcha', to: 'registrations#validate_captcha'
+  end
+  
+  post '/sms/create_verify_code', to: 'sms#create_verify_code'
 
 
     post '/rate' => 'rater#create', :as => 'rate'

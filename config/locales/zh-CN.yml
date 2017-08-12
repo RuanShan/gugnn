@@ -1,1 +1,16 @@
 zh-CN:
+  sign_up: "注册"
+  cellphone: "手机号码"
+  captcha: "验证码"
+  input_captcha: "请输入验证码"
+  next_step: "下一步"
+  has_account: "已有账号"
+  login_now: "立即登录"
+
+  invalid_captcha_code: "验证码不正确"
+  invalid_cellphone: "请填写手机号"
+
+  nickname: "用户名"
+  password: "密码"
+  input_verify_code: "请输入验证码"
+  get_verify_code: "获取验证码"

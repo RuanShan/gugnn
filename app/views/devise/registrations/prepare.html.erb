@@ -1,0 +1,29 @@
+<div class="authform">
+  <h4><%= t(:sign_up) %></h4>
+  <%phone_focus = flash["alert"] == "invalid_captcha_code" ? false : true%>
+  <%captcha_focus = flash["alert"] == "invalid_captcha_code" ? true : false%>
+
+  <%= form_tag validate_captcha_path, id:"prepare_form" do %>
+    <div class="form-group">
+      <%= text_field_tag :cellphone, session["cellphone"], placeholder: t(:cellphone), class: 'form-control', autofocus: phone_focus %>
+    </div>
+    <% if flash["alert"] == "invalid_cellphone"%>
+      <span style="color:red;"><%=t(:invalid_cellphone)%></span>
+    <% end %>
+    <div class="form-group">
+      <div style="height:34px;">
+        <%= rucaptcha_input_tag(class: 'form-control', style:'float:left;width:50%;', placeholder: t(:input_captcha), autofocus: captcha_focus) %>
+        <div class="form-control" style="float:right;width:45%;border:0;">
+          <%= rucaptcha_image_tag(alt: 'Captcha') %>
+        </div>
+      </div>
+    </div>
+    <% if flash["alert"] == "invalid_captcha_code"%>
+      <span style="color:red;"><%=t(:invalid_captcha_code)%></span>
+    <% end %>
+    <div class="form-actions">
+      <%= button_tag t(:next_step), class:"btn btn-default", style:"width:100%" %>
+    </div>
+  <% end %>
+  <div style="width:100%;text-align:right;"><%=t(:has_account)%>?<%=link_to t(:login_now), new_user_session_path%></div>
+</div>
