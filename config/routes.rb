@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :categories
+    resources :products
     resources :office_equipments
     resources :pets
     resources :category_options
     resources :images
-    resources :pictures
     resources :messages
     resources :conversations
     resources :option_values
@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :rents
     resources :sales
     resources :events
-
+    namespace :lease do
+      resources :pcs
+    end
     root to: "categories#index"
   end
 
