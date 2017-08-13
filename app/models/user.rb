@@ -2,6 +2,14 @@ class User < ApplicationRecord
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
+  def self.validate_phone(phone)
+    if phone=~/^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/
+      self.exists?(cellphone: phone) ? "cellphone_exist" : ""
+    else
+      "cellphone_invalid"
+    end
+  end
+
   def set_default_role
     self.role ||= :user
   end
@@ -26,7 +34,7 @@ class User < ApplicationRecord
 
 
   private
-  
+
   def email_required?
     false
   end

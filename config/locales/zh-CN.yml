@@ -7,8 +7,9 @@ zh-CN:
   has_account: "已有账号"
   login_now: "立即登录"
 
-  invalid_captcha_code: "验证码不正确"
-  invalid_cellphone: "请填写手机号"
+  captcha_invalid: "验证码不正确"
+  cellphone_invalid: "请填写正确的手机号"
+  cellphone_exist: "手机号码已存在"
 
   nickname: "用户名"
   password: "密码"

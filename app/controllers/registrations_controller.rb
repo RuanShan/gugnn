@@ -5,12 +5,17 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def validate_captcha
-    session["cellphone"] = params["cellphone"]
-    if verify_rucaptcha?
-      session["captcha_valid"] = true
-      redirect_to '/users/sign_up'
+    error_message = User.validate_phone(params["cellphone"])
+    if error_message.blank?
+      session["cellphone"] = params["cellphone"]
+      if verify_rucaptcha?
+        session["captcha_valid"] = true
+        redirect_to '/users/sign_up'
+      else
+        redirect_to '/prepare', alert: "captcha_invalid"
+      end
     else
-      redirect_to '/prepare', alert: "invalid_captcha_code"
+      redirect_to '/prepare', alert: error_message
     end
   end
 
@@ -19,10 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
       if session["captcha_valid"] == true
         super
       else
-        redirect_to '/prepare', alert: "invalid_captcha_code"
+        redirect_to '/prepare', alert: "captcha_invalid"
       end
     else
-      redirect_to '/prepare', alert: "invalid_cellphone"
+      redirect_to '/prepare', alert: "cellphone_invalid"
     end
   end
 
