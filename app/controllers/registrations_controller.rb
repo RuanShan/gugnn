@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def validate_captcha
     error_message = User.validate_phone(params["cellphone"])
-    if error_message.blank?
+    if error_message=="cellphone_not_exist"
       session["cellphone"] = params["cellphone"]
       if verify_rucaptcha?
         session["captcha_valid"] = true
@@ -47,6 +47,7 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
+        sign_in(resource_name, resource)
         if request.xhr?
           render :js => "window.location = '#{after_sign_up_path_for(resource)}';"
         else

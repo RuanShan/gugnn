@@ -31,13 +31,13 @@ Rails.application.routes.draw do
   resources :option_values
   resources :categories
   resources :products
-  devise_for :users, controllers: {  sessions: 'sessions', registrations: 'registrations' }
+  devise_for :users, controllers: { passwords: 'passwords', sessions: 'sessions', registrations: 'registrations' }
 
   devise_scope :user do
     get 'prepare', to: 'registrations#prepare'
     post 'validate_captcha', to: 'registrations#validate_captcha'
   end
-  
+
   post '/sms/create_verify_code', to: 'sms#create_verify_code'
 
 
@@ -107,6 +107,13 @@ Rails.application.routes.draw do
       resources :messages
     end
 
-
+    namespace :my do
+      resources :account do
+        collection do
+        end
+        member do
+        end
+      end
+    end
 
 end

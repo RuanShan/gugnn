@@ -3,7 +3,7 @@ class Sms
 
   cattr_accessor :corpid, :pwd
   attr_accessor :phone, :code, :send_at
-  validates :phone, length: { in: 7..11 }, format: { with: /\A\d+\z/, message: "must be number" }
+  validates :phone, format: { with: /\A(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})\z/, message: "电话号码不正确" }
 
   validate :send_at_validation, if: :send_at
 

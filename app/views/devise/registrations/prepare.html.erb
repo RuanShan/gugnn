@@ -7,7 +7,7 @@
     <div class="form-group">
       <%= text_field_tag :cellphone, session["cellphone"], placeholder: t(:cellphone), class: 'form-control', autofocus: phone_focus %>
     </div>
-    <% if flash["alert"].split("_")[0] == "cellphone"%>
+    <% if flash["alert"] and flash["alert"].split("_")[0] == "cellphone"%>
       <span style="color:red;"><%=t(flash["alert"])%></span>
     <% end %>
     <div class="form-group">

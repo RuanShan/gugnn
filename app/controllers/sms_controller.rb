@@ -8,14 +8,13 @@ class SmsController < ApplicationController
       send_duration = Time.now - last_send_time
       less_than_one_minute = send_duration <= 60
     end
-    if less_than_one_minute
+    if false#less_than_one_minute
       @sms.errors.add(:validate_code, "验证码每分钟只能发送一次")
     else
       # validate phone number
       if @sms.valid?
         # send successfully
         if @sms.send_for_sign_up
-          Rails.logger.debug "put in session, @sms.inspect=#{@sms.inspect}"
           session[:sms] = @sms
         end
       end
@@ -24,7 +23,8 @@ class SmsController < ApplicationController
 
   private
     def build_sms
-      @sms = Sms.new( phone: session[:cellphone] )
+      cellphone = session[:cellphone] ? session[:cellphone] : params[:phone]
+      @sms = Sms.new( phone: cellphone )
     end
 
     # Use callbacks to share common setup or constraints between actions.

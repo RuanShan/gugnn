@@ -1,24 +1,12 @@
 class User < ApplicationRecord
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
-
-  def self.validate_phone(phone)
-    if phone=~/^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/
-      self.exists?(cellphone: phone) ? "cellphone_exist" : ""
-    else
-      "cellphone_invalid"
-    end
-  end
-
-  def set_default_role
-    self.role ||= :user
-  end
+  devise :database_authenticatable, authentication_keys: [:cellphone]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
 
    has_many :conversations, foreign_key: :sender_id
    has_many :events, through: :jointables
@@ -32,6 +20,18 @@ class User < ApplicationRecord
 
    attr_accessor :validate_code
 
+
+   def self.validate_phone(phone)
+     if phone=~/\A(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})\z/
+       self.exists?(cellphone: phone) ? "cellphone_exist" : "cellphone_not_exist"
+     else
+       "cellphone_invalid"
+     end
+   end
+
+   def set_default_role
+     self.role ||= :user
+   end
 
   private
 
