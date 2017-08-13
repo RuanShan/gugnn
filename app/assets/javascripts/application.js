@@ -16,6 +16,7 @@
 //= require jquery-validate/messages_zh
 //= require jquery-validate/extend
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 //= require underscore.min
 //= require gmaps/google

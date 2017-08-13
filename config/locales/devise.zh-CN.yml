@@ -1,7 +1,18 @@
 zh-CN:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "密码长度过短"
+            password_confirmation:
+              confirmation: "密码不一致"
     attributes:
       user:
+        nickname: "用户名"
+        cellphone: "手机号码"
+        validate_code: "手机验证码"
         current_password: "当前密码"
         email: "电子邮箱"
         password: "密码"

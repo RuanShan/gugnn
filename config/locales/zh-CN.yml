@@ -28,3 +28,16 @@ zh-CN:
   reset: "重置"
   new_password: "新密码"
   password_confirmation: "密码确认"
+
+  change_password: "修改密码"
+  change_profile: "修改个人资料"
+  sign_out: "退出"
+  member_center: "用户个人中心"
+
+  current_password: "旧密码"
+  change: "保存修改"
+  password_incorrect: "密码不正确"
+  password_changed: "密码修改成功"
+
+  input_only_change_phone: "不改手机号可不填"
+  profile_updated: "个人资料修改成功"
