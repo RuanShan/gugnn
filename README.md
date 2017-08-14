@@ -36,6 +36,7 @@ Getting Started
 
 Documentation and Support
 -------------------------
+https://github.com/blueimp/jQuery-File-Upload
 
 Issues
 -------------

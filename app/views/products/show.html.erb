@@ -1,6 +1,33 @@
+<ol class="breadcrumb">
+  <li><a href="#">首页</a></li>
+  <li><a href="#">大连市区办公设备租赁</a></li>
+  <li><a href="#">大连市区打印机复印机租赁</a></li>
+  <li class="active"> <%=@product.title %></li>
+</ol>
+
 <p id="notice"><%= notice %></p>
 
+<div class="container" >
+  <div class="row">
+    <div class="col-md-5">
+      product images
+    </div>
+    <div class="col-md-5">
+      product title price
+    </div>
+    <div>
+      user profile
+    </div>
+  </div>
+
+  <div class="row">
+    product description
+  </div>
+
+</div>
+
 <p>
+
   <strong>Title:</strong>
   <%= @product.title %>
 </p>
@@ -24,6 +51,3 @@
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

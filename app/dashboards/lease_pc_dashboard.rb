@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class PcDashboard < Administrate::BaseDashboard
+class LeasePcDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,6 +10,7 @@ class PcDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     category: Field::BelongsTo,
     owner: Field::BelongsTo.with_options(class_name: "User"),
+    images: Field::HasMany,
     id: Field::Number,
     type: Field::String,
     title: Field::String,
@@ -18,6 +19,7 @@ class PcDashboard < Administrate::BaseDashboard
     owner_id: Field::Number,
     price: Field::Number,
     combofilters: Field::String,
+    filt0: Field::Number,
     filt1: Field::String.with_options(searchable: false),
     filt2: Field::String.with_options(searchable: false),
     filt3: Field::Number,
@@ -27,6 +29,7 @@ class PcDashboard < Administrate::BaseDashboard
     filt7: Field::Number,
     filt8: Field::Number,
     filt9: Field::Number,
+    published_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -39,8 +42,8 @@ class PcDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :category,
     :owner,
+    :images,
     :id,
-    :type,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -48,6 +51,7 @@ class PcDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :category,
     :owner,
+    :images,
     :id,
     :type,
     :title,
@@ -56,6 +60,7 @@ class PcDashboard < Administrate::BaseDashboard
     :owner_id,
     :price,
     :combofilters,
+    :filt0,
     :filt1,
     :filt2,
     :filt3,
@@ -65,6 +70,7 @@ class PcDashboard < Administrate::BaseDashboard
     :filt7,
     :filt8,
     :filt9,
+    :published_at,
     :created_at,
     :updated_at,
   ].freeze
@@ -75,6 +81,7 @@ class PcDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :category,
     :owner,
+    :images,
     :type,
     :title,
     :desc,
@@ -82,6 +89,7 @@ class PcDashboard < Administrate::BaseDashboard
     :owner_id,
     :price,
     :combofilters,
+    :filt0,
     :filt1,
     :filt2,
     :filt3,
@@ -91,12 +99,13 @@ class PcDashboard < Administrate::BaseDashboard
     :filt7,
     :filt8,
     :filt9,
+    :published_at,
   ].freeze
 
-  # Overwrite this method to customize how pcs are displayed
+  # Overwrite this method to customize how lease pcs are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(pc)
-  #   "Lease::Pc ##{pc.id}"
+  # def display_resource(lease_pc)
+  #   "LeasePc ##{lease_pc.id}"
   # end
 end
