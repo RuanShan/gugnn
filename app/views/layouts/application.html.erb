@@ -11,6 +11,7 @@
     <body>
 
         <div class="head-nav">
+            <%=session[:selected_city]%><%= link_to t(:change_city), select_city_path %>
             <% if current_user%>
             Balance:
             <%=number_to_currency(current_user.balance)%>

@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
     get 'conversations/create'
 
+    match 'select_city' => 'site#select_city', via: [:get, :patch]
     get '/', to: 'site#index', as: 'site'
 
     #get '/signup', to: 'users#new', as: 'new_user'

@@ -41,6 +41,8 @@ gem 'pg'
 gem 'simple_form'
 #cache store
 gem 'redis-rails'
+#ip to location and map
+gem 'geocoder'
 
 gem 'acts_as_list'
 gem 'awesome_nested_set'

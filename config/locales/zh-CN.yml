@@ -2,6 +2,10 @@ zh-CN:
   gugnn: "光棍租机"
   gugnn_member: "光棍租机-会员中心"
 
+  unknown: "未知城市"
+  change_city: "置换城市"
+  please_input_city: "请输入城市"
+
   sign_up: "注册"
   cellphone: "手机号码"
   captcha: "验证码"

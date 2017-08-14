@@ -22,8 +22,10 @@
 //= require gmaps/google
 //= require jquery.raty
 //= require ratyrate
+//= require cityselect
 
 $(function(){
+  //new Vcity.CitySelector({input:'citySelect'});
 
   $("#obtainVerifyCode").click(function(){
     var phone = $("#user_cellphone").val();
