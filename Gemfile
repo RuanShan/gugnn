@@ -3,7 +3,16 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-ruby '2.2.4'
+#ruby '2.2.4'
+if Gem.win_platform?
+  #gem 'coffee-script-source', '1.8.0'
+  gem 'wdm', '>= 0.1.0'
+  gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+  gem 'rucaptcha', path: "../rucaptcha/rucaptcha-master"
+else
+  gem 'rucaptcha'
+end
+
 gem 'rails', '~> 5.0.3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -30,6 +39,8 @@ gem 'devise-i18n'
 gem 'pg'
 #gem 'pundit'
 gem 'simple_form'
+#cache store
+gem 'redis-rails'
 
 gem 'acts_as_list'
 gem 'awesome_nested_set'

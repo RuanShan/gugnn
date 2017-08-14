@@ -17,14 +17,14 @@
             |
             <%= link_to "Mailbox", conversations_path %>
             |
-            <%= link_to "Contact Us", conversations_path(sender_id: current_user.id, recipient_id: User.find_by_email("admin@dlist.com").id), :method => :post%>
+            <%= link_to "Contact Us", conversations_path(sender_id: current_user.id, recipient_id: User.first.id), :method => :post%>
             |
-            <%= link_to "Profile", edit_user_registration_path(current_user) %>
+            <%= link_to "Profile", my_account_index_path %>
             |
-            <%= link_to "Log Out", logout_path %>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
             |
         <% else %>
-            <%= link_to "Create Account", new_user_registration_path %>
+            <%= link_to "Create Account", prepare_path %>
             |
             <%= link_to "Log In", new_user_session_path %>
             |

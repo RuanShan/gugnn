@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale.to_s %>">
+  <head>
+    <%= render 'my/shared/head' %>
+  </head>
+  <body>
+    <%= render 'my/shared/navigation' %>
+    <%= render partial: "my/shared/menus" %>
+    <div class="">
+      <div class="">
+        <%= yield %>
+      </div>
+    </div>
+    <%#= render 'layouts/footer' %>
+  </body>
+</html>

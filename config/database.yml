@@ -19,7 +19,7 @@ development:
   database: gugnn_development
   pool:     5
   username: david
-  password:
+  password: 123456
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -47,7 +47,7 @@ test:
   database: gugnn_test
   pool:     5
   username: david
-  password:
+  password: 123456
   template: template0
 
 production:
