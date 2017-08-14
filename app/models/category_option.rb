@@ -3,9 +3,9 @@ class CategoryOption < ApplicationRecord
   PRODUCT_FILTER_COLUMN_NAMES = ['filt0','filt1','filt2','filt3','filt4','filt5','filt6','filt7','filt8','filt9']
   belongs_to :category
   #添加 option_values， 取得id
-  has_many :option_values, dependent: :delete_all
+  has_many :option_values, inverse_of: :category_option, dependent: :delete_all
 
-  validates :category, acceptance: true
+  validates :category, presence: true
 
   before_create :assign_filter_column
 

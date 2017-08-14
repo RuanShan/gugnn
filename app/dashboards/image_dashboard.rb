@@ -9,12 +9,10 @@ class ImageDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     rent: Field::BelongsTo,
+    imageable: Field::Polymorphic,
     id: Field::Number,
     caption: Field::String,
-    photo_file_name: Field::String,
-    photo_content_type: Field::String,
-    photo_file_size: Field::Number,
-    photo_updated_at: Field::DateTime,
+    photo: Field::Paperclip,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,21 +24,19 @@ class ImageDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :rent,
+    :imageable,
     :id,
     :caption,
-    :photo_file_name,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :rent,
+    :imageable,
     :id,
     :caption,
-    :photo_file_name,
-    :photo_content_type,
-    :photo_file_size,
-    :photo_updated_at,
+    :photo,
     :created_at,
     :updated_at,
   ].freeze
@@ -50,11 +46,9 @@ class ImageDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :rent,
+    :imageable,
     :caption,
-    :photo_file_name,
-    :photo_content_type,
-    :photo_file_size,
-    :photo_updated_at,
+    :photo,
   ].freeze
 
   # Overwrite this method to customize how images are displayed

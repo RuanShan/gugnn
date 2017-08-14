@@ -23,5 +23,5 @@ module Lease::ComboFilters
       ['g500',206,'500G'],['t1',210,'1T及以上'],['other',299,'其他']
         ] }
 
-    PC_FILTERS = [PC_BRAND,PC_MEMORY]
+    PC_FILTERS = [PC_BRAND,PC_MEMORY, PC_HD]
 end

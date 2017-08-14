@@ -37,5 +37,8 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.datetime :published_at #展示排序顺序
       t.timestamps
     end
+
+    add_index(:products, [:filt0, :filt1, :filt2, :filt3, :filt4, :filt5,:filt6, :filt7, :filt8, :filt9, :published_at], order: {published_at: :desc})
+
   end
 end

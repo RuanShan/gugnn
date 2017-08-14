@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   mount RuCaptcha::Engine => "/rucaptcha"
 
 
-  resources :office_equipments
   namespace :admin do
     resources :users
     resources :categories
-    resources :products
+    #resources :products
     resources :office_equipments
     resources :pets
     resources :category_options
@@ -19,9 +18,7 @@ Rails.application.routes.draw do
     resources :rents
     resources :sales
     resources :events
-    namespace :lease do
-      resources :pcs
-    end
+    resources :lease_pcs
     root to: "categories#index"
   end
 
@@ -29,8 +26,14 @@ Rails.application.routes.draw do
   resources :product_option_values
   resources :category_options
   resources :option_values
-  resources :categories
-  resources :products
+  resources :categories do
+    resources :products
+    member do
+      get :products #产品，以及产品过虑
+    end
+  end
+  resources :office_equipments
+
   devise_for :users, controllers: { passwords: 'passwords', sessions: 'sessions', registrations: 'registrations' }
 
   devise_scope :user do

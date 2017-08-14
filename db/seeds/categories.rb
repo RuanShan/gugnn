@@ -80,7 +80,8 @@ category_options.each do |option_attrs|
   option_attrs[:option_values] = option_attrs[:option_values].map do |combo_values|
     key, val, title,   = *combo_values #'any',0,'不限'
     if val > 0
-      OptionValue.new(id: val, title: title, name: key)
+      #https://stackoverflow.com/questions/28145100/rails-on-heroku-after-push-get-pguniqueviolation-error-duplicate-key-valu
+      OptionValue.new( title: title, name: key)
     end
   end.compact
   CategoryOption.create!(option_attrs)

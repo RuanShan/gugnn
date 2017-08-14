@@ -10,11 +10,16 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   # 显示分类及分类下的产品
+  # params - combofilters
   def show
-
-    @products = @category.products.order(published_at: :desc).page params[:page]
-
     @product_filters = parse_product_filters
+    @category_option_values = []
+    @category.category_options.each{|co|
+        @category_option_values[co.position-1] = @product_filters[co.filter_column_name]
+    }
+
+    @products = @category.products.where(@product_filters).order(published_at: :desc).page params[:page]
+
   end
 
   # GET /categories/new
@@ -79,11 +84,14 @@ class CategoriesController < ApplicationController
 
     # params[:combofilters]: - seperated option_value id
     def parse_product_filters
-      product_filters = []
+      product_filters = {}
       combofilters = params[:combofilters].to_s
       if combofilters.present?
         combofilters.split('-').each_with_index{|id, i|
-          product_filters[i] = id.to_i
+          #选择任意是 id = 0
+          if id.to_i > 0
+            product_filters["filt#{i}"] = id.to_i
+          end
         }
       end
       product_filters

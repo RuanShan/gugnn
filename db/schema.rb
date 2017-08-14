@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813024100) do
+ActiveRecord::Schema.define(version: 20170814074915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20170813024100) do
   end
 
   create_table "images", force: :cascade do |t|
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
     t.string   "caption"
     t.integer  "rent_id"
     t.string   "photo_file_name"
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 20170813024100) do
     t.datetime "photo_updated_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
   end
 
   create_table "jointables", force: :cascade do |t|
@@ -188,13 +191,13 @@ ActiveRecord::Schema.define(version: 20170813024100) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.string   "type"
     t.string   "title"
     t.string   "desc"
     t.string   "slugged"
     t.integer  "owner_id"
     t.integer  "price"
     t.integer  "category_id"
-<<<<<<< HEAD
     t.string   "combofilters", default: "00000000", null: false
     t.integer  "filt0",        default: 0,          null: false
     t.integer  "filt1",        default: 0,          null: false
@@ -211,10 +214,6 @@ ActiveRecord::Schema.define(version: 20170813024100) do
     t.datetime "updated_at",                        null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree
-=======
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
->>>>>>> 40ea537e61a0d2213b5073f35b551934bb0a5bf3
   end
 
   create_table "rates", force: :cascade do |t|
@@ -299,4 +298,5 @@ ActiveRecord::Schema.define(version: 20170813024100) do
   end
 
   add_foreign_key "events", "users"
+  add_foreign_key "products", "users", column: "owner_id"
 end

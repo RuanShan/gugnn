@@ -9,8 +9,13 @@ class CategoryOptionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     category: Field::BelongsTo,
+    option_values: Field::HasMany,
     id: Field::Number,
+    position: Field::Number,
+    name: Field::String,
     title: Field::String,
+    values: Field::String,
+    filter_column_name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -22,17 +27,22 @@ class CategoryOptionDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :category,
+    :option_values,
     :id,
-    :title,
-    :created_at,
+    :position,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :category,
+    :option_values,
     :id,
+    :position,
+    :name,
     :title,
+    :values,
+    :filter_column_name,
     :created_at,
     :updated_at,
   ].freeze
@@ -42,7 +52,12 @@ class CategoryOptionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :category,
+    :option_values,
+    :position,
+    :name,
     :title,
+    :values,
+    :filter_column_name,
   ].freeze
 
   # Overwrite this method to customize how category options are displayed
