@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 20170814074915) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree
   end
 
