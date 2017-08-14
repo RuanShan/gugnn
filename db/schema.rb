@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170813001133) do
   end
 
   create_table "categories", force: :cascade do |t|
+    t.string   "name"
     t.string   "title"
     t.integer  "parent_id"
     t.integer  "lft",                        null: false
@@ -42,11 +43,13 @@ ActiveRecord::Schema.define(version: 20170813001133) do
 
   create_table "category_options", force: :cascade do |t|
     t.integer  "category_id"
+    t.integer  "position"
     t.string   "name"
     t.string   "title"
     t.string   "values"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "filter_column_name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["category_id"], name: "index_category_options_on_category_id", using: :btree
   end
 
@@ -129,6 +132,8 @@ ActiveRecord::Schema.define(version: 20170813001133) do
 
   create_table "option_values", force: :cascade do |t|
     t.integer  "category_option_id"
+    t.integer  "position"
+    t.string   "name"
     t.string   "title"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -191,6 +196,7 @@ ActiveRecord::Schema.define(version: 20170813001133) do
     t.integer  "price"
     t.integer  "category_id"
     t.string   "combofilters", default: "00000000", null: false
+    t.integer  "filt0",        default: 0,          null: false
     t.integer  "filt1",        default: 0,          null: false
     t.integer  "filt2",        default: 0,          null: false
     t.integer  "filt3",        default: 0,          null: false
@@ -200,6 +206,7 @@ ActiveRecord::Schema.define(version: 20170813001133) do
     t.integer  "filt7",        default: 0,          null: false
     t.integer  "filt8",        default: 0,          null: false
     t.integer  "filt9",        default: 0,          null: false
+    t.datetime "published_at"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree

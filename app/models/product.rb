@@ -4,7 +4,11 @@ class Product < ApplicationRecord
 
   belongs_to :category
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
+  has_many :images, :dependent => :destroy
+  accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['image'].nil? }
 
+  #
+  before_create :set_defaults
 
   # 添加产品，
   # 修改产品，修改过滤字段
@@ -18,7 +22,7 @@ class Product < ApplicationRecord
       filters.each_with_index{|filter, i|
         field_name = "filt#{i+1}".to_sym
         prefix = filter[:name]
-        vals = filter[:values]
+        vals = filter[:option_values]
         vals_for_enum = vals.map{|v| v[0,2]}
         hash_for_enum = Hash[vals_for_enum]
         #Rails.logger.debug " field_name=#{field_name}, hash_for_enum=#{hash_for_enum}"
@@ -28,6 +32,9 @@ class Product < ApplicationRecord
     end
   end
 
+  def set_defaults
 
+    self.published_at ||= DateTime.current
+  end
 
 end

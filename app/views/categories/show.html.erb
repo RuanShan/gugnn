@@ -1,5 +1,34 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <dl>
+          <% @category.category_options.each{|co| %>
+              <dt> <%= co.title %> </dt>
+              <dd> <% co.option_values.each{| ov| %>
+                <a > <%= ov.title %> </a>
+              <% } %>
+              </dd>
+          <% } %>
+        </dl>
+      </div>
+      <div> 选择的条件: </div>
+    </div>
+
+
+    <div>
+      <% @products.each{|product| %>
+        <div>
+          <p> <%= product.title %> </p>
+        </div>
+      <% } %>
+    </div>
+</div>
+
+
+
+
 <p>
   <strong>Title:</strong>
   <%= @category.title %>

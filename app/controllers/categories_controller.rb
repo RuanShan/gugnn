@@ -9,7 +9,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1
   # GET /categories/1.json
+  # 显示分类及分类下的产品
   def show
+
+    @products = @category.products.order(published_at: :desc).page params[:page]
+
+    @product_filters = parse_product_filters
   end
 
   # GET /categories/new
@@ -70,5 +75,17 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:title, :desc, :slugged)
+    end
+
+    # params[:combofilters]: - seperated option_value id
+    def parse_product_filters
+      product_filters = []
+      combofilters = params[:combofilters].to_s
+      if combofilters.present?
+        combofilters.split('-').each_with_index{|id, i|
+          product_filters[i] = id.to_i
+        }
+      end
+      product_filters
     end
 end

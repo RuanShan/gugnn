@@ -10,7 +10,10 @@ class CategoryDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     parent: Field::BelongsTo.with_options(class_name: "Category"),
     children: Field::HasMany.with_options(class_name: "Category"),
+    category_options: Field::HasMany,
+    products: Field::HasMany,
     id: Field::Number,
+    name: Field::String,
     title: Field::String,
     parent_id: Field::Number,
     lft: Field::Number,
@@ -31,8 +34,8 @@ class CategoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :parent,
     :children,
-    :id,
-    :title,
+    :category_options,
+    :products,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,7 +43,10 @@ class CategoryDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :parent,
     :children,
+    :category_options,
+    :products,
     :id,
+    :name,
     :title,
     :parent_id,
     :lft,
@@ -59,6 +65,9 @@ class CategoryDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :parent,
     :children,
+    :category_options,
+    :products,
+    :name,
     :title,
     :parent_id,
     :lft,

@@ -23,6 +23,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       #1，用户选择不限时，某一个字节为任意是导致无法利用过滤
       #各个租赁对象使用不同的类表示
       t.string :combofilters, length:12, null: false, default: '00000000'
+      t.integer :filt0, null:false, default: 0
       t.integer :filt1, null:false, default: 0
       t.integer :filt2, null:false, default: 0
       t.integer :filt3, null:false, default: 0
@@ -33,6 +34,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :filt8, null:false, default: 0
       t.integer :filt9, null:false, default: 0
 
+      t.datetime :published_at #展示排序顺序
       t.timestamps
     end
   end

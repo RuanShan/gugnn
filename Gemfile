@@ -31,11 +31,13 @@ gem 'pg'
 #gem 'pundit'
 gem 'simple_form'
 
+gem 'acts_as_list'
 gem 'awesome_nested_set'
 gem "paperclip"
 gem 'gmaps4rails'
 gem 'geocodio'
 gem 'ratyrate'
+gem 'kaminari' #分页
 
 group :development do
   gem 'foreman'
