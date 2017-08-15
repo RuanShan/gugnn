@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dlist</title>
+        <title>光棍族生活</title>
 
         <%= csrf_meta_tags %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,39 +9,12 @@
     </head>
 
     <body>
-
-        <div class="head-nav">
-            <%=session[:selected_city]%><%= link_to t(:change_city), select_city_path %>
-            <% if current_user%>
-            Balance:
-            <%=number_to_currency(current_user.balance)%>
-            |
-            <%= link_to "Mailbox", conversations_path %>
-            |
-            <%= link_to "Contact Us", conversations_path(sender_id: current_user.id, recipient_id: User.first.id), :method => :post%>
-            |
-            <%= link_to "Profile", my_account_index_path %>
-            |
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-            |
-        <% else %>
-            <%= link_to "Create Account", prepare_path %>
-            |
-            <%= link_to "Log In", new_user_session_path %>
-            |
-            <% end %>
-            <%= link_to "Home", site_path %>
-        </div>
-
-        <% flash.each do |name, msg| %>
-        <p>
-            <small>
-                <%= name.capitalize %>:
-                <%= msg %>
-            </small>
-        </p>
-        <% end %>
-
+      <div class="head-nav">
+        <%= render partial: 'layouts/navigation' %>
+      </div>
+      <div class="menu-wrapper">
+        <%= render partial: 'layouts/main_menu' %>
+      </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -49,7 +22,11 @@
                 </div>
             </div>
         </div>
-
+        <div class="footer">
+          <div class="container">
+            <%= render partial: 'layouts/footer' %>
+          </div>
+        </div>
     </body>
 
 </html>

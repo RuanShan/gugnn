@@ -3,6 +3,8 @@ class SiteController < ApplicationController
 
   def index
     @categories = Category.roots.limit( 4 )
+    @all_categories = Category.roots.all
+
   end
 
   def select_city

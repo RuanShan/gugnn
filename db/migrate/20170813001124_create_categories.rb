@@ -14,6 +14,7 @@ class CreateCategories < ActiveRecord::Migration[5.0]
 
       t.string :desc
       t.string :slugged
+      t.boolean :heading, :null=> false, :default => true
 
       t.timestamps
     end

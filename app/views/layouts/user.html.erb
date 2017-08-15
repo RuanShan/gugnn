@@ -4,11 +4,22 @@
     <%= render 'my/shared/head' %>
   </head>
   <body>
-    <%= render 'my/shared/navigation' %>
-    <%= render partial: "my/shared/menus" %>
-    <div class="">
-      <div class="">
-        <%= yield %>
+    <div class="page">
+      <div>
+        <%= render 'my/shared/navigation' %>
+        <%= render partial: "my/shared/menus" %>
+      </div>
+      <div class="main">
+        <div class="container">
+
+          <div class="leftside">
+
+          </div>
+          <div class="rightside">
+            <%= yield %>
+          </div>
+
+        </div>
       </div>
     </div>
     <%#= render 'layouts/footer' %>

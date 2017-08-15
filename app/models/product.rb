@@ -10,6 +10,8 @@ class Product < ApplicationRecord
   #
   before_create :set_defaults
 
+  attribute :latlng, :point
+
   # 添加产品，
   # 修改产品，修改过滤字段
   # 改变字段顺序

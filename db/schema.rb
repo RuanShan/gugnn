@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814074915) do
+ActiveRecord::Schema.define(version: 20170815103931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(version: 20170814074915) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["category_id"], name: "index_category_options_on_category_id", using: :btree
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -212,6 +227,12 @@ ActiveRecord::Schema.define(version: 20170814074915) do
     t.datetime "published_at"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.string   "address"
+    t.string   "postal_code"
+    t.inet     "created_ip"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.point    "latlng"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree

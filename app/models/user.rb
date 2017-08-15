@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :rents, dependent: :destroy
   has_many :sales, dependent: :destroy
+  has_many :products, dependent: :destroy, foreign_key: 'owner_id'
 
   has_many :jointables, dependent: :destroy
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'http://i.imgur.com/7Yc9GZf.png'

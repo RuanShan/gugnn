@@ -15,13 +15,18 @@
         <div class="row">
           <% @categories.each{ |category| %>
             <div class="col-md-3">
-                <h1 class="tagline"> <%= category.title %></h1>
-                <div class="sub">
+                <p > <%= category.title %></p>
+                <div class="">
                   <% category.children.each{|child| %>
                     <%= link_to child.title, category_path(child), class: 'btn' %>
                   <% } %>
               </div>
             </div>
           <% } %>
+        </div>
+
+
+        <div class="row">
+          <%= render partial: 'categories' %>
         </div>
     </div>

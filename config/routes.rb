@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'site#index'
+
+  mount Ckeditor::Engine => '/ckeditor'
   #captcha
-  mount RuCaptcha::Engine => "/rucaptcha"
+  #mount RuCaptcha::Engine => "/rucaptcha"
 
 
   namespace :admin do
@@ -56,7 +59,6 @@ Rails.application.routes.draw do
     get 'conversations/create'
 
     match 'select_city' => 'site#select_city', via: [:get, :patch]
-    get '/', to: 'site#index', as: 'site'
 
     #get '/signup', to: 'users#new', as: 'new_user'
     #post '/users', to: 'users#create'
@@ -112,6 +114,7 @@ Rails.application.routes.draw do
     end
 
     namespace :my do
+      resources :products
       resources :account do
         collection do
         end
@@ -121,5 +124,6 @@ Rails.application.routes.draw do
         end
       end
     end
+
 
 end

@@ -15,8 +15,10 @@
  */
  body {
    background-color: #f3f3f3;
-   height: 95%;
-
+ }
+ .logo{
+   height: 50px;
+   display: inline-block;
  }
  .conversation {
   padding: 10px;
@@ -24,20 +26,24 @@
   border-radius: 1%;
 }
 
-.head-nav a {
-  color: white;
+.head-nav .nav a {
+  display: inline;
+  padding: 0 15px ;
 }
-
-.head-nav {
-  padding-top: 5px;
+.menu-wrapper
+{
+  background-color: #fff;
+}
+.main-menu {
   color: grey;
-  text-align: right;
   font-size: 26px;
   padding-right: 10px;
   height: 50px;
-  background-color: black;
 }
 
+.main-menu a{
+  line-height: 50px;
+}
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
@@ -68,4 +74,36 @@
 .mb-3 {
   padding-left: 10px;
   padding-right: 10px;
+}
+/* my */
+.leftside {
+    float: left;
+    width: 20%;
+    min-height: 500px;
+    padding-top: 8px;
+    margin-top: 22px;
+    background-color: #ADD8E6;
+}
+.rightside {
+    float: right;
+    width: 80%;
+    margin-top: 22px;
+    background-color: #87AFC7;
+}
+
+
+.zj-footer .zj-footer-top .footer-about .footer-statement > dd {
+    line-height: 26px;
+    height: 26px;
+    font-size: 15px;
+}
+.zj-footer .zj-footer-top .footer-about .footer-statement {
+    width: 192px;
+    float: left;
+}
+.zj-footer .zj-footer-bottom {
+    color: #a7abae;
+    padding: 21px 0;
+    text-align: center;
+    font-size: 16px;
 }

@@ -53,6 +53,8 @@ gem 'gmaps4rails'
 gem 'geocodio'
 gem 'ratyrate'
 gem 'kaminari' #分页
+gem 'ckeditor' #富文本编辑器
+
 
 group :development do
   gem 'foreman'
