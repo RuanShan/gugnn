@@ -1,24 +1,16 @@
 <div>
-
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <% @all_categories.each{|category| %>
-      <li role="presentation">
-        <%= link_to category.title, "#", role:'tab', data: { toggle: dom_id(category)}, href: "##{dom_id(category)}" %>
-      </li>
+    <% @all_categories.each_with_index{|category,i| %>
+      <%= content_tag 'li', role: 'presentation', class: (i==0 ? 'active' : '' )do %>
+        <%= link_to category.title, "#", role:'tab', data: { toggle: 'tab'},aria:{controls: category.title}, href: "##{dom_id(category)}" %>
+      <% end %>
     <% }%>
-    <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+    <%= render partial: 'category', collection: @all_categories %>
   </div>
 
 </div>

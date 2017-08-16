@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815103931) do
+ActiveRecord::Schema.define(version: 20170815155652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,15 @@ ActiveRecord::Schema.define(version: 20170815103931) do
     t.string   "name"
     t.string   "title"
     t.integer  "parent_id"
-    t.integer  "lft",                        null: false
-    t.integer  "rgt",                        null: false
-    t.integer  "depth",          default: 0, null: false
-    t.integer  "children_count", default: 0, null: false
+    t.integer  "lft",                           null: false
+    t.integer  "rgt",                           null: false
+    t.integer  "depth",          default: 0,    null: false
+    t.integer  "children_count", default: 0,    null: false
     t.string   "desc"
     t.string   "slugged"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "heading",        default: true, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["lft"], name: "index_categories_on_lft", using: :btree
     t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
     t.index ["rgt"], name: "index_categories_on_rgt", using: :btree
@@ -211,31 +212,38 @@ ActiveRecord::Schema.define(version: 20170815103931) do
     t.string   "desc"
     t.string   "slugged"
     t.integer  "owner_id"
-    t.integer  "price"
+    t.integer  "price",              default: 0,          null: false
+    t.integer  "tenancy",            default: 0,          null: false
+    t.integer  "min_tenancy",        default: 0,          null: false
+    t.integer  "max_tenancy",        default: 0,          null: false
+    t.integer  "deposit",            default: 0,          null: false
     t.integer  "category_id"
-    t.string   "combofilters", default: "00000000", null: false
-    t.integer  "filt0",        default: 0,          null: false
-    t.integer  "filt1",        default: 0,          null: false
-    t.integer  "filt2",        default: 0,          null: false
-    t.integer  "filt3",        default: 0,          null: false
-    t.integer  "filt4",        default: 0,          null: false
-    t.integer  "filt5",        default: 0,          null: false
-    t.integer  "filt6",        default: 0,          null: false
-    t.integer  "filt7",        default: 0,          null: false
-    t.integer  "filt8",        default: 0,          null: false
-    t.integer  "filt9",        default: 0,          null: false
+    t.string   "combofilters",       default: "00000000", null: false
+    t.integer  "filt0",              default: 0,          null: false
+    t.integer  "filt1",              default: 0,          null: false
+    t.integer  "filt2",              default: 0,          null: false
+    t.integer  "filt3",              default: 0,          null: false
+    t.integer  "filt4",              default: 0,          null: false
+    t.integer  "filt5",              default: 0,          null: false
+    t.integer  "filt6",              default: 0,          null: false
+    t.integer  "filt7",              default: 0,          null: false
+    t.integer  "filt8",              default: 0,          null: false
+    t.integer  "filt9",              default: 0,          null: false
     t.datetime "published_at"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "address"
     t.string   "postal_code"
     t.inet     "created_ip"
     t.decimal  "lat"
     t.decimal  "lng"
     t.point    "latlng"
+    t.integer  "parent_category_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree
+    t.index ["parent_category_id", "category_id", "published_at"], name: "idx_products_pcategory_category_publish", using: :btree
+    t.index ["parent_category_id"], name: "index_products_on_parent_category_id", using: :btree
   end
 
   create_table "rates", force: :cascade do |t|
@@ -320,5 +328,6 @@ ActiveRecord::Schema.define(version: 20170815103931) do
   end
 
   add_foreign_key "events", "users"
+  add_foreign_key "products", "categories", column: "parent_category_id"
   add_foreign_key "products", "users", column: "owner_id"
 end

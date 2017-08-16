@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
         @category_option_values[co.position-1] = @product_filters[co.filter_column_name]
     }
 
-    @products = @category.products.where(@product_filters).order(published_at: :desc).page params[:page]
+    @products = @category.products.includes(:owner).where(@product_filters).order(published_at: :desc).page params[:page]
 
   end
 

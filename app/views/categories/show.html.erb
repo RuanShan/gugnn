@@ -20,11 +20,25 @@
 
     <div>
       <h3> 产品 </h3>
-      <% @products.each{|product| %>
-        <div>
-          <p> <%= link_to product.title, category_product_path( @category, product) %> </p>
-        </div>
-      <% } %>
+      <ul class="list-group">
+        <% @products.each{|product| %>
+          <li class="list-group-item clearfix">
+              <%= image_tag("default.png", size: "110x110", alt: product.title, class:"pull-left") %>
+            <div class="pull-left">
+              <h3> <%= link_to product.title, category_product_path( @category, product) %> </h3>
+              <p>
+                押金: <%= product.deposit %> 最低租期: <br/>
+                <%= product.owner.realname %>
+              </p>
+
+            </div>
+            <div class="pull-right">
+              <span> <%= display_price(product) %> </span>
+            </div>
+          </li>
+          <% } %>
+      </ul>
+      <%= paginate @products %>
     </div>
 </div>
 

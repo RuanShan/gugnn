@@ -17,7 +17,12 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :desc
       t.string :slugged
       t.belongs_to :owner, foreign_key: {to_table: :users}
-      t.integer :price
+      t.integer :price, null:false, default: 0    #租金 单位为元
+      t.integer :tenancy, null:false, default: 0  #租期 单位为秒
+      t.integer :min_tenancy, null:false, default: 0  #最短租期 单位为秒
+      t.integer :max_tenancy, null:false, default: 0  #最长租期 单位为秒
+      t.integer :deposit, null:false, default: 0  #押金 单位为元
+
       t.belongs_to :category
       #为了减少表及工作量，使用filters作为过滤字段集合,这个方案不可行，
       #1，用户选择不限时，某一个字节为任意是导致无法利用过滤

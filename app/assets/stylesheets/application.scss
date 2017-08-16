@@ -16,6 +16,9 @@
  body {
    background-color: #f3f3f3;
  }
+ ul {
+   list-style-type: none;
+ }
  .logo{
    height: 50px;
    display: inline-block;
@@ -25,26 +28,69 @@
   border: 1px solid lightgrey;
   border-radius: 1%;
 }
+.gg-top-nav{
 
-.head-nav .nav a {
-  display: inline;
-  padding: 0 15px ;
+  background-color: #fff;
+  border-bottom: 1px solid #f3f3f3;
+  padding: 2px 0;
+  .nav a {
+    display: inline;
+    padding: 0 0 0 15px ;
+  }
 }
+
 .menu-wrapper
 {
+  padding: 18px 0;
   background-color: #fff;
 }
 .main-menu {
   color: grey;
-  font-size: 26px;
+  font-size: 20px;
   padding-right: 10px;
   height: 50px;
+  a.logo{
+    padding: 0;
+  }
+  #be_agency_btn{
+    background-color:#f07171;
+    padding: 12px 18px;
+    color: #fff;
+  }
 }
 
 .main-menu a{
+  padding: 0 8px;
   line-height: 50px;
 }
-
+/*home page*/
+.gg-index .gg-cats{
+  margin: 30px 0 0 0;
+}
+.gg-ad{
+  background-color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  .gg-col{
+    margin: 18px 0;
+    border-right: 1px solid #eee;
+    background-repeat: #ffffff;
+    height: 64px;
+    line-height: 64px;
+  }
+  .gg-col-last{
+    border: 0;
+  }
+}
+.gg-high-cats{
+  .gg-cat-col{
+    background-color: #fff;
+    min-height: 200px;
+  }
+}
+.gg-cate-prods{
+  min-height: 300px;
+}
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 

@@ -3,7 +3,7 @@ class SiteController < ApplicationController
 
   def index
     @categories = Category.roots.limit( 4 )
-    @all_categories = Category.roots.all
+    @all_categories = Category.roots.includes(children: :highlight_subproducts)
 
   end
 

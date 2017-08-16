@@ -3,50 +3,38 @@
 <div class="container">
   <div>当前分类产品列表 http://www.rrzuji.com/list/office-all </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <dl>
-          <% @category.category_options.each{|co| %>
-              <dt> <%= co.title %> </dt>
-              <dd><%= link_to_with_filters OptionValue.any_option_value(co) %>
-              <% co.option_values.each{| ov| %>
-                <%= link_to_with_filters ov %>
-              <% } %>
-              </dd>
-          <% } %>
-        </dl>
-      </div>
-      <div> <span>选择的条件: </span></div>
+  <div class="row">
+    <div class="col-md-12">
+      <dl>
+        <% @category.category_options.each{|co| %>
+          <dt> <%= co.title %> </dt>
+          <dd><%= link_to_with_filters OptionValue.any_option_value(co) %>
+            <% co.option_values.each{| ov| %>
+              <%= link_to_with_filters ov %>
+            <% } %>
+          </dd>
+        <% } %>
+      </dl>
     </div>
+    <div> <span>选择的条件: </span></div>
+  </div>
 
 
     <div>
       <h3> 产品 </h3>
-      <% @products.each{|product| %>
-        <div>
-          <p> <%= link_to product.title, category_product_path( @category, product) %> </p>
-        </div>
-      <% } %>
+      <ul class="list-group">
+        <% @products.each{|product| %>
+          <li>
+              <%= image_tag("default.png", size: "160x160", alt: product.title ) %>
+            <div class="pull-right">
+              <p> <%= link_to product.title, category_product_path( @category, product) %> </p>
+            </div>
+          </li>
+          <% } %>
+      </ul>
     </div>
 </div>
 
 
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @category.desc %>
-</p>
-
-<p>
-  <strong>Slugged:</strong>
-  <%= @category.slugged %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+      <%= link_to 'Edit', edit_category_path(@category) %> |
+      <%= link_to 'Back', categories_path %>

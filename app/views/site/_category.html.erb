@@ -1,0 +1,26 @@
+<%= content_tag 'div', id: dom_id(category),role: 'tabpanel', class: (category_counter==0 ? 'tab-pane active' : 'tab-pane' ) do %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" >
+        图
+      </div>
+      <div class="col-md-9" >
+        <div class="row gg-cate-prods">
+          <% category.highlight_subproducts.each_with_index{ |product, i| %>
+            <div class="col-md-3" >
+              <img  src="" class="product-image">
+              <p> <%= link_to product.title, category_product_path(category, product) %> </p>
+            </div>
+
+          <% } %>
+          <div class="col-md-3" > 1</div>
+          <div class="col-md-3" > 2</div>
+          <div class="col-md-3" > 3</div>
+          <div class="col-md-3" > 4</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
