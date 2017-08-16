@@ -1,0 +1,25 @@
+<%= product_form.input :category_id, as: "hidden" %>
+
+<%= product_form.input :title, placeholder: "请填写标题" %>
+<%= product_form.input :desc, placeholder: "请填写详细介绍" %>
+<%= product_form.input :price, :step => 0.01 %>
+<%= product_form.input :address, placeholder: "请填写地址" %>
+<%= product_form.input :lat, as: "hidden" %>
+<%= product_form.input :lng, as: "hidden" %>
+
+<%= product_form.fields_for :images do |product_images_form| %>
+  <p>
+    <%= product_images_form.input :caption %>
+  </p>
+  <p>
+    <%= product_images_form.file :photo %>
+  </p>
+<% end %>
+
+<% @product.category.category_options.each do |category_option| %>
+  <div>
+    <% options = category_option.option_values.map{|ov|[ov.id, ov.title]}%>
+    <%= product_form.label category_option.title %>
+    <%= product_form.collection_radio_buttons category_option.filter_column_name, options, :first, :last,{},{style:"margin:0 10px;"} %>
+  </div>
+<% end %>

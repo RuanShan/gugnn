@@ -70,3 +70,10 @@ $(function(){
 
 
 });
+
+function toggle_category(category_id){
+  $(".cat").removeClass("active");
+  $("#cat_"+category_id).addClass("active");
+  $(".sub_cat").hide();
+  $("#sub_cat_"+category_id).show();
+}
