@@ -17,7 +17,7 @@ Rails.logger.debug "current_user =#{current_user}"
 
     # GET /products/new
     def new
-      @product = Product.new
+      @product = Product.new(category_id: params[:category_id])
     end
 
     # GET /products/1/edit
@@ -29,7 +29,7 @@ Rails.logger.debug "current_user =#{current_user}"
     def create
       @product = Product.new(product_params)
       @product.owner = current_user
-      
+
       respond_to do |format|
         if @product.save
           format.html { redirect_to my_products_path, notice: 'Product was successfully created.' }
@@ -73,7 +73,7 @@ Rails.logger.debug "current_user =#{current_user}"
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def product_params
-        params.require(:product).permit(:title, :desc, :slugged, :owner_id, :price)
+        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9)
       end
   end
 

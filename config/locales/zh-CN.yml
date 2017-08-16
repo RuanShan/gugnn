@@ -1,4 +1,12 @@
 zh-CN:
+  activerecord:
+    attributes:
+      product:
+        title: "标题"
+        desc: "详细介绍"
+        price: "报价"
+        address: "地址"
+
   gugnn: "光棍租机"
   gugnn_member: "光棍租机-会员中心"
 
