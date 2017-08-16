@@ -2,8 +2,8 @@ class SiteController < ApplicationController
   before_action :get_current_user, :get_city
 
   def index
-    @categories = Category.roots.limit( 4 )
-    @all_categories = Category.roots.includes(children: :highlight_subproducts)
+    @categories = Category.roots.includes(:children).limit( 4 )
+    @all_categories = Category.roots.includes(:children)
 
   end
 

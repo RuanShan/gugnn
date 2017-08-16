@@ -10,4 +10,13 @@ class Category < ApplicationRecord
   has_many :highlight_subproducts, ->{ order(published_at: :desc).limit(8) }, class_name: 'Product', foreign_key: :parent_category_id
   #has_many :highlight_products, ->{ order(published_at: :desc).limit(8) }, class_name: 'Product'
 
+  has_attached_file :icon,
+    styles: { mini: '32x32>', normal: '128x128>' },
+    url: '/uploads/categories/:id/:style/:basename.:extension',
+    path: ':rails_root/public/uploads/categories/:id/:style/:basename.:extension',
+    default_url: '/assets/default.png'
+
+  validates_attachment :icon,
+    content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
 end

@@ -16,6 +16,8 @@ class CreateCategories < ActiveRecord::Migration[5.0]
       t.string :slugged
       t.boolean :heading, :null=> false, :default => true
 
+      t.attachment :icon
+
       t.timestamps
     end
   end
