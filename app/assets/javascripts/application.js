@@ -27,6 +27,16 @@
 $(function(){
   //new Vcity.CitySelector({input:'citySelect'});
 
+  $('#gugnnModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var title = button.data('title'); // Extract info from data-* attributes
+    var ajax_url = button.data('ajax_url'); // Extract info from data-* attributes
+    var ajax_callback = button.data('ajax_callback'); // Extract info from data-* attributes
+    var modal = $(this);
+    modal.find('.modal-title').text(title);
+    modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
+  });
+
   $("#obtainVerifyCode").click(function(){
     var phone = $("#user_cellphone").val();
     $.ajax({

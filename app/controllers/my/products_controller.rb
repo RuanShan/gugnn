@@ -65,6 +65,12 @@ Rails.logger.debug "current_user =#{current_user}"
       end
     end
 
+    def get_map
+      respond_to do |format|
+        format.js { render :get_map }
+      end
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_product
@@ -73,7 +79,7 @@ Rails.logger.debug "current_user =#{current_user}"
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def product_params
-        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9)
+        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9)
       end
   end
 

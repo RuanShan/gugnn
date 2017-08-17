@@ -114,7 +114,11 @@ Rails.application.routes.draw do
     end
 
     namespace :my do
-      resources :products
+      resources :products do
+        collection do
+          get 'get_map', to: 'products#get_map'
+        end
+      end
       resources :account do
         collection do
         end
