@@ -7,7 +7,7 @@
 
 <div class="container" >
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
       <div class="product-images-wrapper">
         <!-- Swiper -->
         <div class="swiper-container gallery-large">
@@ -16,9 +16,7 @@
                 <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"},  true %> </div>
               <% } %>
             </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next swiper-button-white arrow-right"></div>
-            <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+
         </div>
         <div class="swiper-container gallery-thumb">
             <div class="swiper-wrapper">
@@ -27,20 +25,25 @@
               <% } %>
             </div>
             <!-- Add Arrows -->
-            <div class="swiper-button-next swiper-button-white arrow-right"></div>
-            <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+            <div class="arrow-right">
+              <a class="swiper-button-next swiper-button-white" > </a>
+            </div>
+            <div class="arrow-left">
+              <a class="swiper-button-prev swiper-button-white" > </a>
+            </div>
         </div>
       </div>
       <% image =  @product.master_image || Image.new %>
       <% #= image_tag image.photo.url(:large) %>
 
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
       product title price
+      <div>
+        user profile
+      </div>
     </div>
-    <div>
-      user profile
-    </div>
+
   </div>
 
   <div class="row">

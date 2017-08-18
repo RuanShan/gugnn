@@ -20,6 +20,7 @@
 //= require underscore.min
 //= require lightbox.min
 //= require swiper.jquery.min
+//= require jssor.slider.min
 //= require_tree .
 
 //= require gmaps/google
