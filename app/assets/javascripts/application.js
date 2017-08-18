@@ -17,8 +17,11 @@
 //= require jquery-validate/extend
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
 //= require underscore.min
+//= require lightbox.min
+//= require swiper.jquery.min
+//= require_tree .
+
 //= require gmaps/google
 //= require jquery.raty
 //= require ratyrate

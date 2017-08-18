@@ -9,7 +9,11 @@
         <div class="row gg-cate-prods">
           <% category.highlight_subproducts.each_with_index{ |product, i| %>
             <div class="col-md-3" >
+              <% if product.master_image.present? %>
               <%= image_tag product.master_image.url, class:"product-image" %>
+              <% else %>
+              <%= image_tag 'default.png', width:'160', class:"product-image" %>
+              <% end %>
               <p> <%= link_to product.title, category_product_path(category, product) %> </p>
             </div>
 

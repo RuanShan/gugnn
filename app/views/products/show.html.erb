@@ -1,16 +1,39 @@
+<div class="container">
 <ol class="breadcrumb">
-  <li><a href="#">首页</a></li>
-  <li><a href="#">大连市区办公设备租赁</a></li>
-  <li><a href="#">大连市区打印机复印机租赁</a></li>
+  <%== build_breadscrambs(@category) %>
   <li class="active"> <%=@product.title %></li>
 </ol>
-
-<p id="notice"><%= notice %></p>
+</div>
 
 <div class="container" >
   <div class="row">
     <div class="col-md-5">
-      product images
+      <div class="product-images-wrapper">
+        <!-- Swiper -->
+        <div class="swiper-container gallery-large">
+            <div class="swiper-wrapper">
+              <% 5.times.each{|i| %>
+                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"},  true %> </div>
+              <% } %>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white arrow-right"></div>
+            <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+        </div>
+        <div class="swiper-container gallery-thumb">
+            <div class="swiper-wrapper">
+              <% 5.times.each{|i| %>
+                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"}, true %> </div>
+              <% } %>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white arrow-right"></div>
+            <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+        </div>
+      </div>
+      <% image =  @product.master_image || Image.new %>
+      <% #= image_tag image.photo.url(:large) %>
+
     </div>
     <div class="col-md-5">
       product title price
@@ -25,29 +48,3 @@
   </div>
 
 </div>
-
-<p>
-
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @product.desc %>
-</p>
-
-<p>
-  <strong>Slugged:</strong>
-  <%= @product.slugged %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @product.owner_id %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>

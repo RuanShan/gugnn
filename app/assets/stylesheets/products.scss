@@ -1,3 +1,26 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-images-wrapper{
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+  .swiper-container.gallery-large{
+    height: 500px;
+  }
+  .swiper-container.gallery-thumb{
+    height: 120px;
+
+    .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+    .swiper-slide:hover {
+      opacity: 1;
+    }
+  }
+
+}
