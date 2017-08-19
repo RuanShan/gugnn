@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170815155652) do
     t.integer  "rgt",                              null: false
     t.integer  "depth",             default: 0,    null: false
     t.integer  "children_count",    default: 0,    null: false
+    t.string   "slogen"
     t.string   "desc"
     t.string   "slugged"
     t.boolean  "heading",           default: true, null: false
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170815155652) do
     t.string   "icon_content_type"
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
+    t.string   "meta_keyword"
+    t.string   "meta_description"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["lft"], name: "index_categories_on_lft", using: :btree

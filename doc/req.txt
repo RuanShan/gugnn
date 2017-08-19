@@ -1,1 +1,5 @@
 1. 用户选择分类
+
+
+2. 租赁商品页面参考，58地产
+http://dl.58.com/ershoufang/30800272785714x.shtml?psid=163752571197007213903444622&ClickID=1&cookie=|||c5/njVmLAVEvnUobA8x1Ag==&PGTID=0d300000-0000-096d-a2c1-8379a254809b&apptype=0&entinfo=30800272785714_0&fzbref=1&key=&pubid=15333973&from=1-list-2&params=jxesfensemble^desc&local=150&trackkey=30800272785714_ead99cac-8265-473c-b170-2dcc2f01dde5_20170818184442_1503053082907&fcinfotype=gz

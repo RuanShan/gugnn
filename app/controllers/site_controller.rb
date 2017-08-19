@@ -2,7 +2,7 @@ class SiteController < ApplicationController
   before_action :get_current_user, :get_city
 
   def index
-    @categories = Category.roots.includes(:children).limit( 4 )
+    @categories = Category.roots.includes(:children).limit( 8 )
     @all_categories = Category.roots.includes(:children)
 
   end

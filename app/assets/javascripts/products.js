@@ -2,6 +2,11 @@
 // All this logic will automatically be available in application.js.
 
 $(function(){
+
+  if($('.product-details').is('*'))
+  {
+    $('body').scrollspy({ target: '#navbar-product-details' })
+  }
   if($('.product-images-wrapper').is('*'))
   {
     // 1. user move a slide. 2. user click a thumb, 3. user click nav

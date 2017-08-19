@@ -12,11 +12,15 @@ class CreateCategories < ActiveRecord::Migration[5.0]
       t.integer :depth, :null => false, :default => 0
       t.integer :children_count, :null => false, :default => 0
 
+      t.string :slogen # 广告词
       t.string :desc
       t.string :slugged
       t.boolean :heading, :null=> false, :default => true
 
       t.attachment :icon
+
+      t.string :meta_keyword
+      t.string :meta_description
 
       t.timestamps
     end

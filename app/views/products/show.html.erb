@@ -5,8 +5,8 @@
 </ol>
 </div>
 
-<div class="container" >
-  <div class="row">
+<div class="container product" >
+  <div class="row product-base">
     <div class="col-md-6">
       <div class="product-images-wrapper">
         <!-- Swiper -->
@@ -37,17 +37,86 @@
       <% #= image_tag image.photo.url(:large) %>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 product-info">
+      <p> <%= @product.title %> </p>
+
+      <div class="pay-price ">
+          <div class="pull-left" id="top-left-w">
+              <span style="margin-right: 25px;">租　金：</span>
+              <span class="high-light-red">
+                  <span class="first">￥</span>
+                  <span class="two">500.00</span>
+                  <span class="three">/天</span>
+              </span>
+          </div>
+          <div class="condition pull-right">
+              <span class="pay-re condition-1">押金：￥<span id="yaj">500</span></span>
+              <!--缺乏数据-->
+              <span class="pay-re condition-last">1天起租</span>
+          </div>
+      </div>
+      <div>
+        关于租赁方广告语
+      </div>
       product title price
       <div>
-        user profile
+       <p>联系他</p>
       </div>
     </div>
 
   </div>
 
   <div class="row">
-    product description
+    <div class="col-md-3">
+      关于租赁方
+      <div>
+        <%= render partial: 'owner_profile' %>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="navbar navbar-default" >
+        <ul class="nav nav-tabs" role="tablist">
+              <li >
+                <a href="#cur"> 概况</a>
+              </li>
+              <li class="">
+                <a href="#generalDesc">描述</a>
+              </li>
+              <li  class="">
+                <a href="#generalExpense">费用</a>
+              </li>
+              <li  class="">
+                <a href="#generalType">户型</a>
+              </li>
+              <li class="">
+                <a href="#xiaoWrap">小区</a>
+              </li>
+              <li   class="">
+                <a href="#mapWrap">位置</a>
+              </li>
+        </ul>
+      </div>
+      <div>
+        <p id="generalDesc">
+          <h3>描述</h3>
+          <%= @product.desc %>
+        </p>
+        <p id="generalExpense">
+          <h3>费用</h3>
+        </p>
+        <p id="xiaoWrap">
+          <h3>小区</h3>
+        </p>
+        <p id="generalType">
+          <h3>户型</h3>
+        </p>
+        <p id="mapWrap">
+          <h3>位置</h3>
+
+        </p>
+      </div>
+      product description
+    </div>
   </div>
 
 </div>
