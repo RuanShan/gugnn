@@ -29,11 +29,11 @@ Rails.application.routes.draw do
   resources :product_option_values
   resources :category_options
   resources :option_values
+  resources :products
   resources :categories do
-    resources :products
-    member do
-      get :products #产品，以及产品过虑
-    end
+    #member do
+    #  get :products #产品，以及产品过虑
+    #end
   end
   resources :office_equipments
 

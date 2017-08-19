@@ -8,7 +8,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
-    <body>
+    <body >
       <div class="gg-top-nav">
         <%= render partial: 'layouts/navigation' %>
       </div>
@@ -18,7 +18,7 @@
         <div class="gg-page-content">
             <%= yield %>
         </div>
-        <div class="footer">
+        <div class="gg-footer">
           <div class="container">
             <%= render partial: 'layouts/footer' %>
           </div>

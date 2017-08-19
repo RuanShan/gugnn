@@ -55,7 +55,7 @@
     padding: 0;
   }
   #be_agency_btn{
-    background-color:#f07171;
+    background-color:#d61718;
     padding: 12px 18px;
     color: #fff;
   }
@@ -67,7 +67,11 @@
 }
 /*home page*/
 .gg-index .gg-cats{
-  margin: 30px 0 0 0;
+  margin: 30px 0 30px 0;
+}
+.gg-slider
+{
+  background-color: #d61718;
 }
 .gg-ad{
   background-color: #fff;
@@ -91,7 +95,27 @@
   }
 }
 .gg-cate-prods{
+  margin: 0 -5px;
+  .col-md-3{
+    padding: 0 5px;
+  }
+  .product-image-wrapper{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    img{ width: 100%; }
+  }
   min-height: 300px;
+  .gg-cate-prod-info
+  {
+    margin: 6px 0 12px 0;
+    .gg-cate-prod-title{
+      height: 1em;
+      overflow: hidden;
+      text-align: center;
+      text-overflow:ellipsis;
+    }
+  }
 }
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
@@ -99,9 +123,10 @@
 /* Customize the text color and shadow color and to optimize text legibility. */
 .welcome {
   margin-top: 20px;
-  background: url("http://i.imgur.com/4R8gUP0.jpg");
+  background: image-url("slide.png");
   background-position: center;
-  height: 630px;
+  background-repeat: no-repeat;
+  height: 360px;
   width: 100%;
 }
 .tagline {
@@ -139,19 +164,32 @@
     background-color: #87AFC7;
 }
 
-
-.zj-footer .zj-footer-top .footer-about .footer-statement > dd {
-    line-height: 26px;
-    height: 26px;
-    font-size: 15px;
-}
-.zj-footer .zj-footer-top .footer-about .footer-statement {
-    width: 192px;
-    float: left;
-}
-.zj-footer .zj-footer-bottom {
-    color: #a7abae;
-    padding: 21px 0;
-    text-align: center;
-    font-size: 16px;
+.gg-footer{
+  background: #2d3236;
+  color: #fff;
+  overflow: hidden;
+  .gg-footer-top
+  {
+    padding: 52px 0 0 0;
+  }
+  .gg-footer-top .footer-about .footer-statement > dd {
+      line-height: 26px;
+      height: 26px;
+      font-size: 15px;
+  }
+  .gg-footer-top .footer-about .footer-statement {
+      width: 192px;
+      float: left;
+  }
+  .gg-footer-bottom {
+      color: #a7abae;
+      padding: 21px 0;
+      text-align: center;
+      font-size: 16px;
+  }
+  .gg-footer-top .footer-about .footer-statement > dt {
+      height: 42px;
+      font-size: 17px;
+      font-weight: normal;
+  }
 }

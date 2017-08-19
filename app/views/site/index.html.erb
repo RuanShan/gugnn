@@ -1,40 +1,33 @@
 <div class="gg-index">
+  <div class="gg-slider swiper">
     <div class="container">
         <div class="row">
             <div class=" welcome col-md-12">
-                <h1 class="tagline">Welcome to Dlist</h1>
-                <div class="sub">
-                <%= link_to "Buy & Sell", sales_path %> |
-                <%= link_to "Housing", all_rents_path%> |
-                <%= link_to "Events", all_events_path%>
-              </div>
 
             </div>
         </div>
-      </div>
-
-
-      <div class="gg-ad">
-              <div class="container">
-                  <ul class="row">
-                      <li class="col-md-4 gg-col">
-                          <span class="pink_font">8000+</span>
-                          <span class="blank_font">认证租赁商</span>
-                      </li>
-                      <li class="col-md-4 gg-col">
-                          <span class="pink_font">10万+</span>
-                          <span class="blank_font">优质租赁方案</span>
-                      </li>
-                      <li class="col-md-4 gg-col  gg-col-last">
-                          <span class="pink_font">200+</span>
-                          <span class="blank_font">全国城市覆盖</span>
-                      </li>
-                  </ul>
-              </div>
-      </div>
+    </div>
+  </div>
+    <div class="gg-ad">
+        <div class="container">
+            <ul class="row">
+                <li class="col-md-4 gg-col">
+                    <span class="pink_font">8000+</span>
+                    <span class="blank_font">认证租赁商</span>
+                </li>
+                <li class="col-md-4 gg-col">
+                    <span class="pink_font">10万+</span>
+                    <span class="blank_font">优质租赁方案</span>
+                </li>
+                <li class="col-md-4 gg-col  gg-col-last">
+                    <span class="pink_font">200+</span>
+                    <span class="blank_font">全国城市覆盖</span>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div class="container">
-
         <div class="row gg-high-cats">
           <% @categories.each{ |category| %>
             <div class="col-md-3 ">
@@ -49,10 +42,12 @@
             </div>
           <% } %>
         </div>
-
-
+    </div>
+  <div class="gg-categories-wrapper">
+    <div class="container">
         <div class="row gg-cats">
           <%= render partial: 'categories' %>
         </div>
     </div>
+  </div>
 </div>

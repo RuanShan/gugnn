@@ -69,7 +69,7 @@ class ProductsController < ApplicationController
     end
 
     def set_category
-      @category = Category.find(params[:category_id])
+      @category = @product.category
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
