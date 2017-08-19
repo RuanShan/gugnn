@@ -34,6 +34,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'administrate-field-paperclip'
 
+gem "jquery-fileupload-rails"
 gem 'bootstrap-sass'
 gem 'bourbon'
 gem 'devise'
@@ -45,6 +46,9 @@ gem 'simple_form'
 gem 'redis-rails'
 #ip to location and map
 gem 'geocoder'
+
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 gem 'acts_as_list'
 gem 'awesome_nested_set'

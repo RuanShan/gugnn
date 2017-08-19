@@ -1,4 +1,6 @@
 //= require application
+//= require jquery-fileupload
+//= require tinymce-jquery
 
 $(function(){
   $(".dropdown-toggle").dropdown();
@@ -68,6 +70,40 @@ $(function(){
 
   });
 
+//product_form validate
+  $("#new_product").validate({
+    rules: {
+      'product[title]': {
+        required: true,
+        rangelength:[6,50]
+      },
+      'product[desc]': {
+        rangelength:[10,2000]
+      },
+      'product[price]': {
+        required: true,
+        digits:true,
+        min:0
+      },
+      'product[address]': {
+        rangelength:[6,20]
+      },
+    },
+    errorPlacement:function(error,element) {
+      var position = element.position();
+      error.css({
+        "position" : "absolute",
+        "line-height" : "15px",
+        "font-weight" : "normal",
+        "top" : position.top+34,
+        "left": position.left,
+        "color": "red"
+      })
+      error.appendTo(element.parent());
+    }
+
+  });
+
 
 });
 
@@ -94,11 +130,21 @@ function mark_address(){
     $("#product_lat").val(e.point.lat);
     $("#product_lng").val(e.point.lng);
     $("#marked").removeClass()
-    $("#marked").addClass("glyphicon glyphicon-pushpin")
+    $("#marked").addClass("glyphicon glyphicon-ok")
   });
   marker.enableDragging();
   marker.addEventListener("dragend", function(e){
     $("#product_lat").val(e.point.lat);
     $("#product_lng").val(e.point.lng);
+    $("#marked").removeClass()
+    $("#marked").addClass("glyphicon glyphicon-ok")
   })
+}
+
+function cancel_file(index){
+  var input_num = $("#selected_files").children().length;
+  $("#product_images_attributes_"+index+"_photo").remove();
+  for(var i=index+1; i<=input_num; i++){
+    $("#product_images_attributes_"+i+"_photo").prop('name',"product[images_attributes]["+(i-1)+"][photo]").prop('id',"product_images_attributes_"+(i-1)+"_photo");
+  }
 }

@@ -1,25 +1,23 @@
 <%= product_form.input :category_id, as: "hidden" %>
 
 <%= product_form.input :title, placeholder: "请填写标题" %>
-<%= product_form.input :desc, placeholder: "请填写详细介绍" %>
+<%= product_form.input :desc, as: :text, placeholder: "请填写详细介绍", input_html: { class: 'tinymce', :rows => 10 } %>
+<%= tinymce %>
 <%= product_form.input :price, :step => 0.01 %>
 <%= product_form.input :address, placeholder: "请填写地址" %>
 <div id="address_mark" style="margin:10px 0;">
-  <%= link_to "在地图上标记地址", nil, href:"#", "data-toggle":"modal", "data-target":"#gugnnModal",
-  "data-title":"请在地图中标记您的地址", "data-ajax_url":"get_map", "data-ajax_callback":"mark_address();" %>
-  <span id="marked" class="glyphicon glyphicon-alert"></span>
+  <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnModal",
+  "data-title":"请在地图中标记您的地址", "data-ajax_url":"get_map", "data-ajax_callback":"mark_address();" do %>
+    <i class="glyphicon glyphicon-pushpin"></i>
+    <span>在地图上标记地址</span>
+  <% end %>
+  <span id="marked" class="glyphicon glyphicon-remove"></span>
   <%= product_form.input :lat, as: "hidden" %>
   <%= product_form.input :lng, as: "hidden" %>
 </div>
-<%= product_form.fields_for :images do |product_images_form| %>
-  <p>
-    <%= product_images_form.input :caption %>
-  </p>
-  <p>
-    <%= product_images_form.file :photo %>
-  </p>
-<% end %>
-
+<div id="product_images" style="margin:10px 0;">
+  <%= render partial:"my/products/forms/image_form", locals:{product_form: product_form}%>
+</div>
 <% @product.category.category_options.each do |category_option| %>
   <div>
     <% options = category_option.option_values.map{|ov|[ov.id, ov.title]}%>

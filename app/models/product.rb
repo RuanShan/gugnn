@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
   has_many :images, as: :imageable, :dependent => :destroy
   has_one :master_image, class_name: 'Image', foreign_key: 'imageable_id'
-  accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['image'].nil? }
+  accepts_nested_attributes_for :images, allow_destroy: true#, :reject_if => lambda { |t| t['image'].nil? }
 
   #
   before_create :set_defaults
@@ -18,7 +18,10 @@ class Product < ApplicationRecord
   attribute :latlng, :point
   # parent_category需要
   validates :category, presence: true
-
+  validates :title, presence: true, length: { in: 6..50 }
+  validates :desc, length: { in: 10..2000 }, allow_blank:true
+  validates :price, numericality: true
+  validates :address, length: { in: 10..2000 }, allow_blank:true
   # 添加产品，
   # 修改产品，修改过滤字段
   # 改变字段顺序
@@ -47,4 +50,7 @@ class Product < ApplicationRecord
     self.parent_category_id ||= category.parent_id
   end
 
+  def cover_url
+    master_image ? master_image.photo.url : Image.new.photo.url
+  end
 end

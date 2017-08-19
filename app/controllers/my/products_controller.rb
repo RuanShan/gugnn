@@ -18,6 +18,7 @@ Rails.logger.debug "current_user =#{current_user}"
     # GET /products/new
     def new
       @product = Product.new(category_id: params[:category_id])
+      @product.images.build
     end
 
     # GET /products/1/edit
@@ -75,11 +76,13 @@ Rails.logger.debug "current_user =#{current_user}"
       # Use callbacks to share common setup or constraints between actions.
       def set_product
         @product = Product.find(params[:id])
+        @category = @product.category
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def product_params
-        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9)
+        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng,
+        :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9, images_attributes: [:caption, :photo])
       end
   end
 
