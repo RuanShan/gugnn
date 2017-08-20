@@ -38,6 +38,7 @@ module My
     def authentication
       @user = User.find_by_id(params[:id])
       if request.patch?
+        @user.authenticating = true
         @user.update(authentication_params)
         if @user.errors.empty?
           render :index

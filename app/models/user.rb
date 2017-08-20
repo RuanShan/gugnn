@@ -24,7 +24,11 @@ class User < ApplicationRecord
   has_attached_file :shop_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
   validates_attachment_content_type :avatar, :id_photo, :shop_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
 
-  attr_accessor :validate_code, :current_password
+  validates :shop_name, length: { in: 6..50 }, allow_blank:true
+  validates :shop_address, length: { in: 6..20 }, allow_blank:true
+  validates :shop_name, :id_number, :shop_address, presence: true, if: Proc.new{|user|user.authenticating}
+
+  attr_accessor :validate_code, :current_password, :authenticating
 
 
   def self.validate_phone(phone)

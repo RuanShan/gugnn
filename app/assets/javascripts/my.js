@@ -78,13 +78,13 @@ $(function(){
         stringCheck: true,
         byteRangeLength:[6,50]
       },
-      'user[cellphone]': {
+      'user[id_number]': {
         required: true,
-        isMobile: true
+        isIdCardNo: true
       },
-      'user[validate_code]': {
-        //required: true,
-        rangelength:[5,6]
+      'user[shop_address]': {
+        required: true,
+        rangelength:[6,20]
       },
     },
     errorPlacement:function(error,element) {
