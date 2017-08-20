@@ -70,6 +70,38 @@ $(function(){
 
   });
 
+  // authentication form validate
+  $("#authentication_form").validate({
+    rules: {
+      'user[shop_name]': {
+        required: true,
+        stringCheck: true,
+        byteRangeLength:[6,50]
+      },
+      'user[cellphone]': {
+        required: true,
+        isMobile: true
+      },
+      'user[validate_code]': {
+        //required: true,
+        rangelength:[5,6]
+      },
+    },
+    errorPlacement:function(error,element) {
+      var position = element.position();
+      error.css({
+        "position" : "absolute",
+        "line-height" : "15px",
+        "font-weight" : "normal",
+        "top" : position.top+34,
+        "left": position.left,
+        "color": "red"
+      })
+      error.appendTo(element.parent());
+    }
+
+  });
+
 //product_form validate
   $("#new_product").validate({
     rules: {
@@ -114,11 +146,15 @@ function toggle_category(category_id){
   $("#sub_cat_"+category_id).show();
 }
 
-function mark_address(){
+function mark_address(instance){
+  var lng = $("#"+instance+"_lng").val();
+  var lat= $("#"+instance+"_lat").val();
+  if(lng){}else{lng=116.404;}
+  if(lat){}else{lat=39.915;}
   var map = new BMap.Map("address_container");  // 创建地图实例
   map.addControl(new BMap.NavigationControl());
   map.addControl(new BMap.ScaleControl());
-  var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+  var point = new BMap.Point(lng, lat);  // 创建点坐标
   map.centerAndZoom(point, 15);
   var marker = new BMap.Marker(point);        // 创建标注
   map.addOverlay(marker);
@@ -127,15 +163,15 @@ function mark_address(){
     map.clearOverlays();
     var mk = new BMap.Marker(pt);
     map.addOverlay(mk);
-    $("#product_lat").val(e.point.lat);
-    $("#product_lng").val(e.point.lng);
+    $("#"+instance+"_lat").val(e.point.lat);
+    $("#"+instance+"_lng").val(e.point.lng);
     $("#marked").removeClass()
     $("#marked").addClass("glyphicon glyphicon-ok")
   });
   marker.enableDragging();
   marker.addEventListener("dragend", function(e){
-    $("#product_lat").val(e.point.lat);
-    $("#product_lng").val(e.point.lng);
+    $("#"+instance+"_lat").val(e.point.lat);
+    $("#"+instance+"_lng").val(e.point.lng);
     $("#marked").removeClass()
     $("#marked").addClass("glyphicon glyphicon-ok")
   })

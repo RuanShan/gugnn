@@ -35,6 +35,16 @@ module My
       end
     end
 
+    def authentication
+      @user = User.find_by_id(params[:id])
+      if request.patch?
+        @user.update(authentication_params)
+        if @user.errors.empty?
+          render :index
+        end
+      end
+    end
+
     private
 
     def password_params
@@ -43,6 +53,10 @@ module My
 
     def profile_params
       params.require(:user).permit(:nickname, :cellphone, :validate_code)
+    end
+
+    def authentication_params
+      params.require(:user).permit(:auth_type, :shop_name, :category_id, :id_number, :id_photo, :shop_photo, :city, :shop_address, :lat, :lng, :contact_person, :contact_phone, :contact_other)
     end
 
     def verify_sms

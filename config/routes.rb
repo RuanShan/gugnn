@@ -107,6 +107,7 @@ Rails.application.routes.draw do
 
     post '/rents/new', to: 'rents#new'
 
+    get '/map', to: 'map#get_map'
 
     #Mailbox Routes
     resources :conversations do
@@ -116,7 +117,6 @@ Rails.application.routes.draw do
     namespace :my do
       resources :products do
         collection do
-          get 'get_map', to: 'products#get_map'
         end
       end
       resources :account do
@@ -125,6 +125,8 @@ Rails.application.routes.draw do
         member do
           match 'change_password', via: [:get, :patch]
           match 'change_profile', via: [:get, :patch]
+          match 'authentication', via: [:get, :patch]
+          match 'company_authentication', via: [:get, :patch]
         end
       end
     end

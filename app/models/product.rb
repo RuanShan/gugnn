@@ -21,7 +21,7 @@ class Product < ApplicationRecord
   validates :title, presence: true, length: { in: 6..50 }
   validates :desc, length: { in: 10..2000 }, allow_blank:true
   validates :price, numericality: true
-  validates :address, length: { in: 10..2000 }, allow_blank:true
+  validates :address, length: { in: 6..20 }, allow_blank:true
   # 添加产品，
   # 修改产品，修改过滤字段
   # 改变字段顺序

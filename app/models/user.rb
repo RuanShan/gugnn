@@ -16,8 +16,13 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy, foreign_key: 'owner_id'
 
   has_many :jointables, dependent: :destroy
+
+  belongs_to :category
+
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'http://i.imgur.com/7Yc9GZf.png'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  has_attached_file :id_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
+  has_attached_file :shop_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
+  validates_attachment_content_type :avatar, :id_photo, :shop_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
 
   attr_accessor :validate_code, :current_password
 

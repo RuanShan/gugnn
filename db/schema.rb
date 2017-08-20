@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815155652) do
+ActiveRecord::Schema.define(version: 20170820121320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -307,12 +307,12 @@ ActiveRecord::Schema.define(version: 20170815155652) do
 
   create_table "users", force: :cascade do |t|
     t.string   "cellphone"
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                   default: "",    null: false
+    t.string   "encrypted_password",      default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",           default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -325,11 +325,31 @@ ActiveRecord::Schema.define(version: 20170815155652) do
     t.datetime "avatar_updated_at"
     t.float    "rating"
     t.string   "city"
-    t.integer  "balance",                default: 0
-    t.integer  "role",                   default: 0
-    t.boolean  "is_admin",               default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "balance",                 default: 0
+    t.integer  "role",                    default: 0
+    t.boolean  "is_admin",                default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "auth_type",               default: 0,     null: false
+    t.boolean  "authenticated",           default: false, null: false
+    t.string   "shop_name"
+    t.integer  "category_id"
+    t.string   "id_number"
+    t.string   "id_photo_file_name"
+    t.string   "id_photo_content_type"
+    t.integer  "id_photo_file_size"
+    t.datetime "id_photo_updated_at"
+    t.string   "shop_photo_file_name"
+    t.string   "shop_photo_content_type"
+    t.integer  "shop_photo_file_size"
+    t.datetime "shop_photo_updated_at"
+    t.string   "shop_address"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.string   "contact_person"
+    t.string   "contact_phone"
+    t.string   "contact_other"
+    t.index ["category_id"], name: "index_users_on_category_id", using: :btree
     t.index ["cellphone"], name: "index_users_on_cellphone", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -337,4 +357,5 @@ ActiveRecord::Schema.define(version: 20170815155652) do
   add_foreign_key "events", "users"
   add_foreign_key "products", "categories", column: "parent_category_id"
   add_foreign_key "products", "users", column: "owner_id"
+  add_foreign_key "users", "categories"
 end

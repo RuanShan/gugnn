@@ -6,6 +6,16 @@ zh-CN:
         desc: "详细介绍"
         price: "报价"
         address: "地址"
+      user:
+        shop_name: "商店/企业名称"
+        id_number: "ID号码"
+        id_photo: "ID照片"
+        city: "城市"
+        shop_photo: "商店/企业照片"
+        shop_address: "地址"
+        contact_person: "联系人"
+        contact_phone: "联系电话"
+        contact_other: "其他联系方式"
 
   gugnn: "光棍租机"
   gugnn_member: "光棍租机-会员中心"
