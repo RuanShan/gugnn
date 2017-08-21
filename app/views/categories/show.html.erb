@@ -1,6 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+
+</div>
 
 <div class="container">
+  <div class="row">
+    <ol class="breadcrumb">
+      <%== build_breadscrambs(@category) %>
+    </ol>
+  </div>
+
     <div class="row">
       <div class="col-md-12">
         <dl>
@@ -14,7 +22,12 @@
           <% } %>
         </dl>
       </div>
-      <div> <span>选择的条件: </span></div>
+      <div class="col-md-12">
+        <div class=" selected-filters">
+          <span class="title">条件 </span>
+          <%== show_product_filters %>
+        </div>
+      </div>
     </div>
 
 
@@ -41,24 +54,3 @@
       <%= paginate @products %>
     </div>
 </div>
-
-
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @category.title %>
-</p>
-
-<p>
-  <strong>Desc:</strong>
-  <%= @category.desc %>
-</p>
-
-<p>
-  <strong>Slugged:</strong>
-  <%= @category.slugged %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>

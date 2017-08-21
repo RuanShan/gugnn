@@ -12,9 +12,11 @@ class CategoriesController < ApplicationController
   # 显示分类及分类下的产品
   # params - combofilters
   def show
+    @category_options = @category.category_options.includes(:option_values)
+
     @product_filters = parse_product_filters
     @category_option_values = []
-    @category.category_options.each{|co|
+    @category_options.each{|co|
         @category_option_values[co.position-1] = @product_filters[co.filter_column_name]
     }
 
