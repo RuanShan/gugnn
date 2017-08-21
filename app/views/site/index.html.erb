@@ -28,11 +28,18 @@
     </div>
 
     <div class="container">
+
         <div class="row gg-high-cats">
           <% @categories.each{ |category| %>
             <div class="col-md-3 ">
               <div class="gg-cat-col">
-                <p > <%= category.title %></p>
+                <div class="gg-cat-col-head">
+
+                  <%= content_tag :div, class: 'cate-icon '+category.name  do %>
+                   <span class="title"> <%=category.title %> </span>
+                   <span class="slogen"> <%= category.slogen %> </span>
+                  <% end %>
+                </div>
                 <div class="">
                   <% category.children.each{|child| %>
                     <%= link_to child.title, category_path(child), class: 'btn' %>
@@ -45,6 +52,11 @@
     </div>
   <div class="gg-categories-wrapper">
     <div class="container">
+      <div class="gg-common-title">
+                <div class="pb-title red-font">10万+优质租赁方案，覆盖全国200+城市</div>
+                <div class="pb-des gray-font">优质方案天天推荐，值得您关注</div>
+      </div>
+
         <div class="row gg-cats">
           <%= render partial: 'categories' %>
         </div>

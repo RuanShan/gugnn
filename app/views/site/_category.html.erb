@@ -5,9 +5,10 @@
         <div style="height:300px;background-color:#79FF79;">
           图
         </div>
-        <div style="height:100px;background-color:#79FF79;">
-          <p> 细分类目</p>
-          <div>
+        <div style="height:200px;">
+          <div class="title"> <%= category.title %> </div>
+          <div class="subcategries">
+            <p class="subtitle"> 细分类目</p>
           <% category.children.each{|cate| %>
             <%= link_to cate.title, cate %>
           <% } %>

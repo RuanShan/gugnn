@@ -25,7 +25,7 @@
           <li class="list-group-item clearfix">
               <%= image_tag("default.png", size: "110x110", alt: product.title, class:"pull-left") %>
             <div class="pull-left">
-              <h3> <%= link_to product.title, category_product_path( @category, product) %> </h3>
+              <h3> <%= link_to product.title, product_path( product) %> </h3>
               <p>
                 押金: <%= product.deposit %> 最低租期: <br/>
                 <%= product.owner.realname %>

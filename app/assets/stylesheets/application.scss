@@ -21,6 +21,14 @@
  ul {
    list-style-type: none;
  }
+ .red-font
+ {
+   color: #d61718;
+ }
+ .gray-font
+ {
+    color: #999;
+ }
  .logo{
    height: 50px;
    display: inline-block;
@@ -67,7 +75,7 @@
 }
 /*home page*/
 .gg-index .gg-cats{
-  margin: 30px 0 30px 0;
+  margin: 0 0 30px 0;
 }
 .gg-slider
 {
@@ -94,29 +102,7 @@
     min-height: 200px;
   }
 }
-.gg-cate-prods{
-  margin: 0 -5px;
-  .col-md-3{
-    padding: 0 5px;
-  }
-  .product-image-wrapper{
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    img{ width: 100%; }
-  }
-  min-height: 300px;
-  .gg-cate-prod-info
-  {
-    margin: 6px 0 12px 0;
-    .gg-cate-prod-title{
-      height: 1em;
-      overflow: hidden;
-      text-align: center;
-      text-overflow:ellipsis;
-    }
-  }
-}
+
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 
@@ -191,5 +177,15 @@
       height: 42px;
       font-size: 17px;
       font-weight: normal;
+  }
+
+  .footer-logo {
+    width: 171px;
+    height: 49px;
+    background: image-url('logo.png') no-repeat;
+    background-size: contain;
+    background-color: #fff;
+    float: right;
+    margin-bottom: 25px;
   }
 }

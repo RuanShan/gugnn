@@ -2,14 +2,139 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.gg-ad{
+  .pink_font
+  {
+    color: #d61718;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+}
 
 .gg-cat-col{
   margin:  0 0 30px 0;
+  padding: 30px 8px;
+  p{ text-align: center; }
+  .gg-cat-col-head
+  {
+    padding: 30px 0;
+    text-align: center;
+    .cate-icon
+    {
+      display: inline-block;
+      padding: 10px 0 0 0;
+      height: 60px;
+      padding:  0 0 0 70px;
+      background-image: image-url('cicons.png');
+      background-repeat: no-repeat;
+      .title{
+        display: block;
+        font-size: 26px;
+        line-height: 40px;
+      }
+      .slogen{
+        display: block;
+        font-size: 16px;
+        line-height: 20px;
+      }
+      &.transportation{
+        background-position: 0px 0px;
+      }
+      &.time{
+        background-position: 0px -240px;
+      }
+      &.fasion{
+        background-position: 0px -480px;
+      }
+      &.marry{
+        background-position: 0px -80px;
+      }
+      &.office{
+        background-position: 0px -320px;
+      }
+      &.furniture{
+        background-position: 0px -560px;
+      }
+      &.outing{
+        background-position: 0px -160px;
+      }
+      &.baby{
+        background-position: 0px -400px;
+      }
+      &.pet{
+        background-position: 0px -640px;
+      }
+    }
+  }
+}
+.gg-common-title
+{
+  text-align: center;
+  padding: 30px 0 40px 0;
+  overflow: hidden;
+  .pb-title {
+    font-size: 28px;
+    height: 44px;
+    line-height: 44px;
+  }
+  .pb-common-title .pb-des {
+    height: 22px;
+    line-height: 22px;
+    font-size: 18px;
+    color: #999;
+    margin-top: 15px;
+  }
 }
 
 .gg-categories-wrapper{
   background-color: #fff;
   .tab-content{
     margin: 15px 0 0 0;
+    .title{
+      color: #d61718;
+      padding: 15px;
+      text-align: right;
+      background-color: #fff;
+      font-size: 20px;
+    }
+    .subcategries
+    {
+      padding: 15px;
+      background-color: #d61718;
+      color: #fff;
+      .subtitle{
+
+      }
+      a{
+        display: inline-block;
+        color: #fff;
+        padding: 5px;
+        margin:  0 0  5px 0;
+        border: 1px solid #fff;
+      }
+    }
+  }
+  .gg-cate-prods{
+    margin: 0 -5px;
+    .col-md-3{
+      padding: 0 5px;
+    }
+    .product-image-wrapper{
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      img{ width: 100%; }
+    }
+    min-height: 300px;
+    .gg-cate-prod-info
+    {
+      margin: 6px 0 12px 0;
+      .gg-cate-prod-title{
+        height: 1em;
+        overflow: hidden;
+        text-align: left;
+        text-overflow:ellipsis;
+      }
+    }
   }
 }

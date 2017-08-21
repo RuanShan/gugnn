@@ -33,7 +33,7 @@ taxons = [
   { :title => "舞台灯具",   :parent => "婚庆摄影"  },
   { :title => "司仪",   :parent => "婚庆摄影"  },
   # 5.办公设备
-  {  name: 'office-equipments',   title: "办公设备", slogen: '办公器材|电子产品' },
+  {  name: 'office',   title: "办公设备", slogen: '办公器材|电子产品' },
   {  :name=>'printer',    :title => "打印机/复印机",    :parent => "办公设备",  },
   {  :name=>'water',    :title => "净水机",    :parent => "办公设备"  },
   {  :name=>'project', :title => "投影仪",   :parent => "办公设备",  },
