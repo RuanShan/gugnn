@@ -98,7 +98,7 @@
 .gg-high-cats{
   .gg-cat-col{
     background-color: #fff;
-    min-height: 200px;
+    height: 300px;
   }
 }
 
@@ -181,9 +181,8 @@
   .footer-logo {
     width: 171px;
     height: 49px;
-    background: image-url('logo.png') no-repeat;
+    background: image-url('logo-footer.png') no-repeat;
     background-size: contain;
-    background-color: #fff;
     float: right;
     margin-bottom: 25px;
   }

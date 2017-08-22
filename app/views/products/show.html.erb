@@ -38,84 +38,105 @@
 
     </div>
     <div class="col-md-6 product-info">
-      <p> <%= @product.title %> </p>
+        <h2> <%= @product.title %> </h2>
 
-      <div class="pay-price ">
-          <div class="pull-left" id="top-left-w">
-              <span style="margin-right: 25px;">租　金：</span>
-              <span class="high-light-red">
-                  <span class="first">￥</span>
-                  <span class="two">500.00</span>
-                  <span class="three">/天</span>
-              </span>
+        <div class="pay-price ">
+            <div class="pull-left" id="top-left-w">
+                <span style="margin-right: 25px;">租　金：</span>
+                <span class="high-light-red">
+                    <span class="first">￥</span>
+                    <span class="two">500.00</span>
+                    <span class="three">/天</span>
+                </span>
+            </div>
+            <div class="condition pull-right">
+                <span class="pay-re condition-1">押金：￥<span id="yaj">500</span></span>
+                <!--缺乏数据-->
+                <span class="pay-re condition-last">1天起租</span>
+            </div>
+        </div>
+        <ul class="house-basic-item3">
+                <li>
+                    <span class="c_999">小区：</span>
+                    <span class="c_000 mr_10">
+                                                    <a href="/xiaoqu/lvxianghuayuan" target="_blank" class="c_000" onclick="clickLog('from=fcpc_detail_esf_dl_xiaoqu')">绿香花园                        </a>- <a class="c_000" href="/lvbo/ershoufang/" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_xiaoqu_shangquan')">绿波</a>
+                                            </span>
+                </li>
+                                    <li>
+                        <span class="c_999">位置：</span>
+                    <span class="c_000 mr_10">
+                                                    <a class="c_000" href="/shahekou/ershoufang/" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_weizhi_quyu')">沙河口</a>
+                                                －
+                        <a class="c_000" href="/xiaoqu/lvxianghuayuan" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_weizhi_xiaoqu')">绿清街22-68号</a>
+                    </span>
+
+                        <span class="f12 c_999 mr_10">距离地铁师范大学1537米</span>
+                        <span><a href="javascript:;" class="mapNavIcon td-u" jumpto="mapWrap" onclick="clickLog('from=fcpc_detail_esf_dl_weizhi_map')"><i class="icon"></i>地图</a></span>
+                    </li>
+        </ul>
+        <div>
+          <div class="house-basic-item4">
+                          <p class="nav"><a href="http://my.58.com/42852722461203" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_jjrtx')"><img src="http://pic1.ajkimg.com/display/anjuke/9d9d84d4e59ff80af8f062a1541f5255/264x350x31x116/100x133.jpg" alt="" class="jjrlogo"></a><span class="f14 c_333 jjrsay">瑞家地产-邹玉华                        说</span></p>
+                          <p class="c_999 lh22 jjr-desc">此房是南北通厅，南北卧室中间卫生间，多层6楼采光好视野佳，婚房改善莫错过！</p>
           </div>
-          <div class="condition pull-right">
-              <span class="pay-re condition-1">押金：￥<span id="yaj">500</span></span>
-              <!--缺乏数据-->
-              <span class="pay-re condition-last">1天起租</span>
+        </div>
+        <div class="house-chat-entry clearfix" id="houseChatEntry">
+          <div class="house-chat-phone">
+              <p class="phone-logo"><i class="icon phone-icon"></i></p>
+              <p class="phone-num">15724526952</p>
           </div>
-      </div>
-      <div>
-        关于租赁方广告语
-      </div>
-      product title price
-      <div>
-       <p>联系他</p>
-      </div>
+        </div>
     </div>
 
   </div>
 
   <div class="row">
     <div class="col-md-3">
-      关于租赁方
-      <div>
+      <div class="side-left-wrap">
         <%= render partial: 'owner_profile' %>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 product-details">
       <div class="navbar navbar-default" >
         <ul class="nav nav-tabs" role="tablist">
               <li >
-                <a href="#cur"> 概况</a>
+                <a href="#generalProperty"> 概况</a>
               </li>
               <li class="">
-                <a href="#generalDesc">描述</a>
+                <a href="#generalDesc">设备描述</a>
               </li>
               <li  class="">
-                <a href="#generalExpense">费用</a>
+                <a href="#generalExpense">租赁描述</a>
               </li>
               <li  class="">
-                <a href="#generalType">户型</a>
+                <a href="#generalImage">图片说明</a>
               </li>
-              <li class="">
-                <a href="#xiaoWrap">小区</a>
-              </li>
+
               <li   class="">
                 <a href="#mapWrap">位置</a>
               </li>
         </ul>
       </div>
       <div>
-        <p id="generalDesc">
-          <h3>描述</h3>
+        <p id="generalProperty">
+          <h3>概况</h3>
           <%= @product.desc %>
         </p>
-        <p id="generalExpense">
-          <h3>费用</h3>
+        <p id="generalDesc">
+          <h3>设备描述</h3>
+          <%= @product.desc %>
         </p>
         <p id="xiaoWrap">
-          <h3>小区</h3>
+          <h3>租赁描述</h3>
         </p>
-        <p id="generalType">
-          <h3>户型</h3>
+        <p id="generalImage">
+          <h3>图片说明</h3>
         </p>
         <p id="mapWrap">
           <h3>位置</h3>
-
         </p>
       </div>
-      product description
+
     </div>
   </div>
 
