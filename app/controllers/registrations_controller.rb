@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  layout 'passport'
+
   before_action :verify_sign_up_sms, only: [:create]
 
   #验证是否唯一

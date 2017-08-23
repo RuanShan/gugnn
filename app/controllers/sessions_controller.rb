@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-  layout 'session'
+  layout 'passport'
 
   def new_renter
     #copy from Devise::SessionsController#new
