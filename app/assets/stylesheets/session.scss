@@ -1,0 +1,38 @@
+.loginContent{
+  #outregBox a {
+    color: #fff;
+  } 
+  #outregBox {
+      color: #fff;
+      position: relative;
+      width: 520px;
+      margin: 12px auto;
+      height: 20px;
+      margin-bottom: 10px;
+      font-size: 14px;
+
+    #backtoindex {
+        position: absolute;
+        left: 0;
+    }
+    #goReg {
+        position: absolute;
+        right: 0;
+    }
+  }
+  .authform-wrap{
+    padding-top: 39px;
+    padding-bottom: 38px;
+    width: 520px;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 3px;
+    position: relative;
+    .new_user{
+      padding: 0 30px;
+    }
+  }
+
+}

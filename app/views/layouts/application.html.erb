@@ -6,6 +6,7 @@
         <%= csrf_meta_tags %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= render partial: 'layouts/js.html.erb' %>
     </head>
 
     <body >
@@ -15,7 +16,7 @@
       <div class="menu-wrapper">
         <%= render partial: 'layouts/main_menu' %>
       </div>
-        <div class="gg-page-content">
+        <div class="gg-page-content clearfix">
             <%= yield %>
         </div>
         <div class="gg-footer">
