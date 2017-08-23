@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'prepare', to: 'registrations#prepare'
     post 'validate_captcha', to: 'registrations#validate_captcha'
+    get 'renter_session', to: 'sessions#new_renter'
   end
 
   post '/sms/create_verify_code', to: 'sms#create_verify_code'
