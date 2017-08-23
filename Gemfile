@@ -47,9 +47,6 @@ gem 'redis-rails'
 #ip to location and map
 gem 'geocoder'
 
-gem 'tinymce-rails'
-gem 'tinymce-rails-langs'
-
 gem 'acts_as_list'
 gem 'awesome_nested_set'
 gem "paperclip"

@@ -20,6 +20,7 @@
 //= require underscore.min
 //= require lightbox.min
 //= require swiper.jquery.min
+//= require ckeditor/init
 //= require_tree .
 
 //= require gmaps/google

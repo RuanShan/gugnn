@@ -1,6 +1,5 @@
 //= require application
 //= require jquery-fileupload
-//= require tinymce-jquery
 
 $(function(){
   $(".dropdown-toggle").dropdown();

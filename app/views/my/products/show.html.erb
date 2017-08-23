@@ -1,50 +1,50 @@
-<div class="container">
-<ol class="breadcrumb">
-  <%== build_breadscrambs(@category) %>
-  <li class="active"> <%=@product.title %></li>
-</ol>
-</div>
+<div class="panel panel-default" style="width:100%;" >
+  <div class="panel-heading">
+    <h2 class="panel-title"><%=@product.title%></h2>
+  </div>
+  <div class="panel-body">
+    <div class="container" >
+      <div class="row">
+        <div class="col-md-5">
+          <div class="product-images-wrapper">
+            <!-- Swiper -->
+            <div class="swiper-container gallery-large">
+                <div class="swiper-wrapper">
+                  <% @product.images.each{|image| %>
+                    <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url(image.photo.url)})"},  true %> </div>
+                  <% } %>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-white arrow-right"></div>
+                <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+            </div>
+            <div class="swiper-container gallery-thumb">
+                <div class="swiper-wrapper">
+                  <% @product.images.each{|image| %>
+                    <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url(image.photo.url(:small))})"}, true %> </div>
+                  <% } %>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-white arrow-right"></div>
+                <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+            </div>
+          </div>
+          <% image =  @product.master_image || Image.new %>
+          <%= image_tag image.photo.url(:large) %>
 
-<div class="container" >
-  <div class="row">
-    <div class="col-md-5">
-      <div class="product-images-wrapper">
-        <!-- Swiper -->
-        <div class="swiper-container gallery-large">
-            <div class="swiper-wrapper">
-              <% 5.times.each{|i| %>
-                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"},  true %> </div>
-              <% } %>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next swiper-button-white arrow-right"></div>
-            <div class="swiper-button-prev swiper-button-white arrow-left"></div>
         </div>
-        <div class="swiper-container gallery-thumb">
-            <div class="swiper-wrapper">
-              <% 5.times.each{|i| %>
-                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"}, true %> </div>
-              <% } %>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next swiper-button-white arrow-right"></div>
-            <div class="swiper-button-prev swiper-button-white arrow-left"></div>
+        <div class="col-md-5">
+          product title price
+        </div>
+        <div>
+          user profile
         </div>
       </div>
-      <% image =  @product.master_image || Image.new %>
-      <% #= image_tag image.photo.url(:large) %>
 
-    </div>
-    <div class="col-md-5">
-      product title price
-    </div>
-    <div>
-      user profile
+      <div class="row">
+        <%== @product.desc%>
+      </div>
+
     </div>
   </div>
-
-  <div class="row">
-    product description
-  </div>
-
 </div>
