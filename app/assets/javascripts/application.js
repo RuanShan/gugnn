@@ -41,6 +41,13 @@ $(function(){
     modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
   });
 
+
+  $('#categories_btn').hover(function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+  }, function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+  });
+
 });
 
 function validate_code_time(code_id, wait) {
