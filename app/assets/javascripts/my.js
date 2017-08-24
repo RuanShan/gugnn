@@ -87,15 +87,33 @@ $(function(){
       'user[shop_name]': {
         required: true,
         stringCheck: true,
-        byteRangeLength:[6,50]
+        rangelength:[6,50]
       },
       'user[id_number]': {
         required: true,
         isIdCardNo: true
       },
+      //'user[id_photo]': {
+      //  required: true,
+      //},
+      //'user[shop_photo]': {
+      //  required: true,
+      //},
+      'user[city]': {
+        required: true,
+        rangelength:[2,10]
+      },
       'user[shop_address]': {
         required: true,
         rangelength:[6,20]
+      },
+      'user[contact_person]': {
+        required: true,
+        rangelength:[2,10]
+      },
+      'user[contact_phone]': {
+        required: true,
+        //isTel: true
       },
     },
     errorPlacement:function(error,element) {
