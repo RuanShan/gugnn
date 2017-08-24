@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale.to_s %>">
   <head>
+    <%= render 'layouts/js' %>
     <%= render 'my/shared/head' %>
   </head>
   <body>
-    <div class="gg-top-nav">
-      <%= render partial: 'layouts/navigation' %>
-    </div>
-    <div class="menu-wrapper">
-      <div>
-        <%= render 'my/shared/navigation' %>
+    <div class="gg-page gg-account">
+      <div class="gg-top-nav">
+        <%= render partial: 'layouts/navigation' %>
       </div>
-      <div class="main">
-        <div class="container">
-          <div class="leftside">
-            <%= render partial: "my/shared/menus" %>
-          </div>
-          <div class="rightside">
-            <%= yield %>
-          </div>
+      <div class="gg-page-body ">
+        <div class="menu-wrapper">
+          <%= render 'my/shared/navigation' %>
+        </div>
+        <div class="main">
+          <div class="container">
+            <div class="leftside">
+              <%= render partial: "my/shared/menus" %>
+            </div>
+            <div class="rightside">
+              <%= yield %>
+            </div>
 
+          </div>
         </div>
       </div>
     </div>
-    <%#= render 'layouts/footer' %>
     <%= render 'layouts/modal' %>
   </body>
 </html>

@@ -133,21 +133,7 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-/* my */
-.leftside {
-    float: left;
-    width: 20%;
-    min-height: 500px;
-    padding-top: 8px;
-    margin-top: 22px;
-    background-color: #ADD8E6;
-}
-.rightside {
-    float: right;
-    width: 80%;
-    margin-top: 22px;
-    background-color: #87AFC7;
-}
+
 
 .gg-footer{
   background: #2d3236;
@@ -181,7 +167,7 @@
   .footer-logo {
     width: 171px;
     height: 49px;
-    background: image-url('logo-footer.png') no-repeat;
+    background: image-url('logo-dark.png') no-repeat;
     background-size: contain;
     float: right;
     margin-bottom: 25px;

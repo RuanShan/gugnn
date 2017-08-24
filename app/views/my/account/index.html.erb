@@ -1,2 +1,23 @@
-<%=t(:member_center)%>
 <%=flash[:notice]%>
+<%=t(:member_center)%>
+<%= render partial: 'profile' %>
+
+<div>
+  <div class="my-item-guide" style="display:block">
+        <div class="my-item-tab my-item-tab-selected" id="my_new">最近发布信息</div>
+        <div class="my-item-tab" id="my_view">我浏览过的信息</div>
+        <div class="my-item-tab" id="my_unshow">未显示信息</div>
+  </div>
+  <div id="my_new_info">
+    <div>
+      <%= render partial: 'product' %>
+    </div>
+
+  </div>
+  <div id="my_view_info">
+    my view
+  </div>
+  <div id="my_unshow_info">
+    my unshow
+  </div>
+</div>
