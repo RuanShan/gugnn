@@ -73,6 +73,10 @@ width: 200px;
 
           font-size: 16px;
       }
+      .leftmenu-content-ul .li-selected {
+          border-left: 3px solid #e96c1f;
+          padding-left: 41px;
+      }
   }
 
   .rightside {
@@ -81,14 +85,12 @@ width: 200px;
       margin-top: 22px;
       padding:  0 0 0 30px;
 
-      #currentmenu_name {
-          float: left;
+      #current_menu_name {
           color: #e96c1f;
-          width: 100%;
           padding-bottom: 19px;
           margin-top: 4px;
       }
-      
+
       .nav-tabs{
         margin: 0 0 10px 0;
       }
@@ -202,6 +204,28 @@ width: 200px;
           _margin-right: 20px;
           margin-bottom: 8px;
       }
+
+    .userImgBorder {
+        width: 136px;
+        height: 136px;
+        border: 1px solid #ddd;
+        float: left;
+    }
+    #systemImgBox {
+        top: 42px;
+        left: 200px;
+    }
+    .systemImg {
+        cursor: pointer;
+        float: left;
+        display: block;
+        width: 85px;
+        margin-right: 13px;
+    }
+    .changeDataTitle {
+        height: 30px;
+        border-bottom: 1px solid #eee;
+    }
   }
 
 }

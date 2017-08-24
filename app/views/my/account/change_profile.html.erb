@@ -1,5 +1,10 @@
-<div class="authform">
-<h4><%= t(:change_profile) %></h4>
+<div class="">
+<h4 id='current_menu_name' class=""><%= t(:change_profile) %></h4>
+<%= render partial: 'avator' %>
+
+<div id="changeDataTitle" class="changeDataTitle">
+        <h4 id="changeDataTitleText" class="changeDataTitleText">修改个人资料</h4>
+</div>
 
 <%= simple_form_for(@user, url: change_profile_my_account_path(@user), :html => {:method => :patch, id:"change_profile_form"}) do |f| %>
 
@@ -14,5 +19,11 @@
     <%= f.button :submit, t(:change), style:"width:100%"%>
   </div>
 <% end %>
+
+<div id="changeDataTitle" class="changeDataTitle">
+    <h4 id="changeDataTitleText" class="changeDataTitleText">信用明细</h4>
+</div>
+
+
 
 </div>
