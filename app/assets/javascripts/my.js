@@ -1,8 +1,20 @@
 //= require application
 //= require jquery-fileupload
 
+var CurrentMap=null;
 $(function(){
   $(".dropdown-toggle").dropdown();
+
+  $(document).on('show.bs.modal', '#gugnnModal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var title = button.data('title'); // Extract info from data-* attributes
+    var ajax_url = button.data('ajax_url'); // Extract info from data-* attributes
+    var ajax_callback = button.data('ajax_callback'); // Extract info from data-* attributes
+    var modal = $(this);
+    modal.find('.modal-title').text(title);
+    modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
+  });
+
 
   // change password form validate
   $("#change_password_form").validate({
@@ -146,34 +158,37 @@ function toggle_category(category_id){
 }
 
 function mark_address(instance){
-  var lng = $("#"+instance+"_lng").val();
-  var lat= $("#"+instance+"_lat").val();
-  if(lng){}else{lng=116.404;}
-  if(lat){}else{lat=39.915;}
-  var map = new BMap.Map("address_container");  // 创建地图实例
-  map.addControl(new BMap.NavigationControl());
-  map.addControl(new BMap.ScaleControl());
-  var point = new BMap.Point(lng, lat);  // 创建点坐标
-  map.centerAndZoom(point, 15);
-  var marker = new BMap.Marker(point);        // 创建标注
-  map.addOverlay(marker);
-  map.addEventListener("click", function(e){
-    var pt = new BMap.Point(e.point.lng, e.point.lat);
-    map.clearOverlays();
-    var mk = new BMap.Marker(pt);
-    map.addOverlay(mk);
-    $("#"+instance+"_lat").val(e.point.lat);
-    $("#"+instance+"_lng").val(e.point.lng);
-    $("#marked").removeClass()
-    $("#marked").addClass("glyphicon glyphicon-ok")
-  });
-  marker.enableDragging();
-  marker.addEventListener("dragend", function(e){
-    $("#"+instance+"_lat").val(e.point.lat);
-    $("#"+instance+"_lng").val(e.point.lng);
-    $("#marked").removeClass()
-    $("#marked").addClass("glyphicon glyphicon-ok")
-  })
+  //if(CurrentMap==null){
+    var lng = $("#"+instance+"_lng").val();
+    var lat= $("#"+instance+"_lat").val();
+    if(lng){}else{lng=116.404;}
+    if(lat){}else{lat=39.915;}
+    var map = new BMap.Map("address_container");  // 创建地图实例
+    map.addControl(new BMap.NavigationControl());
+    map.addControl(new BMap.ScaleControl());
+    var point = new BMap.Point(lng, lat);  // 创建点坐标
+    map.centerAndZoom(point, 15);
+    var marker = new BMap.Marker(point);        // 创建标注
+    map.addOverlay(marker);
+    map.addEventListener("click", function(e){
+      var pt = new BMap.Point(e.point.lng, e.point.lat);
+      map.clearOverlays();
+      var mk = new BMap.Marker(pt);
+      map.addOverlay(mk);
+      $("#"+instance+"_lat").val(e.point.lat);
+      $("#"+instance+"_lng").val(e.point.lng);
+      $("#marked").removeClass()
+      $("#marked").addClass("glyphicon glyphicon-ok")
+    });
+    marker.enableDragging();
+    marker.addEventListener("dragend", function(e){
+      $("#"+instance+"_lat").val(e.point.lat);
+      $("#"+instance+"_lng").val(e.point.lng);
+      $("#marked").removeClass()
+      $("#marked").addClass("glyphicon glyphicon-ok")
+    })
+    //CurrentMap=map;
+  //}
 }
 
 function cancel_file(index){

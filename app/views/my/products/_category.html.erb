@@ -20,7 +20,7 @@
     <div class="panel-body">
       <% for root in Category.roots %>
         <% my_style = root.id == first_root.id ? "" : "display:none;"%>
-        <div id="sub_cat_<%=root.id%>" class="list-group sub_cat" style="<%=my_style%>">
+        <div id="sub_cat_<%=root.id%>" class="list-group sub_cat" style="<%=my_style%>" data-turbolinks="false">
           <% for child in root.children %>
             <%=link_to child.title, new_my_product_path(category_id: child.id), class:"list-group-item no_border" %>
           <% end %>
