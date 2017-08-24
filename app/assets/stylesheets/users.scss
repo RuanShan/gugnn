@@ -81,6 +81,18 @@ width: 200px;
       margin-top: 22px;
       padding:  0 0 0 30px;
 
+      #currentmenu_name {
+          float: left;
+          color: #e96c1f;
+          width: 100%;
+          padding-bottom: 19px;
+          margin-top: 4px;
+      }
+      
+      .nav-tabs{
+        margin: 0 0 10px 0;
+      }
+
       .uc-leftside {
           position: relative;
           width: 542px;
@@ -130,6 +142,8 @@ width: 200px;
           float: right;
           border-left: 1px solid #ebebeb;
           margin-top: 12px;
+
+
       }
       .my-item-item {
           border: 1px solid #f0f0f0;

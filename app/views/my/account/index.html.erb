@@ -3,21 +3,22 @@
 <%= render partial: 'profile' %>
 
 <div>
-  <div class="my-item-guide" style="display:block">
-        <div class="my-item-tab my-item-tab-selected" id="my_new">最近发布信息</div>
-        <div class="my-item-tab" id="my_view">我浏览过的信息</div>
-        <div class="my-item-tab" id="my_unshow">未显示信息</div>
-  </div>
-  <div id="my_new_info">
-    <div>
-      <%= render partial: 'product' %>
+  <ul class="nav nav-tabs" role="tablist" >
+    <li role="presentation" class="active"><a href="#my_new_info" aria-controls="my_new_info" role="tab" data-toggle="tab">最近发布信息</a></li>
+    <li role="presentation"  ><a href="#my_view_info" aria-controls="my_view_info" role="tab" data-toggle="tab">我浏览过的信息</a></li>
+    <li role="presentation"  ><a href="#my_unshow_info" aria-controls="my_unshow_info" role="tab" data-toggle="tab">未显示信息</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="my_new_info">
+       <div>
+        <%= render partial: 'product' %>
+      </div>
     </div>
-
-  </div>
-  <div id="my_view_info">
-    my view
-  </div>
-  <div id="my_unshow_info">
-    my unshow
+    <div role="tabpanel" class="tab-pane" id="my_view_info">
+      my view
+    </div>
+    <div role="tabpanel" class="tab-pane" id="my_unshow_info">
+       my unshow
+    </div>
   </div>
 </div>
