@@ -62,10 +62,12 @@
     float: left;
     position: relative;
     display: block;
-    a{
-      display: inline-block;
-      padding: 0 25px;
-    }
+  }
+  a{
+    margin: 5px 0;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 25px;
   }
   a.logo{
     padding: 0;
@@ -74,21 +76,29 @@
     padding-right: 35px;
 
   }
-
   #be_agency_btn{
     background-color:#d61718;
     color: #fff;
     padding: 0 15px;
   }
-  #categories_btn{
-    position: relative;
+
+  .subcategories{
+    width: 400px;
+    li>a{
+      float: left;
+    }
+    .subcategory{
+      padding:  0 0 0 100px;
+    }
+    .subcategory a{
+      line-height: normal;
+      padding: 0 15px;
+    }
   }
+
 }
 
-.main-menu a{
-  padding: 0 8px;
-  line-height: 50px;
-}
+
 /*home page*/
 .gg-index .gg-cats{
   margin: 0 0 30px 0;
