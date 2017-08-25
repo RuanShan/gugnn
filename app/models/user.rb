@@ -25,8 +25,11 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, :id_photo, :shop_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
 
   validates :shop_name, length: { in: 6..50 }, allow_blank:true
+  validates :city, length: { in: 2..10 }, allow_blank:true
   validates :shop_address, length: { in: 6..20 }, allow_blank:true
-  validates :shop_name, :id_number, :shop_address, presence: true, if: Proc.new{|user|user.authenticating}
+  validates :contact_person, length: { in: 2..10 }, allow_blank:true
+  validates :contact_phone, length: { in: 8..20 }, allow_blank:true
+  validates :shop_name, :id_number, :city, :shop_address, :contact_person, :contact_phone, presence: true, if: Proc.new{|user|user.authenticating}
 
   attr_accessor :validate_code, :current_password, :authenticating
 
