@@ -57,7 +57,19 @@ module My
     end
 
     def profile_params
-      params.require(:user).permit(:nickname, :cellphone, :validate_code)
+      if params["user"]["avatar_remote_url"].present?
+        if params["user"]["avatar_remote_url"][0,4] != "http"
+          image_parts = params["user"]["avatar_remote_url"].split("/")
+          name,ext = image_parts.last.split(".")
+          new_name = name.split("-").first+"."+ext
+          image_parts[image_parts.length-1] = new_name
+          iurl = request.protocol+request.host_with_port+image_parts.join("/")
+          params["user"]["avatar_remote_url"] = iurl
+        end
+        params.require(:user).permit(:avatar, :avatar_remote_url, :nickname, :cellphone, :validate_code)
+      else
+        params.require(:user).permit(:avatar, :nickname, :cellphone, :validate_code)
+      end
     end
 
     def authentication_params

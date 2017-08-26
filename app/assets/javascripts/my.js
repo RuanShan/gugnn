@@ -15,6 +15,11 @@ $(function(){
     modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
   });
 
+  $("#systemImgBox img").click(function(){
+    var image_url = $(this).attr('src');
+    $("#defaultImgLiBorder img").attr("src", image_url);
+    $("#user_avatar_remote_url").val(image_url);
+  });
 
   // change password form validate
   $("#change_password_form").validate({

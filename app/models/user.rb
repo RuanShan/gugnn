@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
   belongs_to :category
 
+  attr_reader :avatar_remote_url
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'http://i.imgur.com/7Yc9GZf.png'
   has_attached_file :id_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
   has_attached_file :shop_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
@@ -58,6 +59,15 @@ class User < ApplicationRecord
   def mask_phone
     cellphone[0,3]+"****"+cellphone[7,4]
   end
+
+  def avatar_remote_url=(url_value)
+    self.avatar = url_value
+    # Assuming url_value is http://example.com/photos/face.png
+    # avatar_file_name == "face.png"
+    # avatar_content_type == "image/png"
+    @avatar_remote_url = url_value
+  end
+
   private
 
   def email_required?
