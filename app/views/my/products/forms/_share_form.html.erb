@@ -5,12 +5,13 @@
 <%= product_form.input :price, :step => 0.01 %>
 <%= product_form.input :address, placeholder: "请填写地址" %>
 <div id="address_mark" style="margin:10px 0;">
+  <%marked_icon = @product.lat ? "ok" : "remove"%>
   <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnModal",
   "data-title":"请在地图中标记您的地址", "data-ajax_url":"/map", "data-ajax_callback":"mark_address('product');" do %>
     <i class="glyphicon glyphicon-pushpin"></i>
     <span>在地图上标记地址</span>
   <% end %>
-  <span id="marked" class="glyphicon glyphicon-remove"></span>
+  <span id="marked" class="glyphicon glyphicon-<%=marked_icon%>"></span>
   <%= product_form.input :lat, as: "hidden" %>
   <%= product_form.input :lng, as: "hidden" %>
 </div>

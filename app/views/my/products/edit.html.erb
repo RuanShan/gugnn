@@ -1,39 +1,19 @@
-<h2>Welcome to edit Rent page</h2>
+<div class="panel panel-default" style="width:100%;" >
+  <div class="panel-heading">
+    <h2 class="panel-title">修改租赁信息</h2>
+  </div>
+  <div class="panel-body">
+    <%= simple_form_for @product, url: {:action=>"update"}, :html => {:multipart => true} do |f| %>
 
-<%= form_for :product, :method => :put do |f| %>
-    <fieldset class="form-group">
-      <label for="name">Title</label>
-      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="email">Descpription</label>
-      <%= f.text_area :body, class: "form-control", placeholder: "Descpription" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="name">Category</label>
-      <%= f.select :category, ["apartment", "house", "Other" ], class: "form-control", placeholder: "Category" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="name">Price</label>
-      <%= f.number_field :price, :step => 0.01 , class: "form-control", placeholder: "Price" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="name">Square Footage</label>
-      <%= f.number_field :sqfootage, class: "form-control", placeholder: "Square Footage" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="name">Bedroom</label>
-      <%= f.number_field :bed, class: "form-control", placeholder: "Bedroom" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="name">Bathroom</label>
-      <%= f.number_field :bath, class: "form-control", placeholder: "Bathroom" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <%= f.hidden_field :user_id, class: "form-control", :value => current_user.id %>
-    </fieldset>
-    <fieldset class="form-group">
-      <%= f.submit "Save", class: "btn btn-primary" %>
-      <%= link_to "Cancel", user_path(current_user), class: "btn btn-primary" %>
-    </fieldset>
-<% end %>
+      <div class="form-inputs">
+        <%#=render partial: "my/products/forms/#{@product.category}_form"%>
+        <%=render partial: "my/products/forms/share_form", locals: {product_form: f}%>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "提交修改", style:"width:100%"%>
+      </div>
+
+    <% end %>
+  </div>
+</div>

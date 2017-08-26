@@ -55,6 +55,9 @@ class User < ApplicationRecord
     end
   end
 
+  def mask_phone
+    cellphone[0,3]+"****"+cellphone[7,4]
+  end
   private
 
   def email_required?

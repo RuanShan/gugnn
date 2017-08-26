@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820121320) do
+ActiveRecord::Schema.define(version: 20170825132751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -246,11 +246,17 @@ ActiveRecord::Schema.define(version: 20170820121320) do
     t.decimal  "lng"
     t.point    "latlng"
     t.integer  "parent_category_id"
+    t.integer  "visits",             default: 0,          null: false
+    t.integer  "status",             default: 0,          null: false
+    t.datetime "authenticated_at"
+    t.datetime "withdraw_at"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree
     t.index ["parent_category_id", "category_id", "published_at"], name: "idx_products_pcategory_category_publish", using: :btree
     t.index ["parent_category_id"], name: "index_products_on_parent_category_id", using: :btree
+    t.index ["status"], name: "index_products_on_status", using: :btree
+    t.index ["visits"], name: "index_products_on_visits", using: :btree
   end
 
   create_table "rates", force: :cascade do |t|

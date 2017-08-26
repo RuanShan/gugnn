@@ -1,52 +1,25 @@
 <div>
   <div class="clearfix">
     <div class="uc-leftside clearfix">
-        <a href="/pro/persondata"  ">
-          <img src="//img.58cdn.com.cn/ui6/my/images/touxiang_default.gif" class="uc-head-img">
-        </a>
-        <div class="uc-user-info">
-            	<a class="uc-uname" href="/pro/persondata" onclick="clickLog('from=my_info_username');">DalianShops</a>
-            	<a href="/pro/msgmanage/" onclick="clickLog(\'from=my_account_message\');">消息
-            	(<span id="sp_msg1"><pp><b class="uc-red-font">71</b></pp></span>)
-            	</a>
-        </div>
-        <div class="uc-user-limits">
-        	          <div class="uc-user-limits-icon" title="已绑定">
-             <a href="/pro/accountbind?sys=my" onclick="clickLog('from=my_info_bindphone');">
-                 <span class="uc-user-limits-mobile-img"></span>
-                 <span class="uc-user-limits-mobile-number">133****0797</span>
-              </a>
-             </div>
-                      <div class="uc-user-limits-icon" title="已绑定">
-                 <a href="/pro/accountbind?sys=my" onclick="clickLog('from=my_info_bindemail');"><span class="uc-user-limits-email-img"></span></a>
-             </div>
-             <div class="uc-user-limits-icon " title="已绑定">
-                  <a href="/pro/accountbind?sys=my" onclick="clickLog('from=my_info_bindwechat');"><span class="uc-user-limits-weixin-img"></span></a>
-             </div>
-             <div class="uc-user-limits-icon grey" title="未绑定">
-                  <a href="/pro/accountbind?sys=my" onclick="clickLog('from=my_info_bindqq');"><span class="uc-user-limits-qq-img"></span></a>
-             </div>
-          </div>
-          <div class="uc-user-auth">
-    		<div class="weibo">
-    							<a href="/pro/accountbind?sys=my" onclick="clickLog('from=my_info_bindweibo_0');" title="未认证"><div class="auth-bt"><i></i><span>新浪微博</span></div></a>
-    		</div>
-    		</div>
+      <%=link_to change_profile_my_account_path(current_user), target:"_blank" do %>
+        <%= image_tag(current_user.avatar.url, size: "110x110", alt: current_user.nickname, class:"uc-head-img") %>
+      <% end %>
+      <div class="uc-user-info">
+        <%=link_to current_user.nickname, change_profile_my_account_path(current_user), target:"_blank" %>
+      </div>
+      <div class="uc-user-limits">
+      	<%=link_to change_profile_my_account_path(current_user), target:"_blank" do %>
+          <span class="uc-user-limits-mobile-number"><%=current_user.mask_phone%></span>
+        <% end %>
+      </div>
     </div>
     <div class="uc-rightside" id="uc_mydianpu" style="">
-    	<i class="uc-yeying-home-img"></i>
-    	<div class="uc-yeying-title-div" onclick="clickLog('from=my_info_shop')"><span class="uc-yeying-title" id="dp_name"><a href="http://shop.58.com/63375090776521536" target="_blank">大连软山网络有限...</a></span><a href=" //my.58.com/vipshop/shopinfo" target="blank" onclick="clickLog('from=my_info_shop_modify')"><i class="pen-img"></i></a></div>
-    	<div class="uc-yeying-evaluate-div">
-    	<span class="uc-yeying-evaluate-stars" style="background-position: -70px 0px;"></span>
-    	<a href="//my.58.com/saleordermgr" onclick="clickLog('from=my_info_shop_appoint')" target="_blank">预约<span class="uc-yeying-evaluate-yuyue-span" id="dp_yy">0</span></a>
-        <a href="//my.58.com/saleevaluatemgr" onclick="clickLog('from=my_info_shop_evaluate')" target="_blank">评价<span class="uc-yeying-evaluate-pingjia-span" id="dp_pj">0</span></a>
-    	</div>
-    	<div class="uc-yeying-pinglun-div"><a href="//my.58.com/saleevaluatemgr?month=1" target="_blank" onclick="clickLog('from=my_info_shop_30judge')">30天内评论(<span class="uc-yeying-pinglun-span" id="pldays">0</span>)</a> | <a href="//my.58.com/saleevaluatemgr?noreply=1" target="_blank" onclick="clickLog('from=my_info_shop_answer')">待回复(<span class="uc-yeying-pinglun-span" id="dp_replay">0</span>)</a></div>
-        <div class="uc-yeying-phone-div">预约手机 : <span class="phone-number" id="yy_phone">13322280797</span></div>
+    	<div class="uc-yeying-title-div" onclick="clickLog('from=my_info_shop')">
+        <span class="uc-yeying-title" id="dp_name">
+          <% shop_info = current_user.authenticated? ? current_user.shop_name : (current_user.shop_name.blank? ? "成为租赁商" : "店铺认证中...") %>
+          <%=link_to shop_info, authentication_my_account_path(current_user), target:"_blank" %>
+        </span>
+      </div>
     </div>
-  </div>
-
-  <div>
-
   </div>
 </div>

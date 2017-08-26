@@ -63,3 +63,7 @@ zh-CN:
 
   input_only_change_phone: "不改手机号可不填"
   profile_updated: "个人资料修改成功"
+
+  authenticating: "审核中"
+  authenticated: "显示中"
+  withdrawed: "已下架"

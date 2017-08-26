@@ -3,6 +3,10 @@ module My
 
     def index
       @user = current_user
+      #@products = current_user.products.page(params[:page])
+      @authenticated_products = current_user.products.where(status: :authenticated).page(params[:page])
+      @withdrawed_products = current_user.products.where(status: :withdrawed).page(params[:page])
+      session[:main_page]=true
     end
 
     def change_password
@@ -11,7 +15,7 @@ module My
         @user.change_password(password_params)
         if @user.errors.empty?
           flash[:notice] = t(:password_changed)
-          render :index
+          redirect_to action: :index
         end
       end
     end
@@ -30,7 +34,7 @@ module My
         @user.update_attributes(profile_params) if @user.errors.empty?
         if @user.errors.empty?
           flash[:notice] = t(:profile_updated)
-          render :index
+          redirect_to action: :index
         end
       end
     end
@@ -41,7 +45,7 @@ module My
         @user.authenticating = true
         @user.update(authentication_params)
         if @user.errors.empty?
-          render :index
+          redirect_to action: :index
         end
       end
     end

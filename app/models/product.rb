@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   #self.abstract_class = true
   TENANCY_ENUM = [3600, 3600*24, 3600*24*30, 3600*24*30*365]
 
+  enum status: [:authenticating, :authenticated, :withdrawed]
   belongs_to :category
   # category:所属分类，parent_category: 所属父分类
   # 查询时使用，如：列出办公用品的热门出租产品。或最新出租商品

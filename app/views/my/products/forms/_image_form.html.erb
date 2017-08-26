@@ -1,17 +1,47 @@
 <label class="control-label string optional" for="product_images">图片</label>
+<%init_index = @product.images.size%>
 <div id="selected_files" style="display:none;">
 </div>
 <div class="row" id="fileupload">
   <span class="btn btn-success fileinput-button" style="margin:15px;">
     <i class="glyphicon glyphicon-plus"></i>
     <span>添加图片</span>
-    <input type="file" name="product[images_attributes][0][photo]" id="product_images_attributes_0_photo">
+    <input type="file" name="product[images_attributes][<%=init_index%>][photo]" id="product_images_attributes_<%=init_index%>_photo">
   </span>
   <div class="files">
+    <% image_index = 0%>
+    <% @product.images.each do |image| %>
+      <input id='product_images_attributes_<%=image_index%>__destroy' value='false' name='product[images_attributes][<%=image_index%>][_destroy]' type='hidden'>
+      <input id='product_images_attributes_<%=image_index%>_id' class="existed_image" value='<%=image.id %>' name='product[images_attributes][<%=image_index%>][id]' type='hidden'>
+      <div id="image_<%=image_index%>" class="col-sm-6 col-md-4 template-upload">
+        <div class="thumbnail">
+          <div class="preview">
+            <span class="fade"><%=image_tag image.photo.url, size: "270x160", alt: image.caption %></span>
+          </div>
+          <div class="caption">
+            <div class="name">
+              <span class="glyphicon glyphicon-picture">
+                <label class="control-label string optional" for="product_images_caption">标题</label>
+              </span>
+              <input type="text" class="form-control" name="product[images_attributes][<%=image_index%>][caption]" id="product_images_attributes_<%=image_index%>_caption" value="<%=image.caption%>">
+            </div>
+            <div class="cancel" style="margin-top:10px;">
+              <button class="btn btn-warning" style="width:100%;height:100%;margin-top:0;" onclick="delete_file(<%=image_index%>, <%=image.id%>);">
+                <span class="glyphicon glyphicon-trash">
+                  删除图片
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% image_index += 1%>
+    <% end %>
   </div>
 </div>
 <script id="template-upload" type="text/x-tmpl">
-  {% var input_num = $("#selected_files").children().length; %}
+  {% var init_index = $(".files").children(".existed_image").length; %}
+  {% var input_num = $("#selected_files").children().length+init_index; %}
   {% var next_index = input_num+1; %}
   {% var file = o.files[0]; %}
   <div class="col-sm-6 col-md-4 template-upload fade">

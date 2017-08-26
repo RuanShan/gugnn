@@ -210,9 +210,14 @@ function mark_address(instance){
 }
 
 function cancel_file(index){
-  var input_num = $("#selected_files").children().length;
+  var input_num = $("#selected_files").children().length+$(".files").children(".existed_image").length;
   $("#product_images_attributes_"+index+"_photo").remove();
   for(var i=index+1; i<=input_num; i++){
     $("#product_images_attributes_"+i+"_photo").prop('name',"product[images_attributes]["+(i-1)+"][photo]").prop('id',"product_images_attributes_"+(i-1)+"_photo");
   }
+}
+
+function delete_file(index, image_id){
+  $("#product_images_attributes_"+index+"__destroy").val("true");
+  $("#image_"+image_id).hide();
 }

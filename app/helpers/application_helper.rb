@@ -10,6 +10,13 @@ module ApplicationHelper
 
   end
 
+  def category_breadscrambs(category)
+    sb=[]
+    category.self_and_ancestors.each{|cate|
+      sb << link_to( cate.title, category_path(cate))
+    }
+    sb.join(" - ")
+  end
 
   def display_price( product )
     unit = case product.tenancy

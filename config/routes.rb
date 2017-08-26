@@ -117,7 +117,9 @@ Rails.application.routes.draw do
 
     namespace :my do
       resources :products do
-        collection do
+        member do
+          patch 'withdraw'
+          patch 'unwithdraw'
         end
       end
       resources :account do

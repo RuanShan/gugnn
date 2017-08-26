@@ -1,0 +1,49 @@
+<div class="my-item-item" style="margin:15px 0;">
+  <table class="my-item-item-tb" style="height:auto;">
+    <tbody>
+      <tr class="my-item-item-tb-content disp">
+        <td class="my-item-item-tb-content-img-td width90">
+          <%=link_to my_product_path(product), target:"_blank" do %>
+            <%= image_tag(product.cover_url, size: "110x110", alt: product.title, class:"pull-left") %>
+          <% end %>
+        </td>
+        <td class="width223">
+          <div class="my-item-item-tb-content-titles">
+            <p class="my-item-item-content-left-title">
+              <%=link_to product.title, my_product_path(product), target:"_blank" %>
+            </p>
+            <p class="my-item-item-content-left-date"><%= product.published_at.to_s(:db) %></p>
+            <p class="my-item-item-content-left-detail">
+              <%== category_breadscrambs(product.category)%>
+            </p>
+          </div>
+        </td>
+        <td class="width243">
+          <div class="my-item-item-tb-content-states">
+            <p class="my-item-item-tb-content-states-p1"><span><%=t(product.status)%></span></p>
+            <p class="my-item-item-tb-content-states-p2">浏览 <%=product.visits%></p>
+          </div>
+        </td>
+        <td>
+          <div class="my-item-item-tb-content-option">
+            <span>
+              <%=link_to "修改", edit_my_product_path(product), target:"_blank" %>
+            </span
+            <%if true# product.authenticated?%>
+              <span>
+                <%if product.withdrawed?%>
+                  <%=link_to "上架", unwithdraw_my_product_path(product), method: "patch" %>
+                <%else%>
+                  <%=link_to "下架", withdraw_my_product_path(product), method: "patch" %>
+                <%end%>
+              </span>
+            <%end%>
+            <span>
+              <%=link_to "删除", my_product_path(product), method: "delete" %>
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
