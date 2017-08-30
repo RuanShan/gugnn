@@ -36,10 +36,13 @@ width: 200px;
     a:hover{
       text-decoration: none;
     }
-  
+
     #new_product_btn{
       border: 1px solid #fff;
-
+      &:hover{
+        color: #d61718;
+        background-color: #fff;
+      }
     }
   }
 
@@ -227,6 +230,20 @@ width: 200px;
     .changeDataTitle {
         height: 30px;
         border-bottom: 1px solid #eee;
+    }
+
+    .my-auth-form{
+      .form-actions{
+        text-align: center;
+      }
+      .btn-danger{
+        width:100%;
+        margin: 0 auto;
+      }
+      .btn-danger:hover{
+        background-color: #d61718;
+      }
+
     }
   }
 

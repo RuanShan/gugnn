@@ -5,7 +5,6 @@ module My
     # GET /products
     # GET /products.json
     def index
-Rails.logger.debug "current_user =#{current_user}"
       @user = current_user
       #@products = current_user.products.page(params[:page])
       @authenticated_products = current_user.products.where(status: :authenticated).page(params[:page])
@@ -23,7 +22,8 @@ Rails.logger.debug "current_user =#{current_user}"
     # GET /products/new
     def new
       @product = Product.new(category_id: params[:category_id])
-      @product.images.build
+      #为什么要创建一个图片对象？
+      #@product.images.build
     end
 
     # GET /products/1/edit

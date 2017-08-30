@@ -1,4 +1,4 @@
-<div class="panel panel-default" style="width:100%;" >
+<div class="panel panel-default my-auth-form" >
   <div class="panel-heading">
     <h2 class="panel-title">租赁商认证</h2>
   </div>
@@ -9,8 +9,10 @@
         <label class="control-label string optional" for="user_auth_type">认证类型</label>
         <%= f.collection_radio_buttons :auth_type, [[0,"个人"], [1,"公司"]], :first, :last,{},{style:"margin:0 10px;"} %>
         <%= f.input :shop_name, placeholder: "商店/公司名称"%>
-        <label class="control-label string optional" for="user_category_id">租赁类目</label>
-        <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" } %>
+        <div class="form-group">
+          <label class="control-label string optional" for="user_category_id">租赁类目</label>
+          <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" }, {}, { class: 'form-control'} %>
+        </div>
         <%= f.input :id_number, placeholder: "身份证号/工商执照注册号"%>
 
         <%= render partial:"image_form", locals:{f: f}%>
@@ -37,7 +39,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "提交认证信息", style:"width:100%"%>
+        <%= f.button :submit, "提交认证信息", class: 'btn-danger submit' %>
       </div>
     <% end %>
 

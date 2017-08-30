@@ -1,4 +1,6 @@
-<div class="panel panel-default" style="width:100%;" >
+<%= render partial: 'shared/error_messages', locals: { target: @product } %>
+
+<div class="panel panel-default my-auth-form" >
   <div class="panel-heading">
     <h2 class="panel-title">创建租赁信息</h2>
   </div>
@@ -12,7 +14,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "发布", style:"width:100%"%>
+          <%= f.button :submit, "发布", class: 'btn-danger' %>
         </div>
 
       <% end %>

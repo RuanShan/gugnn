@@ -16,7 +16,7 @@
         <%= f.input :nickname, label: false, placeholder: t(:nickname)  %>
         <%= f.input :password, label: false, placeholder: t(:password)%>
         <%= f.input :validate_code, label: false, placeholder: t(:input_verify_code), input_html: {style: "float:left;"}, wrapper_html:{style:"float:left;width:55%;"} %>
-        <%= button_tag t(:get_verify_code), type: :button, id:"obtainVerifyCode", style:"height:34px;float:right;margin-bottom:20px;" %>
+        <%= button_tag t(:get_verify_code), type: :button, id:"obtainVerifyCode", class:"btn btn-default"  %>
       </div>
 
       <div class="form-actions">

@@ -1,8 +1,8 @@
 <%= product_form.input :category_id, as: "hidden" %>
 
 <%= product_form.input :title, placeholder: "请填写标题" %>
-<%= product_form.input :desc, as: :ckeditor, placeholder: "请填写详细介绍", input_html: { ckeditor: { language: 'zh-CN', height: 400}} %>
-<%= product_form.input :price, :step => 0.01 %>
+<%= product_form.input :desc, as: :ckeditor, placeholder: "请填写详细介绍", input_html: { ckeditor: { language: 'zh-CN', height: 300}} %>
+<%= product_form.input :price, :step => 1 %>
 <%= product_form.input :address, placeholder: "请填写地址" %>
 <div id="address_mark" style="margin:10px 0;">
   <%marked_icon = @product.lat ? "ok" : "remove"%>

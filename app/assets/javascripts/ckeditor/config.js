@@ -31,14 +31,15 @@ CKEDITOR.editorConfig = function (config) {
   //config.toolbar_mini = [
   //  ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript"],
   //];
+  //http://www.jianshu.com/p/86454de1eae4
   config.toolbarGroups = [
     { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
     { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
     { name: 'links' },
     { name: 'insert' },
-    { name: 'forms' },
+    //{ name: 'forms' },
     { name: 'tools' },
-    { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+    //{ name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
     { name: 'others' },
     '/',
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
