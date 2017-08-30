@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.0)
+      concurrent-ruby (~> 1.0)
     actioncable (5.0.5)
       actionpack (= 5.0.5)
       nio4r (>= 1.2, < 3.0)
@@ -107,11 +109,8 @@ GEM
     foreman (0.84.0)
       thor (~> 0.19.1)
     geocoder (1.4.4)
-    geocodio (2.0.2)
-      json
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    gmaps4rails (2.1.2)
     hub (1.12.4)
     i18n (0.8.6)
     interception (0.5)
@@ -126,7 +125,6 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.0.3)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -214,7 +212,6 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.0.0)
-    ratyrate (1.2.2.alpha)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -305,6 +302,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  aasm
   acts_as_list
   administrate
   administrate-field-paperclip
@@ -319,8 +317,6 @@ DEPENDENCIES
   ffaker
   foreman
   geocoder
-  geocodio
-  gmaps4rails
   hub
   jbuilder (~> 2.5)
   jquery-fileupload-rails
@@ -334,7 +330,6 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.3)
   rails_layout
-  ratyrate
   redis-rails
   rubocop
   rucaptcha

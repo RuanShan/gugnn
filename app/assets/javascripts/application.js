@@ -23,9 +23,6 @@
 //= require ckeditor/init
 //= require_tree .
 
-//= require gmaps/google
-//= require jquery.raty
-//= require ratyrate
 //= require cityselect
 
 $(function(){

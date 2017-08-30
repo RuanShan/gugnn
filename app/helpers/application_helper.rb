@@ -31,6 +31,22 @@ module ApplicationHelper
       when 3600*24*365
         '年'
       end
-    "#{product.price}元/#{unit}"
+    "<b>#{product.price}</b>元/#{unit}"
   end
+
+
+  def product_image( product )
+    if product.master_image.present?
+      image_tag(product.master_image.photo.url, size: "140x140", alt: product.title, class:"pimg pull-left")
+    else
+      image_tag("default.png", size: "140x140", alt: product.title, class:"pull-left")
+    end
+  end
+
+  def user_avatar( user )
+    avatar = user.avatar || user.build_avatar
+    tag :img, src: avatar.url, alt: "头像", class: 'jjrlogo'
+  end
+
+
 end

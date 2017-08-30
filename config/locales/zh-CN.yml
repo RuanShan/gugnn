@@ -2,10 +2,25 @@ zh-CN:
   activerecord:
     attributes:
       product:
-        title: "标题"
-        desc: "详细介绍"
-        price: "报价"
         address: "地址"
+        deposit: "押金"
+        desc: "详细介绍"
+        min_tenancy: 最短租期
+        min_tenancies:
+          hour: 小时
+          day: 天
+          week: 周
+          month: 月
+          year: 年
+        price: "租金"
+        tenancy: "租期"
+        tenancies:
+          hour: 小时
+          day: 天
+          week: 周
+          month: 月
+          year: 年
+        title: "标题"
       user:
         shop_name: "商店/企业名称"
         id_number: "ID号码"
@@ -70,5 +85,12 @@ zh-CN:
   authenticating: "审核中"
   authenticated: "显示中"
   withdrawed: "已下架"
-
+  tenancy:
+    prompts:
+      day: 天
+      hour: 时
+      minute: 分
+      month: 月
+      second: 秒
+      year: 年
   there_were_problems_with_the_following_fields: 错误内容如下

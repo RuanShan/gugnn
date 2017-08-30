@@ -50,11 +50,11 @@ gem 'geocoder'
 gem 'acts_as_list'
 gem 'awesome_nested_set'
 gem "paperclip"
-gem 'gmaps4rails'
-gem 'geocodio'
-gem 'ratyrate'
+
 gem 'kaminari' #分页
 gem 'ckeditor' #富文本编辑器
+
+gem 'aasm' # https://github.com/aasm/aasm State machines for Ruby classes
 
 
 group :development do

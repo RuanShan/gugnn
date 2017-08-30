@@ -12,17 +12,22 @@
         <!-- Swiper -->
         <div class="swiper-container gallery-large">
             <div class="swiper-wrapper">
-              <% 5.times.each{|i| %>
-                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"},  true %> </div>
-              <% } %>
+              <% if @product.images.present? %>
+                <% @product.images.each_with_index{| image, i| %>
+                  <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{ image.photo.url})"},  true %> </div>
+                <% } %>
+              <% else %>
+                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/default.png')})"},  true %> </div>
+              <% end %>
             </div>
 
         </div>
         <div class="swiper-container gallery-thumb">
+          <% if @product.images.present? %>
             <div class="swiper-wrapper">
-              <% 5.times.each{|i| %>
-                <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{image_url('slides/test'+i.to_s+'.jpg')})"}, true %> </div>
-              <% } %>
+                <% @product.images.each_with_index{| image, i| %>
+                  <%= tag :div, { class: 'swiper-slide', style: "background-image:url(#{ image.photo.url})"},  true %> </div>
+                <% } %>
             </div>
             <!-- Add Arrows -->
             <div class="arrow-right">
@@ -31,6 +36,7 @@
             <div class="arrow-left">
               <a class="swiper-button-prev swiper-button-white" > </a>
             </div>
+          <% end %>
         </div>
       </div>
       <% image =  @product.master_image || Image.new %>
@@ -45,14 +51,13 @@
                 <span style="margin-right: 25px;">租　金：</span>
                 <span class="high-light-red">
                     <span class="first">￥</span>
-                    <span class="two">500.00</span>
-                    <span class="three">/天</span>
+                    <span class="two"><%= @product.price %></span>
+                    <span class="three">/<%= Product.translate_enum_name("tenancy", @product.tenancy) %></span>
                 </span>
             </div>
             <div class="condition pull-right">
-                <span class="pay-re condition-1">押金：￥<span id="yaj">500</span></span>
-                <!--缺乏数据-->
-                <span class="pay-re condition-last">1天起租</span>
+                <span class="pay-re condition-1">押金：￥<span id="yaj"> <%= @product.deposit %></span></span>
+                <span class="pay-re condition-last">1<%= Product.translate_enum_name("min_tenancy", @product.min_tenancy) %>起租</span>
             </div>
         </div>
         <ul class="house-basic-item3">
@@ -76,13 +81,13 @@
         </ul>
         <div>
           <div class="house-basic-item4">
-                          <p class="nav"><a href="http://my.58.com/42852722461203" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_jjrtx')"><img src="http://pic1.ajkimg.com/display/anjuke/9d9d84d4e59ff80af8f062a1541f5255/264x350x31x116/100x133.jpg" alt="" class="jjrlogo"></a><span class="f14 c_333 jjrsay">瑞家地产-邹玉华                        说</span></p>
+                          <p class="nav"><a href="#" target="_blank" onclick=""> <%= user_avatar(@product.owner) %></a><span class="f14 c_333 jjrsay"><%=@product.owner.nickname%> 说</span></p>
                           <p class="c_999 lh22 jjr-desc">此房是南北通厅，南北卧室中间卫生间，多层6楼采光好视野佳，婚房改善莫错过！</p>
           </div>
         </div>
         <div class="house-chat-entry clearfix" id="houseChatEntry">
           <div class="house-chat-phone">
-              <p class="phone-logo"><i class="icon phone-icon"></i></p>
+              <p class="phone-logo"><i class="glyphicon glyphicon-earphone"></i></p>
               <p class="phone-num">15724526952</p>
           </div>
         </div>
@@ -120,11 +125,11 @@
       <div>
         <p id="generalProperty">
           <h3>概况</h3>
-          <%= @product.desc %>
+          <%== @product.desc %>
         </p>
         <p id="generalDesc">
           <h3>设备描述</h3>
-          <%= @product.desc %>
+          <%== @product.desc %>
         </p>
         <p id="xiaoWrap">
           <h3>租赁描述</h3>

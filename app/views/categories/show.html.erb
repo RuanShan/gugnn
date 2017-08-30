@@ -31,22 +31,23 @@
     </div>
 
 
-    <div>
+    <div class="category-products">
       <h3> 产品 </h3>
       <ul class="list-group">
         <% @products.each{|product| %>
           <li class="list-group-item clearfix">
-              <%= image_tag("default.png", size: "110x110", alt: product.title, class:"pull-left") %>
-            <div class="pull-left">
+            <%= product_image product %>
+
+            <div class="product-info pull-left">
               <h3> <%= link_to product.title, product_path( product) %> </h3>
               <p>
                 押金: <%= product.deposit %> 最低租期: <br/>
-                <%= product.owner.realname %>
-              </p>
 
+              </p>
+              <p>来自: <span><%= product.owner.nickname %> </span> </p>
             </div>
-            <div class="pull-right">
-              <span> <%= display_price(product) %> </span>
+            <div class="pprice pull-right">
+              <span> <%== display_price(product) %> </span>
             </div>
           </li>
           <% } %>

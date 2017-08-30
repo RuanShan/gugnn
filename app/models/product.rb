@@ -1,9 +1,9 @@
 #产品抽象类
 class Product < ApplicationRecord
-  #self.abstract_class = true
-  TENANCY_ENUM = [3600, 3600*24, 3600*24*30, 3600*24*30*365]
+  include AASM
 
-  enum status: [:authenticating, :authenticated, :withdrawed]
+  TENANCY_ENUM = { hour: 3600, day:3600*24, month: 3600*24*30, year: 3600*24*30*365 }
+
   belongs_to :category
   # category:所属分类，parent_category: 所属父分类
   # 查询时使用，如：列出办公用品的热门出租产品。或最新出租商品
@@ -26,6 +26,26 @@ class Product < ApplicationRecord
   # 添加产品，
   # 修改产品，修改过滤字段
   # 改变字段顺序
+  enum tenancy: { hour: 1, week: 7, day:24, month: 24*30, year: 24*30*365 }, _prefix: true
+  enum min_tenancy: { hour: 1, week: 7, day:24, month: 24*30, year: 24*30*365 }, _prefix: true
+  enum status: [:authenticating, :authenticated, :withdrawed]
+  # 创建 ->审核中-> 审核通过（上线）
+  #            -> 审核未通过
+  #               审核通过（上线） ->下架
+  #               审核通过（上线） -> 修改 -> 创建（重新审核）
+
+  aasm column: :status, enum: true  do
+    state :authenticating, :initial => true
+    state :authenticated
+    state :withdrawed
+    #event :approve do
+    #  transitions :from => :authenticating, :to => :authenticated
+    #end
+
+    #event :unapprove do
+    #  transitions :from => :authenticating, :to => :unauthenticated
+    #end
+  end
 
   # 定义 过滤条件
   # 如： { name: 'brand', title: '品牌', values: [[1,'lenovo','联想'],[2,'asus','华硕']]}
@@ -49,6 +69,7 @@ class Product < ApplicationRecord
 
     self.published_at ||= DateTime.current
     self.parent_category_id ||= category.parent_id
+    self.status = :authenticated
   end
 
   def cover_url

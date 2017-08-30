@@ -46,6 +46,11 @@
     display: inline;
     padding: 0 0 0 15px ;
   }
+  .nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    color: #d61718;
+    background-color: transparent;
+  }
 }
 
 .menu-wrapper
@@ -69,6 +74,7 @@
     display: inline-block;
     padding: 0 25px;
   }
+
   a.logo{
     padding: 0;
   }

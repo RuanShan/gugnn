@@ -20,7 +20,7 @@ class User < ApplicationRecord
   belongs_to :category
 
   attr_reader :avatar_remote_url
-  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'http://i.imgur.com/7Yc9GZf.png'
+  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing/avatar.png'
   has_attached_file :id_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
   has_attached_file :shop_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
   validates_attachment_content_type :avatar, :id_photo, :shop_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
