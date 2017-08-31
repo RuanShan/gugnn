@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :realname
       t.attachment :avatar
       t.float :rating
-      t.string :city
+      t.string :city      #用户IP对应城市或选择的城市，示例：大连市
 
       t.integer :balance, :default => 0
       t.integer  :role, :default=>0

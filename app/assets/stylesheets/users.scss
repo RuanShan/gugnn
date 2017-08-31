@@ -26,6 +26,9 @@ width: 200px;
       cursor: pointer;
       outline-style: none;
   }
+  a.btn-success{
+    color: #fff;
+  }
   .menu-wrapper
   {
     background-color: #d61718;
@@ -169,6 +172,9 @@ width: 200px;
       }
       .my-item-item-tb .width243 {
           width: 243px;
+      }
+      .my-item-item-tb .width223 {
+          width: 223px;
       }
       .my-item-item-tb th {
           font-weight: 400;

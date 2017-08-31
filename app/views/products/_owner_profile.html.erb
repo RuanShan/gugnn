@@ -1,12 +1,12 @@
 <% #locals :user %>
 
-<div>
+<div class="owner-profile">
   <p>       关于租赁方 </p>
   <div class="avatar">
-    用户头像
+    <a> <%= user_avatar(@product.owner) %> </a>
   </div>
 
-  <div class="name">  <span> 用户姓名 </span> </div>
+  <div class="name">  <span> <%= @product.owner.nickname %> </span> </div>
   <div>  <span> 服务保障：</span>已审核已审核企业认证企业认证 </div>
   <div>    <span> 服务承诺：</span>专业设备！质量第一！ </div>
   <div>  <span> 支持发票：</span>普通发票增值税专用发票 </div>

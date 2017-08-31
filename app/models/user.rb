@@ -1,4 +1,7 @@
+# 保存IP和对应的geocoding 信息。
+
 class User < ApplicationRecord
+
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   devise :database_authenticatable, authentication_keys: [:cellphone]

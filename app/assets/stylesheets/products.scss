@@ -182,16 +182,33 @@ body {
     padding: 20px 15px;
     border: 1px solid #e3e3e3;
     margin-bottom: 30px;
-}
-.side-left-wrap .avatar{
-  text-align: center;
-}
-.side-left-wrap .name{
-  text-align: center;
-}
+    .avatar{
+      text-align: center;
+      a{
+        width: 80px;
+        height: 80px;
+        display: inline-block;
+        border-radius: 100%;
+        overflow: hidden;
+      }
+    }
+    .name{
+      text-align: center;
+    }
 
+    .owner-profile
+    {
+
+    }
+}
 
 .product-details
 {
   .navbar  { min-height: inherit;}
+
+  .product-image-item{
+    width: 50%;
+    padding: 0 10px 10px 0;
+    float: left;
+  }
 }

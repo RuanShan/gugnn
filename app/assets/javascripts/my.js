@@ -180,40 +180,6 @@ function toggle_category(category_id){
   $("#sub_cat_"+category_id).show();
 }
 
-function mark_address(instance){
-  //if(CurrentMap==null){
-    var lng = $("#"+instance+"_lng").val();
-    var lat= $("#"+instance+"_lat").val();
-    if(lng){}else{lng=116.404;}
-    if(lat){}else{lat=39.915;}
-    var map = new BMap.Map("address_container");  // 创建地图实例
-    map.addControl(new BMap.NavigationControl());
-    map.addControl(new BMap.ScaleControl());
-    var point = new BMap.Point(lng, lat);  // 创建点坐标
-    map.centerAndZoom(point, 15);
-    var marker = new BMap.Marker(point);        // 创建标注
-    map.addOverlay(marker);
-    map.addEventListener("click", function(e){
-      var pt = new BMap.Point(e.point.lng, e.point.lat);
-      map.clearOverlays();
-      var mk = new BMap.Marker(pt);
-      map.addOverlay(mk);
-      $("#"+instance+"_lat").val(e.point.lat);
-      $("#"+instance+"_lng").val(e.point.lng);
-      $("#marked").removeClass()
-      $("#marked").addClass("glyphicon glyphicon-ok")
-    });
-    marker.enableDragging();
-    marker.addEventListener("dragend", function(e){
-      $("#"+instance+"_lat").val(e.point.lat);
-      $("#"+instance+"_lng").val(e.point.lng);
-      $("#marked").removeClass()
-      $("#marked").addClass("glyphicon glyphicon-ok")
-    })
-    //CurrentMap=map;
-  //}
-}
-
 function cancel_file(index){
   var input_num = $("#selected_files").children().length+$(".files").children(".existed_image").length;
   $("#product_images_attributes_"+index+"_photo").remove();

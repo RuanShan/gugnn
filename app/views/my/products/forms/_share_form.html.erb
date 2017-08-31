@@ -8,7 +8,7 @@
   <div class="input-group"> <%= product_form.number_field :price , class: 'form-control'%>
     <div class="input-group-addon">元</div>
   </div>
-  / <%= product_form.select :tenancy, Product.tenancies.to_a, {},class: 'form-control'  %>
+  / <%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control'  %>
 </div>
 
 <div class="form-group form-inline ">
@@ -19,15 +19,13 @@
   </div>
 </div>
 
-<div id="address_mark" style="margin:10px 0;">
+<div id="address_mark" class="form-group form-inline">
   <%= product_form.label :address, class: 'control-label' %>
-  <%marked_icon = @product.lat ? "ok" : "remove"%>
-  <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnModal",
-  "data-title":"请在地图中标记您的地址", "data-ajax_url":"/map", "data-ajax_callback":"mark_address('product');" do %>
+  <%= product_form.text_field :address, class: 'form-control', style: 'width:70%;' %>
+  <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
     <i class="glyphicon glyphicon-pushpin"></i>
     <span>在地图上标记地址</span>
   <% end %>
-  <span id="marked" class="glyphicon glyphicon-<%=marked_icon%>"></span>
   <%= product_form.input :lat, as: "hidden" %>
   <%= product_form.input :lng, as: "hidden" %>
 </div>

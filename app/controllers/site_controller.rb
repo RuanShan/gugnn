@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_action :get_current_user, :get_city
+  before_action :get_current_user, :set_city
 
   def index
     @categories = Category.roots.includes(:children).limit( 8 )
@@ -10,6 +10,9 @@ class SiteController < ApplicationController
   def select_city
     if request.patch?
       session[:selected_city] = params["city"]
+      if current_user.present?
+        current_user.update_attribute :city, session[:selected_city]
+      end
       redirect_to "/"
     end
   end
@@ -20,7 +23,23 @@ class SiteController < ApplicationController
     current_user
   end
 
-  def get_city
-    session[:selected_city] ||= request.location ? request.location.city : t(:unknown)
+  def set_city
+    if session[:selected_city].blank?
+      user = get_current_user
+      #登陆用户
+      if user
+        session[:selected_city] = user.city
+      end
+      #非登陆用户
+      if session[:selected_city].blank?
+        #
+        session[:selected_city] = get_city_by_ip || t('defaults.city')
+      end
+    end
+    session[:selected_city]
+  end
+
+  def get_city_by_ip
+    request.location.try(:city)
   end
 end

@@ -31,14 +31,15 @@ zh-CN:
         contact_person: "联系人"
         contact_phone: "联系电话"
         contact_other: "其他联系方式"
-
+  defaults:
+    city: '大连市'
+    unknown_city: "未知城市"
   errors_prohibited_this_record_from_being_saved:
     one: 当前共有1个错误
     other: ! '当前共有%{count}个错误'
   gugnn: "光棍租机"
   gugnn_member: "光棍租机-会员中心"
 
-  unknown: "未知城市"
   change_city: "置换城市"
   please_input_city: "请输入城市"
 

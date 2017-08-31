@@ -1,5 +1,6 @@
 <%= javascript_tag defer: 'defer' do -%>
 Gugnn = {};
+Gugnn.city = <%== session[:selected_city].to_json %>;
 Gugnn.routes = {};
 Gugnn.routes.validate_cellphone_path = <%== validate_cellphone_path.to_json %>;
 Gugnn.routes.validate_cellphone_path = <%== validate_cellphone_path.to_json %>;

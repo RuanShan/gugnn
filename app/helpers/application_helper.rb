@@ -48,5 +48,8 @@ module ApplicationHelper
     tag :img, src: avatar.url, alt: "头像", class: 'jjrlogo'
   end
 
+  #def selected_city
+  #  session[:selected_city]
+  #end
 
 end
