@@ -1,8 +1,11 @@
+<%= hidden_field_tag 'product_lat', @product.lat %>
+<%= hidden_field_tag 'product_lng', @product.lng %>
+
 <div class="container">
-<ol class="breadcrumb">
-  <%== build_breadscrambs(@category) %>
-  <li class="active"> <%=@product.title %></li>
-</ol>
+  <ol class="breadcrumb">
+    <%== build_breadscrambs(@category) %>
+    <li class="active"> <%=@product.title %></li>
+  </ol>
 </div>
 
 <div class="container product" >
@@ -61,23 +64,15 @@
             </div>
         </div>
         <ul class="house-basic-item3">
-                <li>
-                    <span class="c_999">小区：</span>
-                    <span class="c_000 mr_10">
-                                                    <a href="/xiaoqu/lvxianghuayuan" target="_blank" class="c_000" onclick="clickLog('from=fcpc_detail_esf_dl_xiaoqu')">绿香花园                        </a>- <a class="c_000" href="/lvbo/ershoufang/" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_xiaoqu_shangquan')">绿波</a>
-                                            </span>
-                </li>
-                                    <li>
-                        <span class="c_999">位置：</span>
-                    <span class="c_000 mr_10">
-                                                    <a class="c_000" href="/shahekou/ershoufang/" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_weizhi_quyu')">沙河口</a>
-                                                －
-                        <a class="c_000" href="/xiaoqu/lvxianghuayuan" target="_blank" onclick="clickLog('from=fcpc_detail_esf_dl_weizhi_xiaoqu')">绿清街22-68号</a>
-                    </span>
-
-                        <span class="f12 c_999 mr_10">距离地铁师范大学1537米</span>
-                        <span><a href="javascript:;" class="mapNavIcon td-u" jumpto="mapWrap" onclick="clickLog('from=fcpc_detail_esf_dl_weizhi_map')"><i class="icon"></i>地图</a></span>
-                    </li>
+          <li>
+              <span class="c_999">&nbsp;</span>
+          </li>
+          <li>
+              <span class="c_999">位置：</span>
+              <span class="c_000 mr_10"> <%= @product.latlng_address %>
+              </span>
+              <span><a href="javascript:;" class="mapNavIcon td-u" jumpto="mapWrap" ><i class="icon"></i>地图</a></span>
+          </li>
         </ul>
         <div>
           <div class="house-basic-item4">
@@ -144,10 +139,12 @@
         </p>
         <p id="mapWrap">
           <h3>位置</h3>
+          <div id="map_container">
+          </div>
         </p>
       </div>
 
     </div>
   </div>
-
 </div>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b9623a2eb0261d9d5453eb78e4c66f4e&plugin=AMap.Geocoder"></script>

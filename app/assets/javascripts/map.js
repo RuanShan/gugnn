@@ -1,17 +1,19 @@
 $(function(){
   var address_container_id="address_container";
-  var instance = 'product';
-  var product_address_map = null;
-  //初始化租赁商品的地址
+  // 创建|编辑 商品时， 初始化租赁商品的地址
   if( $('#'+address_container_id).is('*'))
   {
-    var product_address_map = new AddressAmap(address_container_id, instance);
+    var instance = 'product';
+    var $lng = $("#"+instance+"_lng");
+    var $lat= $("#"+instance+"_lat");
+    var option = { 'lat': $lat.val(), 'lng': $lng.val() };
+    var product_address_map = new AddressAmap(address_container_id, option);
 
     $('#submit_address_btn').click(function(){
       if( product_address_map.marker )
       {
         var position = product_address_map.marker.getPosition();
-        $('#product_address').val( product_address_map.address);
+        $('#product_latlng_address').val( product_address_map.address);
         $("#"+instance+"_lat").val(position.getLat());
         $("#"+instance+"_lng").val(position.getLng());
         $('#gugnnMapModal').modal('hide');
@@ -22,23 +24,43 @@ $(function(){
     })
   }
 
+  //浏览商品时，初始化地图
+  var map_container_id="map_container";
+  if( $('#'+map_container_id).is('*'))
+  {
+    var instance = 'product';
+    var $lng = $("#"+instance+"_lng");
+    var $lat= $("#"+instance+"_lat");
+    var option = { 'lat': $lat.val(), 'lng': $lng.val() };
+    var map_options = { 'scrollWheel': false };
+    var product_address_map = new AddressAmap(map_container_id, option, map_options);
+
+  }
 })
 
-function AddressAmap(container_id, instance_name){
-    this.container_id = container_id;
-    this.instance_name = instance_name;
-    this.address = null;
-    this.init();
+// params
+//  container_id: html element id
+//  options: keys [ lat,lng ]
+function AddressAmap(container_id, options, map_options){
+  this.options= options||{};
+  this.map_options = map_options || {};
+  this.container_id = container_id;
+  this.address = null;
+  this.init();
 }
 
 AddressAmap.prototype.init = function(){
-  this.map = new AMap.Map('map_container', { resizeEnable: true  });
+  this.map = new AMap.Map(this.container_id, this.map_options);
+  AMap.plugin(['AMap.ToolBar'],
+    function(){
+        map.addControl(new AMap.ToolBar());
+  });
   this.geocoder = new AMap.Geocoder({ radius: 1000, extensions: "all"});
-  var lng = $("#"+this.instance_name+"_lng").val();
-  var lat= $("#"+this.instance_name+"_lat").val();
+
   var map = this.map;
   var self = this;
-
+  var lat = this.options.lat;
+  var lng = this.options.lng
   if( parseFloat(lng)>0 && parseFloat(lat)>0)
   {
     //大连中心经纬度： 121.59347778,38.94870994
