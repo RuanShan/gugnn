@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     <% if @product.category %>
-      <%= simple_form_for @product, url: my_products_path, :html => {:multipart => true} do |f| %>
+      <%= simple_form_for @product, url: my_products_path, :html => {:multipart => true, class:'product-form'} do |f| %>
 
         <div class="form-inputs">
           <%#=render partial: "my/products/forms/#{@product.category}_form"%>

@@ -1,13 +1,17 @@
+<% init_index = @product.images.size %>
+
+<div>
 <label class="control-label string optional" for="product_images">图片</label>
-<%init_index = @product.images.size%>
+<span class="btn btn-success fileinput-button">
+  <i class="glyphicon glyphicon-plus"></i>
+  <span>添加图片</span>
+  <input type="file" name="product[images_attributes][<%=init_index%>][photo]" id="product_images_attributes_<%=init_index%>_photo">
+</span>
+</div>
+
 <div id="selected_files" style="display:none;">
 </div>
 <div class="row" id="fileupload">
-  <span class="btn btn-success fileinput-button" style="margin:15px;">
-    <i class="glyphicon glyphicon-plus"></i>
-    <span>添加图片</span>
-    <input type="file" name="product[images_attributes][<%=init_index%>][photo]" id="product_images_attributes_<%=init_index%>_photo">
-  </span>
   <div class="files">
     <% image_index = 0%>
     <% @product.images.each do |image| %>
