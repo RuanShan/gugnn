@@ -1,5 +1,6 @@
 module My
   class AccountController < BaseController
+    before_action :set_user, only: [:change_password, :change_profile, :authentication, :auth_idcard, :auth_licence]
 
     def index
       @user = current_user
@@ -10,7 +11,6 @@ module My
     end
 
     def change_password
-      @user = User.find_by_id(params[:id])
       if request.patch?
         @user.change_password(password_params)
         if @user.errors.empty?
@@ -21,7 +21,6 @@ module My
     end
 
     def change_profile
-      @user = User.find_by_id(params[:id])
       if request.patch?
         if @user.cellphone != profile_params["cellphone"]
           verify_sms
@@ -40,17 +39,42 @@ module My
     end
 
     def authentication
-      @user = User.find_by_id(params[:id])
+    end
+
+    def auth_idcard
+      @user.auth_type=0
       if request.patch?
         @user.authenticating = true
+        @user.authenticated=false
         @user.update(authentication_params)
         if @user.errors.empty?
-          redirect_to action: :index
+          redirect_to action: :authentication
+          return
         end
       end
+      render :auth_page
+    end
+
+    def auth_licence
+      @user.auth_type=1
+      if request.patch?
+        @user.authenticating = true
+        @user.authenticated=false
+        @user.update(authentication_params)
+        @user.unauthenticated!
+        if @user.errors.empty?
+          redirect_to action: :authentication
+          return
+        end
+      end
+      render :auth_page
     end
 
     private
+
+    def set_user
+      @user = User.find_by_id(params[:id])
+    end
 
     def password_params
       params.require(:user).permit(:current_password, :password, :password_confirmation)

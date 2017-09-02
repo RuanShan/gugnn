@@ -1,5 +1,6 @@
 <div class="fileupload" data-upload-template-id="template-upload-id">
-  <label class="control-label string optional" for="user_id_photo">身份证/工商执照正面照片</label>
+  <%id_photo_label= @user.auth_type == 0 ? "手持身份证正面照片" : "工商执照正面照片"%>
+  <label class="control-label string optional" for="user_id_photo"><%=id_photo_label%></label>
   <span class="btn btn-success fileinput-button" style="margin:15px;">
     <i class="glyphicon glyphicon-plus"></i>
     <span>上传</span>
@@ -13,7 +14,8 @@
 </div>
 
 <div class="fileupload" data-upload-template-id="template-upload-shop">
-  <label class="control-label string optional" for="user_id_photo">店铺/企业门店照片</label>
+  <%shop_photo_label= @user.auth_type == 0 ? "店铺正面照片" : "企业门店正面照片"%>
+  <label class="control-label string optional" for="user_id_photo"><%=shop_photo_label%></label>
   <span class="btn btn-success fileinput-button" style="margin:15px;">
     <i class="glyphicon glyphicon-plus"></i>
     <span>上传</span>

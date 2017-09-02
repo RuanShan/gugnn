@@ -71,6 +71,14 @@ class User < ApplicationRecord
     @avatar_remote_url = url_value
   end
 
+  def prepare_auth?
+    self.shop_name.blank? || errors.present?
+  end
+
+  def wait_auth?
+    !authenticated && !(prepare_auth?)
+  end
+
   private
 
   def email_required?

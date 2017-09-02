@@ -2,7 +2,7 @@ Geocoder.configure(
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
   # lookup: :google,            # name of geocoding service (symbol)
-  lookup: :baidu,
+  lookup: :amap,
   # ip_lookup: :freegeoip,      # name of IP address geocoding service (symbol)
   ip_lookup: :baidu_ip,
   # language: :en,              # ISO-639 language code
@@ -11,7 +11,7 @@ Geocoder.configure(
   # http_proxy: nil,            # HTTP proxy server (user:pass@host:port)
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
   # api_key: nil,               # API key for geocoding service
-  :baidu => {
+  :baidu_ip => {
     api_key: "C2s8ft3s77iu4y4ABo3ThFPvpPHEqZ0F"
   },
   :amap=> {

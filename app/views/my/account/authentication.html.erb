@@ -3,44 +3,76 @@
     <h2 class="panel-title">租赁商认证</h2>
   </div>
   <div class="panel-body">
-    <%= simple_form_for(@user, url: authentication_my_account_path(@user), :html => {:method => :patch, :multipart => true, id:"authentication_form"}) do |f| %>
-
-      <div class="form-inputs">
-        <label class="control-label string optional" for="user_auth_type">认证类型</label>
-        <%= f.collection_radio_buttons :auth_type, [[0,"个人"], [1,"公司"]], :first, :last,{},{style:"margin:0 10px;"} %>
-        <%= f.input :shop_name, placeholder: "商店/公司名称"%>
-        <div class="form-group">
-          <label class="control-label string optional" for="user_category_id">租赁类目</label>
-          <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" }, {}, { class: 'form-control'} %>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">个人认证</a></li>
+      <li role="presentation" style="margin-bottom: -2px" ><a href="#company" aria-controls="company" role="tab" data-toggle="tab">企业认证</a></li>
+    </ul>
+    <%auth_id_text=@user.authenticated? ? "查看认证" : (@user.wait_auth? ? "审核中" : "去认证")%>
+    <%auth_li_text=@user.authenticated? ? "查看认证" : (@user.wait_auth? ? "审核中" : "去认证")%>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="personal">
+        <div class="my-item-item" style="margin:15px 0;">
+          <table class="my-item-item-tb" style="height:auto;">
+            <tbody>
+              <tr class="my-item-item-tb-content disp">
+                <td class="my-item-item-tb-content-img-td width90">
+                  <%= image_tag("auth_p", size: "110x110", alt: "个人身份证认证") %>
+                </td>
+                <td class="width223">
+                  <span style="font-weight:bold;font-size:2em;margin-left:15px;"> 个人身份证认证 </span>
+                </td>
+                <td class="width243">
+                  <div class="my-item-item-tb-content-states">
+                    <p class="my-item-item-tb-content-states-p1"><span> • 需清晰的手持身份证照片</span></p>
+                    <p class="my-item-item-tb-content-states-p2"><span> • 3-5个工作日完成认证</span></p>
+                  </div>
+                </td>
+                <td>
+                  <div class="my-item-item-tb-content-option">
+                    <span>
+                      <%auth_id_text="去认证" if @user.auth_type==1%>
+                      <%=link_to auth_id_text, auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                    </span
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <%= f.input :id_number, placeholder: "身份证号/工商执照注册号"%>
 
-        <%= render partial:"image_form", locals:{f: f}%>
-
-        <%= f.input :city, placeholder: "店铺/公司所在城市"%>
-        <%= f.input :shop_address, placeholder: "店铺/公司具体地址"%>
-        <div id="address_mark" style="margin:10px 0;">
-          <%marked_icon = @user.lat ? "ok" : "remove"%>
-          <%lat = @user.lat ? @user.lat : 0%>
-          <%lng = @user.lng ? @user.lng : 0%>
-          <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnModal",
-          "data-title":"请在地图中标记您的地址", "data-ajax_url":"/map", "data-ajax_callback":"mark_address('user');" do %>
-            <i class="glyphicon glyphicon-pushpin"></i>
-            <span>在地图上标记地址</span>
-          <% end %>
-          <span id="marked" class="glyphicon glyphicon-<%=marked_icon%>"></span>
-          <%= f.input :lat, as: "hidden" %>
-          <%= f.input :lng, as: "hidden" %>
+      </div>
+      <div role="tabpanel" class="tab-pane " id="company">
+        <div class="my-item-item" style="margin:15px 0;">
+          <table class="my-item-item-tb" style="height:auto;">
+            <tbody>
+              <tr class="my-item-item-tb-content disp">
+                <td class="my-item-item-tb-content-img-td width90">
+                  <%= image_tag("auth_c", size: "110x110", alt: "营业执照认证") %>
+                </td>
+                <td class="width223">
+                  <span style="font-weight:bold;font-size:2em;margin-left:15px;"> 营业执照认证 </span>
+                </td>
+                <td class="width243">
+                  <div class="my-item-item-tb-content-states">
+                    <p class="my-item-item-tb-content-states-p1"><span> • 需上传清晰营业执照照片</span></p>
+                    <p class="my-item-item-tb-content-states-p2"><span> • 3-5个工作日完成</span></p>
+                  </div>
+                </td>
+                <td>
+                  <div class="my-item-item-tb-content-option">
+                    <span>
+                      <%auth_li_text="去认证" if @user.auth_type==0%>
+                      <%=link_to auth_li_text, auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                    </span
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <%= f.input :contact_person, placeholder: "用于重要或紧急事项的联系"%>
-        <%= f.input :contact_phone, placeholder: "电话/手机号"%>
-        <%= f.input :contact_other, placeholder: "QQ/微信/邮箱"%>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "提交认证信息", class: 'btn-danger submit' %>
-      </div>
-    <% end %>
-
+    </div>
+  </div>
 </div>

@@ -2,35 +2,34 @@ $(function(){
   var address_container_id="address_container";
   var instance = 'product';
   var product_address_map = null;
+
   //初始化租赁商品的地址
-  if( $('#'+address_container_id).is('*'))
-  {
+  $(document).on('show.bs.modal', '#gugnnMapModal', function (event) {
     product_address_map = new AddressAmap(address_container_id, instance);
+  });
+  $(document).on('click', '#submit_address_btn', function (event) {
+    if( product_address_map.map.marker )
+    {
+      //$('#product_address').val( product_address_map.map.address);
+      $("#"+instance+"_lng").val(product_address_map.map.marker.getPosition().getLng());
+      $("#"+instance+"_lat").val(product_address_map.map.marker.getPosition().getLat());
+      $('#gugnnMapModal').modal('hide');
+    }else{
 
-    $('#submit_address_btn').click(function(){
-      if( product_address_map.maker )
-      {
-        $('#product_address').val( product_address_map.address);
-        $('#gugnnMapModal').modal('hide');
-      }else{
-
-      }
-
-    })
-  }
+    }
+  })
 
 })
 
 function AddressAmap(container_id, instance_name){
     this.container_id = container_id;
     this.instance_name = instance_name;
-    this.address = null;
+//    this.address = null;
     this.init();
 }
 
 AddressAmap.prototype.init = function(){
   this.map = new AMap.Map('map_container', { resizeEnable: true  });
-  this.geocoder = new AMap.Geocoder({ radius: 1000, extensions: "all"});
   var lng = $("#"+this.instance_name+"_lng").val();
   var lat= $("#"+this.instance_name+"_lat").val();
   var map = this.map;
@@ -39,7 +38,7 @@ AddressAmap.prototype.init = function(){
     //大连中心经纬度： 121.59347778,38.94870994
     map.setZoomAndCenter(14, [lng, lat]);
 
-    this.marker = new AMap.Marker({
+    map.marker = new AMap.Marker({
                 map: map,
                 position: [lng, lat]
     });// 创建标注
@@ -60,7 +59,9 @@ AddressAmap.prototype.init = function(){
                   position: [e.lnglat.getLng(), e.lnglat.getLat()]
       });// 创建标注
     }
-    geocoder.getAddress(this.marker.getPosition( ), function(status, result) {
+
+    this.geocoder = new AMap.Geocoder({ radius: 1000, extensions: "all"});
+    this.geocoder.getAddress(this.marker.getPosition( ), function(status, result) {
         if (status === 'complete' && result.info === 'OK') {
           this.address = result.regeocode.formattedAddress; //返回地址描述
 

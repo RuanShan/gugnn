@@ -128,7 +128,9 @@ Rails.application.routes.draw do
         member do
           match 'change_password', via: [:get, :patch]
           match 'change_profile', via: [:get, :patch]
-          match 'authentication', via: [:get, :patch]
+          match 'authentication', via: [:get]
+          match 'auth_idcard', via: [:get, :patch]
+          match 'auth_licence', via: [:get, :patch]
         end
       end
     end

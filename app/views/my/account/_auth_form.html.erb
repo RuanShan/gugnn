@@ -1,0 +1,40 @@
+<% auth_url = @user.auth_type == 0 ? auth_idcard_my_account_path(@user) : auth_licence_my_account_path(@user)%>
+<%= simple_form_for(@user, url: auth_url, :html => {:method => :patch, :multipart => true, id:"authentication_form"}) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :auth_type, label: false, as: :hidden %>
+    <%shop_name_label= @user.auth_type == 0 ? "店铺" : "公司"%>
+    <%= f.input :shop_name, label: "#{shop_name_label}名称", placeholder: "请填写#{shop_name_label}名称"%>
+    <div class="form-group">
+      <label class="control-label string optional" for="user_category_id">租赁类目</label>
+      <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" }, {}, { class: 'form-control'} %>
+    </div>
+    <%id_number_label= @user.auth_type == 0 ? "身份证号" : "工商执照注册号"%>
+    <%= f.input :id_number, label: id_number_label, placeholder: "请填写#{id_number_label}"%>
+
+    <%= render partial:"image_form", locals:{f: f}%>
+
+    <%= f.input :city, placeholder: "#{shop_name_label}所在城市"%>
+    <%= f.input :shop_address, placeholder: "#{shop_name_label}具体地址"%>
+    <div id="address_mark" style="margin:10px 0;">
+      <%marked_icon = @user.lat ? "ok" : "remove"%>
+      <%lat = @user.lat ? @user.lat : 0%>
+      <%lng = @user.lng ? @user.lng : 0%>
+      <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal" do %>
+        <i class="glyphicon glyphicon-pushpin"></i>
+        <span>在地图上标记地址</span>
+      <% end %>
+      <span id="marked" class="glyphicon glyphicon-<%=marked_icon%>"></span>
+      <%= f.input :lat, as: "hidden" %>
+      <%= f.input :lng, as: "hidden" %>
+    </div>
+
+    <%= f.input :contact_person, placeholder: "用于重要或紧急事项的联系"%>
+    <%= f.input :contact_phone, placeholder: "电话/手机号"%>
+    <%= f.input :contact_other, placeholder: "QQ/微信/邮箱"%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "提交认证信息", class: 'btn-danger submit' %>
+  </div>
+<% end %>
