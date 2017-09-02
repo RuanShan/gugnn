@@ -28,5 +28,10 @@
     </div>
     <%= render 'layouts/modal' %>
     <%= render 'layouts/map_modal' %>
+    <%= javascript_include_tag 'my', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=b9623a2eb0261d9d5453eb78e4c66f4e&plugin=AMap.Geocoder"></script>
+    <!--
+    <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&ak=1sG8ySYpodXUgrNhdOymr6H937BkGEtu&services=&t=20170803155555"></script>
+    -->
   </body>
 </html>
