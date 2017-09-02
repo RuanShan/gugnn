@@ -2,7 +2,9 @@
   <%= link_to image_tag( "logo.png", alt: '光棍租生活', class: 'logo'), root_path, class:'logo' %>
   <ul class="main-menu pull-right">
     <li id='categories_li'>
-      <%= link_to "租赁分类", "javascript:void(0)", id: 'categories_btn', class:'',data:{ }  %>
+      <%= link_to "javascript:void(0)", id: 'categories_btn', class:'',data:{ }  do %>
+        租赁分类 <span class="caret"></span>
+      <% end %>
 
       <ul class="dropdown-menu subcategories">
         <%  Category.roots.includes(:children).each{ |category| %>

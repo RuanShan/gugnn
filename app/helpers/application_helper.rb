@@ -20,18 +20,20 @@ module ApplicationHelper
 
   def display_price( product )
     unit = case product.tenancy
-      when 3600
+      when 1
         '小时'
-      when 3600*24
+      when 24
         '天'
-      when 3600*24*30
+      when 7*24
+        '周'
+      when 24*30
         '月'
-      when 3600*24*90
+      when 24*90
         '季度'
-      when 3600*24*365
+      when 24*365
         '年'
       end
-    "<b>#{product.price}</b>元/#{unit}"
+    "<b>#{product.price}</b>元/#{ product.display_tenancy}"
   end
 
 
