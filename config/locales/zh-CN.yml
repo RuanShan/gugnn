@@ -2,9 +2,10 @@ zh-CN:
   activerecord:
     attributes:
       product:
-        address: "地址"
+        address: "详细地址"
         deposit: "押金"
         desc: "详细介绍"
+        latlng_address: "地址"
         min_tenancy: 最短租期
         min_tenancies:
           hour: 小时

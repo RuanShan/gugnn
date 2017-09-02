@@ -1,44 +1,72 @@
 $(function(){
   var address_container_id="address_container";
-  var instance = 'product';
-  var product_address_map = null;
+  // 创建|编辑 商品时， 初始化租赁商品的地址
+  if( $('#'+address_container_id).is('*'))
+  {
+    var instance = 'product';
+    var $lng = $("#"+instance+"_lng");
+    var $lat= $("#"+instance+"_lat");
+    var option = { 'lat': $lat.val(), 'lng': $lng.val() };
+    var product_address_map = new AddressAmap(address_container_id, option);
 
-  //初始化租赁商品的地址
-  $(document).on('show.bs.modal', '#gugnnMapModal', function (event) {
-    product_address_map = new AddressAmap(address_container_id, instance);
-  });
-  $(document).on('click', '#submit_address_btn', function (event) {
-    if( product_address_map.map.marker )
-    {
-      //$('#product_address').val( product_address_map.map.address);
-      $("#"+instance+"_lng").val(product_address_map.map.marker.getPosition().getLng());
-      $("#"+instance+"_lat").val(product_address_map.map.marker.getPosition().getLat());
-      $('#gugnnMapModal').modal('hide');
-    }else{
+    $('#submit_address_btn').click(function(){
+      if( product_address_map.marker )
+      {
+        var position = product_address_map.marker.getPosition();
+        $('#product_latlng_address').val( product_address_map.address);
+        $("#"+instance+"_lat").val(position.getLat());
+        $("#"+instance+"_lng").val(position.getLng());
+        $('#gugnnMapModal').modal('hide');
+      }else{
 
-    }
-  })
+      }
 
+    })
+  }
+
+  //浏览商品时，初始化地图
+  var map_container_id="map_container";
+  if( $('#'+map_container_id).is('*'))
+  {
+    var instance = 'product';
+    var $lng = $("#"+instance+"_lng");
+    var $lat= $("#"+instance+"_lat");
+    var option = { 'lat': $lat.val(), 'lng': $lng.val() };
+    var map_options = { 'scrollWheel': false };
+    var product_address_map = new AddressAmap(map_container_id, option, map_options);
+
+  }
 })
 
-function AddressAmap(container_id, instance_name){
-    this.container_id = container_id;
-    this.instance_name = instance_name;
-//    this.address = null;
-    this.init();
+// params
+//  container_id: html element id
+//  options: keys [ lat,lng ]
+function AddressAmap(container_id, options, map_options){
+  this.options= options||{};
+  this.map_options = map_options || {};
+  this.container_id = container_id;
+  this.address = null;
+  this.init();
 }
 
 AddressAmap.prototype.init = function(){
-  this.map = new AMap.Map('map_container', { resizeEnable: true  });
-  var lng = $("#"+this.instance_name+"_lng").val();
-  var lat= $("#"+this.instance_name+"_lat").val();
+  this.map = new AMap.Map(this.container_id, this.map_options);
+  AMap.plugin(['AMap.ToolBar'],
+    function(){
+        map.addControl(new AMap.ToolBar());
+  });
+  this.geocoder = new AMap.Geocoder({ radius: 1000, extensions: "all"});
+
   var map = this.map;
+  var self = this;
+  var lat = this.options.lat;
+  var lng = this.options.lng
   if( parseFloat(lng)>0 && parseFloat(lat)>0)
   {
     //大连中心经纬度： 121.59347778,38.94870994
     map.setZoomAndCenter(14, [lng, lat]);
 
-    map.marker = new AMap.Marker({
+    this.marker = new AMap.Marker({
                 map: map,
                 position: [lng, lat]
     });// 创建标注
@@ -48,28 +76,32 @@ AddressAmap.prototype.init = function(){
   }
   //为地图注册click事件获取鼠标点击出的经纬度坐标
   var clickEventListener = map.on('click', function(e) {
-    this.address = null;
-    //  document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat()
-    if( this.marker )
-    {
-      this.marker.setPosition(e.lnglat); //更新点标记位置
-    }else {
-      this.marker = new AMap.Marker({
-                  map: map,
-                  position: [e.lnglat.getLng(), e.lnglat.getLat()]
-      });// 创建标注
-    }
-
-    this.geocoder = new AMap.Geocoder({ radius: 1000, extensions: "all"});
-    this.geocoder.getAddress(this.marker.getPosition( ), function(status, result) {
-        if (status === 'complete' && result.info === 'OK') {
-          this.address = result.regeocode.formattedAddress; //返回地址描述
-
-        }
-    });
+    self.clickCallback( e );
   });
 };
+AddressAmap.prototype.clickCallback = function(e){
+  var self = this;
 
+  this.address = null;
+  //  document.getElementById("lnglat").value = e.lnglat.getLng() + ',' + e.lnglat.getLat()
+  if( this.marker )
+  {
+    this.marker.setPosition(e.lnglat); //更新点标记位置
+  }else {
+    this.marker = new AMap.Marker({
+                map: this.map,
+                position: [e.lnglat.getLng(), e.lnglat.getLat()]
+    });// 创建标注
+  }
+  this.geocoder.getAddress(this.marker.getPosition( ), function(status, result) {
+      if (status === 'complete' && result.info === 'OK') {
+        self.geocoderCallback( result );
+      }
+  });
+};
+AddressAmap.prototype.geocoderCallback = function( result){
+    this.address = result.regeocode.formattedAddress; //返回地址描述
+};
 
 
 

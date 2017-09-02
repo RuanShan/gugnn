@@ -3,14 +3,14 @@
     <tbody>
       <tr class="my-item-item-tb-content disp">
         <td class="my-item-item-tb-content-img-td width90">
-          <%=link_to my_product_path(product), target:"_blank" do %>
+          <%=link_to product_path(product), target:"_blank" do %>
             <%= image_tag(product.cover_url, size: "110x110", alt: product.title, class:"pull-left") %>
           <% end %>
         </td>
         <td class="width223">
           <div class="my-item-item-tb-content-titles">
             <p class="my-item-item-content-left-title">
-              <%=link_to product.title, my_product_path(product), target:"_blank" %>
+              <%=link_to product.title, product_path(product), target:"_blank" %>
             </p>
             <p class="my-item-item-content-left-date"><%= product.published_at.to_s(:db) %></p>
             <p class="my-item-item-content-left-detail">

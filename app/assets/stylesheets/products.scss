@@ -176,6 +176,20 @@ body {
     }
   }
 
+
+  .product-details
+  {
+    .navbar  { min-height: inherit;}
+
+    .product-image-item{
+      width: 50%;
+      padding: 0 10px 10px 0;
+      float: left;
+    }
+    #map_container{
+      height: 300px;
+    }
+  }
 }
 
 .side-left-wrap {
@@ -200,15 +214,5 @@ body {
     {
 
     }
-}
 
-.product-details
-{
-  .navbar  { min-height: inherit;}
-
-  .product-image-item{
-    width: 50%;
-    padding: 0 10px 10px 0;
-    float: left;
-  }
 }

@@ -22,8 +22,13 @@
 //= require swiper.jquery.min
 //= require ckeditor/init
 //= require_tree .
-
 //= require cityselect
+
+$('#categories_li').hover(function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+}, function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+});
 
 $(function(){
   //new Vcity.CitySelector({input:'citySelect'});
@@ -36,13 +41,6 @@ $(function(){
     var modal = $(this);
     modal.find('.modal-title').text(title);
     modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
-  });
-
-
-  $('#categories_li').hover(function() {
-    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-  }, function() {
-    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
   });
 
 });

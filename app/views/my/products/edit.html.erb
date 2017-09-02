@@ -1,9 +1,10 @@
+<%= render partial: 'shared/error_messages', locals: { target: @product } %>
 <div class="panel panel-default" style="width:100%;" >
   <div class="panel-heading">
     <h2 class="panel-title">修改租赁信息</h2>
   </div>
-  <div class="panel-body">
-    <%= simple_form_for @product, url: {:action=>"update"}, :html => {:multipart => true} do |f| %>
+  <div class="panel-body ">
+    <%= simple_form_for @product, url: {:action=>"update"}, :html => {:multipart => true, class:'product-form'} do |f| %>
 
       <div class="form-inputs">
         <%#=render partial: "my/products/forms/#{@product.category}_form"%>
@@ -11,7 +12,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "提交修改", style:"width:100%"%>
+        <%= f.button :submit, "提交修改", class:'btn-danger', style:"width:100%"%>
       </div>
 
     <% end %>

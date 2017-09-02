@@ -169,12 +169,21 @@
     }
   }
   .gg-cate-prods{
-    margin: 0 -5px;
-    .col-md-3{
-      padding: 0 5px;
+
+    .product{
+      display: block;
+      border: 1px solid #cccccc;
+      padding: 5px 5px;
+      margin: 0 5px 5px;
+      &:hover{
+        background-color: #f9f9f9;
+      }
+
     }
+
+
     .product-image-wrapper{
-      width: 200px;
+      width: auto;
       height: 200px;
       margin: 0 auto;
       img{ width: 100%; }

@@ -192,3 +192,16 @@ function delete_file(index, image_id){
   $("#product_images_attributes_"+index+"__destroy").val("true");
   $("#image_"+image_id).hide();
 }
+
+$(function () {
+    // Initialize the jQuery File Upload widget:
+  $('#fileupload').fileupload({
+    downloadTemplateId: false,
+    replaceFileInput: false,
+    previewMaxWidth:250,
+    previewMaxHeight: 160,
+    //imageCrop: false,
+    //previewCanvas: false,
+    dropZone: null //enable it later
+  });
+});

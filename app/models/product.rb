@@ -1,5 +1,6 @@
 #产品抽象类
 class Product < ApplicationRecord
+  extend DisplayEnum
   include AASM
 
   TENANCY_ENUM = { hour: 3600, day:3600*24, month: 3600*24*30, year: 3600*24*30*365 }
@@ -20,15 +21,17 @@ class Product < ApplicationRecord
   # parent_category需要
   validates :category, presence: true
   validates :title, presence: true, length: { in: 6..50 }
-  validates :desc, length: { in: 10..2000 }, allow_blank:true
+  validates :desc, length: { in: 10..5000 }, allow_blank:true
   validates :price, numericality: true
-  validates :address, length: { in: 6..20 }, allow_blank:true
+  validates :address, length: { in: 6..64 }, allow_blank:true
   # 添加产品，
   # 修改产品，修改过滤字段
   # 改变字段顺序
   enum tenancy: { hour: 1, week: 7, day:24, month: 24*30, year: 24*30*365 }, _prefix: true
   enum min_tenancy: { hour: 1, week: 7, day:24, month: 24*30, year: 24*30*365 }, _prefix: true
   enum status: [:authenticating, :authenticated, :withdrawed]
+  display_enum_methods :tenancy
+
   # 创建 ->审核中-> 审核通过（上线）
   #            -> 审核未通过
   #               审核通过（上线） ->下架

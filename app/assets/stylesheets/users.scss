@@ -251,6 +251,35 @@ width: 200px;
       }
 
     }
+    .product-form
+    {
+      .control-label
+      {
+        width: 80px;
+        text-align: right;
+        padding-right: 16px;
+      }
+      input.form-control
+      {
+        width: 600px;        
+        display: inline-block;
+      }
+      textarea.form-control
+      {
+        width: 600px;
+      }
+      .product-desc-wrap{
+        .control-label
+        {
+          float: left;
+        }
+        #cke_product_desc{
+          float: left;
+        }
+
+      }
+    }
+
   }
 
 }
