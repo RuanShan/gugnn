@@ -195,7 +195,7 @@ function delete_file(index, image_id){
 
 $(function () {
     // Initialize the jQuery File Upload widget:
-  $('#fileupload').fileupload({
+  $('.fileupload').fileupload({
     downloadTemplateId: false,
     replaceFileInput: false,
     previewMaxWidth:250,
@@ -204,4 +204,5 @@ $(function () {
     //previewCanvas: false,
     dropZone: null //enable it later
   });
+
 });

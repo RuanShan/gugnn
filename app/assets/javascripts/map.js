@@ -2,8 +2,12 @@ $(function(){
   var address_container_id="address_container";
   // 创建|编辑 商品时， 初始化租赁商品的地址
   if( $('#'+address_container_id).is('*'))
-  {
-    var instance = 'product';
+  { if($("#product_lng").is('*')){
+      var instance = 'product';
+    }else if($("#user_lng").is('*')){
+      var instance = 'user';
+
+    }
     var $lng = $("#"+instance+"_lng");
     var $lat= $("#"+instance+"_lat");
     var option = { 'lat': $lat.val(), 'lng': $lng.val() };
@@ -25,6 +29,7 @@ $(function(){
   }
 
   //浏览商品时，初始化地图
+  /*
   var map_container_id="map_container";
   if( $('#'+map_container_id).is('*'))
   {
@@ -35,7 +40,7 @@ $(function(){
     var map_options = { 'scrollWheel': false };
     var product_address_map = new AddressAmap(map_container_id, option, map_options);
 
-  }
+  }*/
 })
 
 // params
@@ -51,9 +56,10 @@ function AddressAmap(container_id, options, map_options){
 
 AddressAmap.prototype.init = function(){
   this.map = new AMap.Map(this.container_id, this.map_options);
+  var current_map = this.map;
   AMap.plugin(['AMap.ToolBar'],
     function(){
-        map.addControl(new AMap.ToolBar());
+        current_map.addControl(new AMap.ToolBar());
   });
   this.geocoder = new AMap.Geocoder({ radius: 1000, extensions: "all"});
 
