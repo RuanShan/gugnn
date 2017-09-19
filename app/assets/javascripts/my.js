@@ -194,7 +194,7 @@ function delete_file(index, image_id){
 }
 
 $(function () {
-    // Initialize the jQuery File Upload widget:
+  // 上传出租信息图片
   $('.fileupload').fileupload({
     downloadTemplateId: false,
     replaceFileInput: false,
@@ -205,4 +205,16 @@ $(function () {
     dropZone: null //enable it later
   });
 
+  //上传头像
+  $('.upload-avatar').each(function () {
+    $(this).fileupload({
+      downloadTemplateId: false,
+      replaceFileInput: false,
+      previewMaxWidth:270,
+      previewMaxHeight: 160,
+      //imageCrop: false,
+      //previewCanvas: false,
+      dropZone: $(this) //enable it later
+    });
+  });
 });

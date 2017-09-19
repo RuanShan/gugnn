@@ -7,10 +7,10 @@ end
 if Gem.win_platform?
   #gem 'coffee-script-source', '1.8.0'
   gem 'wdm', '>= 0.1.0'
-  gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
-  gem 'rucaptcha', path: "../rucaptcha/rucaptcha-master"
+  #gem 'bcrypt-ruby', :require => 'bcrypt'
+  #gem 'rucaptcha', path: "../rucaptcha/rucaptcha-master"
 else
-  gem 'rucaptcha'
+  #gem 'rucaptcha'
 end
 
 gem 'rails', '~> 5.0.3'

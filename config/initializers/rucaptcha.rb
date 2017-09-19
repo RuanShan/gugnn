@@ -1,7 +1,7 @@
 # remove original config, it is obsolete, and cause error.
 # /var/www/apps/guanggun/gugnn/config/initializers/rucaptcha.rb:5:in `block in <top (required)>': undefined method `font_size=' for #<RuCaptcha::Configuration:0x0000000577d2d8> (NoMethodError)
 # https://github.com/huacnlee/rucaptcha
-RuCaptcha.configure do
+#RuCaptcha.configure do
   # Color style, default: :colorful, allows: [:colorful, :black_white]
   # self.style = :colorful
   # Custom captcha code expire time if you need, default: 2 minutes
@@ -12,5 +12,5 @@ RuCaptcha.configure do
   # But RuCaptcha requirements cache_store not in [:null_store, :memory_store, :file_store]
   # 默认：会从 Rails 配置的 cache_store 里面读取相同的配置信息，并尝试用可以运行的方式，用于存储验证码字符
   # 但如果是 [:null_store, :memory_store, :file_store] 之类的，你可以通过下面的配置项单独给 RuCaptcha 配置 cache_store
-  self.cache_store = :redis_store, "redis://127.0.0.1:6379/0/cache"#, {raise_errors: true}
-end
+#  self.cache_store = :redis_store, "redis://127.0.0.1:6379/0/cache"#, {raise_errors: true}
+#end
