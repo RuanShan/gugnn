@@ -9,23 +9,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :categories
-    #resources :products
-    resources :office_equipments
-    resources :pets
+    resources :products
     resources :category_options
     resources :images
-    resources :messages
-    resources :conversations
     resources :option_values
     resources :product_option_values
-    resources :rents
-    resources :sales
-    resources :events
-    resources :lease_pcs
     root to: "categories#index"
   end
 
-  resources :pets
   resources :product_option_values
   resources :category_options
   resources :option_values
@@ -35,7 +26,6 @@ Rails.application.routes.draw do
     #  get :products #产品，以及产品过虑
     #end
   end
-  resources :office_equipments
 
   devise_for :users, controllers: { passwords: 'passwords', sessions: 'sessions', registrations: 'registrations' }
 

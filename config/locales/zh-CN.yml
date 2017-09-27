@@ -3,8 +3,10 @@ zh-CN:
     attributes:
       product:
         address: "详细地址"
+        category: 分类
         deposit: "押金"
         desc: "详细介绍"
+        id: ID
         latlng_address: "地址"
         min_tenancy: 最短租期
         min_tenancies:
@@ -14,6 +16,7 @@ zh-CN:
           month: 月
           year: 年
         price: "租金"
+        title: 标题
         tenancy: "租期"
         tenancies:
           hour: 小时
@@ -23,15 +26,67 @@ zh-CN:
           year: 年
         title: "标题"
       user:
-        shop_name: "商店/企业名称"
-        id_number: "ID号码"
-        id_photo: "ID照片"
-        city: "城市"
-        shop_photo: "商店/企业照片"
-        shop_address: "地址"
+        address: 地址
+        avatar: 头像
+        birthday: 生日
+        country_code: 国家
+        cellphone: 电话号码
+        city: 市
         contact_person: "联系人"
         contact_phone: "联系电话"
         contact_other: "其他联系方式"
+        created_at: 创建时间
+        email: 电子邮箱
+        first_name: 名
+        gender: 性别
+        id_auth_status: 身份证认证状态
+        id_auth_statuses:
+          none: 未认证
+          apply: 申请认证
+          ready: 审核中
+          done: 认证成功
+          deny: 认证信息不完整
+        id_number: 身份证号
+        id_photo: "身份证照片"
+        lang: 语言
+        last_name: 姓
+        licence_auth_status: 营业执照认证状态
+        licence_number: 营业执照号
+        licence_photo: 营业执照照片
+        nickname: 昵称
+        password: 密码
+        password_confirmation: 密码确认
+        pp_question: 密保问题
+        pp_answer: 密保答案
+        phone: 电话号码
+        province: 省
+        qq: QQ号码
+        postcode: 邮编
+        realname: 真实姓名
+        role: 角色
+        shop_address: "地址"
+        shop_name: "商店/企业名称"
+        licence_photo: "商店/企业照片"
+        website: 网站
+    models:
+      category:
+        one: 租赁分类
+        other: 租赁分类
+      category_option:
+        one: 分类属性
+        other: 分类属性
+      product:
+        one: 商品
+        other: 商品
+      image:
+        one: 图片
+        other: 图片
+      option_value:
+        one: 分类属性值
+        other: 分类属性值
+      product_option_value:
+        one: 商品属性值
+        other: 商品属性值
   defaults:
     city: '大连市'
     unknown_city: "未知城市"

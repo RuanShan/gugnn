@@ -1,0 +1,32 @@
+<div class="panel panel-default my-auth-form" >
+  <div class="panel-heading">
+    <h2 class="panel-title">个人身份证认证</h2>
+  </div>
+  <div class="panel-body">
+    <div style="margin:15px 0 30px 0;">
+      <h2>
+      <span class="label <%= @user.id_auth_status_none? ? 'label-danger' : 'label-default'%>" style="padding:15px;">1.填写信息</span>&nbsp;>>
+      <span class="label <%= @user.id_auth_status_ready? ? 'label-danger' : 'label-default'%>" style="padding:15px;">2.等待审核</span>&nbsp;>>
+      <span class="label <%= @user.id_auth_status_done? ? 'label-danger' : 'label-default'%>" style="padding:15px;">3.审核通过</span>
+    </h2>
+    </div>
+    <% if @user.id_auth_status_none? %>
+      <%= simple_form_for(@user, url: auth_idcard_my_account_path(@user), :html => {:method => :patch, :multipart => true, id:"authentication_form"}) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :id_number, placeholder: "请填写身份证号"%>
+          <%= render partial:"idcard_image_form", locals:{f: f}%>
+          <div class="form-group">
+            <label class="control-label string optional" for="user_category_id">租赁类目</label>
+            <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" }, {}, { class: 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "提交认证信息", class: 'btn-danger submit' %>
+        </div>
+      <% end %>
+    <% else %>
+    
+    <% end %>
+
+  </div>
+</div>

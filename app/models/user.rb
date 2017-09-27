@@ -3,6 +3,13 @@
 class User < ApplicationRecord
 
   enum role: [:user, :vip, :admin]
+  #   none:  没有认证
+  #   ready: 认证信息准备好，
+  #   done:  认证完成
+  #   deny:  认证信息不合格
+  enum id_auth_status: [:none,:apply, :ready, :done, :deny ], _prefix: true
+  enum licence_auth_status: [:none,:apply, :ready, :done, :deny ], _prefix: true
+
   after_initialize :set_default_role, :if => :new_record?
   devise :database_authenticatable, authentication_keys: [:cellphone]
 
@@ -25,17 +32,17 @@ class User < ApplicationRecord
   attr_reader :avatar_remote_url
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing/avatar.png'
   has_attached_file :id_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
-  has_attached_file :shop_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
-  validates_attachment_content_type :avatar, :id_photo, :shop_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
+  has_attached_file :licence_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
+  validates_attachment_content_type :avatar, :id_photo, :licence_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
 
   validates :shop_name, length: { in: 6..50 }, allow_blank:true
   validates :city, length: { in: 2..10 }, allow_blank:true
   validates :shop_address, length: { in: 6..20 }, allow_blank:true
   validates :contact_person, length: { in: 2..10 }, allow_blank:true
   validates :contact_phone, length: { in: 8..20 }, allow_blank:true
-  validates :shop_name, :id_number, :city, :shop_address, :contact_person, :contact_phone, presence: true, if: Proc.new{|user|user.authenticating}
+  #validates :shop_name, :id_number, :city, :shop_address, :contact_person, :contact_phone, presence: true, if: Proc.new{|user|user.}
 
-  attr_accessor :validate_code, :current_password, :authenticating
+  attr_accessor :validate_code, :current_password
 
 
   def self.validate_phone(phone)
@@ -71,16 +78,8 @@ class User < ApplicationRecord
     @avatar_remote_url = url_value
   end
 
-  def prepare_auth?
-    self.shop_name.blank? || errors.present?
-  end
-
-  def wait_auth?
-    !authenticated && !(prepare_auth?)
-  end
 
   private
-
   def email_required?
     false
   end

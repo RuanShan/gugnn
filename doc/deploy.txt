@@ -1,0 +1,2 @@
+#imagemagick
+http://www.imagemagick.org/download/binaries/

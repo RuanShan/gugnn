@@ -101,7 +101,7 @@ $(function(){
       //'user[id_photo]': {
       //  required: true,
       //},
-      //'user[shop_photo]': {
+      //'user[licence_photo]': {
       //  required: true,
       //},
       'user[city]': {

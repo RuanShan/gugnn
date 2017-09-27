@@ -42,32 +42,25 @@ module My
     end
 
     def auth_idcard
-      @user.auth_type=0
       if request.patch?
-        @user.authenticating = true
-        @user.authenticated=false
         @user.update(authentication_params)
+        @user.id_auth_status_ready!
         if @user.errors.empty?
           redirect_to action: :authentication
           return
         end
       end
-      render :auth_page
     end
 
     def auth_licence
       @user.auth_type=1
       if request.patch?
-        @user.authenticating = true
-        @user.authenticated=false
         @user.update(authentication_params)
-        @user.unauthenticated!
         if @user.errors.empty?
           redirect_to action: :authentication
           return
         end
       end
-      render :auth_page
     end
 
     private
@@ -97,7 +90,7 @@ module My
     end
 
     def authentication_params
-      params.require(:user).permit(:auth_type, :shop_name, :category_id, :id_number, :id_photo, :shop_photo, :city, :shop_address, :lat, :lng, :contact_person, :contact_phone, :contact_other)
+      params.require(:user).permit(:auth_type, :shop_name, :category_id, :id_number, :id_photo, :licence_photo, :city, :shop_address, :lat, :lng, :contact_person, :contact_phone, :contact_other)
     end
 
     def verify_sms

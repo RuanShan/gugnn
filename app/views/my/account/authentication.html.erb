@@ -8,8 +8,7 @@
       <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">个人认证</a></li>
       <li role="presentation" style="margin-bottom: -2px" ><a href="#company" aria-controls="company" role="tab" data-toggle="tab">企业认证</a></li>
     </ul>
-    <%auth_id_text=@user.authenticated? ? "查看认证" : (@user.wait_auth? ? "审核中" : "去认证")%>
-    <%auth_li_text=@user.authenticated? ? "查看认证" : (@user.wait_auth? ? "审核中" : "去认证")%>
+
     <!-- Tab panes -->
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="personal">
@@ -32,8 +31,13 @@
                 <td>
                   <div class="my-item-item-tb-content-option">
                     <span>
-                      <%auth_id_text="去认证" if @user.auth_type==1%>
-                      <%=link_to auth_id_text, auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% if @user.id_auth_status_none? %>
+                        <%=link_to '去认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% elsif @user.id_auth_status_done? %>
+                        <%=link_to '查看认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% else %>
+                        <%=link_to '审核中', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% end %>
                     </span
                   </div>
                 </td>
@@ -63,8 +67,13 @@
                 <td>
                   <div class="my-item-item-tb-content-option">
                     <span>
-                      <%auth_li_text="去认证" if @user.auth_type==0%>
-                      <%=link_to auth_li_text, auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% if @user.licence_auth_status_none? %>
+                        <%=link_to '去认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% elsif @user.licence_auth_status_done? %>
+                        <%=link_to '查看认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% else %>
+                        <%=link_to '审核中', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                      <% end %>
                     </span
                   </div>
                 </td>

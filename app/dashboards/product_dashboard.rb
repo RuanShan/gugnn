@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class LeasePcDashboard < Administrate::BaseDashboard
+class ProductDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,8 +9,10 @@ class LeasePcDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     category: Field::BelongsTo,
+    parent_category: Field::BelongsTo.with_options(class_name: "Category"),
     owner: Field::BelongsTo.with_options(class_name: "User"),
     images: Field::HasMany,
+    master_image: Field::HasOne,
     id: Field::Number,
     type: Field::String,
     title: Field::String,
@@ -18,10 +20,14 @@ class LeasePcDashboard < Administrate::BaseDashboard
     slugged: Field::String,
     owner_id: Field::Number,
     price: Field::Number,
+    tenancy: Field::String.with_options(searchable: false),
+    min_tenancy: Field::String.with_options(searchable: false),
+    max_tenancy: Field::Number,
+    deposit: Field::Number,
     combofilters: Field::String,
     filt0: Field::Number,
-    filt1: Field::String.with_options(searchable: false),
-    filt2: Field::String.with_options(searchable: false),
+    filt1: Field::Number,
+    filt2: Field::Number,
     filt3: Field::Number,
     filt4: Field::Number,
     filt5: Field::Number,
@@ -32,6 +38,18 @@ class LeasePcDashboard < Administrate::BaseDashboard
     published_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    address: Field::String,
+    postal_code: Field::String,
+    created_ip: Field::String.with_options(searchable: false),
+    lat: Field::String.with_options(searchable: false),
+    lng: Field::String.with_options(searchable: false),
+    latlng: Field::String.with_options(searchable: false),
+    parent_category_id: Field::Number,
+    visits: Field::Number,
+    status: Field::String.with_options(searchable: false),
+    authenticated_at: Field::DateTime,
+    withdraw_at: Field::DateTime,
+    latlng_address: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,18 +58,22 @@ class LeasePcDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
+    :title,
     :category,
+    :parent_category,
     :owner,
     :images,
-    :id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :category,
+    :parent_category,
     :owner,
     :images,
+    :master_image,
     :id,
     :type,
     :title,
@@ -59,6 +81,10 @@ class LeasePcDashboard < Administrate::BaseDashboard
     :slugged,
     :owner_id,
     :price,
+    :tenancy,
+    :min_tenancy,
+    :max_tenancy,
+    :deposit,
     :combofilters,
     :filt0,
     :filt1,
@@ -73,6 +99,18 @@ class LeasePcDashboard < Administrate::BaseDashboard
     :published_at,
     :created_at,
     :updated_at,
+    :address,
+    :postal_code,
+    :created_ip,
+    :lat,
+    :lng,
+    :latlng,
+    :parent_category_id,
+    :visits,
+    :status,
+    :authenticated_at,
+    :withdraw_at,
+    :latlng_address,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -80,14 +118,20 @@ class LeasePcDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :category,
+    :parent_category,
     :owner,
     :images,
+    :master_image,
     :type,
     :title,
     :desc,
     :slugged,
     :owner_id,
     :price,
+    :tenancy,
+    :min_tenancy,
+    :max_tenancy,
+    :deposit,
     :combofilters,
     :filt0,
     :filt1,
@@ -100,12 +144,24 @@ class LeasePcDashboard < Administrate::BaseDashboard
     :filt8,
     :filt9,
     :published_at,
+    :address,
+    :postal_code,
+    :created_ip,
+    :lat,
+    :lng,
+    :latlng,
+    :parent_category_id,
+    :visits,
+    :status,
+    :authenticated_at,
+    :withdraw_at,
+    :latlng_address,
   ].freeze
 
-  # Overwrite this method to customize how lease pcs are displayed
+  # Overwrite this method to customize how products are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(lease_pc)
-  #   "LeasePc ##{lease_pc.id}"
+  # def display_resource(product)
+  #   "Product ##{product.id}"
   # end
 end

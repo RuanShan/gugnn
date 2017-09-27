@@ -57,6 +57,10 @@
    产品属性值表：产品属性值
    product_option_values( product_id, category_id, option_id, option_value_id )
 
+#账户认证， 一个账户可以通过多个认证，参考58同城。
+个人身份认证
+企业认证
+
 #设计参考
 http://www.cnblogs.com/feihusurfer/p/4155911.html
 

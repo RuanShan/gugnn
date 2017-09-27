@@ -1,0 +1,20 @@
+<div class="fileupload" data-upload-template-id="template-upload-id">
+  <label class="control-label string optional" for="user_licence_photo">工商执照正面照片</label>
+  <span class="btn btn-success fileinput-button" style="margin:15px;">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>上传</span>
+    <input type="file" name="user[licence_photo]" id="user_licence_photo">
+  </span>
+  <div class="files">
+    <div class="for_id">
+      <div class="preview"><%=image_tag @user.licence_photo.url, width:"270", height:"160"%></div>
+    </div>
+  </div>
+</div>
+
+<script id="template-upload-id" type="text/x-tmpl">
+  {% $('.for_id').remove(); %}
+  <div class="template-upload fade for_id">
+    <div class="preview"><span class="fade"></span></div>
+  </div>
+</script>

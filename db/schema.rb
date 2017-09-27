@@ -314,12 +314,12 @@ ActiveRecord::Schema.define(version: 20170831132751) do
 
   create_table "users", force: :cascade do |t|
     t.string   "cellphone"
-    t.string   "email",                   default: "",    null: false
-    t.string   "encrypted_password",      default: "",    null: false
+    t.string   "email",                      default: "",    null: false
+    t.string   "encrypted_password",         default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,     null: false
+    t.integer  "sign_in_count",              default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -332,20 +332,27 @@ ActiveRecord::Schema.define(version: 20170831132751) do
     t.datetime "avatar_updated_at"
     t.float    "rating"
     t.string   "city"
-    t.integer  "balance",                 default: 0
-    t.integer  "role",                    default: 0
-    t.boolean  "is_admin",                default: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.integer  "auth_type",               default: 0,     null: false
-    t.boolean  "authenticated",           default: false, null: false
-    t.string   "shop_name"
+    t.integer  "balance",                    default: 0
+    t.integer  "role",                       default: 0
+    t.boolean  "is_admin",                   default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "auth_type",                  default: 0,     null: false
+    t.boolean  "authenticated",              default: false, null: false
     t.integer  "category_id"
+    t.integer  "id_auth_status",             default: 0,     null: false
     t.string   "id_number"
     t.string   "id_photo_file_name"
     t.string   "id_photo_content_type"
     t.integer  "id_photo_file_size"
     t.datetime "id_photo_updated_at"
+    t.integer  "licence_auth_status",        default: 0,     null: false
+    t.string   "licence_number"
+    t.string   "licence_photo_file_name"
+    t.string   "licence_photo_content_type"
+    t.integer  "licence_photo_file_size"
+    t.datetime "licence_photo_updated_at"
+    t.string   "shop_name"
     t.string   "shop_photo_file_name"
     t.string   "shop_photo_content_type"
     t.integer  "shop_photo_file_size"
