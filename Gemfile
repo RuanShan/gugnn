@@ -62,8 +62,8 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
-  gem 'ffaker'
   gem 'rubocop'
 end
 # 服务器测试阶段使用
 gem 'factory_girl_rails'
+gem 'ffaker'
