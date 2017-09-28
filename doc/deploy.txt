@@ -1,2 +1,6 @@
 #imagemagick
 http://www.imagemagick.org/download/binaries/
+
+
+
+rvmsudo bundle exec puma -p80 -d RAILS_ENV=production
