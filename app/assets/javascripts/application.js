@@ -31,8 +31,10 @@ $('#categories_li').hover(function() {
 });
 
 $(function(){
-  //new Vcity.CitySelector({input:'citySelect'});
-
+  if( $('#citySelect').is('*'))
+  {
+    new Vcity.CitySelector({input:'citySelect'});
+  }
   $('#gugnnModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var title = button.data('title'); // Extract info from data-* attributes

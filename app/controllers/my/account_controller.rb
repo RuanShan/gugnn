@@ -44,8 +44,8 @@ module My
     def auth_idcard
       if request.patch?
         @user.update(authentication_params)
-        @user.id_auth_status_ready!
         if @user.errors.empty?
+          @user.id_auth_status_ready!
           redirect_to action: :authentication
           return
         end
@@ -57,6 +57,7 @@ module My
       if request.patch?
         @user.update(authentication_params)
         if @user.errors.empty?
+          @user.licence_auth_status_ready!
           redirect_to action: :authentication
           return
         end
@@ -90,7 +91,7 @@ module My
     end
 
     def authentication_params
-      params.require(:user).permit(:auth_type, :shop_name, :category_id, :id_number, :id_photo, :licence_photo, :city, :shop_address, :lat, :lng, :contact_person, :contact_phone, :contact_other)
+      params.require(:user).permit(:auth_type, :shop_name, :category_id, :id_number, :id_photo, :licence_number, :licence_photo, :city, :shop_address, :lat, :lng, :contact_person, :contact_phone, :contact_other)
     end
 
     def verify_sms

@@ -1,4 +1,4 @@
-<div class="panel panel-default my-auth-form" >
+<div class="my-auth-form" >
   <div class="panel-heading">
     <h2 class="panel-title">营业执照认证</h2>
   </div>
@@ -10,6 +10,28 @@
       <span class="label <%= @user.licence_auth_status_done? ? 'label-danger' : 'label-default'%>" style="padding:15px;">3.审核通过</span>
     </h2>
     </div>
-    <%= render partial:"auth_form"%>
+    <% if @user.licence_auth_status_none? %>
+      <%= simple_form_for(@user, url: auth_licence_my_account_path(@user), :html => {:method => :patch, :multipart => true, id:"authentication_form"}) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :licence_number, placeholder: "工商执照注册号"%>
+          <%= render partial:"licence_image_form", locals:{f: f}%>
+          <div class="form-group">
+            <label class="control-label string optional" for="user_category_id">租赁类目</label>
+            <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" }, {}, { class: 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "提交认证信息", class: 'btn-danger submit' %>
+        </div>
+      <% end %>
+    <% else %>
+      <table class="table table-bordered">
+        <tr> <th colspan="2">申请认证信息 </th> </tr>
+        <tr> <td> 工商执照注册号 </td> <td> <%= @user.licence_number %> </td> </tr>
+        <tr> <td> 工商执照正面照片 </td> <td> <%=image_tag  @user.licence_photo.url, size: "300x300" %> </td> </tr>
+        <tr> <td> 认证状态 </td> <td> <%= User.translate_enum_name('licence_auth_status', @user.licence_auth_status)  %> </td> </tr>
+      </table>
+
+    <% end %>
   </div>
 </div>

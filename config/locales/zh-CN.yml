@@ -53,6 +53,12 @@ zh-CN:
         licence_auth_status: 营业执照认证状态
         licence_number: 营业执照号
         licence_photo: 营业执照照片
+        licence_auth_statuses:
+          none: 未认证
+          apply: 申请认证
+          ready: 审核中
+          done: 认证成功
+          deny: 认证信息不完整
         nickname: 昵称
         password: 密码
         password_confirmation: 密码确认

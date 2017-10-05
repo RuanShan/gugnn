@@ -1,4 +1,4 @@
-<div class="panel panel-default my-auth-form" >
+<div class=" my-auth-form" >
   <div class="panel-heading">
     <h2 class="panel-title">个人身份证认证</h2>
   </div>
@@ -25,7 +25,13 @@
         </div>
       <% end %>
     <% else %>
-    
+      <table class="table table-bordered">
+        <tr> <th colspan="2">申请认证信息 </th> </tr>
+        <tr> <td> 身份证号 </td> <td> <%= @user.id_number %> </td> </tr>
+        <tr> <td> 身份证照片 </td> <td> <%=image_tag  @user.id_photo.url, size: "300x300" %> </td> </tr>
+        <tr> <td> 认证状态 </td> <td> <%= User.translate_enum_name('id_auth_status', @user.id_auth_status)  %> </td> </tr>
+      </table>
+
     <% end %>
 
   </div>

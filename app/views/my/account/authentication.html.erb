@@ -1,4 +1,4 @@
-<div class="panel panel-default my-auth-form" >
+<div class=" my-auth-form" >
   <div class="panel-heading">
     <h2 class="panel-title">租赁商认证</h2>
   </div>
@@ -20,7 +20,8 @@
                   <%= image_tag("auth_p", size: "110x110", alt: "个人身份证认证") %>
                 </td>
                 <td class="width223">
-                  <span style="font-weight:bold;font-size:2em;margin-left:15px;"> 个人身份证认证 </span>
+                  <div><span style="font-weight:bold;font-size:18px;margin-left:16px;"> 个人身份证认证 </span></div>
+                  <div><span style="font-weight:bold;margin-left:16px;"> <%= User.translate_enum_name('id_auth_status', @user.id_auth_status)  %></span></div>
                 </td>
                 <td class="width243">
                   <div class="my-item-item-tb-content-states">
@@ -32,11 +33,9 @@
                   <div class="my-item-item-tb-content-option">
                     <span>
                       <% if @user.id_auth_status_none? %>
-                        <%=link_to '去认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
-                      <% elsif @user.id_auth_status_done? %>
-                        <%=link_to '查看认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                        <%=link_to '申请认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
                       <% else %>
-                        <%=link_to '审核中', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                        <%=link_to '查看认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
                       <% end %>
                     </span
                   </div>
@@ -56,7 +55,8 @@
                   <%= image_tag("auth_c", size: "110x110", alt: "营业执照认证") %>
                 </td>
                 <td class="width223">
-                  <span style="font-weight:bold;font-size:2em;margin-left:15px;"> 营业执照认证 </span>
+                  <div><span style="font-weight:bold;font-size:2em;margin-left:15px;"> 营业执照认证 </span></div>
+                  <div><span style="font-weight:bold;margin-left:16px;"> <%= User.translate_enum_name('id_auth_status', @user.id_auth_status)  %></span></div>
                 </td>
                 <td class="width243">
                   <div class="my-item-item-tb-content-states">
@@ -68,11 +68,9 @@
                   <div class="my-item-item-tb-content-option">
                     <span>
                       <% if @user.licence_auth_status_none? %>
-                        <%=link_to '去认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
-                      <% elsif @user.licence_auth_status_done? %>
-                        <%=link_to '查看认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                        <%=link_to '申请认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
                       <% else %>
-                        <%=link_to '审核中', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                        <%=link_to '查看认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
                       <% end %>
                     </span
                   </div>

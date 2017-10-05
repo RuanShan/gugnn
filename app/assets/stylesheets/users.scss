@@ -182,14 +182,12 @@ width: 200px;
           padding: 9px 12px;
       }
       .my-item-item-tb-content td {
-          padding-top: 21px;
-          padding-left: 7px;
+        padding: 16px 0;
+        padding-left: 12px;
       }
 
       .my-item-item-tb td {
-          height: 120px;
           text-align: left;
-          vertical-align: top;
       }
       .swk-status-wrap {
           width: 90px;
@@ -261,7 +259,7 @@ width: 200px;
       }
       input.form-control
       {
-        width: 600px;        
+        width: 600px;
         display: inline-block;
       }
       textarea.form-control

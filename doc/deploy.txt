@@ -2,5 +2,5 @@
 http://www.imagemagick.org/download/binaries/
 
 
-
-rvmsudo bundle exec puma -p80 -d RAILS_ENV=production
+                                       ///home/deploy/www/gugnn/tmp/sockets/puma.sock
+bundle exec puma -e production -b unix:///home/deploy/www/gugnn/tmp/sockets/puma.sock
