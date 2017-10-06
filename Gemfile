@@ -5,8 +5,9 @@ git_source(:github) do |repo_name|
 end
 #ruby '2.2.4'
 #gem 'coffee-script-source', '1.8.0'
-gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
-#gem 'bcrypt-ruby', :require => 'bcrypt'
+#gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'bcrypt-ruby', :require => 'bcrypt'
 #gem 'rucaptcha', path: "../rucaptcha/rucaptcha-master"
 
 

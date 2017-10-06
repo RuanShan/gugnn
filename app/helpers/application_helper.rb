@@ -54,4 +54,9 @@ module ApplicationHelper
   #  session[:selected_city]
   #end
 
+  def parse_path(path)
+    path_hash = Rails.application.routes.recognize_path(path)
+    return path_hash[:controller], path_hash[:action]
+  end
+
 end
