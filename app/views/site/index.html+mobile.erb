@@ -1,0 +1,46 @@
+<div class="gg-index">
+  <%= render partial: 'slider' %>
+    <div class="gg-search">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                  <select  class="form-control"> <option>大连市</option></select>
+                 </div>
+                <div class="col-xs-6">
+                  <select  class="form-control"> <option>选择类目</option></select>
+                 </div>
+                <div class="col-xs-6">
+                  <button type="button" class="btn">我要出租</button>
+                 </div>
+                <div class="col-xs-6">
+                  <button type="button" class="btn">搜索</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class=" gg-high-cats ">
+        <div class="clearfix">
+          <% @categories.each{ |category| %>
+              <div class="gg-cat-col">
+                <div class="gg-cat-col-head">
+                  <%= content_tag :div, class: 'cate-icon '+category.name  do %>
+                  <% end %>
+                  <div>
+                    <span class="title"> <%=category.title %> </span>
+                  </div>
+                </div>
+
+              </div>
+          <% } %>
+        </div>
+    </div>
+  <div class="gg-categories-wrapper">
+    <div class="">
+        <div class="gg-cats">
+          <%= render partial: 'categories' %>
+        </div>
+    </div>
+  </div>
+</div>

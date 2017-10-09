@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>光棍族生活</title>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= render partial: 'layouts/js.html.erb' %>
+    </head>
+
+    <body class="mobile">
+      <div class="gg-top-nav">
+        <%= render partial: 'layouts/navigation' %>
+      </div>
+      <div class="gg-page-content clearfix">
+          <%= yield %>
+      </div>
+      <div class="gg-footer">
+        <div class="container">
+          <%= render partial: 'layouts/footer' %>
+        </div>
+      </div>
+      <%= javascript_include_tag 'application.mobile', 'data-turbolinks-track': 'reload' %>
+    </body>
+
+</html>

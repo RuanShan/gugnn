@@ -201,3 +201,84 @@
     }
   }
 }
+.mobile{
+  .gg-high-cats
+  {
+    background-color: #fff;
+    margin: 8px 0 ;
+    padding: 0 8px;
+    .gg-cat-col
+    {
+      float: left;
+      width: 20%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      .gg-cat-col-head
+      {
+        padding: 8px 0;
+        text-align: center;
+        .cate-icon
+        {
+          padding: 0;
+          width: 48px;
+          height: 48px;
+          background-size: 100% auto;
+          &.transportation{
+            background-position: 0px 0px;
+          }
+          &.time{
+            background-position: 0px -205px;
+          }
+          &.fasion{
+            background-position: 0px -480px;
+          }
+          &.marry{
+            background-position: 0px -69px;
+          }
+          &.office{
+            background-position: 0px -276px;
+          }
+          &.furniture{
+            background-position: 0px -480px;
+          }
+          &.outing{
+            background-position: 0px -136px;
+          }
+          &.baby{
+            background-position: 0px -340px;
+          }
+          &.pet{
+            background-position: 0px -640px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .gg-categories-wrapper
+  {
+    .gg-cate-prods
+    {
+       min-height: 8px;
+       padding: 8px 0;
+       .product-image-wrapper
+       {
+         height: auto;
+       }
+    }
+    .category
+    {
+      .head{
+        padding: 4px 12px;
+        border-bottom: 1px solid #cccccc;
+        .title{
+          border-left: 4px solid #d61718;
+          padding: 0 8px;
+        }
+      }
+    }
+
+  }
+}

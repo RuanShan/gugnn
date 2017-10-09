@@ -15,10 +15,18 @@
  *= require_tree .
  *= require_self
  */
+ /* override swiper.min */
+.swiper-pagination-bullet-active{
+  background-color: #fff;
+}
+
  body {
  }
  ul {
    list-style-type: none;
+ }
+ .red-bg{
+   background:  #d61718;
  }
  .red-font
  {
@@ -27,6 +35,9 @@
  .gray-font
  {
     color: #999;
+ }
+ .gg-bb{
+   border-bottom: 1px solid #cccccc;
  }
  .logo{
    height: 50px;
@@ -57,7 +68,16 @@
   width: 25%;
   float: left;
 }
-
+.width-1-2
+{
+  width: 50%;
+  float: left;
+}
+.width-1-5
+{
+  width:20%;
+  float: left;
+}
 .menu-wrapper
 {
   padding: 18px 0;
@@ -111,12 +131,34 @@
 
 
 /*home page*/
+.gg-index{
+
+}
 .gg-index .gg-cats{
   margin: 0 0 30px 0;
 }
 .gg-slider
 {
+  .swiper-wrapper{
+      height: 450px;
+  }
   background-color: #d61718;
+  .slide1{
+    background-image: image-url('slides/slide.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .slide2{
+    background-image: image-url('slides/slide.png');
+    background-size: cover;
+    background-position: center;
+
+  }
+  .slide3{
+    background-image: image-url('slides/slide.png');
+    background-size: cover;
+    background-position: center;
+  }
 }
 .gg-ad{
   background-color: #fff;
@@ -207,7 +249,81 @@
     height: 49px;
     background: image-url('logo-dark.png') no-repeat;
     background-size: contain;
-    float: right;
+
+  overflow: hidden; float: right;
     margin-bottom: 25px;
+  }
+}
+.mobile{
+  ul{
+    margin: 0;
+  }
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+
+  .gg-page-content{
+    margin:  0 0 80px 0;
+  }
+  /*滚动海报*/
+  .gg-slider
+  {
+    .swiper-wrapper{
+      height: 150px;
+    }
+    .swiper-pagination
+    {
+      display: none;
+    }
+  }
+  /* 头部导航条 */
+  .gg-top-nav
+  {
+    line-height: 46px;
+    .navbar-toggle
+    {
+      padding: 0;
+      margin: 0 10px 0 0;
+      height: 46px;
+      .icon-bar{
+        background-color: #666;
+      }
+    }
+    .auth-links{
+      li{
+        float: left;
+        a{
+          padding: 0 5px 0 0;
+        }
+      }
+    }
+  }
+  .gg-search
+  {
+    padding: 8px 0;
+    background-color: #fff;
+    button{
+      margin: 4px auto;
+      width: 100%;
+      color: #fff;
+      background-color:  #d61718;
+    }
+  }
+  .gg-footer
+  {
+    padding: 8px 0;
+    background-color: #cacaca;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .nav-item-wrap
+    {
+      text-align: center;
+      .font-icon
+      {
+        font-size: 2em;
+      }
+    }
   }
 }

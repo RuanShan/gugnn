@@ -1,26 +1,23 @@
-<%= content_tag 'div', id: dom_id(category),role: 'tabpanel', class: (category_counter==0 ? "tab-pane active #{category.name}" : "tab-pane #{category.name}" ) do %>
+<%= content_tag 'div', id: dom_id(category), role: 'tabpanel', class: (category_counter==0 ? "tab-pane active #{category.name}" : "tab-pane #{category.name}" ) do %>
 
-     <div class="row">
-      <div class="col-md-3" >
+     <div class="">
         <div class="category">
-          <div class="category-image" style="">
-            图
-          </div>
-          <div style="height:200px;">
-            <div class="title"> <%= category.title %> </div>
-            <div class="subcategries">
-              <p class="subtitle"> 细分类目</p>
-            <% category.children.each{|cate| %>
-              <%= link_to cate.title, cate %>
-            <% } %>
+            <div class="head">
+              <div> <span class="title"> <%= category.title %> </span>
+                <a class="toggleSubCategoriesBtn"><%= @category.try( :title) || category.children.first.title %> <span class="caret"></span> </a>
+                <a class="pull-right">更多 </a>
+              </div>
+              <div class="subcategries hidden ">
+                <% category.children.each{|cate| %>
+                  <%= link_to cate.title, cate, remote: true %>
+                <% } %>
+              </div>
             </div>
-          </div>
+
         </div>
-      </div>
-      <div class="col-md-9" >
-        <ul class="gg-cate-prods">
+        <ul class="gg-cate-prods clearfix">
           <% category.highlight_subproducts.each_with_index{ |product, i| %>
-            <li class="width-1-4" >
+            <li class="width-1-2" >
               <%= link_to product_path(product), class:'product' do%>
                 <div class="product-image-wrapper">
                 <% if product.master_image.present? %>
@@ -39,6 +36,5 @@
           <% } %>
         </ul>
 
-      </div>
     </div>
  <% end %>

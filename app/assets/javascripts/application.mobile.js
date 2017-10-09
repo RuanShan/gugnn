@@ -48,9 +48,7 @@ $(function(){
   if( $('.swiper-container').is('*'))
   {
     var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        autoplay : 5000
+      autoplay : 5000
     });
   }
 });
