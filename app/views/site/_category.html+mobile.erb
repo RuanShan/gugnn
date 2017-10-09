@@ -16,9 +16,9 @@
 
         </div>
         <div class="gg-cate-prods swiper-container">
-          <ul class="clearfix swiper-wrapper">
+          <ul class="swiper-wrapper">
             <% category.highlight_subproducts.each_with_index{ |product, i| %>
-              <li class="width-1-2" >
+              <li class="swiper-slide" >
                 <%= link_to product_path(product), class:'product' do%>
                   <div class="product-image-wrapper">
                   <% if product.master_image.present? %>
@@ -36,6 +36,6 @@
 
             <% } %>
           </ul>
-        <div>
+        </div>
     </div>
  <% end %>

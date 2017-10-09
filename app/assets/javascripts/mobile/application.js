@@ -21,8 +21,10 @@
 //= require lightbox.min
 //= require swiper.jquery.min
 //= require ckeditor/init
-//= require_tree .
 //= require cityselect
+// other custom js file
+//= require map
+//= require users
 
 $('#categories_li').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -51,11 +53,14 @@ $(function(){
       autoplay : 5000
     });
   }
-  if( $('.gg-cate-prods.swiper-container').is('*'))
+  if( $('.gg-categories .swiper-container').is('*'))
   {
-    var swiper = new Swiper('.gg-cate-prods.swiper-container', {
-      slidesPerView: 2,
+    $('.gg-categories .swiper-container').each(function(){
+      var swiper = new Swiper(this, {
+        slidesPerView: 2,
+      });
     });
+
   }
 });
 
