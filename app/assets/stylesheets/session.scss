@@ -1,7 +1,7 @@
 .loginContent{
   #outregBox a {
     color: #fff;
-  } 
+  }
   #outregBox {
       color: #fff;
       position: relative;
@@ -35,4 +35,14 @@
     }
   }
 
+}
+
+.mobile{
+  #outregBox
+  {
+    width: auto;
+  }
+  .authform-wrap{
+    width: auto;
+  }
 }
