@@ -21,6 +21,7 @@ module My
 
     # GET /products/new
     def new
+      @user = current_user
       @product = Product.new(category_id: params[:category_id])
       #为什么要创建一个图片对象？
       #@product.images.build
