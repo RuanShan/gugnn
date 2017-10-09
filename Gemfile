@@ -8,8 +8,8 @@ end
 #gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 #fix bcrypt.rb:12:in `require': 126: 找不到指定的模块。
-#https://github.com/codahale/bcrypt-ruby/issues/142
-#gem 'bcrypt-ruby', :require => 'bcrypt'
+#https://github.com/codahale/bcrypt-ruby/issues/116
+gem 'bcrypt-ruby', :require => 'bcrypt'
 #gem 'rucaptcha', path: "../rucaptcha/rucaptcha-master"
 
 gem 'rails', '~> 5.0.3'

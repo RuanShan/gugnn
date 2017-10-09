@@ -1,0 +1,44 @@
+<%= content_tag 'div', id: dom_id(category),role: 'tabpanel', class: (category_counter==0 ? "tab-pane active #{category.name}" : "tab-pane #{category.name}" ) do %>
+
+     <div class="row">
+      <div class="col-md-3" >
+        <div class="category">
+          <div class="category-image" style="">
+            图
+          </div>
+          <div style="height:200px;">
+            <div class="title"> <%= category.title %> </div>
+            <div class="subcategries">
+              <p class="subtitle"> 细分类目</p>
+            <% category.children.each{|cate| %>
+              <%= link_to cate.title, cate %>
+            <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9" >
+        <ul class="gg-cate-prods">
+          <% category.highlight_subproducts.each_with_index{ |product, i| %>
+            <li class="width-1-4" >
+              <%= link_to product_path(product), class:'product' do%>
+                <div class="product-image-wrapper">
+                <% if product.master_image.present? %>
+                <%= image_tag product.cover_url, class:"gg-prod-img product-image" %>
+                <% else %>
+                <%= image_tag 'default.png', class:"gg-prod-img product-image" %>
+                <% end %>
+                </div>
+                <div class="gg-cate-prod-info">
+                  <div class='gg-cate-prod-price' > <%== display_price product%> </div>
+                  <div class='gg-cate-prod-title' > <%= product.title%> </div>
+                </div>
+              <% end %>
+            </li>
+
+          <% } %>
+        </ul>
+
+      </div>
+    </div>
+ <% end %>
