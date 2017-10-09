@@ -15,26 +15,27 @@
             </div>
 
         </div>
-        <ul class="gg-cate-prods clearfix">
-          <% category.highlight_subproducts.each_with_index{ |product, i| %>
-            <li class="width-1-2" >
-              <%= link_to product_path(product), class:'product' do%>
-                <div class="product-image-wrapper">
-                <% if product.master_image.present? %>
-                <%= image_tag product.cover_url, class:"gg-prod-img product-image" %>
-                <% else %>
-                <%= image_tag 'default.png', class:"gg-prod-img product-image" %>
+        <div class="gg-cate-prods swiper-container">
+          <ul class="clearfix swiper-wrapper">
+            <% category.highlight_subproducts.each_with_index{ |product, i| %>
+              <li class="width-1-2" >
+                <%= link_to product_path(product), class:'product' do%>
+                  <div class="product-image-wrapper">
+                  <% if product.master_image.present? %>
+                  <%= image_tag product.cover_url, class:"gg-prod-img product-image" %>
+                  <% else %>
+                  <%= image_tag 'default.png', class:"gg-prod-img product-image" %>
+                  <% end %>
+                  </div>
+                  <div class="gg-cate-prod-info">
+                    <div class='gg-cate-prod-price' > <%== display_price product%> </div>
+                    <div class='gg-cate-prod-title' > <%= product.title%> </div>
+                  </div>
                 <% end %>
-                </div>
-                <div class="gg-cate-prod-info">
-                  <div class='gg-cate-prod-price' > <%== display_price product%> </div>
-                  <div class='gg-cate-prod-title' > <%= product.title%> </div>
-                </div>
-              <% end %>
-            </li>
+              </li>
 
-          <% } %>
-        </ul>
-
+            <% } %>
+          </ul>
+        <div>
     </div>
  <% end %>

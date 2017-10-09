@@ -311,12 +311,13 @@
   }
   .gg-footer
   {
-    padding: 8px 0;
+    padding: 4px 0;
     background-color: #cacaca;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    height: 60px;
     .nav-item-wrap
     {
       text-align: center;
