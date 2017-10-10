@@ -1,0 +1,14 @@
+<div class="select-category gg-hide">
+  <%  Category.roots.includes(:children).each{ |category| %>
+          <div>
+            <%= link_to category.title, category, href: '#', class:'ptitle' %>
+            <div class="subcategory clearfix">
+              <% category.children.each{|child| %>
+                <div class="categoryWrap">
+                <%= link_to child.title, child, class:'category', href:'#', data:{ id: child.id, title: child.title}  %>
+                </div>
+              <% } %>
+            </div>
+          </div>
+  <% } %>
+</div>

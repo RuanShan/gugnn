@@ -23,6 +23,7 @@
 //= require ckeditor/init
 //= require jquery.sidr.min
 //= require cityselect
+//= require layer.custom
 // other custom js file
 //= require map
 //= require users
@@ -69,6 +70,28 @@ $(function(){
   $("body").on( 'click','.gg-overlay',function(){
     $.sidr( 'close', 'gg-menu');
   })
+  //为了页面加载时美观，页面加载时，隐藏gg-menu，sidr初始化成功后，去除 class: hide
+  $('#gg-menu').removeClass('gg-hide');
+
+  $('.selectCategoryBtn').click(function(){
+    var selectCategory = layer.open({
+      title: '类目选择',
+      type: 1,
+      content: $('.select-category'),
+      area: ['320px', '195px'],
+    });
+    layer.full(selectCategory);
+
+    $('.select-category .category').click(function(e){
+      e.preventDefault();
+      var title = $(this).data('title');
+      var id =  $(this).data('id');
+      $('.selectCategoryBtn .title').text( title);
+      layer.close(selectCategory);
+
+    })
+  })
+
 });
 
 function validate_code_time(code_id, wait) {
