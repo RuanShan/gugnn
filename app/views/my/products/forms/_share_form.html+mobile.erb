@@ -1,0 +1,54 @@
+<%= product_form.input :category_id, as: "hidden" %>
+
+<%= product_form.input :title, placeholder: "请填写标题" %>
+<div class="form-group form-inline product-desc-wrap clearfix">
+  <%= product_form.label :desc, class: 'control-label' %>
+  <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写详细介绍",  ckeditor: { toolbar: 'mini', language: 'zh-CN', height: 300 }%>
+</div>
+
+<div class="form-group form-inline ">
+  <%= product_form.label :price, class: 'control-label' %>
+  <div style="display: table;">
+    <div class="input-group" style="width:150px;float:left;"> <%= product_form.number_field :price , class: 'form-control', style:""%>
+      <div class="input-group-addon">元</div>
+    </div>
+    <div style="float:left;padding:5px 10px;">/</div><%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control', style:"width:100px;float:left;"  %>
+  </div>
+</div>
+
+<div class="form-group form-inline ">
+  <%= product_form.label :deposit, class: 'control-label' %>
+  <div class="input-group">
+    <%= product_form.number_field :deposit , class: 'form-control'%>
+    <div class="input-group-addon">元</div>
+  </div>
+</div>
+
+<div id="address_mark" class="form-group form-inline">
+  <%= product_form.label :latlng_address, class: 'control-label' %>
+  <%= product_form.text_field :latlng_address, class: 'form-control', style: 'width:70%;' %>
+  <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
+    <i class="glyphicon glyphicon-pushpin"></i>
+    <span>在地图上标记地址</span>
+  <% end %>
+  <%= product_form.input :lat, as: "hidden" %>
+  <%= product_form.input :lng, as: "hidden" %>
+</div>
+
+<div class="form-group form-inline ">
+  <%= product_form.label :address, class: 'control-label' %>
+  <div class="input-group">
+    <%= product_form.text_field :address , class: 'form-control'%>
+  </div>
+</div>
+
+<div id="product_images" style="margin:10px 0;">
+  <%= render partial:"my/products/forms/image_form", locals:{product_form: product_form}%>
+</div>
+<% @product.category.category_options.each do |category_option| %>
+  <div>
+    <% options = category_option.option_values.map{|ov|[ov.id, ov.title]}%>
+    <%= product_form.label category_option.title %>
+    <%= product_form.collection_radio_buttons category_option.filter_column_name, options, :first, :last,{},{style:"margin:0 10px;"} %>
+  </div>
+<% end %>

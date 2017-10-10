@@ -1,0 +1,26 @@
+<div>
+  <ul class="nav nav-tabs" role="tablist" >
+    <li role="presentation" class="active">
+      <a href="#my_new_info" aria-controls="my_new_info" role="tab" data-toggle="tab">最近发布</a>
+    </li>
+    <li role="presentation"  >
+      <a href="#my_unshow_info" aria-controls="my_unshow_info" role="tab" data-toggle="tab">未显示</a>
+    </li>
+    <li role="presentation"  >
+      <a href="#my_pending_info" aria-controls="my_pending_info" role="tab" data-toggle="tab">审核中</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="my_new_info">
+       <div>
+        <%= render partial: 'my/products/product', collection: @authenticated_products %>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="my_unshow_info">
+      <%= render partial: 'my/products/product', collection: @withdrawed_products %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="my_pending_info">
+      <%= render partial: 'my/products/product', collection: @pending_products %>
+    </div>
+  </div>
+</div>

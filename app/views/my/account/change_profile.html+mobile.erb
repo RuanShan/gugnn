@@ -1,0 +1,43 @@
+<div class="panel panel-default my-auth-form" style="" >
+  <div class="panel-heading">
+    <h2 class="panel-title"><%= t(:change_profile) %></h2>
+  </div>
+  <div class="panel-body">
+
+    <%= simple_form_for(@user, url: change_profile_my_account_path(@user), :html => {:method => :patch, :multipart => true, id:"change_profile_form"}) do |f| %>
+      <%= render partial: 'avator', locals:{f: f} %>
+      <div class="form-inputs">
+        <%= f.input :nickname%>
+        <%= f.input :cellphone%>
+        <%= f.input :validate_code, placeholder: t(:input_only_change_phone), input_html: {style: "float:left;"}, wrapper_html:{style:"float:left;width:55%;"} %>
+        <%= button_tag t(:get_verify_code), type: :button, id:"obtainVerifyCode", style:"height:34px;float:right;margin:22px 0 20px 0;" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, t(:change), class: 'btn-danger submit', style:"width:100%"%>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+<div class="panel panel-default my-auth-form" style="" >
+  <div class="panel-heading">
+    <h2 class="panel-title">修改密码</h2>
+  </div>
+  <div class="panel-body">
+
+  <%= simple_form_for(@user, url: change_password_my_account_path(@user), :html => {:method => :patch, id:"change_password_form"}) do |f| %>
+
+    <div class="form-inputs">
+      <%= f.input :current_password, label: false, placeholder: t(:current_password)%>
+      <%= f.input :password, label: false, placeholder: t(:new_password)%>
+      <%= f.input :password_confirmation, label: false, placeholder: t(:password_confirmation)%>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t(:change), class:'btn-danger submit', style:"width:100%" %>
+    </div>
+  <% end %>
+
+  </div>
+</div>

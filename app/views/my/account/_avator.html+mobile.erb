@@ -1,0 +1,64 @@
+<div style="height:auto;">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">本地头像</a></li>
+    <li role="presentation" style="margin-bottom: -2px" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">系统头像</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content" style="margin-bottom:10px;">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+      <div class="upload-avatar" data-upload-template-id="template-upload-avatar">
+        <div class="defaultImgBorder userImgBorder">
+          <div class="files">
+            <div class="for_avatar" style="margin:10px;">
+              <div class="preview"><%=image_tag @user.avatar.url, width:"150", height:"150"%></div>
+            </div>
+          </div>
+        </div>
+        <div style="width:100%;float:left;">
+          <span class="btn btn-success fileinput-button" style="margin:10px;">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>上传头像</span>
+            <input type="file" name="user[avatar]" id="user_avatar">
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <div role="tabpanel" class="tab-pane " id="profile">
+      <div class="clearfix">
+        <%= f.input :avatar_remote_url, label: false, as:"hidden"%>
+
+        <div id="defaultImgLiBorder" class="defaultImgBorder userImgBorder" style="margin:10px;">
+            <%=image_tag @user.avatar.url, width:"150", height:"150"%>
+        </div>
+
+        <div id="systemImgBox" class="systemImgBox">
+            <p class="systemImgText">请选择喜欢的系统头像：</p>
+            <div style="width:100%">
+              <div style="width:30%;float:left;margin-left:5px;">
+                  <img src="http://img.58cdn.com.cn/ui6/my/images/d_120.gif" alt="">
+              </div>
+              <div style="width:30%;float:left;margin-left:5px;">
+                  <img src="http://img.58cdn.com.cn/ui6/my/images/e_120.gif" alt="">
+              </div>
+              <div style="width:30%;float:left;margin-left:5px;">
+                  <img src="http://img.58cdn.com.cn/ui6/my/images/f_120.gif" alt="">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script id="template-upload-avatar" type="text/x-tmpl">
+  {% $('.for_avatar').remove(); %}
+  <div class="template-upload fade for_avatar">
+    <div class="preview"><span class="fade"></span></div>
+  </div>
+</script>

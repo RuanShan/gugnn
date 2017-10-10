@@ -36,7 +36,7 @@ $(function(){
       },
       'user[password_confirmation]': {
         required: true,
-        equalTo: '#reset_password_form #user_password'
+        equalTo: '#change_password_form #user_password'
       },
     },
     errorPlacement:function(error,element) {

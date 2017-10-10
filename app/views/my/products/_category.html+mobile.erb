@@ -1,0 +1,31 @@
+<% first_root = Category.roots.first%>
+<div style="width:100%;padding:10px;">
+  <div class="panel panel-default" style="width:45%;float:left;" >
+    <div class="panel-heading">
+      <h3 class="panel-title">1.选择大类</h3>
+    </div>
+    <div class="panel-body">
+      <div class="list-group">
+        <% for root in Category.roots%>
+          <% my_class = root.id == first_root.id ? "list-group-item no_border cat active" : "list-group-item no_border cat"%>
+          <%=link_to root.title, nil, href:"javascript:void(0)", class:my_class, id:"cat_#{root.id}", onclick:"toggle_category(#{root.id})" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default" style="width:45%;float:left;margin-left:20px;" >
+    <div class="panel-heading">
+      <h3 class="panel-title">2.选择小类</h3>
+    </div>
+    <div class="panel-body">
+      <% for root in Category.roots %>
+        <% my_style = root.id == first_root.id ? "" : "display:none;"%>
+        <div id="sub_cat_<%=root.id%>" class="list-group sub_cat" style="<%=my_style%>" data-turbolinks="false">
+          <% for child in root.children %>
+            <%=link_to child.title, new_my_product_path(category_id: child.id), class:"list-group-item no_border" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
