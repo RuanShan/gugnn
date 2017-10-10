@@ -25,11 +25,11 @@
           <% @categories.each{ |category| %>
               <div class="gg-cat-col">
                 <div class="gg-cat-col-head">
-                  <%= content_tag :div, class: 'cate-icon '+category.name  do %>
+                  <%= link_to category do %>
+                    <%= content_tag :div, class: 'cate-icon '+category.name do  %>
+                    <% end %>
+                    <div>  <span class="title"> <%=category.title %> </span>  </div>
                   <% end %>
-                  <div>
-                    <span class="title"> <%=category.title %> </span>
-                  </div>
                 </div>
 
               </div>

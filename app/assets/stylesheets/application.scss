@@ -12,6 +12,7 @@
  *
  *= require 'swiper.min'
  *= require 'lightbox.min'
+ *= require 'sidr/jquery.sidr.light.min'
  *= require_tree .
  *= require_self
  */
@@ -254,6 +255,18 @@
     margin-bottom: 25px;
   }
 }
+.gg-overlay{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 14;
+  background-color:gray;
+  opacity: 0.3;
+}
+
 .mobile{
   ul{
     margin: 0;
@@ -282,7 +295,7 @@
     line-height: 46px;
     .navbar-toggle
     {
-      padding: 0;
+      padding: 15px 0 0 0;
       margin: 0 10px 0 0;
       height: 46px;
       .icon-bar{

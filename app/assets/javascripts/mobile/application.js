@@ -21,16 +21,12 @@
 //= require lightbox.min
 //= require swiper.jquery.min
 //= require ckeditor/init
+//= require jquery.sidr.min
 //= require cityselect
 // other custom js file
 //= require map
 //= require users
 
-$('#categories_li').hover(function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-}, function() {
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-});
 
 $(function(){
   if( $('#citySelect').is('*'))
@@ -62,6 +58,17 @@ $(function(){
     });
 
   }
+
+  $('.gg-menu-toggle').sidr(
+    { name: 'gg-menu',
+      displace: false,
+      onOpen: function(){ $('.gg-overlay').show();},
+      onCloseEnd: function(){ $('.gg-overlay').hide();}
+    }
+  );
+  $("body").on( 'click','.gg-overlay',function(){
+    $.sidr( 'close', 'gg-menu');
+  })
 });
 
 function validate_code_time(code_id, wait) {

@@ -4,8 +4,8 @@
         <div class="category">
             <div class="head">
               <div> <span class="title"> <%= category.title %> </span>
-                <a class="toggleSubCategoriesBtn"><%= @category.try( :title) || category.children.first.title %> <span class="caret"></span> </a>
-                <a class="pull-right">更多 </a>
+                <a class="toggleSubcategoriesBtn"><%= @category.try( :title) || category.children.first.title %> <span class="caret"></span> </a>
+                <%= link_to '更多', category, class: 'pull-right' %>                
               </div>
               <div class="subcategries hidden ">
                 <% category.children.each{|cate| %>
