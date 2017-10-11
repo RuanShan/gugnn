@@ -3,16 +3,12 @@
     <h2 class="panel-title">个人身份证认证</h2>
   </div>
   <div class="panel-body">
-    <div style="margin:15px 0 30px 0;">
-      <h4>
-      <span class="label <%= @user.id_auth_status_none? ? 'label-danger' : 'label-default'%>" style="padding:15px;">1.填写信息</span>
-      <span class="label <%= @user.id_auth_status_ready? ? 'label-danger' : 'label-default'%>" style="padding:15px;">2.等待审核</span>
-      <span class="label <%= @user.id_auth_status_done? ? 'label-danger' : 'label-default'%>" style="padding:15px;">3.审核通过</span>
-    </h4>
-    </div>
+      <div class="label <%= @user.id_auth_status_none? ? 'label-danger' : 'label-default'%>" style="padding:10px;margin:5px;float:left;">1.填写信息</div>
+      <div class="label <%= @user.id_auth_status_ready? ? 'label-danger' : 'label-default'%>" style="padding:10px;margin:5px;float:left;">2.等待审核</div>
+      <div class="label <%= @user.id_auth_status_done? ? 'label-danger' : 'label-default'%>" style="padding:10px;margin:5px;float:left;">3.审核通过</div>
     <% if @user.id_auth_status_none? %>
       <%= simple_form_for(@user, url: auth_idcard_my_account_path(@user), :html => {:method => :patch, :multipart => true, id:"authentication_form"}) do |f| %>
-        <div class="form-inputs">
+        <div class="form-inputs" style="float:left;margin-top:10px;">
           <%= f.input :id_number, placeholder: "请填写身份证号"%>
           <%= render partial:"idcard_image_form", locals:{f: f}%>
           <div class="form-group">
@@ -20,7 +16,7 @@
             <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.title}" }, {}, { class: 'form-control'} %>
           </div>
         </div>
-        <div class="form-actions">
+        <div class="form-actions" style="float:left;">
           <%= f.button :submit, "提交认证信息", class: 'btn-danger submit' %>
         </div>
       <% end %>
