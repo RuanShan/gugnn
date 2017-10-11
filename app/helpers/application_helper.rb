@@ -39,9 +39,9 @@ module ApplicationHelper
 
   def product_image( product )
     if product.master_image.present?
-      image_tag(product.master_image.photo.url, size: "140x140", alt: product.title, class:"pimg pull-left")
+      image_tag(product.master_image.photo.url, size: "140x140", alt: product.title, class:"pimg")
     else
-      image_tag("default.png", size: "140x140", alt: product.title, class:"pull-left")
+      image_tag("default.png", size: "140x140", alt: product.title, class:"product-default-image")
     end
   end
 

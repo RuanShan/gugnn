@@ -27,13 +27,12 @@
     </div>
 
 
-    <div class="category-products">
+    <div class="products">
       <h3> 产品 </h3>
-      <ul class="list-group">
+      <ul class="list-group clearfix">
         <% @products.each{|product| %>
-          <li class="list-group-item clearfix">
-            <%= product_image product %>
-
+          <li class="product clearfix">
+            <div class="pimage-wrap"> <%= product_image product %> </div>
             <div class="product-info pull-left">
               <h3> <%= link_to product.title, product_path( product) %> </h3>
               <p>
