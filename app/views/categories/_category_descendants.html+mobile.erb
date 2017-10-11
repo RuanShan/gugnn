@@ -1,0 +1,14 @@
+<div class="category-titles gg-p4">
+  <div class="">
+    <% @category.self_and_siblings.each{|category| %>
+      <% if current_page? category_path( category ) %>
+      <%= link_to category.title, category, class: 'btn btn-success' %>
+      <% else %>
+      <%= link_to category.title, category, class: 'btn btn-default' %>
+      <% end %>
+    <% } %>
+  </div>
+</div>
+<div class="gg-mtb4 gg-prl4 category-leaves">
+  <%= render partial: 'category_leaf', collection: @category.children, as: :category %>
+</div>

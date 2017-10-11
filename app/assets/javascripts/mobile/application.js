@@ -57,7 +57,15 @@ $(function(){
         slidesPerView: 2,
       });
     });
+  }
 
+  if( $('.show-category .swiper-container').is('*'))
+  {
+    $('.show-category .swiper-container').each(function(){
+      var swiper = new Swiper(this, {
+        slidesPerView: 2,
+      });
+    });
   }
 
   $('.gg-menu-toggle').sidr(

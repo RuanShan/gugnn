@@ -1,0 +1,7 @@
+<div class="show-category">
+<% if @category.leaf? %>
+  <%= render partial: 'category' %>
+<% else %>
+  <%= render partial: 'category_descendants' %>
+<% end %>
+</div>

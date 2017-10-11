@@ -1,0 +1,40 @@
+<%= content_tag 'div', id: dom_id(category), role: 'tabpanel', class: (category_counter==0 ? "tab-pane active #{category.name}" : "tab-pane #{category.name}" ) do %>
+
+     <div class="">
+        <div class="category">
+            <div class="head">
+              <div> <span class="title"> <%= category.title %> </span>
+                <%= link_to '更多', category, class: 'pull-right' %>
+              </div>
+              <div class="subcategries hide ">
+                <% category.children.each{|cate| %>
+                  <%= link_to cate.title, cate, remote: true %>
+                <% } %>
+              </div>
+            </div>
+
+        </div>
+        <div class="swiper-container">
+          <ul class="swiper-wrapper">
+            <% category.products.limit(8).each_with_index{ |product, i| %>
+              <li class="swiper-slide" >
+                <%= link_to product_path(product), class:'product' do%>
+                  <div class="product-image-wrapper">
+                  <% if product.master_image.present? %>
+                  <%= image_tag product.cover_url, class:"gg-prod-img product-image" %>
+                  <% else %>
+                  <%= image_tag 'default.png', class:"gg-prod-img product-image" %>
+                  <% end %>
+                  </div>
+                  <div class="product-info">
+                    <div class='price' > <%== display_price product%> </div>
+                    <div class='title' > <%= product.title%> </div>
+                  </div>
+                <% end %>
+              </li>
+
+            <% } %>
+          </ul>
+        </div>
+    </div>
+ <% end %>

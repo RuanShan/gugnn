@@ -41,6 +41,20 @@
  .gg-bb{
    border-bottom: 1px solid #cccccc;
  }
+ .gg-p4{
+   padding: 4px;
+ }
+ .gg-prl4{
+   padding-right: 4px;
+   padding-left: 4px;
+ }
+ .gg-m4{
+   margin: 4px;
+ }
+ .gg-mtb4{
+   margin-top: 4px;
+   margin-bottom: 4px;
+ }
  .gg-hide{
    /*bootstrap 使用了!important, 导致style中display:block无法起作用*/
    display: none;
@@ -282,6 +296,7 @@
 
   .gg-page-content{
     margin:  0 0 80px 0;
+    background-color: #f2f2f2;
   }
   /*滚动海报*/
   .gg-slider

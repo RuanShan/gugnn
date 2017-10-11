@@ -62,3 +62,31 @@
     }
   }
 }
+.mobile{
+  .show-category
+  {
+    .category-titles
+    {
+      background-color: #fff;
+      a.btn{
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    }
+    .category-leaves
+    {
+      background-color: #fff;
+      .category
+      {
+        .head{
+          padding: 4px 12px;
+          border-bottom: 1px solid #cccccc;
+          .title{
+            border-left: 4px solid #d61718;
+            padding: 0 8px;
+          }
+        }
+      }
+    }
+  }
+}
