@@ -31,20 +31,26 @@
   }
 .pc
 {
-  .category-products
+  .products
   {
-    .list-group-item
+    .product
     {
       &:hover{
         background-color: #f9f9f9;
       }
-      .pimg{
+      .pimage{
+        float: left;
+        height: 140px;
       }
       .product-info{
         margin: 0 10px;
         width: 600px;
         overflow: hidden;
         h3{ line-height: 1em; text-overflow: ellipsis;}
+      }
+      .ptitle{
+        height: 35px;
+        overflow: hidden;
       }
       .pprice {
         margin-top: 25px;
@@ -92,6 +98,10 @@
       .product{
         width: 50%;
         float: left;
+        .ptitle{
+          height: 35px;
+          overflow: hidden;
+        }
       }
     }
   }

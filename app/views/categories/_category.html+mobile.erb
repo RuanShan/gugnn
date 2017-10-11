@@ -34,16 +34,11 @@
           <li class="product clearfix">
             <div class="pimage-wrap"> <%= product_image product %> </div>
             <div class="product-info pull-left">
-              <h3> <%= link_to product.title, product_path( product) %> </h3>
-              <p>
-                押金: <%= product.deposit %> 最低租期: <br/>
-
-              </p>
-              <p>来自: <span><%= product.owner.nickname %> </span> </p>
-            </div>
-            <div class="pprice pull-right">
-              <span> <%== display_price(product) %> </span>
-            </div>
+              <div class="pprice ">
+                  <span> <%== display_price(product) %> </span>
+              </div>
+              <p class="ptitle"> <%= link_to product.title, product_path( product) %> </p>
+             </div>
           </li>
           <% } %>
       </ul>
