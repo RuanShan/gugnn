@@ -55,6 +55,7 @@ gem 'ckeditor' #富文本编辑器
 
 gem 'aasm' # https://github.com/aasm/aasm State machines for Ruby classes
 
+gem 'aliyun-sms' # 阿里云短信服务
 
 group :development do
   gem 'foreman'

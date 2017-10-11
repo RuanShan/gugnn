@@ -30,7 +30,8 @@ class Product < ApplicationRecord
   enum tenancy: { hour: 1, week: 7, day:24, month: 24*30, year: 24*30*365 }, _prefix: true
   enum min_tenancy: { hour: 1, week: 7, day:24, month: 24*30, year: 24*30*365 }, _prefix: true
   enum status: [:authenticating, :authenticated, :withdrawed]
-  display_enum_methods :tenancy
+  #租期、最低租期
+  display_enum_methods :tenancy, :min_tenancy
 
   # 创建 ->审核中-> 审核通过（上线）
   #            -> 审核未通过

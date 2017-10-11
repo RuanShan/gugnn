@@ -55,12 +55,12 @@
                 <span class="high-light-red">
                     <span class="first">￥</span>
                     <span class="two"><%= @product.price %></span>
-                    <span class="three">/<%= Product.translate_enum_name("tenancy", @product.tenancy) %></span>
+                    <span class="three">/<%= @product.display_tenancy %></span>
                 </span>
             </div>
             <div class="condition pull-right">
                 <span class="pay-re condition-1">押金：￥<span id="yaj"> <%= @product.deposit %></span></span>
-                <span class="pay-re condition-last">1<%= Product.translate_enum_name("min_tenancy", @product.min_tenancy) %>起租</span>
+                <span class="pay-re condition-last">1<%=  @product.display_min_tenancy %>起租</span>
             </div>
         </div>
         <ul class="house-basic-item3">
@@ -77,7 +77,7 @@
         <div>
           <div class="house-basic-item4">
                           <p class="nav"><a href="#" target="_blank" onclick=""> <%= user_avatar(@product.owner) %></a><span class="f14 c_333 jjrsay"><%=@product.owner.nickname%> 说</span></p>
-                          <p class="c_999 lh22 jjr-desc">此房是南北通厅，南北卧室中间卫生间，多层6楼采光好视野佳，婚房改善莫错过！</p>
+                          <p class="c_999 lh22 jjr-desc"> <%= @product.ad || '广告语'%> </p>
           </div>
         </div>
         <div class="house-chat-entry clearfix" id="houseChatEntry">

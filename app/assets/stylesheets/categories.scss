@@ -2,35 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-  .selected-filters
-  {
-    border-top: 1px solid #dddddd;
-    padding: 15px 0;
-    a{
-      display: inline-block;
-      margin: 0 8px 0 0;
-      border: 1px solid #dedede;
-      padding: 0 6px 0 5px;
-      height: 18px;
-      line-height: 18px;
-      font-size: 12px;
-      display: inline-block;
-      color: #888;
-    }
-    a:hover{
-      color: #d61718;
-      border: 1px solid #d61718;
-    }
-    em{
-      font-style: normal;
-    }
-    i{
-      font-style: normal;
-      padding-left: 9px;
-    }
-  }
+
 .pc
 {
+  .show-category
+  {
+    .selected-filters
+    {
+      border-top: 1px solid #dddddd;
+      padding: 15px 0;
+      a{
+        display: inline-block;
+        margin: 0 8px 0 0;
+        border: 1px solid #dedede;
+        padding: 0 6px 0 5px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 12px;
+        display: inline-block;
+        color: #888;
+        text-decoration: none;
+      }
+      a:hover{
+        color: #d61718;
+        border: 1px solid #d61718;
+      }
+      em{
+        font-style: normal;
+      }
+      i{
+        font-style: normal;
+        padding-left: 9px;
+      }
+    }
+  }
   .products
   {
     .product
@@ -53,11 +58,10 @@
         overflow: hidden;
       }
       .pprice {
-        margin-top: 25px;
-        margin-right: 60px;
+        margin-right: 50px;
         color: #d61718;
         font-size: 16px;
-        line-height: 1;
+        line-height: 140px;
         b {
             font-size: 28px;
             font-weight: 600;
