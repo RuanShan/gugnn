@@ -1,0 +1,2 @@
+class HotCity < ApplicationRecord
+end

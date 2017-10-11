@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hot_city.name %>
+</p>
+
+<p>
+  <strong>Pingyi:</strong>
+  <%= @hot_city.pingyi %>
+</p>
+
+<p>
+  <strong>Acronyms:</strong>
+  <%= @hot_city.acronyms %>
+</p>
+
+<p>
+  <strong>Province:</strong>
+  <%= @hot_city.province %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @hot_city.status %>
+</p>
+
+<p>
+  <strong>Integer:</strong>
+  <%= @hot_city.integer %>
+</p>
+
+<%= link_to 'Edit', edit_hot_city_path(@hot_city) %> |
+<%= link_to 'Back', hot_cities_path %>

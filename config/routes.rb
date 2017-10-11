@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :hot_cities
   root to: 'site#index'
 
   mount Ckeditor::Engine => '/ckeditor'
