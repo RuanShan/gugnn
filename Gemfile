@@ -5,8 +5,7 @@ git_source(:github) do |repo_name|
 end
 #ruby '2.2.4'
 #gem 'coffee-script-source', '1.8.0'
-#gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
 #fix bcrypt.rb:12:in `require': 126: 找不到指定的模块。
 #https://github.com/codahale/bcrypt-ruby/issues/116
 gem 'bcrypt'
