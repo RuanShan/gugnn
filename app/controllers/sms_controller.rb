@@ -1,30 +1,39 @@
 class SmsController < ApplicationController
-  before_action :build_sms, only: [:create_verify_code]
+  before_action :set_sms, only: [:validate]
 
-  def create_verify_code
+  def create
     less_than_one_minute = false
     if session[:sms]
       last_send_time = Time.parse(session[:sms]['send_at'])
       send_duration = Time.now - last_send_time
       less_than_one_minute = send_duration <= 60
     end
-    if false#less_than_one_minute
-      @sms.errors.add(:validate_code, "验证码每分钟只能发送一次")
+
+    status = 0
+    if less_than_one_minute
+      set_sms
+      @sms.errors.add(:verification_code, "验证码每分钟只能发送一次")
     else
+      @sms = Sms.new( cellphone: params[:cellphone] )
       # validate phone number
       if @sms.valid?
         # send successfully
         if @sms.send_for_sign_up
           session[:sms] = @sms
+          status = 1
         end
       end
     end
+    render json: { status: status, sms: @sms }
+  end
+
+  def validate
+
   end
 
   private
-    def build_sms
-      cellphone = session[:cellphone] ? session[:cellphone] : params[:phone]
-      @sms = Sms.new( phone: cellphone )
+    def set_sms
+      @sms = session[:sms] || Sms.new(  )
     end
 
     # Use callbacks to share common setup or constraints between actions.

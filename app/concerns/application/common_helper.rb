@@ -12,7 +12,6 @@ module Application::CommonHelper
                      'pdxgw|netfront|xiino|vodafone|portalmmm|sagem|mot-|sie-|ipod|up\\.b|' \
                      'webos|amoi|novarra|cdm|alcatel|pocket|iphone|mobileexplorer|mobile'
   def mobile?
-    Rails.logger.debug "request.user_agent:"+request.user_agent
     agent_str = request.user_agent.to_s.downcase
     #return true if turbolinks_app?
     return false if agent_str =~ /ipad/

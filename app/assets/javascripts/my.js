@@ -66,7 +66,7 @@ $(function(){
         required: true,
         isMobile: true
       },
-      'user[validate_code]': {
+      'user[verification_code]': {
         //required: true,
         rangelength:[5,6]
       },

@@ -84,9 +84,9 @@ module My
           iurl = request.protocol+request.host_with_port+image_parts.join("/")
           params["user"]["avatar_remote_url"] = iurl
         end
-        params.require(:user).permit(:avatar, :avatar_remote_url, :nickname, :cellphone, :validate_code)
+        params.require(:user).permit(:avatar, :avatar_remote_url, :nickname, :cellphone, :verification_code)
       else
-        params.require(:user).permit(:avatar, :nickname, :cellphone, :validate_code)
+        params.require(:user).permit(:avatar, :nickname, :cellphone, :verification_code)
       end
     end
 
@@ -99,7 +99,7 @@ module My
       serialized_sms = session[:sms]||{}
       # sms serialized as json in session, it is string key hash here
       @sms = Sms.new( phone: serialized_sms['phone'], code: serialized_sms['code'], send_at: serialized_sms['send_at'])
-      @sms.verify_sign_up_sms( permitted_params['cellphone'],permitted_params['validate_code'])
+      @sms.verify_sign_up_sms( permitted_params['cellphone'],permitted_params['verification_code'])
     end
 
   end

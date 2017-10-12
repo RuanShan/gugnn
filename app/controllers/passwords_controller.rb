@@ -36,16 +36,16 @@ end
   private
 
   def user_params
-    permitted_params = [:cellphone, :password, :password_confirmation, :validate_code]
+    permitted_params = [:cellphone, :password, :password_confirmation, :verification_code]
     params.require(:user).permit(*permitted_params)
   end
 
   def verify_sign_up_sms
     permitted_params = user_params
     serialized_sms = session[:sms]||{}
-    logger.debug "serialized_sms=#{serialized_sms.inspect},permitted_params['validate_code']=#{permitted_params['validate_code']}"
+    logger.debug "serialized_sms=#{serialized_sms.inspect},permitted_params['verification_code']=#{permitted_params['verification_code']}"
     # sms serialized as json in session, it is string key hash here
     @sms = Sms.new( phone: serialized_sms['phone'], code: serialized_sms['code'], send_at: serialized_sms['send_at'])
-    @sms.verify_sign_up_sms( permitted_params['cellphone'],permitted_params['validate_code'])
+    @sms.verify_sign_up_sms( permitted_params['cellphone'],permitted_params['verification_code'])
   end
 end

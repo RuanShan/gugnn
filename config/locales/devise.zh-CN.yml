@@ -12,7 +12,7 @@ zh-CN:
       user:
         nickname: "用户名"
         cellphone: "手机号码"
-        validate_code: "手机验证码"
+        verification_code: "手机验证码"
         current_password: "当前密码"
         email: "电子邮箱"
         password: "密码"

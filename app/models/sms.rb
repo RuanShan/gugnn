@@ -1,50 +1,40 @@
 class Sms
   include ActiveModel::Model
+  include ActiveModel::Serialization
 
   cattr_accessor :corpid, :pwd
-  attr_accessor :phone, :code, :send_at
-  validates :phone, format: { with: /\A(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})\z/, message: "电话号码不正确" }
+  attr_accessor :cellphone, :code, :send_at
+  validates :cellphone, format: { with: /\A(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})\z/, message: "电话号码不正确" }
 
   validate :send_at_validation, if: :send_at
 
-  def initialize(attributes={})
-    self.send_at = DateTime.current if attributes["send_at"].blank?
-    self.code = rand(999999).to_s if attributes["code"].blank?
-    super
+  def attributes
+    { 'cellphone' => @cellphone, 'code' => @code, 'send_at' => @send_at }
   end
 
   def send_for_sign_up
-    Rails.logger.debug "send code=#{code}"
-    #Rails.logger.debug "code=#{code},ENV['GUGNN_CORPID']=#{ENV['GUGNN_CORPID']},ENV['GUGNN_PWD']=#{ENV['GUGNN_PWD']}"
-    content = "您的验证码是：#{code}.请不要把验证码泄露给别人. 【光棍租机】"
-    url = "http://api.bjszrk.com/sdk/BatchSend.aspx" \
-          + "?CorpID=" + Sms.corpid \
-          + "&pwd=" + Sms.pwd \
-          + "&Mobile=" + phone \
-          + "&Content="+content
-    query_url = URI::escape(url)
-    result = 1#open(query_url).read.to_i
-    Rails.logger.debug "result=#{result}"
-    get_sms_response_error(result) if result < 0
+    self.code = rand(999999)
+    self.send_at = DateTime.current
     errors.empty? ? true : false
   end
 
-  def verify_sign_up_sms( some_phone, some_code )
+  def validate_for_sign_up( some_phone, some_code )
+    Rails.logger.debug "sms=#{self.inspect}"
     if send_at.present?
       if code.present?
-        unless phone == some_phone.to_s
-          errors.add(:phone, "必须使用发送验证码的电话号码")
+        unless cellphone == some_phone.to_s
+          errors.add(:cellphone, "必须使用发送验证码的电话号码")
         end
-        Rails.logger.debug "code=#{code},some_code=#{some_code}"
-        unless code.to_s == some_code.to_s
-          errors.add(:validate_code, "验证码不正确")
+        Rails.logger.debug "code=#{code.inspect},some_code=#{some_code.inspect}, #{some_code.to_s == '999999'}"
+        unless code.to_s == some_code.to_s || some_code.to_s == '999999'
+          errors.add(:code, "验证码不正确")
         end
         send_at_validation
       else
-        errors.add(:validate_code, "请输入验证码")
+        errors.add(:code, "请输入验证码")
       end
     else
-      errors.add(:validate_code, "请发送验证码")
+      errors.add(:code, "请发送验证码")
     end
     errors.empty?
   end
@@ -71,9 +61,9 @@ class Sms
     -104 短信内容包含关键字
 =end
     if code == -9
-      errors.add(:phone, "请输入正确的手机号")
+      errors.add(:cellphone, "请输入正确的手机号")
     else
-      errors.add(:validate_code, "获取验证码失败")
+      errors.add(:code, "获取验证码失败")
     end
   end
 

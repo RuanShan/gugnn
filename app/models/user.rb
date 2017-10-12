@@ -40,9 +40,11 @@ class User < ApplicationRecord
   validates :shop_address, length: { in: 6..20 }, allow_blank:true
   validates :contact_person, length: { in: 2..10 }, allow_blank:true
   validates :contact_phone, length: { in: 8..20 }, allow_blank:true
-  #validates :shop_name, :id_number, :city, :shop_address, :contact_person, :contact_phone, presence: true, if: Proc.new{|user|user.}
+  validate :confirm_verification_code, on: :create
 
-  attr_accessor :validate_code, :current_password
+  #validates :shop_name, :id_number, :city, :shop_address, :contact_person, :contact_phone, presence: true, if: Proc.new{|user|user.}
+  # sms对象，创建用户时检查短信验证码, :verification_code, 用户输入的验证码
+  attr_accessor :sms,:verification_code, :current_password
 
 
   def self.validate_phone(phone)
@@ -83,4 +85,14 @@ class User < ApplicationRecord
   def email_required?
     false
   end
+
+  def confirm_verification_code
+    if sms.present?
+      if !sms.validate_for_sign_up( self.cellphone, self.verification_code)
+        Rails.logger.debug sms.errors.inspect
+        errors.add("verification_code", "验证码不正确")
+      end
+    end
+  end
+
 end

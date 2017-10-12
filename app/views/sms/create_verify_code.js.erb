@@ -1,5 +1,5 @@
 <% if Rails.env == "development"%>
-$("#user_validate_code").val( <%= @sms.code %> );
+$("#user_verification_code").val( <%= @sms.code %> );
 <% else %>
 
 
@@ -8,7 +8,7 @@ $(".help-block").remove();
   if($("#code_help").length==0){
     $(".form-inputs").after("<span id='code_help' class='help-block' style='clear:both;'>验证码已发送，请注意查收</span>");
   }
-  validate_code_time("obtainVerifyCode", 60);
+  verification_code_time("obtainVerifyCode", 60);
 <% else %>
   <% error_key = @sms.errors.messages.keys[0]%>
   <% if error_key == :phone%>
@@ -16,7 +16,7 @@ $(".help-block").remove();
       $(".form-inputs").after("<span id='phone_help' class='help-block'>请填写正确的电话号码</span>");
     }
   <% end %>
-  <% if error_key == :validate_code%>
+  <% if error_key == :verification_code%>
     <% error_message = @sms.errors.messages.values[0][0]%>
     if($("#code_help").length==0){
       $(".form-inputs").after("<span id='code_help' class='help-block' style='clear:both;color:red;'><%=error_message%></span>");

@@ -4,18 +4,6 @@
 
 $(function(){
 
-  $("#obtainVerifyCode").click(function(){
-    var phone = $("#user_cellphone").val();
-    $.ajax({
-      url:'/sms/create_verify_code',
-      type:'POST',
-      data:{
-        phone: phone
-        //_rucaptcha: captcha
-      }
-    });
-  });
-
 // prepare form validate
   $("#prepare_form").validate({
     rules: {
@@ -49,7 +37,7 @@ $(function(){
   });
 
   // sign up form validate
-    $("#new_user").validate({
+  newUserValidator= $("#new_user_form").validate({
       rules: {
         'user[cellphone]': {
           required: true,
@@ -75,9 +63,9 @@ $(function(){
           isPassword: true,
           rangelength:[6,15]
         },
-        'user[validate_code]': {
+        'user[verification_code]': {
           required: true,
-          rangelength:[5,6]
+          rangelength:[6,6]
         },
       },
       messages: {
@@ -101,7 +89,7 @@ $(function(){
     });
 
     // sign in form validate
-    $("#signin_user").validate({
+    var newSessionValidator= $("#new_session_form").validate({
       rules: {
         'user[cellphone]': {
           required: true,
@@ -127,6 +115,31 @@ $(function(){
       }
 
     });
+
+    $("#new_user_form #obtainVerifyCode").click(function(){
+      var cellphoneSelector = '#new_user_form #user_cellphone';
+      var self = this;//发短信按键
+
+      var validCellphone = newUserValidator.element(cellphoneSelector)
+      if ( validCellphone ) {
+        var cellphone = $(cellphoneSelector).val();
+      		Gugnn.common.getVerifyCode({
+      									disabled:"重新获取",
+      									text:"重新发送",
+      									time:60,
+      									sendHint:true, //是否提示
+      									sendText:"动态验证码已发送到您的手机，10分钟内有效", // 提示文本
+       									ctx: self,
+      									auth:{
+      										url: Gugnn.routes.sms_path,
+      										data:{
+      											"cellphone": cellphone,
+      										}
+      									}
+      								});
+      }
+    });
+
     // reset password form validate
     $("#reset_password_form").validate({
       rules: {
@@ -143,7 +156,7 @@ $(function(){
           required: true,
           equalTo: '#reset_password_form #user_password'
         },
-        'user[validate_code]': {
+        'user[verification_code]': {
           required: true,
           rangelength:[5,6]
         },

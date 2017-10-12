@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     get 'renter_session', to: 'sessions#new_renter'
   end
 
-  post '/sms/create_verify_code', to: 'sms#create_verify_code'
-
+  post '/sms', to: 'sms#create'
+  post '/sms/validate', to: 'sms#validate'
 
     post '/rate' => 'rater#create', :as => 'rate'
     get 'messages/index'

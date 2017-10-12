@@ -55,7 +55,7 @@ $(function(){
   }
 });
 
-function validate_code_time(code_id, wait) {
+function verification_code_time(code_id, wait) {
   var code_button = $("#"+code_id);
   if (wait == 0) {
     code_button.removeAttr("disabled");
@@ -65,7 +65,7 @@ function validate_code_time(code_id, wait) {
     code_button.html("重新发送(" + wait + ")");
     wait = wait-1;
     setTimeout(function() {
-      validate_code_time(code_id, wait)
+      verification_code_time(code_id, wait)
     },
     1000)
   }
