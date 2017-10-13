@@ -262,6 +262,10 @@ width: 200px;
         width: 600px;
         display: inline-block;
       }
+      .thumbnail input.form-control
+      {
+         width: 100%;;
+      }
       textarea.form-control
       {
         width: 600px;
@@ -274,10 +278,24 @@ width: 200px;
         #cke_product_desc{
           float: left;
         }
-
       }
     }
-
   }
+}
 
+.pc{
+  .gg-account
+  {
+    .upload-avatar
+    {
+      .defaultImgBorder
+      {
+        overflow: hidden;
+      }
+      .preview
+      {
+        text-align: center;
+      }
+    }
+  }
 }

@@ -1,6 +1,7 @@
 <% first_root = Category.roots.first%>
-<div style="width:100%;padding:20px;">
-  <div class="panel panel-default" style="width:40%;float:left;" >
+<div  class="clearfix" style="padding: 20px 0;" >
+  <div class="col-md-6" >
+    <div class="panel panel-default" style=" " >
     <div class="panel-heading">
       <h3 class="panel-title">第一步：选择大类</h3>
     </div>
@@ -13,7 +14,9 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default" style="width:40%;float:left;margin-left:20px;" >
+  </div>
+  <div class="col-md-6" >
+    <div class="panel panel-default" style="" >
     <div class="panel-heading">
       <h3 class="panel-title">第二步：选择小类</h3>
     </div>
@@ -27,5 +30,6 @@
         </div>
       <% end %>
     </div>
+  </div>
   </div>
 </div>

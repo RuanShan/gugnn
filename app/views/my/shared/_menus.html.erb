@@ -2,11 +2,11 @@
 <ul class="nav sidebar-menu">
   <li>
     <div class="leftmenu-content-header">
-      <a class="menu-dropdown" href="#">
+      <%= link_to my_account_index_path do %>
         <i class="menu-icon fa fa-tachometer"></i>
         <span class="menu-text"> 个人中心 </span>
         <i class="menu-expand"></i>
-      </a>
+      <% end %>
     </div>
     <ul class="leftmenu-content-ul">
       <li><%=link_to "我的发布", my_products_path %></li>

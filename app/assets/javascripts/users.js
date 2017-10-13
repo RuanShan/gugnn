@@ -37,7 +37,7 @@ $(function(){
   });
 
   // sign up form validate
-  newUserValidator= $("#new_user_form").validate({
+  var newUserValidator= $("#new_user_form").validate({
       rules: {
         'user[cellphone]': {
           required: true,
@@ -140,6 +140,37 @@ $(function(){
       }
     });
 
+    var editUserValidator= $('#change_profile_form').validate({
+      rules: {
+        'user[cellphone]': {
+          required: true,
+          isMobile: true
+        }
+      }
+    })
+    $("#change_profile_form #obtainVerifyCode").click(function(){
+      var cellphoneSelector = '#change_profile_form #user_cellphone';
+      var self = this;//发短信按键
+
+      var validCellphone = editUserValidator.element(cellphoneSelector)
+      if ( validCellphone ) {
+        var cellphone = $(cellphoneSelector).val();
+      		Gugnn.common.getVerifyCode({
+      									disabled:"重新获取",
+      									text:"重新发送",
+      									time:60,
+      									sendHint:true, //是否提示
+      									sendText:"动态验证码已发送到您的手机，10分钟内有效", // 提示文本
+       									ctx: self,
+      									auth:{
+      										url: Gugnn.routes.sms_path,
+      										data:{
+      											"cellphone": cellphone,
+      										}
+      									}
+      								});
+      }
+    });
     // reset password form validate
     $("#reset_password_form").validate({
       rules: {

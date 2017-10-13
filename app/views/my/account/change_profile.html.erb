@@ -8,9 +8,16 @@
       <%= render partial: 'avator', locals:{f: f} %>
       <div class="form-inputs">
         <%= f.input :nickname%>
-        <%= f.input :cellphone%>
-        <%= f.input :verification_code, placeholder: t(:input_only_change_phone), input_html: {style: "float:left;"}, wrapper_html:{style:"float:left;width:55%;"} %>
-        <%= button_tag t(:get_verify_code), type: :button, id:"obtainVerifyCode", style:"height:34px;float:right;margin:22px 0 20px 0;" %>
+        <%= f.input :cellphone, required: true %>
+          <div style="float:left;width:55%;" class="form-group string optional user_verification_code">
+            <%= f.label :verification_code %>
+              <div class="input-group">
+              <%= f.text_field :verification_code, placeholder: t(:input_only_change_phone), class: 'form-control string optional' %>
+              <span class="input-group-btn">
+                <%= button_tag t(:get_verify_code), type: :button, id:"obtainVerifyCode", class: 'btn btn-default' %>
+              </span>
+            </div>
+          </div>
       </div>
 
       <div class="form-actions">

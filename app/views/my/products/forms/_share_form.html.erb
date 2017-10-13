@@ -40,7 +40,7 @@
   </div>
 </div>
 
-<div id="product_images" style="margin:10px 0;">
+<div id="product_images" >
   <%= render partial:"my/products/forms/image_form", locals:{product_form: product_form}%>
 </div>
 <% @product.category.category_options.each do |category_option| %>
