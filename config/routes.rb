@@ -31,13 +31,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { passwords: 'passwords', sessions: 'sessions', registrations: 'registrations' }
 
   devise_scope :user do
+    get '/login', to: 'sessions#new'
+    get '/logout', to: 'sessions#destroy'
+    post '/sessions', to: 'sessions#create'
+        
     get 'validate_cellphone', to: 'registrations#validate_cellphone'
     post 'validate_captcha', to: 'registrations#validate_captcha'
-    get 'renter_session', to: 'sessions#new_renter'
   end
 
   post '/sms', to: 'sms#create'
   post '/sms/validate', to: 'sms#validate'
+  get 'be_renter', to: 'site#be_renter', as: 'be_renter'
 
     post '/rate' => 'rater#create', :as => 'rate'
     get 'messages/index'
@@ -51,7 +55,6 @@ Rails.application.routes.draw do
     get 'conversations/create'
 
     match 'select_city' => 'site#select_city', via: [:get, :patch]
-
     #get '/signup', to: 'users#new', as: 'new_user'
     #post '/users', to: 'users#create'
     #get '/users/:id', to: 'users#show', as: 'user'
@@ -75,29 +78,6 @@ Rails.application.routes.draw do
     get '/login', to: 'sessions#new'
     get '/logout', to: 'sessions#destroy'
     post '/sessions', to: 'sessions#create'
-
-    # Sale Routes
-    get '/sales', to: 'sales#index', as: 'sales'
-    get '/sales/new', to: 'sales#new', as: 'new_sale'
-    post '/sales', to: 'sales#create', as: 'create_sale'
-    get '/sales/:id', to: 'sales#show', as: 'sale'
-    post '/sales/:id', to: 'sales#purchase'
-    patch '/sales/:id', to: 'sales#confirm'
-    get '/sales/:id/edit', to: 'sales#edit', as: 'sale_edit'
-    patch '/sales/:id/edit', to: 'sales#update'
-    delete '/sales/:id', to: 'sales#destroy'
-
-    # Rent Routes
-    get '/rents', to: 'rents#index', as: 'all_rents'
-    get '/rents/new', to: 'rents#new', as: 'new_rent'
-    get '/rents/:id', to: 'rents#show', as: 'rent'
-    get '/rents/:id/edit', to: 'rents#edit', as: 'edit_rent'
-    put '/rents/:id/edit', to: 'rents#update'
-    patch '/rents/:id/edit', to: 'rents#update'
-    post '/rents', to: 'rents#create', as: 'create_rent'
-    delete '/rents/:id', to: 'rents#destroy'
-
-    post '/rents/new', to: 'rents#new'
 
     get '/map', to: 'map#get_map'
 

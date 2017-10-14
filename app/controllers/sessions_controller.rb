@@ -4,7 +4,7 @@ class SessionsController < Devise::SessionsController
   def new_renter
     #copy from Devise::SessionsController#new
     self.resource = resource_class.new(sign_in_params)
-   clean_up_passwords(resource)
+    clean_up_passwords(resource)
   end
 
   private

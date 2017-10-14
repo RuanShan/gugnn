@@ -7,3 +7,11 @@ http://www.cnblogs.com/eastday/archive/2013/05/31/3109804.html
 1. 在View中的js无法执行
 由于application.js 从html的头部head，移动到body尾部，主要是为了保证js执行时，页面已加载即js操作元素存在。
 由于使用了turbolinks, 有些js事件需要移动到jquery.ready外面。
+
+
+
+2. window开发环境，添加或更新gem后，启动服务器，出现异常
+  bcrypt.rb:16:in `require': cannot load such file -- bcrypt_ext (LoadError)
+修正方案
+  gem uninstall bcrypt
+  gem install bcrypt --platform=ruby

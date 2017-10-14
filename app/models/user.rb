@@ -1,7 +1,6 @@
 # 保存IP和对应的geocoding 信息。
 
 class User < ApplicationRecord
-
   enum role: [:user, :vip, :admin]
   #   none:  没有认证
   #   ready: 认证信息准备好，
@@ -79,7 +78,6 @@ class User < ApplicationRecord
     # avatar_content_type == "image/png"
     @avatar_remote_url = url_value
   end
-
 
   private
   def email_required?

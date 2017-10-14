@@ -11,7 +11,7 @@
   <body class="pc">
     <div class="gg-page gg-account">
       <div class="gg-top-nav">
-        <%= render partial: 'layouts/navigation' %>
+        <%= render 'layouts/navigation' %>
       </div>
       <div class="gg-page-body ">
         <div class="menu-wrapper">
@@ -20,9 +20,10 @@
         <div class="main">
           <div class="container">
             <div class="leftside">
-              <%= render partial: "my/shared/menus" %>
+              <%= render "my/shared/menus" %>
             </div>
             <div class="rightside">
+              <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
 
