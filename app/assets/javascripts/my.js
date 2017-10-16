@@ -4,7 +4,10 @@
 var CurrentMap=null;
 $(function(){
   $(".dropdown-toggle").dropdown();
-
+  if( $('#product_city').is('*'))
+  {
+    new Vcity.CitySelector({input:'product_city'});
+  }
   $(document).on('show.bs.modal', '#gugnnModal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var title = button.data('title'); // Extract info from data-* attributes

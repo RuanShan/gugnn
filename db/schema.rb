@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016035515) do
+ActiveRecord::Schema.define(version: 20171016132743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -264,7 +264,9 @@ ActiveRecord::Schema.define(version: 20171016035515) do
     t.string   "latlng_address"
     t.string   "ad"
     t.text     "lease_desc"
+    t.integer  "city_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["city_id"], name: "index_products_on_city_id", using: :btree
     t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree
     t.index ["parent_category_id", "category_id", "published_at"], name: "idx_products_pcategory_category_publish", using: :btree
@@ -384,6 +386,7 @@ ActiveRecord::Schema.define(version: 20171016035515) do
 
   add_foreign_key "events", "users"
   add_foreign_key "products", "categories", column: "parent_category_id"
+  add_foreign_key "products", "hot_cities", column: "city_id"
   add_foreign_key "products", "users", column: "owner_id"
   add_foreign_key "users", "categories"
 end

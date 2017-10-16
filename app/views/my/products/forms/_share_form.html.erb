@@ -26,6 +26,14 @@
   </div>
 </div>
 
+<div class="form-group form-inline ">
+  <%= label_tag "city", "城市", class: 'control-label'%>
+  <div class="input-group">
+    <%city = @product.city ? @product.city.name : @user.city%>
+    <%= text_field_tag "product_city", city, class: 'form-control'%>
+  </div>
+</div>
+
 <div id="address_mark" class="form-group form-inline">
   <%= product_form.label :latlng_address, class: 'control-label' %>
   <%= product_form.text_field :latlng_address, class: 'form-control', style: 'width:70%;', readonly: true %>

@@ -29,13 +29,16 @@ module My
 
     # GET /products/1/edit
     def edit
+      @user = current_user
     end
 
     # POST /products
     # POST /products.json
     def create
+      city = HotCity.find_by_name(params[:product_city])
       @product = Product.new(product_params)
       @product.owner = current_user
+      @product.city = city
 
       respond_to do |format|
         if @product.save
@@ -53,8 +56,15 @@ module My
     def update
       respond_to do |format|
         if @product.update(edit_product_params)
-          format.html { redirect_to my_products_path(@product), notice: '信息更新成功' }
-          format.json { render :show, status: :ok, location: @product }
+          city = HotCity.find_by_name(params[:product_city])
+          @product.city = city
+          if @product.save
+            format.html { redirect_to my_products_path(@product), notice: '信息更新成功' }
+            format.json { render :show, status: :ok, location: @product }
+          else
+            format.html { render :edit }
+            format.json { render json: @product.errors, status: :unprocessable_entity }
+          end
         else
           format.html { render :edit }
           format.json { render json: @product.errors, status: :unprocessable_entity }

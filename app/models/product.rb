@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   # 查询时使用，如：列出办公用品的热门出租产品。或最新出租商品
   belongs_to :parent_category, class_name: 'Category'
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
+  belongs_to :city, class_name: 'HotCity', foreign_key: 'city_id'
   has_many :images, as: :imageable, :dependent => :destroy
   has_one :master_image, class_name: 'Image', foreign_key: 'imageable_id'
   accepts_nested_attributes_for :images, allow_destroy: true#, :reject_if => lambda { |t| t['image'].nil? }

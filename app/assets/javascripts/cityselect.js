@@ -346,16 +346,18 @@ Vcity.CitySelector.prototype = {
             links[i].onclick = function(){
                 that.input.value = this.innerHTML;
                 var city = $(this).html();
-                $.ajax({
-                  url:'/select_city',
-                  type:'PATCH',
-                  data:{
-                    city: city
-                  }
-                });
+                if( $('#citySelect').is('*'))
+                  $.ajax({
+                    url:'/select_city',
+                    type:'PATCH',
+                    data:{
+                      city: city
+                    }
+                  });
                 Vcity._m.addClass('hide',that.cityBox);
                 /* 点击城市名的时候隐藏myIframe */
                 Vcity._m.addClass('hide',that.myIframe);
+                return false;
             }
         }
     },
