@@ -69,8 +69,7 @@
           </li>
           <li>
               <span class="c_999">位置：</span>
-              <span class="c_000 mr_10"> <%= @product.latlng_address %>
-              </span>
+              <span class="c_000 mr_10"> <%= @product.latlng_address %> </span>
               <span><a href="javascript:;" class="mapNavIcon td-u" jumpto="mapWrap" ><i class="icon"></i>地图</a></span>
           </li>
         </ul>
@@ -118,30 +117,30 @@
         </ul>
       </div>
       <div>
-        <p id="generalProperty">
+        <div id="generalProperty">
           <h3>概况</h3>
           <%== @product.desc %>
-        </p>
-        <p id="generalDesc">
+        </div>
+        <div id="generalDesc">
           <h3>设备描述</h3>
           <%== @product.desc %>
-        </p>
-        <p id="xiaoWrap">
+        </div>
+        <div id="xiaoWrap">
           <h3>租赁描述</h3>
-        </p>
-        <p id="generalImage" class="product-image-list clearfix">
+        </div>
+        <div id="generalImage" class="product-image-list clearfix">
           <h3>图片说明</h3>
           <% @product.images.each_with_index{| image, i| %>
             <div class="product-image-item">
               <%= image_tag image.photo.url %>
             </div>
           <% } %>
-        </p>
-        <p id="mapWrap">
+        </div>
+        <div id="mapWrap">
           <h3>位置</h3>
-          <div id="map_container">
+          <div id="product_map_container">
           </div>
-        </p>
+        </div>
       </div>
 
     </div>

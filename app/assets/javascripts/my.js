@@ -167,7 +167,6 @@ $(function(){
       })
       error.appendTo(element.parent());
     }
-
   });
 
 

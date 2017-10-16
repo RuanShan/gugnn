@@ -39,7 +39,7 @@ module My
 
       respond_to do |format|
         if @product.save
-          format.html { redirect_to my_products_path, notice: 'Product was successfully created.' }
+          format.html { redirect_to my_products_path, notice: '信息创建成功' }
           format.json { render :show, status: :created, location: @product }
         else
           format.html { render :new }
@@ -53,7 +53,7 @@ module My
     def update
       respond_to do |format|
         if @product.update(edit_product_params)
-          format.html { redirect_to my_products_path(@product), notice: 'Product was successfully updated.' }
+          format.html { redirect_to my_products_path(@product), notice: '信息更新成功' }
           format.json { render :show, status: :ok, location: @product }
         else
           format.html { render :edit }
@@ -68,7 +68,7 @@ module My
       @product.destroy
       redirect_url = session[:main_page].present? ? my_account_index_path : my_products_path
       respond_to do |format|
-        format.html { redirect_to  redirect_url, notice: 'Product was successfully destroyed.' }
+        format.html { redirect_to  redirect_url, notice: '信息删除成功' }
         format.json { head :no_content }
       end
     end
@@ -79,7 +79,7 @@ module My
       @product.touch(:withdraw_at)
       redirect_url = session[:main_page].present? ? my_account_index_path : my_products_path
       respond_to do |format|
-        format.html { redirect_to  redirect_url, notice: 'Product was successfully withdrawed.' }
+        format.html { redirect_to  redirect_url, notice: '信息下架成功.' }
         format.json { head :no_content }
       end
     end
@@ -89,7 +89,7 @@ module My
       @product.touch(:withdraw_at)
       redirect_url = session[:main_page].present? ? my_account_index_path : my_products_path
       respond_to do |format|
-        format.html { redirect_to  redirect_url, notice: 'Product was successfully unwithdrawed.' }
+        format.html { redirect_to  redirect_url, notice: '信息上架成功.' }
         format.json { head :no_content }
       end
     end
@@ -103,12 +103,12 @@ module My
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def product_params
-        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :tenancy, :deposit,
+        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :latlng_address, :tenancy, :deposit,
         :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9, images_attributes: [:caption, :photo])
       end
 
       def edit_product_params
-        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :tenancy, :deposit,
+        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :latlng_address, :tenancy, :deposit,
         :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9, images_attributes: [:id, :_destroy, :caption, :photo])
       end
   end

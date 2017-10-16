@@ -1,46 +1,49 @@
 $(function(){
-  var address_container_id="address_container";
-  // 创建|编辑 商品时， 初始化租赁商品的地址
-  if( $('#'+address_container_id).is('*'))
-  { if($("#product_lng").is('*')){
-      var instance = 'product';
-    }else if($("#user_lng").is('*')){
-      var instance = 'user';
+  if( $('.my form.product-form').is('*'))
+  {
+    var address_container_id="address_container";
+    // 创建|编辑 商品时， 初始化租赁商品的地址
+      var $lng = $("#product_lng");
+      var $lat= $("#product_lat");
+      var option = { 'lat': $lat.val(), 'lng': $lng.val() };
+      var product_address_map = new AddressAmap(address_container_id, option);
 
-    }
-    var $lng = $("#"+instance+"_lng");
-    var $lat= $("#"+instance+"_lat");
-    var option = { 'lat': $lat.val(), 'lng': $lng.val() };
-    var product_address_map = new AddressAmap(address_container_id, option);
+      $('#submit_address_btn').click(function(){
+        if( product_address_map.marker )
+        {
+          var position = product_address_map.marker.getPosition();
+          $('#product_latlng_address').val( product_address_map.address);
+          $lat.val(position.getLat());
+          $lng.val(position.getLng());
+          $('#gugnnMapModal').modal('hide');
+        }else{
 
-    $('#submit_address_btn').click(function(){
-      if( product_address_map.marker )
+        }
+
+      })
+      //在创建和编辑商品页面，用户点击‘地址’，弹出地图对话框
+      if( $('input#product_latlng_address').is('*'))
       {
-        var position = product_address_map.marker.getPosition();
-        $('#product_latlng_address').val( product_address_map.address);
-        $("#"+instance+"_lat").val(position.getLat());
-        $("#"+instance+"_lng").val(position.getLng());
-        $('#gugnnMapModal').modal('hide');
-      }else{
-
+        $('#product_latlng_address').click(function(){
+          $('#gugnnMapModal').modal('show');
+        })
       }
-
-    })
   }
-
   //浏览商品时，初始化地图
-  /*
-  var map_container_id="map_container";
+  var map_container_id="product_map_container";
   if( $('#'+map_container_id).is('*'))
   {
-    var instance = 'product';
-    var $lng = $("#"+instance+"_lng");
-    var $lat= $("#"+instance+"_lat");
-    var option = { 'lat': $lat.val(), 'lng': $lng.val() };
-    var map_options = { 'scrollWheel': false };
-    var product_address_map = new AddressAmap(map_container_id, option, map_options);
-
-  }*/
+    var lng = parseFloat( $("#product_lng").val() );
+    var lat= parseFloat( $("#product_lat").val());
+    if( lng && lat)
+    {
+      var option = { 'lat': lat, 'lng': lng };
+      var map_options = { 'scrollWheel': false };
+      var product_address_map = new AddressAmap(map_container_id, option, map_options);
+    }else {
+      $('#'+map_container_id).html("这个商品没有位置信息。");
+    }
+  }
 })
 
 // params
