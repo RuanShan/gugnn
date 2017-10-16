@@ -267,12 +267,12 @@ width: 200px;
       {
         width: 600px;
       }
-      .product-desc-wrap{
+      .product-desc-wrap, .product-lease-desc-wrap{
         .control-label
         {
           float: left;
         }
-        #cke_product_desc{
+        #cke_product_desc, #cke_product_lease_desc{
           float: left;
         }
       }

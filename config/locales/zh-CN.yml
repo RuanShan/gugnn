@@ -5,9 +5,10 @@ zh-CN:
         address: "详细地址"
         category: 分类
         deposit: "押金"
-        desc: "详细介绍"
+        desc: "商品描述"
         id: ID
         latlng_address: "地址"
+        lease_desc: "租赁说明"
         min_tenancy: 最短租期
         min_tenancies:
           hour: 小时

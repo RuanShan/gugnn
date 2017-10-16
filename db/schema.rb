@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011145626) do
+ActiveRecord::Schema.define(version: 20171016035515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -263,6 +263,7 @@ ActiveRecord::Schema.define(version: 20171011145626) do
     t.datetime "withdraw_at"
     t.string   "latlng_address"
     t.string   "ad"
+    t.text     "lease_desc"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
     t.index ["owner_id"], name: "index_products_on_owner_id", using: :btree

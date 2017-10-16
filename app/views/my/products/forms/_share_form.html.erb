@@ -3,7 +3,11 @@
 <%= product_form.input :title, placeholder: "请填写标题" %>
 <div class="form-group form-inline product-desc-wrap clearfix">
   <%= product_form.label :desc, class: 'control-label' %>
-  <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写详细介绍",  ckeditor: { language: 'zh-CN', height: 300, width:600 }%>
+  <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写商品描述",  ckeditor: { language: 'zh-CN', height: 240, width:600 }%>
+</div>
+<div class="form-group form-inline product-lease-desc-wrap clearfix">
+  <%= product_form.label :lease_desc, class: 'control-label' %>
+  <%= product_form.cktext_area :lease_desc , class: 'form-control', placeholder: "请填写租赁说明",  ckeditor: { language: 'zh-CN', toolbar: 'mini', height: 120, width:600 }%>
 </div>
 
 <div class="form-group form-inline ">

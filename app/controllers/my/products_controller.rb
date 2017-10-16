@@ -103,12 +103,12 @@ module My
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def product_params
-        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :latlng_address, :tenancy, :deposit,
+        params.require(:product).permit(:title, :desc, :lease_desc, :category_id, :address, :price, :lat, :lng, :latlng_address, :tenancy, :deposit,
         :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9, images_attributes: [:caption, :photo])
       end
 
       def edit_product_params
-        params.require(:product).permit(:title, :desc, :category_id, :address, :price, :lat, :lng, :latlng_address, :tenancy, :deposit,
+        params.require(:product).permit(:title, :desc, :lease_desc, :category_id, :address, :price, :lat, :lng, :latlng_address, :tenancy, :deposit,
         :filt0, :filt1, :filt2, :filt3, :filt4, :filt5, :filt6, :filt7, :filt8, :filt9, images_attributes: [:id, :_destroy, :caption, :photo])
       end
   end
