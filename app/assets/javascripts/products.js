@@ -39,6 +39,7 @@ function BindSwiperEvent()
     })
 
     var previewSwiper = new Swiper('.gallery-thumb.swiper-container', {
+      touchRatio: 0.2,
       visibilityFullFit: true,
       slidesPerView: 'auto',
       onlyExternal: true,

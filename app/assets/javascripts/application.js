@@ -45,9 +45,9 @@ $(function(){
     modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
   });
 
-  if( $('.swiper-container').is('*'))
+  if( $('.gg-slider .swiper-container').is('*'))
   {
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.gg-slider .swiper-container', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         autoplay : 5000
