@@ -1,7 +1,7 @@
 # 保存IP和对应的geocoding 信息。
 
 class User < ApplicationRecord
-  enum role: [:user, :vip, :admin]
+  enum role: [:user, :vip, :admin], _prefix: true
   #   none:  没有认证
   #   ready: 认证信息准备好，
   #   done:  认证完成

@@ -1,0 +1,11 @@
+body.admin{
+  .pagination {
+    .first,
+    .prev,
+    .page,
+    .next,
+    .last {
+      float: left;
+    }
+  }
+}
