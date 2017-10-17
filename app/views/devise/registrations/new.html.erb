@@ -5,7 +5,7 @@
 
   <div class="authform-wrap">
     <div id="loginLogo" class="loginLogo"> <%= link_to image_tag('logo.png'), root_path %> </div>
-
+<%logger.debug "resource.errors=#{resource.errors.inspect}"%>
      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :role => 'form', id:"new_user_form"}) do |f| %>
     <h4><%= t(:sign_up) %></h4>
     <% if flash["alert"]%>
@@ -13,8 +13,8 @@
     <% end %>
       <div class="form-inputs">
         <%= f.input :cellphone, label: false, placeholder: t(:cellphone), autofocus: true %>
-        <%= f.input :nickname, label: false, placeholder: t(:nickname)  %>
-        <%= f.input :password, label: false, placeholder: t(:password)%>
+        <%#= f.input :nickname, label: false, placeholder: t(:nickname)  %>
+        <%#= f.input :password, label: false, placeholder: t(:password)%>
         <%= f.input :verification_code, label: false do %>
             <div class="input-group">
               <%= f.text_field :verification_code, placeholder: t(:input_verify_code), class: 'form-control string' %>

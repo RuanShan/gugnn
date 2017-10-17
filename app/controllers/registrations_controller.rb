@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    permitted_param_keys = [:cellphone, :nickname, :password, :verification_code]
+    permitted_param_keys = [:cellphone, :verification_code]
     permitted_params = params.require(:user).permit(*permitted_param_keys)
     permitted_params['sms'] = build_sms
     permitted_params
@@ -21,8 +21,12 @@ class RegistrationsController < Devise::RegistrationsController
     # sms serialized as serializable_hash in session
     # session[:sms]= {"cellphone"=>"13889611691", "validation_context"=>nil, "errors"=>{}, "code"=>832050, "send_at"=>"2017-10-12T23:59:21.785+08:00"}
     # Rails.logger.debug "session[:sms]=#{session[:sms].inspect} "
-    permitted_params = session[:sms].slice 'cellphone', 'code', 'send_at'
-    sms = Sms.new permitted_params
+    if session[:sms]
+      permitted_params = session[:sms].slice 'cellphone', 'code', 'send_at'
+      sms = Sms.new permitted_params
+    else
+      sms = Sms.new(  )
+    end
   end
 
 end

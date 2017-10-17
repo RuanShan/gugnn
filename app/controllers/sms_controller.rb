@@ -34,7 +34,12 @@ class SmsController < ApplicationController
 
   private
     def set_sms
-      @sms = session[:sms] || Sms.new(  )
+      if session[:sms]
+        sms_params = session[:sms].slice 'cellphone', 'code', 'send_at'
+        @sms = Sms.new sms_params
+      else
+        @sms = Sms.new(  )
+      end
     end
 
     # Use callbacks to share common setup or constraints between actions.

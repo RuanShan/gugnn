@@ -59,11 +59,15 @@ class User < ApplicationRecord
   end
 
   def change_password(password_options)
-    current_password = password_options["current_password"]
-    if valid_password? current_password
+    unless encrypted_password.present?
       reset_password(password_options["password"],password_options["password_confirmation"] )
     else
-      errors.add("current_password", "密码不正确")
+      current_password = password_options["current_password"]
+      if valid_password? current_password
+        reset_password(password_options["password"],password_options["password_confirmation"] )
+      else
+        errors.add("current_password", "密码不正确")
+      end
     end
   end
 
@@ -84,12 +88,18 @@ class User < ApplicationRecord
     false
   end
 
+  def password_required?
+    !password.nil? || !password_confirmation.nil?
+  end
+
   def confirm_verification_code
     if sms.present?
       if !sms.validate_for_sign_up( self.cellphone, self.verification_code)
         Rails.logger.debug sms.errors.inspect
-        errors.add("verification_code", "验证码不正确")
+        errors.add("verification_code", sms.errors.first[1])
       end
+    else
+      errors.add("verification_code", "请发送验证码")
     end
   end
 

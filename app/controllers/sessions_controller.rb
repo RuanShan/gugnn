@@ -9,18 +9,14 @@ class SessionsController < Devise::SessionsController
       user = User.where( cellphone: cellphone ).first
       if user
         sms = build_sms
-        if sms
-          if sms.validate_for_sign_up( cellphone, user_params[:verification_code] )
-            self.resource = user
-            set_flash_message!(:notice, :signed_in)
-            sign_in(resource_name, resource)
-            yield resource if block_given?
-            respond_with resource, location: after_sign_in_path_for(resource)
-          else
-            resource.errors.add("verification_code", "验证码不正确")
-          end
+        if sms.validate_for_sign_up( cellphone, user_params[:verification_code] )
+          self.resource = user
+          set_flash_message!(:notice, :signed_in)
+          sign_in(resource_name, resource)
+          yield resource if block_given?
+          respond_with resource, location: after_sign_in_path_for(resource)
         else
-          resource.errors.add("verification_code", "请发送验证码")
+          resource.errors.add("verification_code", sms.errors.first[1])
         end
       else
         resource.errors.add("cellphone", "手机号不存在")
@@ -54,7 +50,7 @@ class SessionsController < Devise::SessionsController
         permitted_params = session[:sms].slice 'cellphone', 'code', 'send_at'
         sms = Sms.new permitted_params
       else
-        nil
+        sms = Sms.new(  )
       end
     end
 end
