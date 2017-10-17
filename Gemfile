@@ -56,6 +56,8 @@ gem 'aasm' # https://github.com/aasm/aasm State machines for Ruby classes
 
 gem 'aliyun-sms' # 阿里云短信服务
 
+gem 'ruby-pinyin'
+
 group :development do
   gem 'foreman'
   gem 'hub', :require=>nil

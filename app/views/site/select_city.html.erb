@@ -1,3 +1,36 @@
-<div class="container" style="margin-top: 20px;margin-bottom: 20px;">
-  <%=text_field_tag "citySelect", "", placeholder: t(:please_input_city), style:"margin-top:20px;" %>
+<div class="container select-city" style="margin-top: 20px;margin-bottom: 20px;">
+    <div class="form-group clearfix">
+      <label class="control-label red-font" style="margin-right: 16px;">热门城市</label>
+      <% @popular_cities.each{|city| %>
+        <%= link_to city.name, select_city_path( city: city.name ), class: 'hot-city', method: :patch %>
+      <% } %>
+    </div>
+
+  <form class="form-inline">
+    <div class="form-group clearfix">
+      <label class="control-label" style="margin-right: 16px;">城市选择</label> <%=text_field_tag "citySelect", "", placeholder: t(:please_input_city), class:"form-control" %>
+    </div>
+  </form>
+  <div class="cityAlphabetContainer ">
+    <div class="content-title">按省份首字母选择</div>
+    <div class="content-box">
+
+      <% @grouped_provinces.keys.sort.each{|first_letter| provinces = @grouped_provinces[first_letter] %>
+        <div class="content-letter clearfix">
+          <div class="content-letter-panel" style=" "> <%=first_letter.upcase %></div>
+          <% provinces.each{ |province| %>
+          <div class="content-province"><span class="content-province-triangle"></span>
+            <div class="content-province-title" style=""><%= province.province %></div>
+            <div class="content-cities">
+              <% @grouped_cities[province.ppinyin].each{|city| %>
+                <%= link_to city.name, select_city_path( city: city.name ), class: 'content-city', method: :patch %>
+              <% } %>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
 </div>

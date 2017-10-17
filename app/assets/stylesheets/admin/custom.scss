@@ -3,9 +3,10 @@ body.admin{
     .first,
     .prev,
     .page,
-    .next,
+    .next, .next_page,
     .last {
       float: left;
+      margin: 0.75em;
     }
   }
 }

@@ -15,3 +15,7 @@ http://www.cnblogs.com/eastday/archive/2013/05/31/3109804.html
 修正方案
   gem uninstall bcrypt
   gem install bcrypt --platform=ruby
+
+3. 中文window，执行rails c 命令后，无法操作中文字符串
+
+https://github.com/pry/pry/wiki/Windows-support

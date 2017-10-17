@@ -34,6 +34,10 @@ $(function(){
   if( $('#citySelect').is('*'))
   {
     new Vcity.CitySelector({input:'citySelect'});
+
+    $('.content-letter-panel').each(function(){
+      $(this).css( 'line-height', $(this).height()+'px');
+    })
   }
   $('#gugnnModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal

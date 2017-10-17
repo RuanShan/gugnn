@@ -69,6 +69,6 @@ class HotCitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hot_city_params
-      params.require(:hot_city).permit(:name, :pingyi, :acronyms, :province, :status, :integer)
+      params.require(:hot_city).permit(:name, :pinyin, :acronyms, :province, :status, :integer)
     end
 end

@@ -17,7 +17,7 @@ class HotCitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create hot_city" do
     assert_difference('HotCity.count') do
-      post hot_cities_url, params: { hot_city: { acronyms: @hot_city.acronyms, integer: @hot_city.integer, name: @hot_city.name, pingyi: @hot_city.pingyi, province: @hot_city.province, status: @hot_city.status } }
+      post hot_cities_url, params: { hot_city: { acronyms: @hot_city.acronyms, integer: @hot_city.integer, name: @hot_city.name, pinyin: @hot_city.pinyin, province: @hot_city.province, status: @hot_city.status } }
     end
 
     assert_redirected_to hot_city_url(HotCity.last)
@@ -34,7 +34,7 @@ class HotCitiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update hot_city" do
-    patch hot_city_url(@hot_city), params: { hot_city: { acronyms: @hot_city.acronyms, integer: @hot_city.integer, name: @hot_city.name, pingyi: @hot_city.pingyi, province: @hot_city.province, status: @hot_city.status } }
+    patch hot_city_url(@hot_city), params: { hot_city: { acronyms: @hot_city.acronyms, integer: @hot_city.integer, name: @hot_city.name, pinyin: @hot_city.pinyin, province: @hot_city.province, status: @hot_city.status } }
     assert_redirected_to hot_city_url(@hot_city)
   end
 
