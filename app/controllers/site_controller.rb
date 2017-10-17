@@ -30,12 +30,33 @@ class SiteController < ApplicationController
   end
 
   def select_city
+    # 山西，陕西 拼音是一样的，这里需要添加汉字名称排序
+    @cities = HotCity.order(:ppinyin,:province, :position).to_a
+    # province_first_letter:[ provinces ]
+    @popular_cities = []
+    @grouped_provinces = {}
+    @grouped_cities = {}
+    last_city = nil
+    @cities.each{|city|
+      if @grouped_provinces.key? city.ppinyin.first
+        if last_city.province != city.province
+          @grouped_provinces[city.ppinyin.first] << city
+        end
+      else
+        @grouped_provinces[city.ppinyin.first]= [city]
+      end
+      @grouped_cities[city.ppinyin] ||= []
+      @grouped_cities[city.ppinyin] << city
+
+      @popular_cities << city if city.popular?
+      last_city = city
+    }
     if request.patch?
       session[:selected_city] = params["city"]
       if current_user.present?
         current_user.update_attribute :city, session[:selected_city]
       end
-      redirect_to "/"
+      redirect_to root_path
     end
   end
 

@@ -99,11 +99,12 @@ ActiveRecord::Schema.define(version: 20171016132743) do
 
   create_table "hot_cities", force: :cascade do |t|
     t.string   "name"
-    t.string   "pingyi"
+    t.string   "pinyin"
     t.string   "acronyms"
     t.string   "province"
-    t.string   "status"
-    t.string   "integer"
+    t.string   "ppinyin"
+    t.integer  "status"
+    t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

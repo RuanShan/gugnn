@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :hot_city do
     name "MyString"
-    pingyi "MyString"
+    pinyin "MyString"
     acronyms "MyString"
     province "MyString"
     status "MyString"
