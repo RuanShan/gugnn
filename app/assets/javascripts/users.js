@@ -116,11 +116,61 @@ $(function(){
 
     });
 
+    var newSessionCodeValidator= $("#new_session_form").validate({
+      rules: {
+        'user[cellphone]': {
+          required: true,
+          isMobile: true
+        },
+        'user[verification_code]': {
+          required: true,
+          rangelength:[6,6]
+        },
+      },
+      errorPlacement:function(error,element) {
+        var position = element.position();
+        error.css({
+          "position" : "absolute",
+          "line-height" : "15px",
+          "font-weight" : "normal",
+          "top" : position.top+34,
+          "left": position.left,
+          "color": "red"
+        })
+        error.appendTo(element.parent());
+      }
+
+    });
+
     $("#new_user_form #obtainVerifyCode").click(function(){
       var cellphoneSelector = '#new_user_form #user_cellphone';
       var self = this;//发短信按键
 
       var validCellphone = newUserValidator.element(cellphoneSelector)
+      if ( validCellphone ) {
+        var cellphone = $(cellphoneSelector).val();
+      		Gugnn.common.getVerifyCode({
+      									disabled:"重新获取",
+      									text:"重新发送",
+      									time:60,
+      									sendHint:true, //是否提示
+      									sendText:"动态验证码已发送到您的手机，10分钟内有效", // 提示文本
+       									ctx: self,
+      									auth:{
+      										url: Gugnn.routes.sms_path,
+      										data:{
+      											"cellphone": cellphone,
+      										}
+      									}
+      								});
+      }
+    });
+
+    $("#new_session_form #obtainVerifyCode").click(function(){
+      var cellphoneSelector = '#new_session_form #user_cellphone';
+      var self = this;//发短信按键
+
+      var validCellphone = newSessionCodeValidator.element(cellphoneSelector)
       if ( validCellphone ) {
         var cellphone = $(cellphoneSelector).val();
       		Gugnn.common.getVerifyCode({

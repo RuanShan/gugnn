@@ -24,6 +24,7 @@ class SmsController < ApplicationController
         end
       end
     end
+    logger.debug "sms=#{@sms.inspect}"
     render json: { status: status, sms: @sms }
   end
 
