@@ -27,6 +27,13 @@
  ul {
    list-style-type: none;
  }
+ a {
+   color: #333333;
+ }
+ a:hover{
+   color: #1169AB;
+   text-decoration: none;
+ }
  .red-bg{
    background:  #d61718;
  }
