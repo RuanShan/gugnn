@@ -35,7 +35,7 @@ module My
     # POST /products
     # POST /products.json
     def create
-      city = HotCity.find_by_name(params[:product_city])
+      city = HotCity.find_by_name(params[:product_city_name])
       @product = Product.new(product_params)
       @product.owner = current_user
       @product.city = city
@@ -56,7 +56,7 @@ module My
     def update
       respond_to do |format|
         if @product.update(edit_product_params)
-          city = HotCity.find_by_name(params[:product_city])
+          city = HotCity.find_by_name(params[:product_city_name])
           @product.city = city
           if @product.save
             format.html { redirect_to my_products_path(@product), notice: '信息更新成功' }

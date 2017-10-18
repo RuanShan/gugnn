@@ -93,13 +93,12 @@ class User < ApplicationRecord
   end
 
   def confirm_verification_code
+    #只有sms存在时才需要验证，加载seed时无需短信验证
     if sms.present?
       if !sms.validate_for_sign_up( self.cellphone, self.verification_code)
         Rails.logger.debug sms.errors.inspect
         errors.add("verification_code", sms.errors.first[1])
       end
-    else
-      errors.add("verification_code", "请发送验证码")
     end
   end
 

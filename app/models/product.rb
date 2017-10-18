@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   #
   before_create :set_defaults
 
+  #创建产品时传入，根据city_name查找city,设置city
   attribute :latlng, :point
   # parent_category需要
   validates :category, presence: true
@@ -52,6 +53,7 @@ class Product < ApplicationRecord
     #end
   end
 
+  delegate :name, to: :city, prefix: true, allow_nil: true
   # 定义 过滤条件
   # 如： { name: 'brand', title: '品牌', values: [[1,'lenovo','联想'],[2,'asus','华硕']]}
   # enum :tilt1, { apple: 1,lenovo: 2}
@@ -71,7 +73,6 @@ class Product < ApplicationRecord
   end
 
   def set_defaults
-
     self.published_at ||= DateTime.current
     self.parent_category_id ||= category.parent_id
     self.status = :authenticated

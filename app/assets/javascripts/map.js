@@ -5,6 +5,7 @@ $(function(){
     // 创建|编辑 商品时， 初始化租赁商品的地址
       var $lng = $("#product_lng");
       var $lat= $("#product_lat");
+      var $city_name = $('#product_city_name');
       var option = { 'lat': $lat.val(), 'lng': $lng.val() };
       var product_address_map = new AddressAmap(address_container_id, option);
 
@@ -15,6 +16,7 @@ $(function(){
           $('#product_latlng_address').val( product_address_map.address);
           $lat.val(position.getLat());
           $lng.val(position.getLng());
+          $city_name.val( product_address_map.city);
           $('#gugnnMapModal').modal('hide');
         }else{
 
@@ -54,6 +56,7 @@ function AddressAmap(container_id, options, map_options){
   this.map_options = map_options || {};
   this.container_id = container_id;
   this.address = null;
+  this.addressComponent  = null;
   this.init();
 }
 
@@ -109,7 +112,14 @@ AddressAmap.prototype.clickCallback = function(e){
   });
 };
 AddressAmap.prototype.geocoderCallback = function( result){
-    this.address = result.regeocode.formattedAddress; //返回地址描述
+  //addressComponent
+  //adcode:110105, building:"", buildingType:"", businessAreas:(3) [{…}, {…}, {…}]
+  //city:"",citycode:"010",district:"朝阳区",neighborhood:"",neighborhoodType:""
+  //province:"北京市",street:"北四环中路",streetNumber:"24号"
+  //township:"奥运村街道"
+  this.addressComponent = result.regeocode.addressComponent;
+  this.address = result.regeocode.formattedAddress; //返回地址描述
+  this.city = this.addressComponent.city.length > 0 ? this.addressComponent.city : this.addressComponent.province
 };
 
 
