@@ -83,6 +83,12 @@ class User < ApplicationRecord
     @avatar_remote_url = url_value
   end
 
+  # 由于用户手机号码注册时，nickname为空， link_to current_user.nickname 会显示路径 my/account/
+  # 设置缺省 ‘我的昵称’
+  def nickname
+    self['nickname'] || '我的昵称'
+  end
+
   private
   def email_required?
     false
