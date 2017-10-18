@@ -377,21 +377,29 @@
   .gg-footer
   {
     padding: 4px 0;
-    /*border-top: solid 1px #cacaca;
-    background-color: #cacaca;*/
+    border-top: solid 1px #cacaca;
+    background-color: #fff;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50px;
     .nav-item-wrap
     {
       text-align: center;
+      .nav-item
+      {
+        line-height: 12px;
+      }
       a{
-        color: #fff;
+        font-size: 10px;
+        color: #555555;
+        &:hover{
+          color: #d61718;
+        }
       }
       .font-icon
       {
+        color: #d61718;
         font-size: 1.4em;
       }
     }
