@@ -31,6 +31,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'administrate-field-paperclip'
+gem "administrate-field-ckeditor",  github: "jemcode/administrate-field-ckeditor", branch: :master
 
 gem "jquery-fileupload-rails"
 gem 'bootstrap-sass'
@@ -47,6 +48,11 @@ gem 'geocoder'
 
 gem 'acts_as_list'
 gem 'awesome_nested_set'
+
+#https://github.com/mbleigh/acts-as-taggable-on
+#rake acts_as_taggable_on_engine:install:migrations
+gem 'acts-as-taggable-on', '~> 4.0'
+
 gem "paperclip"
 
 gem 'kaminari' #分页

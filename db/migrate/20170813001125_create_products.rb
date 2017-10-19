@@ -14,7 +14,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
 
       t.string :type
       t.string :title
-      t.string :desc
+      t.text :desc
       t.string :slugged
       t.belongs_to :owner, foreign_key: {to_table: :users}
       t.integer :price, null:false, default: 0    #租金 单位为元

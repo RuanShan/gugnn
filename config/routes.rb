@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :hot_cities
   root to: 'site#index'
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -15,8 +14,16 @@ Rails.application.routes.draw do
     resources :images
     resources :option_values
     resources :product_option_values
+    resources :blog_categories
+    resources :blog_posts
     root to: "categories#index"
   end
+
+  resources :blog_posts
+  resources :blog_categories do
+    resources :blog_posts
+  end
+  resources :hot_cities
 
   resources :product_option_values
   resources :category_options
@@ -34,7 +41,7 @@ Rails.application.routes.draw do
     get '/login', to: 'sessions#new'
     get '/logout', to: 'sessions#destroy'
     post '/sessions', to: 'sessions#create'
-        
+
     get 'validate_cellphone', to: 'registrations#validate_cellphone'
     post 'validate_captcha', to: 'registrations#validate_captcha'
   end

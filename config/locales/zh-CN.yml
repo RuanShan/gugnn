@@ -1,6 +1,8 @@
 zh-CN:
   activerecord:
     attributes:
+      category:
+        title: 分类名称
       product:
         address: "详细地址"
         category: 分类
@@ -76,21 +78,27 @@ zh-CN:
         licence_photo: "商店/企业照片"
         website: 网站
     models:
+      blog_category:
+        one: 文章分类
+        other: 文章分类
+      blog_post:
+        one: 文章
+        other: 文章
       category:
         one: 租赁分类
         other: 租赁分类
       category_option:
         one: 分类属性
         other: 分类属性
-      product:
-        one: 商品
-        other: 商品
       image:
         one: 图片
         other: 图片
       option_value:
         one: 分类属性值
         other: 分类属性值
+      product:
+        one: 商品
+        other: 商品
       product_option_value:
         one: 商品属性值
         other: 商品属性值
