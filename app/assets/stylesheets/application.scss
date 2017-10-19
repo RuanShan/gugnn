@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require 'swiper.min'
- *= require 'lightbox.min'
+ *= require 'lightbox'
  *= require 'sidr/jquery.sidr.light.min'
  *= require 'layer'
  *= require_tree .

@@ -5,7 +5,6 @@
 
   <div class="authform-wrap">
     <div id="loginLogo" class="loginLogo"> <%= link_to image_tag('logo.png'), root_path %> </div>
-<%logger.debug "resource.errors=#{resource.errors.inspect}"%>
      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :role => 'form', id:"new_user_form"}) do |f| %>
     <h4><%= t(:sign_up) %></h4>
     <% if flash["alert"]%>
