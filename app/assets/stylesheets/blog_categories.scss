@@ -1,0 +1,59 @@
+// Place all the styles related to the blog_categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pc{
+  .show-post
+  {
+    background-color: #f5f5f5;
+    .data-body {
+      margin-top: 40px;
+      margin-bottom: 40px;
+
+      .about-h2 {
+          font-size: 28px;
+          font-weight: normal;
+          line-height: 30px;
+          margin: 10px 0;
+          color: #565a5c;
+      }
+      .about-p {
+          color: #565a5c;
+          padding: 10px 0;
+      }
+    }
+    .subnav {
+      background-color: #565a5c;
+      height: 40px;
+
+      li {
+          padding: 0;
+          line-height: 34px;
+          display: inline-block;
+          margin: 3px 15px 0;
+          .subnav-item:hover {
+              text-decoration: none;
+              color: #fff;
+          }
+      }
+      .li-active {
+          border-bottom: 3px solid #ccc;
+          a {
+           color: #fff;
+         }
+      }
+    }
+
+    .subnav .subnav-item {
+        color: #ccc;
+    }
+    .sidenav .sidenav-item {
+        color: #999;
+    }
+    .sidenav li {
+        height: 36px;
+        line-height: 36px;
+        margin: 5px 0;
+    }
+  }
+}

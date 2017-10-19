@@ -1,0 +1,7 @@
+<div class="subnav">
+  <ul class="container">
+    <% BlogCategory.ctype_about.includes('blog_posts').each{|category| %>
+      <%= content_tag :li, link_to( category.title, category.blog_posts.first, class: 'subnav-item'), class: (  category == @blog_category ? 'li-active': '') %>
+    <% } %>
+  </ul>
+</div>

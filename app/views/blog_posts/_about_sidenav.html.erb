@@ -1,0 +1,5 @@
+<ul class="sidenav">
+  <% @blog_category.blog_posts.each { |post| %>
+    <%= content_tag :li, link_to( post.title, post, class: current_page?( blog_post_path( post)) ? 'sidenav-item' : '') %>
+  <% } %>
+</ul>

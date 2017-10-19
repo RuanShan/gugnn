@@ -1,0 +1,18 @@
+<div class="show-post">
+  <%= render 'about_categories' %>
+  <div class="container data-body">
+      <p id="notice"><%= notice %></p>
+      <div class="col-md-3">
+        <%= render 'about_sidenav' %>
+      </div>
+      <div class="col-md-9">
+        <h2 class="about-h2 ">
+          <%= @blog_post.title %>
+        </h2>
+        <div class="about-p">
+        <%== @blog_post.content %>
+        </div>
+      </div>
+
+  </div>
+</div>
