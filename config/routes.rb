@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :product_option_values
     resources :blog_categories
     resources :blog_posts
+    resources :messages
     root to: "categories#index"
   end
 

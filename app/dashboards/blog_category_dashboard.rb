@@ -27,7 +27,7 @@ class BlogCategoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :blog_posts,
-    :title,    
+    :title,
     :ctype,
     :position,
   ].freeze

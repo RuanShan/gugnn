@@ -161,12 +161,15 @@ ActiveRecord::Schema.define(version: 20171019034954) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.string   "title"
     t.text     "body"
-    t.integer  "conversation_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.integer  "recipient_id"
+    t.integer  "status"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id", using: :btree
+    t.index ["user_id", "recipient_id"], name: "index_messages_on_user_id_and_recipient_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -256,7 +259,7 @@ ActiveRecord::Schema.define(version: 20171019034954) do
   create_table "products", force: :cascade do |t|
     t.string   "type"
     t.string   "title"
-    t.string   "desc"
+    t.text     "desc"
     t.string   "slugged"
     t.integer  "owner_id"
     t.integer  "price",              default: 0,          null: false
@@ -414,6 +417,8 @@ ActiveRecord::Schema.define(version: 20171019034954) do
   end
 
   add_foreign_key "events", "users"
+  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "recipient_id"
   add_foreign_key "products", "categories", column: "parent_category_id"
   add_foreign_key "products", "hot_cities", column: "city_id"
   add_foreign_key "products", "users", column: "owner_id"

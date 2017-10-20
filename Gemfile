@@ -32,6 +32,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'administrate-field-paperclip'
 gem "administrate-field-ckeditor",  github: "jemcode/administrate-field-ckeditor", branch: :master
+gem 'administrate-field-enum'
 
 gem "jquery-fileupload-rails"
 gem 'bootstrap-sass'

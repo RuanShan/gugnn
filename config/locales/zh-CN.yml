@@ -93,6 +93,9 @@ zh-CN:
       image:
         one: 图片
         other: 图片
+      message:
+        one: 消息
+        other: 消息
       option_value:
         one: 分类属性值
         other: 分类属性值

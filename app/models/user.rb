@@ -1,13 +1,15 @@
 # 保存IP和对应的geocoding 信息。
 
 class User < ApplicationRecord
+  include AASM
+
   enum role: [:user, :vip, :admin], _prefix: true
   #   none:  没有认证
   #   ready: 认证信息准备好，
   #   done:  认证完成
   #   deny:  认证信息不合格
-  enum id_auth_status: [:none,:apply, :ready, :done, :deny ], _prefix: true
-  enum licence_auth_status: [:none,:apply, :ready, :done, :deny ], _prefix: true
+  enum id_auth_status: { none: 0,  ready:5, done:9, denied: 4 }, _prefix: true
+  enum licence_auth_status: {none: 0, ready:5, done:9, denied: 4}, _prefix: true
 
   after_initialize :set_default_role, :if => :new_record?
   devise :database_authenticatable, authentication_keys: [:cellphone]
@@ -17,14 +19,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :conversations, foreign_key: :sender_id
-  has_many :events, through: :jointables
+  #用户的消息，
+  has_many :messages
 
-  has_many :rents, dependent: :destroy
-  has_many :sales, dependent: :destroy
   has_many :products, dependent: :destroy, foreign_key: 'owner_id'
 
-  has_many :jointables, dependent: :destroy
 
   belongs_to :category
 
@@ -45,6 +44,37 @@ class User < ApplicationRecord
   # sms对象，创建用户时检查短信验证码, :verification_code, 用户输入的验证码
   attr_accessor :sms,:verification_code, :current_password
 
+  aasm( :id_auth_status, column: :id_auth_status, enum: true, namespace: :id )do
+    state :none, :initial => true
+    state :ready
+    state :done
+    state :deny
+    event :submit, :after_commit => :notify_id_ready do
+      transitions :from => :none, :to => :ready
+    end
+    event :deny do
+      transitions :from => :ready, :to => :denied
+    end
+    event :allow do
+      transitions :from => :ready, :to => :done
+    end
+  end
+
+  aasm(  :licence_auth_status, column: :licence_auth_status, enum: true, namespace: :licence )do
+    state :none, :initial => true
+    state :ready
+    state :done
+    state :deny
+    event :submit, :after_commit => :notify_licence_ready do
+      transitions :from => :none, :to => :ready
+    end
+    event :deny do
+      transitions :from => :ready, :to => :denied
+    end
+    event :allow do
+      transitions :from => :ready, :to => :done
+    end
+  end
 
   def self.validate_phone(phone)
     if phone=~/\A(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})\z/
@@ -97,6 +127,21 @@ class User < ApplicationRecord
   def password_required?
     !password.nil? || !password_confirmation.nil?
   end
+
+  def notify_id_ready
+    if id_auth_status_ready?
+      admin = User.role_admin.first
+      messages.create!  recipient: admin, title: "客户##{id}(#{cellphone})申请实名认证，请审查。"
+    end
+  end
+
+  def notify_licence_ready
+    if licence_auth_status_ready?
+      admin = User.role_admin.first
+      messages.create!  recipient: admin, title: "客户##{id}(#{cellphone})申请企业认证，请审查。"
+    end
+  end
+
 
   def confirm_verification_code
     #只有sms存在时才需要验证，加载seed时无需短信验证

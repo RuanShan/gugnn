@@ -30,11 +30,13 @@ class SessionsController < Devise::SessionsController
     end
   end
 
+  def after_sign_in_path_for(resource)
+    if resource.role_admin?
+      admin_root_path
+    else
+      super
+    end
 
-  def new_renter
-    #copy from Devise::SessionsController#new
-    self.resource = resource_class.new(sign_in_params)
-    clean_up_passwords(resource)
   end
 
   private

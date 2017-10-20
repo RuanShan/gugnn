@@ -45,7 +45,7 @@ module My
       if request.patch?
         @user.update(authentication_params)
         if @user.errors.empty?
-          @user.id_auth_status_ready!
+          @user.submit_id!
           redirect_to action: :authentication
           return
         end
@@ -57,7 +57,7 @@ module My
       if request.patch?
         @user.update(authentication_params)
         if @user.errors.empty?
-          @user.licence_auth_status_ready!
+          @user.submit_licence!
           redirect_to action: :authentication
           return
         end
