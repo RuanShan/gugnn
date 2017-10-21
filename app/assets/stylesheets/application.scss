@@ -22,29 +22,34 @@
   background-color: #fff;
 }
 
- body {
- }
- ul {
-   list-style-type: none;
- }
- a {
-   color: #333333;
- }
- a:hover{
-   color: #1169AB;
-   text-decoration: none;
- }
- .red-bg{
-   background:  #d61718;
- }
- .red-font
- {
-   color: #d61718;
- }
- .gray-font
- {
-    color: #999;
- }
+body {
+}
+ul {
+ list-style-type: none;
+}
+a {
+ color: #333333;
+}
+a:hover{
+ color: #1169AB;
+ text-decoration: none;
+}
+.red-bg{
+ background:  #d61718;
+}
+.red-font
+{
+ color: #d61718;
+}
+.gray-font
+{
+  color: #999;
+}
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
  .gg-bb{
    border-bottom: 1px solid #cccccc;
  }

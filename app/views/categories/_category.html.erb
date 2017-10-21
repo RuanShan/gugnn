@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <ol class="breadcrumb">
+      <%== build_breadscrambs(@category) %>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <dl>
+        <% @category.category_options.each{|co| %>
+            <dt> <%= co.title %> </dt>
+            <dd><%= link_to_with_filters OptionValue.any_option_value(co) %>
+            <% co.option_values.each{| ov| %>
+              <%= link_to_with_filters ov %>
+            <% } %>
+            </dd>
+        <% } %>
+      </dl>
+    </div>
+    <div class="col-md-12">
+      <div class=" selected-filters">
+        <span class="title">条件 </span>
+        <%== show_product_filters %>
+      </div>
+    </div>
+  </div>
+
+  <div class="products">
+    <h3> 产品 </h3>
+    <ul class="list-group">
+      <% @products.each{|product| %>
+        <li class="list-group-item product clearfix">
+          <%= product_image product %>
+
+          <div class="product-info pull-left">
+            <h3> <%= link_to product.title, product_path( product) %> </h3>
+            <p>
+              押金: <%= product.deposit %>元   最低租期: <%= product.display_min_tenancy%> <br/>
+            </p>
+            <p>来自: <span><%= product.owner.nickname %> </span> </p>
+          </div>
+          <div class="pprice pull-right">
+            <span> <%== display_price(product) %> </span>
+          </div>
+        </li>
+        <% } %>
+    </ul>
+    <%= paginate @products %>
+  </div>
+</div>

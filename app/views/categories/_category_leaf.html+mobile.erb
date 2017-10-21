@@ -18,11 +18,11 @@
             <% category.products.limit(8).each_with_index{ |product, i| %>
               <li class="swiper-slide" >
                 <%= link_to product_path(product), class:'product' do%>
-                  <div class="product-image-wrapper">
+                  <div class="image-wrapper">
                   <% if product.master_image.present? %>
-                  <%= image_tag product.cover_url, class:"gg-prod-img product-image" %>
+                  <%= image_tag product.cover_url, class:" product-image" %>
                   <% else %>
-                  <%= image_tag 'default.png', class:"gg-prod-img product-image" %>
+                  <%= image_tag 'default.png', class:" product-image" %>
                   <% end %>
                   </div>
                   <div class="product-info">
