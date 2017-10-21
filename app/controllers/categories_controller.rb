@@ -22,6 +22,13 @@ class CategoriesController < ApplicationController
 
     @products = @category.products.includes(:owner).where(@product_filters).order(published_at: :desc).page params[:page]
 
+    #category has children
+    unless @category.leaf?
+      categories = @category.descendants
+      @hot_page_clicks = PageClick.on_option_values.where( pageable: categories ).includes(:clickable).limit( 8 )
+      #@hot_option_values = @hot_page_clicks.map(&:clickable)
+      #@hot_option_values = OptionValue.group(:category_option_id, :id).limit( 8) if @hot_option_values.blank?
+    end
   end
 
   # GET /categories/new

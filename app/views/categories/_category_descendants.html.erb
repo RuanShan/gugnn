@@ -1,12 +1,14 @@
 <div class="gg-slider">
   <%= image_tag 'slides/cslide.jpg' %>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      新品首发
-      <div class="latest clearfix">
 
+<div class="container show-category">
+  <div class="row">
+    <div class="col-md-9 main-left">
+
+      <div class="latest clearfix">
+        <div class="common_title_1">      新品首发
+        </div>
           <div class="subcategries ">
             <% @category.children.each{|category| %>
               <div class="category">
@@ -35,56 +37,24 @@
               </div>
             <% } %>
           </div>
-        <ul>
 
-        </ul>
       </div>
     </div>
-    <div class="col-md-3">
-      热门品牌
+    <div class="col-md-3 main-right">
+
+      <div class="hot-attr">
+        <div class="common_title_2">
+          热门属性
+        </div>
+        <div class="hot-attr-inner-box">
+          <ul class="attr-list">
+            <% @hot_page_clicks.each{|page_click| %>
+              <li>  <%=  link_to_with_filters( page_click.clickable, page_click.pageable )  %> </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-    <dl>
-      <% @category.category_options.each{|co| %>
-          <dt> <%= co.title %> </dt>
-          <dd><%= link_to_with_filters OptionValue.any_option_value(co) %>
-          <% co.option_values.each{| ov| %>
-            <%= link_to_with_filters ov %>
-          <% } %>
-          </dd>
-      <% } %>
-    </dl>
-  </div>
-    <div class="col-md-12">
-    <div class=" selected-filters">
-      <span class="title">条件 </span>
-      <%== show_product_filters %>
-    </div>
-  </div>
-  </div>
-</div>
-<div class="products">
-  <h3> 产品 </h3>
-  <ul class="list-group">
-    <% @products.each{|product| %>
-      <li class="list-group-item product clearfix">
-        <%= product_image product %>
-
-        <div class="product-info pull-left">
-          <h3> <%= link_to product.title, product_path( product) %> </h3>
-          <p>
-            押金: <%= product.deposit %>元   最低租期: <%= product.display_min_tenancy%> <br/>
-          </p>
-          <p>来自: <span><%= product.owner.nickname %> </span> </p>
-        </div>
-        <div class="pprice pull-right">
-          <span> <%== display_price(product) %> </span>
-        </div>
-      </li>
-      <% } %>
-  </ul>
-  <%= paginate @products %>
 </div>

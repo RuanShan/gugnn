@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   acts_as_nested_set
 
+  has_one :page_click, as: :pageable
   has_many :category_options
   has_many :products
   #当前分类的所有子分类所属的 products

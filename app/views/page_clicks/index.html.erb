@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Page Clicks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pv</th>
+      <th>Uv</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @page_clicks.each do |page_click| %>
+      <tr>
+        <td><%= page_click.pv %></td>
+        <td><%= page_click.uv %></td>
+        <td><%= link_to 'Show', page_click %></td>
+        <td><%= link_to 'Edit', edit_page_click_path(page_click) %></td>
+        <td><%= link_to 'Destroy', page_click, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page Click', new_page_click_path %>

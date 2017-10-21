@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :page_clicks
   root to: 'site#index'
 
   mount Ckeditor::Engine => '/ckeditor'

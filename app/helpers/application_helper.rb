@@ -59,4 +59,8 @@ module ApplicationHelper
     return path_hash[:controller], path_hash[:action]
   end
 
+
+  def build_clickable_id( pageable, clickable)
+    "#{pageable.class.name.underscore}-#{pageable.id}-#{  clickable.class.name.underscore}-#{clickable.id}"
+  end
 end

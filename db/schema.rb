@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019034954) do
+ActiveRecord::Schema.define(version: 20171021042941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,6 +215,20 @@ ActiveRecord::Schema.define(version: 20171019034954) do
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "page_clicks", force: :cascade do |t|
+    t.integer  "category_id",    default: 0, null: false
+    t.integer  "pv",             default: 0, null: false
+    t.integer  "uv",             default: 0, null: false
+    t.string   "pageable_type"
+    t.integer  "pageable_id"
+    t.string   "clickable_type"
+    t.integer  "clickable_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["clickable_type", "clickable_id"], name: "index_page_clicks_on_clickable_type_and_clickable_id", using: :btree
+    t.index ["pageable_type", "pageable_id"], name: "index_page_clicks_on_pageable_type_and_pageable_id", using: :btree
   end
 
   create_table "pets", force: :cascade do |t|

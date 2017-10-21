@@ -2,12 +2,12 @@ module CategoriesHelper
   # 基于当前过滤条件，和给定option_value, 构建新的过滤链接
   # 如： 条件是：苹果 128G 24寸，option_value 是64G，
   # 生成的链接是 苹果 64G 24寸
-  def link_to_with_filters( option_value )
+  def link_to_with_filters( option_value, category=nil )
+    category ||= @category
     category_option_values = @category_option_values.dup
     category_option_values[option_value.category_option.position-1] = option_value.id
     #  /categories/5?combofilters=-----3
-    path = category_path( @category, combofilters: category_option_values.join('-'))
-
+    path = category_path( category, combofilters: category_option_values.join('-'), clickable_id: build_clickable_id( category, option_value ))
     link_to option_value.title, path
   end
 
