@@ -147,15 +147,24 @@ a:hover{
 
   .subcategories{
     width: 400px;
+    li{
+      padding: 0 18px;
+      &:hover {
+          background: #f1f1f1;
+      }
+    }
     li>a{
       float: left;
+      font-weight: bold;
     }
     .subcategory{
-      padding:  0 0 0 100px;
+      padding: 4px 0 8px 100px;
+      border-bottom: 1px solid #eee;
+      color: #222;
     }
     .subcategory a{
       line-height: normal;
-      padding: 0 15px;
+      padding: 0 12px;
     }
   }
 
@@ -176,18 +185,18 @@ a:hover{
   }
   background-color: #d61718;
   .slide1{
-    background-image: image-url('slides/slide.png');
+    background-image: image-url('slides/slide.jpg');
     background-size: cover;
     background-position: center;
   }
   .slide2{
-    background-image: image-url('slides/slide.png');
+    background-image: image-url('slides/slide.jpg');
     background-size: cover;
     background-position: center;
 
   }
   .slide3{
-    background-image: image-url('slides/slide.png');
+    background-image: image-url('slides/slide.jpg');
     background-size: cover;
     background-position: center;
   }
