@@ -1,17 +1,16 @@
 class PasswordsController < Devise::PasswordsController
-  before_action :verify_sign_up_sms, only: [:update]
 
   # PUT /resource/password
   def update
     error_message = User.validate_phone(user_params['cellphone'])
     if error_message=="cellphone_exist"
       self.resource = resource_class.find_by_cellphone(user_params['cellphone'])
-      resource.reset_password(user_params[:password], user_params[:password_confirmation])
-      yield resource if block_given?
-      unless @sms.errors.empty?
-        @sms.errors.each{|key, value|
-          resource.errors.add(key, value)
-        }
+      sms = build_sms
+      if sms.validate_for_sign_up( user_params['cellphone'], user_params[:verification_code] )
+        resource.reset_password(user_params[:password], user_params[:password_confirmation])
+        yield resource if block_given?
+      else
+        resource.errors.add("verification_code", sms.errors.first[1])
       end
     else
       self.resource = resource_class.new
@@ -40,12 +39,16 @@ end
     params.require(:user).permit(*permitted_params)
   end
 
-  def verify_sign_up_sms
-    permitted_params = user_params
-    serialized_sms = session[:sms]||{}
-    logger.debug "serialized_sms=#{serialized_sms.inspect},permitted_params['verification_code']=#{permitted_params['verification_code']}"
-    # sms serialized as json in session, it is string key hash here
-    @sms = Sms.new( phone: serialized_sms['phone'], code: serialized_sms['code'], send_at: serialized_sms['send_at'])
-    @sms.verify_sign_up_sms( permitted_params['cellphone'],permitted_params['verification_code'])
+  def build_sms
+    # sms serialized as serializable_hash in session
+    # session[:sms]= {"cellphone"=>"13889611691", "validation_context"=>nil, "errors"=>{}, "code"=>832050, "send_at"=>"2017-10-12T23:59:21.785+08:00"}
+    # Rails.logger.debug "session[:sms]=#{session[:sms].inspect} "
+    if session[:sms]
+      permitted_params = session[:sms].slice 'cellphone', 'code', 'send_at'
+      sms = Sms.new permitted_params
+    else
+      sms = Sms.new(  )
+    end
   end
+
 end

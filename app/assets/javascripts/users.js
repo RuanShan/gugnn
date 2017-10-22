@@ -166,6 +166,30 @@ $(function(){
       }
     });
 
+    $("#reset_password_form #obtainVerifyCode").click(function(){
+      var cellphoneSelector = '#reset_password_form #user_cellphone';
+      var self = this;//发短信按键
+
+      var validCellphone = resetPasswordValidator.element(cellphoneSelector)
+      if ( validCellphone ) {
+        var cellphone = $(cellphoneSelector).val();
+      		Gugnn.common.getVerifyCode({
+      									disabled:"重新获取",
+      									text:"重新发送",
+      									time:60,
+      									sendHint:true, //是否提示
+      									sendText:"动态验证码已发送到您的手机，10分钟内有效", // 提示文本
+       									ctx: self,
+      									auth:{
+      										url: Gugnn.routes.sms_path,
+      										data:{
+      											"cellphone": cellphone,
+      										}
+      									}
+      								});
+      }
+    });
+
     $("#new_session_form #obtainVerifyCode").click(function(){
       var cellphoneSelector = '#new_session_form #user_cellphone';
       var self = this;//发短信按键
@@ -222,7 +246,7 @@ $(function(){
       }
     });
     // reset password form validate
-    $("#reset_password_form").validate({
+    var resetPasswordValidator= $("#reset_password_form").validate({
       rules: {
         'user[cellphone]': {
           required: true,

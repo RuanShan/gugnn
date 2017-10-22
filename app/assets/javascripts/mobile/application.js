@@ -26,6 +26,7 @@
 //= require layer.custom
 // other custom js file
 //= require map
+//= require common
 //= require users
 
 
