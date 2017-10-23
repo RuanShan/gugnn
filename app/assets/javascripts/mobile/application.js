@@ -18,7 +18,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require underscore.min
-//= require lightbox.min
 //= require swiper.jquery.min
 //= require ckeditor/init
 //= require jquery.sidr.min
