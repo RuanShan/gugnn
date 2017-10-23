@@ -13,7 +13,7 @@
  *= require 'swiper.min'
  *= require 'lightbox'
  *= require 'sidr/jquery.sidr.light.min'
- *= require 'layer'
+ *= require 'layer.mobile'
  *= require_tree .
  *= require_self
  */
@@ -354,49 +354,7 @@ a:hover{
       }
     }
   }
-  .gg-search
-  {
-    padding: 8px 0;
-    background-color: #fff;
-    button{
-      margin: 4px auto;
-      width: 100%;
-      color: #fff;
-      background-color:  #d61718;
-    }
 
-    .select-category
-    {
-      .ptitle
-      {
-        display: block;
-        background-color: #f8f8f8;
-        padding: 7px 15px;
-        color: #202020;
-        overflow: hidden;
-        font-size: 14px;
-      }
-      .categoryWrap{
-
-        width: 33.333%;
-        padding: 0 6px;
-        margin: 0 0 10px 0;
-        float: left;
-        border: 0 none;
-
-        a{
-          width: 100%;
-          display: block;
-          color: #666;
-          border: 1px solid #e5e5e5;
-          height: 100%;
-          padding: 6px 0;
-          font-size: 14px;
-          text-align: center;
-        }
-      }
-    }
-  }
   .gg-footer
   {
     padding: 4px 0;

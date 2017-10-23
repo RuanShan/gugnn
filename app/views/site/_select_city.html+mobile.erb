@@ -1,0 +1,39 @@
+<div class="select-city gg-hide">
+
+  <div class="layui-layer-title">
+    <a class="layui-close-btn"><span class="glyphicon glyphicon-chevron-left font-icon" aria-hidden="true"></span> </a>
+    <span>城市选择</span>
+  </div>
+  <div class="cities-wrap">
+
+    <div class="hot-cities-wrap">
+      <div class="head red-font" style="margin-bottom:7px;">      热门城市    </div>
+      <ul class="hot-cities clearfix">
+      <% @popular_cities.each{|city| %>
+        <li class="city hot-city "> <%= link_to city.name, select_city_path( city: city.name ), class: 'name', method: :patch, data:{id: city.id, title: city.name} %> </li>
+      <% } %>
+    </ul>
+    </div>
+
+    <div class="city-alphabet-wrap">
+        <% @letter_grouped_cityes.keys.sort.each{ |first_letter| %>
+            <div class="clearfix">
+                <div id="alphabet-city-<%=first_letter %>" class="head" style=" "> <%=first_letter.upcase %></div>
+                <div class="">
+                  <% @letter_grouped_cityes[first_letter].each{|city| %>
+                    <div class="city">
+                      <%= link_to city.name, select_city_path( city: city.name ), class: 'name', method: :patch, data:{id: city.id, title: city.name} %>
+                    </div>
+                  <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+  </div>
+  <div class="city-alphabet-picker-nav">
+    <% @letter_grouped_cityes.keys.sort.each{ |first_letter| %>
+      <%= link_to first_letter.upcase, "#alphabet-city-#{first_letter}" %>
+    <% } %>
+  </div>
+
+</div>

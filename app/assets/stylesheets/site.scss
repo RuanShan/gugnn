@@ -168,8 +168,7 @@
       background-image: image-url('categories/pet.jpg');
     }
   }
-  .gg-cate-prods{
-
+  .products{
     .product{
       display: block;
       border: 1px solid #cccccc;
@@ -180,8 +179,6 @@
       }
 
     }
-
-
     .image-wrapper{
       width: auto;
       height: 200px;
@@ -203,6 +200,151 @@
   }
 }
 .mobile{
+
+  .gg-search
+  {
+    padding: 8px 0;
+    background-color: #fff;
+    button{
+      margin: 4px auto;
+      width: 100%;
+      color: #fff;
+      background-color:  #d61718;
+    }
+
+    .select-category
+    {
+
+    }
+  }
+
+  .layui-m-layercont {
+
+    .layui-close-btn{
+      padding: 0 12px;
+      position: absolute;
+      left: 0;
+
+    }
+    .layui-layer-title {
+      padding: 0 10px 0 10px;
+      height: 42px;
+      line-height: 42px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      text-align: center;
+      color: #333;
+      overflow: hidden;
+      border-radius: 2px 2px 0 0
+    }
+    .categories-wrap, .cities-wrap{
+      position: absolute;
+      top: 43px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow-y: auto;
+    }
+    .ptitle
+    {
+      display: block;
+      background-color: #f8f8f8;
+      padding: 7px 15px;
+      color: #202020;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .parent
+    {
+      .category{
+        box-sizing: border-box;
+
+        width: 33.333%;
+        padding: 6px  6px 6px 6px;
+        float: left;
+        border: 0 none;
+
+        a.name{
+          width: 100%;
+          display: block;
+          color: #666;
+          border: 1px solid #e5e5e5;
+          height: 100%;
+          padding: 6px 0;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+
+    .cities-wrap
+    {
+      .hot-cities-wrap
+      {
+        .head {
+          padding: 7px 15px;
+          overflow: hidden;
+          font-size: 14px;
+          background-color: #f8f8f8;
+        }
+        .hot-city{
+          width: 33.333%;
+          padding: 0 6px;
+          margin: 0 0 10px;
+          float: left;
+          border: 0 none;
+          text-align: center;
+          box-sizing: border-box;
+          .name{
+            display: block;
+            color: #666;
+            border: 1px solid #e5e5e5;
+            height: 100%;
+            padding: 6px 0;
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+      }
+      .city-alphabet-wrap
+      {
+        .city{
+          padding: 14px 0;
+          margin: 0 15px;
+          border-bottom: 1px solid #e5e5e5;
+          color: #454545;
+          font-size: 14px;
+        }
+        .head{
+          background-color: #f8f8f8;
+          padding: 7px 15px;
+          color: #202020;
+          overflow: hidden;
+          font-size: 14px;
+        }
+      }
+
+    }
+    .city-alphabet-picker-nav
+    {
+      position: fixed;
+      top: 54%;
+      right: 7px;
+      width: 20px;
+      transform: translate(0,-50%);
+      border-radius: 5px;
+      padding: 5px 0;
+      a {
+        display: block;
+        text-align: center;
+        color: #aaa;
+        height: 18px;
+        line-height: 18px;
+        font-size: 15px;
+      }
+    }
+  }
   .gg-high-cats
   {
     background-color: #fff;
@@ -257,17 +399,20 @@
     }
   }
 
-
   .gg-categories-wrapper
   {
-    .gg-cate-prods
+    .products
     {
-       min-height: 8px;
-       padding: 8px 0;
-       .image-wrapper
-       {
-         height: auto;
-       }
+      min-height: 8px;
+      padding: 8px 0;
+      .image-wrapper
+      {
+        height: auto;
+      }
+      .swiper-slide
+      {
+        width: 50%;
+      }
     }
     .category
     {
@@ -282,4 +427,5 @@
     }
 
   }
+
 }
