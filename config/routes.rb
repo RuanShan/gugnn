@@ -102,6 +102,7 @@ Rails.application.routes.draw do
           match 'auth_licence', via: [:get, :patch]
         end
       end
+      root to: "account#index"
     end
 
 
