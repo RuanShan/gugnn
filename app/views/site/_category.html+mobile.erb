@@ -3,15 +3,19 @@
      <div class="">
         <div class="category">
             <div class="head">
-              <div> <span class="title"> <%= category.title %> </span>
-                <a class="toggleSubcategoriesBtn"><%= @category.try( :title) || category.children.first.title %> <span class="caret"></span> </a>
-                <%= link_to '更多', category, class: 'pull-right' %>                
+              <div class="dropdown" style="position:relative;  padding: 4px 12px;"> <span class="title"> <%= category.title %> </span>
+                <%= link_to category_path(category), class: 'toggle-dropdown',  data: { turbolinks: false }  do %>
+                  <%= @category.try( :title) || category.children.first.title %> <span class="caret"></span>
+                <% end %>
+                <%= link_to '更多', category, class: 'pull-right' %>
+
+                <div class="subcategries dropdown-menu ">
+                  <% category.children.each{|cate| %>
+                    <%= link_to cate.title, cate %>
+                  <% } %>
+                </div>
               </div>
-              <div class="subcategries hidden ">
-                <% category.children.each{|cate| %>
-                  <%= link_to cate.title, cate, remote: true %>
-                <% } %>
-              </div>
+
             </div>
 
         </div>

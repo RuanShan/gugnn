@@ -90,6 +90,7 @@ $(function(){
       var title = $(this).data('title');
       var id =  $(this).data('id');
       $('.selectCategoryBtn .title').text( title);
+      $('#gg-search-form').prop('action', Gugnn.routes.build_category_path( id));
       layer.close(selectCategory);
     })
     $('.layui-m-layer').on('click', '.layui-close-btn', function(e){
@@ -108,6 +109,7 @@ $(function(){
       var title = $(this).data('title');
       var id =  $(this).data('id');
       $('.selectCityBtn .title').text( title);
+      $('#city').val(title);
       layer.close(selectCategory);
 
     })
@@ -116,6 +118,17 @@ $(function(){
     })
   })
 
+  // base on bootstrap dropdown,
+  $('.toggle-dropdown').on('click', function(e){
+    e.preventDefault();
+    $(this).parent('.dropdown').toggleClass('open');
+    
+  })
+  //验证是否选择了分类
+  //$('#gg-search-form').on('submit',function(){
+  //  alert('before submit');
+  //  return false;
+  //})
 });
 
 function verification_code_time(code_id, wait) {

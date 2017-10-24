@@ -1,6 +1,9 @@
 <div class="gg-index">
   <%= render partial: 'slider' %>
   <div class="gg-search">
+    <%= form_tag root_path, id: 'gg-search-form', method: :get do |f| %>
+      <%=hidden_field_tag :city, session[:city] %>
+      <%=hidden_field_tag :category_id %>
       <div class="container">
           <div class="row">
               <div class="col-xs-6">
@@ -10,15 +13,16 @@
                 <a  class="form-control selectCategoryBtn"><span class="title">选择类目 </span> <span class="caret"></span> </a>
                </div>
               <div class="col-xs-6">
-                <button type="button" class="btn">我要出租</button>
-               </div>
+                <%= link_to '我要出租', be_renter_path, class: 'btn' %>
+              </div>
               <div class="col-xs-6">
-                <button type="button" class="btn">搜索</button>
+                <button type="submit" class="btn">搜索</button>
               </div>
           </div>
       </div>
       <%= render partial: 'select_category' %>
       <%= render partial: 'select_city' %>
+    <% end %>
   </div>
 
   <div class=" gg-high-cats ">

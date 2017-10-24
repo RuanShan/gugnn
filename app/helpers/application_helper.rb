@@ -50,8 +50,8 @@ module ApplicationHelper
     image_tag user.avatar.url, alt: "头像", class: 'jjrlogo'
   end
 
-  #def selected_city
-  #  session[:selected_city]
+  #def city
+  #  session[:city]
   #end
 
   def parse_path(path)

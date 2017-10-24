@@ -205,7 +205,7 @@
   {
     padding: 8px 0;
     background-color: #fff;
-    button{
+    .btn{
       margin: 4px auto;
       width: 100%;
       color: #fff;
@@ -401,6 +401,19 @@
 
   .gg-categories-wrapper
   {
+    .subcategries
+    {
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+          width: 100%;
+          a{
+            width: 20%;
+            float: left;
+            text-align: center;
+            overflow: hidden;
+          }
+    }
     .products
     {
       min-height: 8px;
@@ -417,7 +430,6 @@
     .category
     {
       .head{
-        padding: 4px 12px;
         border-bottom: 1px solid #cccccc;
         .title{
           border-left: 4px solid #d61718;

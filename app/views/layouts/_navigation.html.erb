@@ -3,7 +3,7 @@
   <div class="container">
     <div class=" ">
       <ul class="nav navbar-nav">
-        <li> <%=session[:selected_city]%><%= link_to t(:change_city), select_city_path %> </li>
+        <li> <%=session[:city]%><%= link_to t(:change_city), select_city_path %> </li>
       </ul>
 
       <ul class="nav navbar-nav pull-right">

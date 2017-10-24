@@ -11,7 +11,10 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   # 显示分类及分类下的产品
   # params - combofilters
+  #          city: 某一个城市的名称
   def show
+    set_city
+    
     @category_options = @category.category_options.includes(:option_values)
 
     @product_filters = parse_product_filters
@@ -105,4 +108,5 @@ class CategoriesController < ApplicationController
       end
       product_filters
     end
+
 end
