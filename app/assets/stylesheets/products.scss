@@ -224,6 +224,10 @@ body {
 
 
 .mobile{
+  .breadcrumb-wrap
+  {
+    padding: 0;
+  }
   .show-product
   {
     .product-images-wrapper .swiper-container.gallery-large {
@@ -233,7 +237,10 @@ body {
     }
     .product-info  {
       border-top: 1px solid #cccccc;
-      .mr-15{
+
+       .name{
+         font-size: 26px;
+         margin-top: 12px;
        }
       .pay-price {
         .high-light-red .two, .high-light-red .first {

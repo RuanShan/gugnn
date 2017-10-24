@@ -1,11 +1,11 @@
 <%= hidden_field_tag 'product_lat', @product.lat %>
 <%= hidden_field_tag 'product_lng', @product.lng %>
 
-<div class="container">
-  <ol class="breadcrumb">
-    <%== build_breadscrambs(@category) %>
-    <li class="active"> <%=@product.title %></li>
-  </ol>
+<div class="container breadcrumb-wrap">
+    <ol class="breadcrumb">
+      <%== build_breadscrambs(@category) %>
+      <li class="active"> <%=@product.title %></li>
+    </ol>
 </div>
 
 <div class="container show-product" >
@@ -47,7 +47,7 @@
 
     </div>
     <div class="col-md-6 product-info">
-        <h2> <%= @product.title %> </h2>
+        <h2 class="name"> <%= @product.title %> </h2>
 
         <div class="pay-price clearfix">
             <div class="pull-left price" >
@@ -64,7 +64,7 @@
             </div>
         </div>
         <ul class="house-basic-item3">
-        
+
           <li>
               <span class="c_999">位置：</span>
               <span class="c_000 mr_10"> <%= @product.latlng_address %> </span>

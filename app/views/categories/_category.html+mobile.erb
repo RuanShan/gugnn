@@ -30,8 +30,8 @@
     <div class="products">
       <h3> 产品 </h3>
       <ul class="list-group clearfix">
-        <% @products.each{|product| %>
-          <li class="product clearfix">
+        <% @products.each_with_index{|product, i| %>
+          <li class="product clearfix <%= cycle('odd', 'even') -%>">
             <div class="pimage-wrap"> <%= product_image product %> </div>
             <div class="product-info pull-left">
               <div class="pprice ">
