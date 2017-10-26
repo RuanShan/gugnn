@@ -1,10 +1,10 @@
 <%= render partial: 'shared/error_messages', locals: { target: @product } %>
 
-<div class="panel panel-default my my-new-product" >
+<div class=" my my-new-product" >
   <div class="panel-heading">
     <h2 class="panel-title">创建租赁信息</h2>
   </div>
-  <div class="panel-body">
+  <div class="clearfix">
     <% if @product.category %>
       <%= simple_form_for @product, url: my_products_path, :html => {:multipart => true, class:'product-form my-product-form', id:'publish_product_form'} do |f| %>
 

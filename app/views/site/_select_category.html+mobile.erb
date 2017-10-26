@@ -1,14 +1,20 @@
 <div class="select-category gg-hide">
+  <div class="layui-layer-title">
+    <a class="layui-close-btn"><span class="glyphicon glyphicon-chevron-left font-icon" aria-hidden="true"></span> </a>
+    <span>类目选择</span>
+  </div>
+  <div class="categories-wrap">
   <%  Category.roots.includes(:children).each{ |category| %>
-          <div>
+          <div class="parent">
             <%= link_to category.title, category, href: '#', class:'ptitle' %>
             <div class="subcategory clearfix">
               <% category.children.each{|child| %>
-                <div class="categoryWrap">
-                <%= link_to child.title, child, class:'category', href:'#', data:{ id: child.id, title: child.title}  %>
+                <div class="category">
+                <%= link_to child.title, child, class:'name', href:'#', data:{ turbolinks: false, id: child.id, title: child.title}  %>
                 </div>
               <% } %>
             </div>
           </div>
   <% } %>
+  </div>
 </div>

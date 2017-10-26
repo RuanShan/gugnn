@@ -6,6 +6,8 @@ $(function(){
   if($('.product-details').is('*'))
   {
     $('body').scrollspy({ target: '#navbar-product-details' })
+    BindSwiperEvent();
+
   }
 })
 
@@ -63,4 +65,3 @@ function BindSwiperEvent()
         }
     }
 }
-BindSwiperEvent();

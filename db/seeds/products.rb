@@ -18,6 +18,8 @@ products.each{|product_attrs|
     product.title = FFaker::Product.product_name
     product.price = rand(1000)
     product.tenancy = Product.tenancies.values.sample
+    product.min_tenancy = Product.tenancies.values.sample
+    product.max_tenancy = Product.tenancies.values.sample
     product.deposit = rand(1000)
     product.desc = FFaker::LoremCN.paragraph
     #

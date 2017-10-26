@@ -1,8 +1,12 @@
 <%= javascript_tag defer: 'defer' do -%>
 Gugnn = {};
-Gugnn.city = <%== session[:selected_city].to_json %>;
+Gugnn.city = <%== session[:city].to_json %>;
 Gugnn.routes = {};
 Gugnn.routes.validate_cellphone_path = <%== validate_cellphone_path.to_json %>;
 Gugnn.routes.sms_path = <%== sms_path.to_json %>;
 Gugnn.routes.sms_validate_path = <%== sms_validate_path.to_json %>;
+Gugnn.routes.categories_path = <%== categories_path.to_json %>;
+Gugnn.routes.build_category_path = function(category_id){
+  return Gugnn.routes.categories_path+'/'+category_id;
+}
 <% end -%>

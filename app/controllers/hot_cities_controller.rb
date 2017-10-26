@@ -1,6 +1,10 @@
 class HotCitiesController < ApplicationController
   before_action :set_hot_city, only: [:show, :edit, :update, :destroy]
 
+  def choose
+
+  end
+
   # GET /hot_cities
   # GET /hot_cities.json
   def index

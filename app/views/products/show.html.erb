@@ -1,11 +1,11 @@
 <%= hidden_field_tag 'product_lat', @product.lat %>
 <%= hidden_field_tag 'product_lng', @product.lng %>
 
-<div class="container">
-  <ol class="breadcrumb">
-    <%== build_breadscrambs(@category) %>
-    <li class="active"> <%=@product.title %></li>
-  </ol>
+<div class="container breadcrumb-wrap">
+    <ol class="breadcrumb">
+      <%== build_breadscrambs(@category) %>
+      <li class="active"> <%=@product.title %></li>
+    </ol>
 </div>
 
 <div class="container show-product" >
@@ -47,30 +47,28 @@
 
     </div>
     <div class="col-md-6 product-info">
-        <h2> <%= @product.title %> </h2>
+        <h2 class="name"> <%= @product.title %> </h2>
 
-        <div class="pay-price ">
-            <div class="pull-left" id="top-left-w">
-                <span style="margin-right: 25px;">租　金：</span>
+        <div class="pay-price clearfix">
+            <div class="pull-left price" >
+                <span class="mr-15" >租金：</span>
                 <span class="high-light-red">
                     <span class="first">￥</span>
                     <span class="two"><%= @product.price %></span>
                     <span class="three">/<%= @product.display_tenancy %></span>
                 </span>
             </div>
-            <div class="condition pull-right">
-                <span class="pay-re condition-1">押金：￥<span id="yaj"> <%= @product.deposit %></span></span>
-                <span class="pay-re condition-last">1<%=  @product.display_min_tenancy %>起租</span>
+            <div class="pull-right deposit">
+                <div class="pay-re condition-1"><span class="mr-15" >押金：</span>￥<span id="yaj"> <%= @product.deposit %></span></div>
+                <div class="pay-re condition-last">1<%=  @product.display_min_tenancy %>起租</div>
             </div>
         </div>
         <ul class="house-basic-item3">
-          <li>
-              <span class="c_999">&nbsp;</span>
-          </li>
+
           <li>
               <span class="c_999">位置：</span>
               <span class="c_000 mr_10"> <%= @product.latlng_address %> </span>
-              <span><a href="#mapWrap" class="mapNavIcon td-u" ><i class="icon"></i>地图</a></span>
+              <span><a href="#mapWrap" class="mapNavIcon td-u"  data-turbolinks="false"><i class="icon"></i>地图</a></span>
           </li>
         </ul>
         <div>
@@ -99,20 +97,20 @@
       <div class="navbar navbar-default" >
         <ul class="nav nav-tabs" role="tablist">
               <li >
-                <a href="#generalProperty"> 概况</a>
+                <a href="#generalProperty" data-turbolinks="false"> 概况</a>
               </li>
               <li class="">
-                <a href="#generalDesc">商品描述</a>
+                <a href="#generalDesc" data-turbolinks="false">商品描述</a>
               </li>
               <li  class="">
-                <a href="#generalExpense">租赁描述</a>
+                <a href="#generalExpense" data-turbolinks="false">租赁描述</a>
               </li>
               <li  class="">
-                <a href="#generalImage">图片说明</a>
+                <a href="#generalImage" data-turbolinks="false">图片说明</a>
               </li>
 
               <li   class="">
-                <a href="#mapWrap">位置</a>
+                <a href="#mapWrap" data-turbolinks="false">位置</a>
               </li>
         </ul>
       </div>

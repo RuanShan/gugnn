@@ -57,7 +57,7 @@ body {
 }
 
 .pc .show-product{
-  
+
   margin-bottom: 18px;
   .product-base
   {
@@ -87,7 +87,9 @@ body {
       margin-top: 6px;
       background: #f5f5f5;
       color: #777;
-
+      .mr-15{
+        margin-right: 15px;
+      }
       .high-light-red .two, .high-light-red .first {
         color: #d61718;
       }
@@ -133,40 +135,42 @@ body {
     .house-basic-item4 {
         border-top: 1px solid #f3f3f3;
         padding: 18px 20px 32px 20px;
+        .nav {
+         margin-bottom: 8px;
+         height: 32px;
+         overflow: hidden;
+       }
+       .jjrlogo {
+         float: left;
+         display: block;
+         width: 30px;
+         height: 30px;
+         margin-right: 19px;
+         border-radius: 50%;
+         border: 1px solid #e3e3e3;
+       }
+       .jjrsay {
+        float: left;
+        display: block;
+        line-height: 32px;
+      }
+      .jjr-desc {
+        height: 66px;
+        overflow: hidden;
+      }
     }
-    .house-basic-item4 .nav {
-      margin-bottom: 8px;
-      height: 32px;
-      overflow: hidden;
-    }
-    .house-basic-item4 .jjrlogo {
-      float: left;
-      display: block;
-      width: 30px;
-      height: 30px;
-      margin-right: 19px;
-      border-radius: 50%;
-      border: 1px solid #e3e3e3;
-    }
-    .house-basic-item4 .jjrsay {
-      float: left;
-      display: block;
-      line-height: 32px;
-    }
-    .house-basic-item4 .jjr-desc {
-      height: 66px;
-      overflow: hidden;
-    }
+
     .house-basic-item3 {
       border-top: 1px solid #f3f3f3;
       padding: 12px 20px;
+      span {
+        display: inline-block;
+      }
+      .mapNavIcon {
+        font-size: 12px;
+      }
     }
-    .house-basic-item3 span {
-      display: inline-block;
-    }
-    .house-basic-item3 .mapNavIcon {
-      font-size: 12px;
-    }
+
     .c_999 {
       color: #999;
     }
@@ -215,5 +219,111 @@ body {
     {
 
     }
+
+}
+
+
+.mobile{
+  .breadcrumb-wrap
+  {
+    padding: 0;
+  }
+  .show-product
+  {
+    .product-images-wrapper .swiper-container.gallery-large {
+      height: 280px;
+      margin: 0 0 10px 0;
+      background: #eee;
+    }
+    .product-info  {
+      border-top: 1px solid #cccccc;
+
+       .name{
+         font-size: 26px;
+         margin-top: 12px;
+       }
+      .pay-price {
+        .high-light-red .two, .high-light-red .first {
+          color: #d61718;
+        }
+        .pay-re {
+            color: #555;
+            padding: 0 25px;
+            float: left;
+            position: relative;
+        }
+      }
+      .phone-num {
+          margin-bottom: 2px;
+          font-size: 35px;
+          color: #fff;
+          text-align: center;
+          text-shadow: 0 0 4px rgba(139,62,0,.3);
+      }
+      .house-basic-item4 {
+        padding: 12px 0;
+
+        border-top: 1px solid #f3f3f3;
+          .nav {
+           margin-bottom: 8px;
+           height: 32px;
+           overflow: hidden;
+         }
+         .jjrlogo {
+           float: left;
+           display: block;
+           width: 30px;
+           height: 30px;
+           margin-right: 19px;
+           border-radius: 50%;
+           border: 1px solid #e3e3e3;
+         }
+         .jjrsay {
+          float: left;
+          display: block;
+          line-height: 32px;
+        }
+        .jjr-desc {
+          overflow: hidden;
+        }
+      }
+
+      .house-basic-item3 {
+        border-top: 1px solid #f3f3f3;
+        padding: 12px 0;
+        span {
+          display: inline-block;
+        }
+        .mapNavIcon {
+          font-size: 12px;
+        }
+      }
+      .house-chat-phone {
+
+          position: relative;
+
+          padding-left: 66px;
+          background: #d61718;
+          .phone-logo {
+             position: absolute;
+             top: 0;
+             left: 0;
+             margin: 0;
+             bottom: 0;
+             line-height: 50px;
+             font-size: 35px;
+             padding: 0 15px 0 15px;
+             background-color: #ff1718;
+             overflow: hidden;
+             color: #fff;
+             .glyphicon{
+               line-height: inherit;
+             }
+         }
+      }
+
+
+    }
+  }
 
 }

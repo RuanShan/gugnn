@@ -5,6 +5,20 @@ class SiteController < ApplicationController
     @categories = Category.roots.includes(:children).limit( 8 )
     @all_categories = Category.roots.includes(:children)
 
+    #手机版使用
+    if mobile?
+      #default search category
+            
+      @cities = HotCity.order(:ppinyin,:province, :position).to_a
+      @popular_cities = []
+      #{ a=>[城市], b=>[城市] }手机版使用
+      @letter_grouped_cityes = {}
+      @cities.each{|city|
+        @popular_cities << city if city.popular?
+        @letter_grouped_cityes[city.pinyin.first] ||= []
+        @letter_grouped_cityes[city.pinyin.first] << city
+      }
+    end
   end
 
   def be_renter
@@ -33,9 +47,13 @@ class SiteController < ApplicationController
     # 山西，陕西 拼音是一样的，这里需要添加汉字名称排序
     @cities = HotCity.order(:ppinyin,:province, :position).to_a
     # province_first_letter:[ provinces ]
+    #PC版使用
     @popular_cities = []
+    #{ a=>[安徽]，b=>[北京]}
     @grouped_provinces = {}
+    #{ liaoning=>[大连(dalian)，抚顺(fushun)，沈阳(shenyang)]}
     @grouped_cities = {}
+
     last_city = nil
     @cities.each{|city|
       if @grouped_provinces.key? city.ppinyin.first
@@ -49,12 +67,15 @@ class SiteController < ApplicationController
       @grouped_cities[city.ppinyin] << city
 
       @popular_cities << city if city.popular?
+      #手机版使用
+      #@letter_grouped_cityes[city.pinyin.first] ||= []
+      #@letter_grouped_cityes[city.pinyin.first] << city
       last_city = city
     }
     if request.patch?
-      session[:selected_city] = params["city"]
+      session[:city] = params["city"]
       if current_user.present?
-        current_user.update_attribute :city, session[:selected_city]
+        current_user.update_attribute :city, session[:city]
       end
       redirect_to root_path
     end
@@ -66,23 +87,5 @@ class SiteController < ApplicationController
     current_user
   end
 
-  def set_city
-    if session[:selected_city].blank?
-      user = get_current_user
-      #登陆用户
-      if user
-        session[:selected_city] = user.city
-      end
-      #非登陆用户
-      if session[:selected_city].blank?
-        #
-        session[:selected_city] = get_city_by_ip || t('defaults.city')
-      end
-    end
-    session[:selected_city]
-  end
 
-  def get_city_by_ip
-    request.location.try(:city)
-  end
 end

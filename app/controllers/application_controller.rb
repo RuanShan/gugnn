@@ -23,4 +23,36 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_city
+    if session[:city].blank?
+      user = current_user
+      #登陆用户
+      if user
+        session[:city] = user.city
+      end
+      #非登陆用户
+      if session[:city].blank?
+        #
+        session[:city] = get_city_by_params || get_city_by_ip || t('defaults.city')
+        if user
+          user.update_attribute :city, session[:city]
+        end
+      end
+    end
+    session[:city]
+  end
+
+  # 这里取得的城市名是否和数据库中一致？
+  def get_city_by_ip
+    request.location.try(:city)
+  end
+
+  def get_city_by_params
+    city = nil
+    if params["city"].present? && HotCity.exists?( name:  params["city"])
+      city = params["city"]
+    end
+    city
+  end
+
 end

@@ -18,23 +18,20 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require underscore.min
-//= require lightbox.min
 //= require swiper.jquery.min
 //= require ckeditor/init
 //= require jquery.sidr.min
 //= require cityselect
-//= require layer.custom
+//= require layer.mobile
 // other custom js file
+//= require common
 //= require map
 //= require common
 //= require users
 
 
 $(function(){
-  if( $('#citySelect').is('*'))
-  {
-    new Vcity.CitySelector({input:'citySelect'});
-  }
+
   $('#gugnnModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var title = button.data('title'); // Extract info from data-* attributes
@@ -84,23 +81,56 @@ $(function(){
 
   $('.selectCategoryBtn').click(function(){
     var selectCategory = layer.open({
-      title: '类目选择',
       type: 1,
-      content: $('.select-category'),
-      area: ['320px', '195px'],
+      content: $('.select-category').html(),
+      style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; overflow-y:auto;-webkit-animation-duration: .5s; animation-duration: .5s;'
     });
-    layer.full(selectCategory);
+    //layer.full(selectCategory);
 
-    $('.select-category .category').click(function(e){
+    $('.layui-m-layer').on('click', '.category .name', function(e){
       e.preventDefault();
       var title = $(this).data('title');
       var id =  $(this).data('id');
       $('.selectCategoryBtn .title').text( title);
+      $('#gg-search-form').prop('action', Gugnn.routes.build_category_path( id));
+      layer.close(selectCategory);
+    })
+    $('.layui-m-layer').on('click', '.layui-close-btn', function(e){
+      layer.closeAll();
+    })
+  })
+  $('.selectCityBtn').click(function(){
+    var selectCategory = layer.open({
+      type: 1,
+      content: $('.select-city').html(),
+      style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+    });
+    //layer.full(selectCategory);
+    $('.layui-m-layer').on('click', '.city .name', function(e){
+      e.preventDefault();
+      var title = $(this).data('title');
+      var id =  $(this).data('id');
+      $('.selectCityBtn .title').text( title);
+      $('#city').val(title);
       layer.close(selectCategory);
 
     })
+    $('.layui-m-layer').on('click', '.layui-close-btn', function(e){
+      layer.closeAll();
+    })
   })
 
+  // base on bootstrap dropdown,
+  $('.toggle-dropdown').on('click', function(e){
+    e.preventDefault();
+    $(this).parent('.dropdown').toggleClass('open');
+
+  })
+  //验证是否选择了分类
+  //$('#gg-search-form').on('submit',function(){
+  //  alert('before submit');
+  //  return false;
+  //})
 });
 
 function verification_code_time(code_id, wait) {

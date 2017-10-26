@@ -47,11 +47,11 @@ module ApplicationHelper
 
   def user_avatar( user )
     avatar = user.avatar || user.build_avatar
-    tag :img, src: avatar.url, alt: "头像", class: 'jjrlogo'
+    image_tag user.avatar.url, alt: "头像", class: 'jjrlogo'
   end
 
-  #def selected_city
-  #  session[:selected_city]
+  #def city
+  #  session[:city]
   #end
 
   def parse_path(path)

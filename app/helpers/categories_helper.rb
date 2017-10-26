@@ -31,7 +31,7 @@ module CategoriesHelper
       if key=~/filt/ #分类过滤条件
         option_value = option_values.select{|ov| ov.id == val}.first
         if option_value
-          filters << link_to(  content_tag( 'em', option_value.title ) +  content_tag( 'i', 'x' ),   build_path_without_filters(option_value))
+          filters << link_to(  content_tag( 'em', option_value.title ) +  content_tag( 'i', 'x' ),   build_path_without_filters(option_value) )
         end
       end
     }

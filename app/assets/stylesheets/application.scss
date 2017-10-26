@@ -13,7 +13,7 @@
  *= require 'swiper.min'
  *= require 'lightbox'
  *= require 'sidr/jquery.sidr.light.min'
- *= require 'layer'
+ *= require 'layer.mobile'
  *= require_tree .
  *= require_self
  */
@@ -35,11 +35,11 @@ a:hover{
  text-decoration: none;
 }
 .red-bg{
- background:  #d61718;
+ background:  #E50112; /*#d61718;*/
 }
 .red-font
 {
- color: #d61718;
+ color: #E50112; /*#d61718;*/
 }
 .gray-font
 {
@@ -318,8 +318,8 @@ a:hover{
   margin: 0 auto;
 
   .gg-page-content{
-    margin:  0 0 80px 0;
-    background-color: #f2f2f2;
+    margin:  0 0 45px 0;
+    /*background-color: #f2f2f2;*/
   }
   /*滚动海报*/
   .gg-slider
@@ -338,9 +338,9 @@ a:hover{
     line-height: 46px;
     .navbar-toggle
     {
-      padding: 15px 0 0 0;
+      padding: 17px 0 0 0;
       margin: 0 10px 0 0;
-      height: 46px;
+      height: 50px;
       .icon-bar{
         background-color: #666;
       }
@@ -349,54 +349,13 @@ a:hover{
       li{
         float: left;
         a{
+          line-height: 50px;
           padding: 0 5px 0 0;
         }
       }
     }
   }
-  .gg-search
-  {
-    padding: 8px 0;
-    background-color: #fff;
-    button{
-      margin: 4px auto;
-      width: 100%;
-      color: #fff;
-      background-color:  #d61718;
-    }
 
-    .select-category
-    {
-      .ptitle
-      {
-        display: block;
-        background-color: #f8f8f8;
-        padding: 7px 15px;
-        color: #202020;
-        overflow: hidden;
-        font-size: 14px;
-      }
-      .categoryWrap{
-
-        width: 33.333%;
-        padding: 0 6px;
-        margin: 0 0 10px 0;
-        float: left;
-        border: 0 none;
-
-        a{
-          width: 100%;
-          display: block;
-          color: #666;
-          border: 1px solid #e5e5e5;
-          height: 100%;
-          padding: 6px 0;
-          font-size: 14px;
-          text-align: center;
-        }
-      }
-    }
-  }
   .gg-footer
   {
     padding: 4px 0;

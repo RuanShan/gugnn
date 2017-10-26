@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     get 'conversations/create'
 
     match 'select_city' => 'site#select_city', via: [:get, :patch]
+
     #get '/signup', to: 'users#new', as: 'new_user'
     #post '/users', to: 'users#create'
     #get '/users/:id', to: 'users#show', as: 'user'
@@ -71,18 +72,6 @@ Rails.application.routes.draw do
     #get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
     #patch '/users/:id', to: 'users#update'
     #delete '/users/:id', to: 'users#destroy'
-
-    #Event routes
-    get '/events', to: 'event#index', as: 'all_events'
-    get '/events/new', to: 'event#new', as: 'new_event'
-    get '/events/:id', to: 'event#show', as: 'event'
-    get '/events/:id/edit', to: 'event#edit', as: 'edit_event'
-    put '/events/:id/edit', to: 'event#update'
-    patch '/events/:id/edit', to: 'event#update'
-    post '/events', to: 'event#create', as: 'create_event'
-    delete '/events/:id', to: 'event#destroy'
-    post '/events/:id', to: 'event#add_attender'
-    patch '/events/:id', to: 'event#remove_attender'
 
     get '/login', to: 'sessions#new'
     get '/logout', to: 'sessions#destroy'
@@ -113,6 +102,7 @@ Rails.application.routes.draw do
           match 'auth_licence', via: [:get, :patch]
         end
       end
+      root to: "account#index"
     end
 
 

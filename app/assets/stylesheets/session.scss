@@ -46,15 +46,46 @@
   }
 }
 .mobile{
-  #outregBox
-  {
-    width: auto;
+  .nav > li > a{
+    padding: 5px 10px;
+    text-align: center;
   }
+  #outregBox {
+      color: #fff;
+      position: relative;
+      width: auto;
+      margin: 12px auto;
+      height: 20px;
+      margin-bottom: 10px;
+      font-size: 14px;
+
+    #backtoindex {
+        position: absolute;
+        left: 0;
+    }
+    #goReg {
+        position: absolute;
+        right: 0;
+    }
+    a {
+      color: #fff;
+    }
+  }
+
+
   .authform-wrap{
     width: auto;
+    padding: 20px 0;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    margin: 0 auto;
     background: #fff;
+    border-radius: 3px;
+    position: relative;
     .new_user{
-    padding: 0 30px;
+      padding: 0 30px;
     }
+
+
   }
 }
