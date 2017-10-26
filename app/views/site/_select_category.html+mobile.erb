@@ -10,7 +10,7 @@
             <div class="subcategory clearfix">
               <% category.children.each{|child| %>
                 <div class="category">
-                <%= link_to child.title, child, class:'name', href:'#', data:{ id: child.id, title: child.title}  %>
+                <%= link_to child.title, child, class:'name', href:'#', data:{ turbolinks: false, id: child.id, title: child.title}  %>
                 </div>
               <% } %>
             </div>

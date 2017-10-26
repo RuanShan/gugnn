@@ -1,4 +1,4 @@
-<div class="select-city gg-hide">
+<div class="select-city gg-hide" data-turbolinks="false">
 
   <div class="layui-layer-title">
     <a class="layui-close-btn"><span class="glyphicon glyphicon-chevron-left font-icon" aria-hidden="true"></span> </a>
@@ -10,7 +10,7 @@
       <div class="head red-font" style="margin-bottom:7px;">      热门城市    </div>
       <ul class="hot-cities clearfix">
       <% @popular_cities.each{|city| %>
-        <li class="city hot-city "> <%= link_to city.name, select_city_path( city: city.name ), class: 'name', method: :patch, data:{id: city.id, title: city.name} %> </li>
+        <li class="city hot-city "> <%= link_to city.name, select_city_path( city: city.name ), class: 'name',  href: '#', data:{ id: city.id, title: city.name} %> </li>
       <% } %>
     </ul>
     </div>
@@ -22,7 +22,7 @@
                 <div class="">
                   <% @letter_grouped_cityes[first_letter].each{|city| %>
                     <div class="city">
-                      <%= link_to city.name, select_city_path( city: city.name ), class: 'name', method: :patch, data:{id: city.id, title: city.name} %>
+                      <%= link_to city.name, select_city_path( city: city.name ), class: 'name', href: '#', data:{ id: city.id, title: city.name} %>
                     </div>
                   <% } %>
                 </div>
