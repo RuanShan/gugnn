@@ -24,6 +24,7 @@
 //= require cityselect
 //= require layer.mobile
 // other custom js file
+//= require common
 //= require map
 //= require users
 
@@ -122,7 +123,7 @@ $(function(){
   $('.toggle-dropdown').on('click', function(e){
     e.preventDefault();
     $(this).parent('.dropdown').toggleClass('open');
-    
+
   })
   //验证是否选择了分类
   //$('#gg-search-form').on('submit',function(){

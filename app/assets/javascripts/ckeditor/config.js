@@ -48,7 +48,7 @@ CKEDITOR.editorConfig = function (config) {
     { name: 'colors' }
 ];
   config.toolbar_mini = [
-    ["Bold",  "Italic",  "Underline",  "Strike",  "Styles", "Format"],
+    ["Bold",  "Italic",  "Underline",  "Strike",  "Format"],
   ];
   //config.toolbar = "mini";
   config.extraPlugins = 'image,smiley';
