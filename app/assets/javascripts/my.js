@@ -236,7 +236,7 @@ function load_image(file, image_id){
           $("#"+image_id+"_img").remove();
         }
         img.setAttribute("id",image_id+"_img");
-        //img.setAttribute("style","display:none");
+        img.setAttribute("style","display:none");
         document.body.appendChild(img);
       },
       {maxWidth: 800} // Options

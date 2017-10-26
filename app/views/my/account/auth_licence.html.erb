@@ -10,7 +10,7 @@
       <span class="label <%= @user.licence_auth_status_done? ? 'label-danger' : 'label-default'%>" style="padding:15px;">3.审核通过</span>
     </h2>
     </div>
-    <% if true#@user.licence_auth_status_none? %>
+    <% if @user.licence_auth_status_none? %>
       <%= simple_form_for(@user, url: auth_licence_my_account_path(@user), :html => {:method => :patch, :multipart => true, id:"authentication_form"}) do |f| %>
         <div class="form-inputs">
           <%= f.input :licence_number, placeholder: "工商执照注册号"%>
