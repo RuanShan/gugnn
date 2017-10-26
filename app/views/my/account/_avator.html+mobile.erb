@@ -14,7 +14,12 @@
         <div class="defaultImgBorder userImgBorder">
           <div class="files">
             <div class="for_avatar" style="margin:10px;">
-              <div class="preview"><%=image_tag @user.avatar.url, width:"150", height:"150"%></div>
+              <% preview_url = @user.avatar.url %>
+              <% if @user.errors.keys.include? :avatar%>
+                <% preview_url = "" %>
+                <span style="color:red;"><%=@user.errors[:avatar].first%></span>
+              <% end %>
+              <div class="preview"><%=image_tag preview_url, width:"150", height:"150"%></div>
             </div>
           </div>
         </div>

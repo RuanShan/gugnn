@@ -31,7 +31,8 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: 'missing/avatar.png'
   has_attached_file :id_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
   has_attached_file :licence_photo, :styles => { :small => "150x150>", :large => "585x400>" },default_url: "default.png"
-  validates_attachment_content_type :avatar, :id_photo, :licence_photo, content_type: /\Aimage\/.*\z/, size: { in: 0..5.megabytes }
+  validates_attachment_content_type :avatar, :id_photo, :licence_photo, content_type: /\Aimage\/.*\z/
+  validates_attachment_size :avatar, :id_photo, :licence_photo, in: 0..5.megabytes
 
   validates :shop_name, length: { in: 6..50 }, allow_blank:true
   validates :city, length: { in: 2..10 }, allow_blank:true

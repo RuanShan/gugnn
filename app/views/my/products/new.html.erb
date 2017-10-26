@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     <% if @product.category %>
-      <%= simple_form_for @product, url: my_products_path, :html => {:multipart => true, class:'product-form my-product-form'} do |f| %>
+      <%= simple_form_for @product, url: my_products_path, :html => {:multipart => true, class:'product-form my-product-form', id:'publish_product_form'} do |f| %>
 
         <div class="form-inputs">
           <%#=render partial: "my/products/forms/#{@product.category}_form"%>
@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "发布", class: 'btn-danger btn-lg' %>
+          <%= f.button :submit, "发布", class: 'btn-danger btn-lg', type: "button", id: "publish_product_button" %>
         </div>
 
       <% end %>

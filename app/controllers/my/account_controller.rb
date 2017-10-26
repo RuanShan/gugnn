@@ -30,10 +30,16 @@ module My
             }
           end
         end
+        avatar_url = @user.avatar.url
         @user.update_attributes(profile_params) if @user.errors.empty?
         if @user.errors.empty?
           flash[:notice] = t(:profile_updated)
           redirect_to action: :index
+        else
+          logger.debug "======================@user.errors=#{@user.errors.inspect}"
+          if @user.errors.keys.include? :avatar
+            @avatar_url = avatar_url
+          end
         end
       end
     end

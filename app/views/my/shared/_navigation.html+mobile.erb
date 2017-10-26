@@ -1,4 +1,4 @@
-<%avatar_url = @user.present? ? @user.avatar.url : ""%>
+<% @avatar_url ||= @user.present? ? @user.avatar.url : ""%>
   <div style="margin:50px 10px;">
     <%= link_to image_tag( "logo-dark.png", alt: '光棍租生活', class: 'logo'), root_path, class:'logo' %>
     <div class="pull-right">
@@ -10,7 +10,7 @@
     <tr>
       <td align="center">
         <div style="width:100px;height:100px;padding:5px;background-color:white;border-radius:50%;">
-          <%=image_tag @user.avatar.url,align:"right", style:"border-radius:50%;width:100px;height:100px;" %>
+          <%=image_tag @avatar_url, align:"right", style:"border-radius:50%;width:100px;height:100px;" %>
         </div>
       </td>
     </tr>

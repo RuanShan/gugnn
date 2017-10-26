@@ -14,7 +14,12 @@
         <div class="defaultImgBorder userImgBorder">
           <div class="files">
             <div class="for_avatar">
-              <div class="preview"><%=image_tag @user.avatar.url, width:"200", height:"200"%></div>
+              <% preview_url = @user.avatar.url %>
+              <% if @user.errors.keys.include? :avatar%>
+                <% preview_url = "" %>
+                <span style="color:red;"><%=@user.errors[:avatar].first%></span>
+              <% end %>
+              <div class="preview"><%=image_tag preview_url, width:"200", height:"200"%></div>
             </div>
           </div>
         </div>
@@ -31,7 +36,6 @@
     <div role="tabpanel" class="tab-pane " id="profile">
       <div class="clearfix">
         <%= f.input :avatar_remote_url, label: false, as:"hidden"%>
-
         <div id="defaultImgLiBorder" class="defaultImgBorder userImgBorder" style="margin-right:10px;">
             <%=image_tag @user.avatar.url, width:"200", height:"200"%>
         </div>

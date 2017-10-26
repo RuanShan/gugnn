@@ -45,6 +45,7 @@ module My
           format.html { redirect_to my_products_path, notice: '信息创建成功' }
           format.json { render :show, status: :created, location: @product }
         else
+          Rails.logger.debug "---------------perrors = #{@product.errors.inspect}"
           format.html { render :new }
           format.json { render json: @product.errors, status: :unprocessable_entity }
         end
