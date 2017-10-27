@@ -27,7 +27,7 @@ module Application::CommonHelper
   end
 
   def set_view_variant
-    request.variant = :mobile #if mobile?
+    request.variant = :mobile if mobile?
     #request.variant = :mobile if cookies[:BETTER_DEVELOPMENT_MOBILE] == '1'
     #request.variant = :wechat if mobile?
   end

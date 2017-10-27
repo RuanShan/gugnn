@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_many :messages
 
   has_many :products, dependent: :destroy, foreign_key: 'owner_id'
+  has_many :collections, dependent: :destroy
 
 
   belongs_to :category
@@ -118,6 +119,10 @@ class User < ApplicationRecord
   # 设置缺省 ‘我的昵称’
   def nickname
     self['nickname'] || '我的昵称'
+  end
+
+  def collect?(product)
+    Collection.where(user_id: self.id, product_id: product.id).exists?
   end
 
   private
