@@ -70,19 +70,23 @@
               <span class="c_000 mr_10"> <%= @product.latlng_address %> </span>
               <span><a href="#mapWrap" class="mapNavIcon td-u"  data-turbolinks="false"><i class="icon"></i>地图</a></span>
               <span id="collection" style="float:right;">
-                <%if current_user.collect?(@product)%>
-                  已收藏
+                <%if current_user %>
+                  <%if current_user.collect?(@product)%>
+                    已收藏
+                  <%end%>
                 <%else%>
                   <%=link_to "收藏", my_collections_path(product_id: @product.id), method: :post, remote: true%>
                 <%end%>
-                (收藏次数：<%=@product.collection_count%>)
+                (次数：<%=@product.collection_count%>)
               </span>
           </li>
         </ul>
         <div>
           <div class="house-basic-item4">
-                          <p class="nav"><a href="#" target="_blank" onclick=""> <%= user_avatar(@product.owner) %></a><span class="f14 c_333 jjrsay"><%=@product.owner.nickname%> 说</span></p>
+                        <p class="nav"><a href="#" target="_blank" onclick=""> <%= user_avatar(@product.owner) %></a><span class="f14 c_333 jjrsay"><%=@product.owner.nickname%> 说</span></p>
+                        <blockquote>
                           <p class="c_999 lh22 jjr-desc"> <%= @product.ad || '广告语'%> </p>
+                        </blockquote>
           </div>
         </div>
         <div class="house-chat-entry clearfix" id="houseChatEntry">

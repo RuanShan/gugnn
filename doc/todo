@@ -46,6 +46,7 @@ https://administrate-prototype.herokuapp.com/customizing_page_views
    这样以后也能后很方便的开通或去除某个城市。
 3. 忘记密码功能
 4. 收藏产品功能
+  只有登录用户才有收藏产品功能。
 5. 产品大类页面
 
 #20171018
