@@ -1,3 +1,7 @@
+#
+#
+#
+#
 class CategoryOption < ApplicationRecord
   acts_as_list
   PRODUCT_FILTER_COLUMN_NAMES = ['filt0','filt1','filt2','filt3','filt4','filt5','filt6','filt7','filt8','filt9']
@@ -10,6 +14,10 @@ class CategoryOption < ApplicationRecord
   before_create :assign_filter_column
 
 
+  def get_product_option_value( product )
+    option_value_id = product.send self.filter_column_name
+    OptionValue.where( id: option_value_id ).first
+  end
 
   private
 

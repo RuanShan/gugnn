@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :category
   # category:所属分类，parent_category: 所属父分类
   # 查询时使用，如：列出办公用品的热门出租产品。或最新出租商品
+  has_many :category_options, through: :category
   belongs_to :parent_category, class_name: 'Category'
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
   belongs_to :city, class_name: 'HotCity', foreign_key: 'city_id'
