@@ -8,8 +8,7 @@ end
 gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
 #fix bcrypt.rb:12:in `require': 126: 找不到指定的模块。
 #https://github.com/codahale/bcrypt-ruby/issues/116
-gem 'bcrypt'
-#gem 'rucaptcha', path: "../rucaptcha/rucaptcha-master"
+gem 'bcrypt', platforms: :ruby
 
 gem 'rails', '~> 5.0.3'
 gem 'puma', '~> 3.0'
@@ -76,5 +75,5 @@ group :development, :test do
   gem 'rubocop'
 end
 # 服务器测试阶段使用
-gem 'factory_girl_rails'
+gem 'factory_bot_rails'
 gem 'ffaker'

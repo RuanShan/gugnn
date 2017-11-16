@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :pet do
     title "MyString"
     desc "MyString"

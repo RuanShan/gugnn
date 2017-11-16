@@ -3,7 +3,7 @@ products = [
 ]
 
 users = 10.times.map{|i|
-  FactoryGirl.create :user,cellphone: FFaker::PhoneNumberCH.mobile_phone_number, nickname: "test#{i}",realname: FFaker::NameCN.name, email: FFaker::Internet.email
+  FactoryBot.create :user,cellphone: FFaker::PhoneNumberCH.mobile_phone_number, nickname: "test#{i}",realname: FFaker::NameCN.name, email: FFaker::Internet.email
 }
 
 

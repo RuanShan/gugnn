@@ -5,7 +5,7 @@ Rent.destroy_all
 Event.destroy_all
 Picture.destroy_all
 10.times{
-  FactoryGirl.create :user, nickname: FFaker::Name.name, email: FFaker::Internet.email  
+  FactoryBot.create :user, nickname: FFaker::Name.name, email: FFaker::Internet.email  
 }
 
 Sale.create({title: "Awesome Mountain Bike", body: "Slightly used Ibis SLR with custom after market everything", category: "Bikes", price: 2000, zipcode: 94577, user_id: 2})

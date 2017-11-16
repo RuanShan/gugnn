@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :blog_category do
     ctype 1
     title "MyString"

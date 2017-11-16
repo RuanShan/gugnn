@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :option_value do
     title "MyString"
   end

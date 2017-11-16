@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :hot_city do
     name "MyString"
     pinyin "MyString"
