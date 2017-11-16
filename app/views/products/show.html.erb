@@ -69,6 +69,14 @@
               <span class="c_999">位置：</span>
               <span class="c_000 mr_10"> <%= @product.latlng_address %> </span>
               <span><a href="#mapWrap" class="mapNavIcon td-u"  data-turbolinks="false"><i class="icon"></i>地图</a></span>
+              <span id="collection" style="float:right;">
+                <%if current_user.collect?(@product)%>
+                  已收藏
+                <%else%>
+                  <%=link_to "收藏", my_collections_path(product_id: @product.id), method: :post, remote: true%>
+                <%end%>
+                (收藏次数：<%=@product.collection_count%>)
+              </span>
           </li>
         </ul>
         <div>

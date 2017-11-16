@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021042941) do
+ActiveRecord::Schema.define(version: 20171027134908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 20171021042941) do
     t.datetime "updated_at",                   null: false
     t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_collections_on_product_id", using: :btree
+    t.index ["user_id", "product_id"], name: "index_collections_on_user_id_and_product_id", using: :btree
+    t.index ["user_id"], name: "index_collections_on_user_id", using: :btree
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -311,6 +321,7 @@ ActiveRecord::Schema.define(version: 20171021042941) do
     t.string   "ad"
     t.text     "lease_desc"
     t.integer  "city_id"
+    t.integer  "collection_count",   default: 0,          null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["city_id"], name: "index_products_on_city_id", using: :btree
     t.index ["filt0", "filt1", "filt2", "filt3", "filt4", "filt5", "filt6", "filt7", "filt8", "filt9", "published_at"], name: "by_filter", order: { published_at: :desc }, using: :btree
@@ -430,6 +441,8 @@ ActiveRecord::Schema.define(version: 20171021042941) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "collections", "products"
+  add_foreign_key "collections", "users"
   add_foreign_key "events", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "messages", "users", column: "recipient_id"

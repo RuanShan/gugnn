@@ -7,7 +7,7 @@
     <span class="btn btn-success fileinput-button" >
       <i class="glyphicon glyphicon-plus"></i>
       <span>添加图片</span>
-      <input type="file" name="product[images_attributes][<%=init_index%>][photo]" id="product_images_attributes_<%=init_index%>_photo">
+      <input type="file" name="product[images_attributes][<%=init_index%>][photo]" id="product_images_attributes_<%=init_index%>_photo" onchange="load_image(this.files[0], 'product_images_attributes_<%=init_index%>_photo');">
     </span>
   </div>
   <div class="files">
@@ -45,6 +45,7 @@
   {% var init_index = $(".files").children(".existed_image").length; %}
   {% var input_num = $("#selected_files").children().length+init_index; %}
   {% var next_index = input_num+1; %}
+  {% var onchange = "load_image(this.files[0], \'product_images_attributes_"+next_index+"_photo\');"; %}
   {% var file = o.files[0]; %}
   <div class="col-sm-6 col-md-4 template-upload fade">
     <div class="thumbnail">
@@ -67,6 +68,6 @@
     </div>
   </div>
   {% $("#product_images_attributes_"+input_num+"_photo").appendTo($("#selected_files")); %}
-  {% $(".fileinput-button").append("<input type='file' name='product[images_attributes]["+next_index+"][photo]' id='product_images_attributes_"+next_index+"_photo'>"); %}
+  {% $(".fileinput-button").append("<input type='file' name='product[images_attributes]["+next_index+"][photo]' id='product_images_attributes_"+next_index+"_photo' onchange=\""+onchange+"\">"); %}
   {% $('#fileupload').fileupload('option','fileInput', $("#product_images_attributes_"+next_index+"_photo")); %}
 </script>

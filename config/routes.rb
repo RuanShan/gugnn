@@ -91,6 +91,7 @@ Rails.application.routes.draw do
           patch 'unwithdraw'
         end
       end
+      resources :collections
       resources :account do
         collection do
         end

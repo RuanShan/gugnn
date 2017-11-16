@@ -8,6 +8,19 @@ zh-CN:
               too_short: "密码长度过短"
             password_confirmation:
               confirmation: "密码不一致"
+            id_photo_file_size:
+              in_between: "请上传5M以内图片"
+            id_photo:
+              in_between: "请上传5M以内图片"
+            licence_photo_file_size:
+              in_between: "请上传5M以内图片"
+            licence_photo:
+              in_between: "请上传5M以内图片"
+            avatar_file_size:
+              in_between: "请上传5M以内图片"
+            avatar:
+              in_between: "请上传5M以内图片"
+
     attributes:
       user:
         nickname: "用户名"

@@ -26,6 +26,7 @@
 // other custom js file
 //= require common
 //= require map
+//= require common
 //= require users
 
 

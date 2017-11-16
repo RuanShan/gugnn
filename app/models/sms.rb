@@ -22,7 +22,7 @@ class Sms
     Rails.logger.debug "sms=#{self.inspect}"
     if send_at.present?
       if code.present?
-        unless cellphone == some_phone.to_s
+        unless cellphone.to_s == some_phone.to_s
           errors.add(:cellphone, "必须使用发送验证码的电话号码")
         end
         Rails.logger.debug "code=#{code.inspect},some_code=#{some_code.inspect}, #{some_code.to_s == '999999'}"
