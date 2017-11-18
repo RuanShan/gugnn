@@ -155,38 +155,55 @@ width: 200px;
 
 
       }
-      .my-item-item {
+      .my-item {
           border: 1px solid #f0f0f0;
+          table {
+              width: 100%;
+              font-size: 12px;
+              border: 1px solid #fff;
+
+              .my-item-tb-content-img-td{
+                a {
+                  border:1px solid #f0f0f0;
+                  background:#fff;
+                  display: table;
+                  width: 110px;
+                  height: 110px;
+                  span{
+                    display: table-cell;
+                    vertical-align:middle;
+                  }
+                  img{
+                    max-height: 110px;
+                  }
+                }
+              }
+          }
       }
-      .my-item-item-tb {
-          width: 100%;
-          height: 184px;
-          font-size: 12px;
-          border: 1px solid #fff;
-      }
-      .my-item-item-tb-header {
+
+      .my-item-tb-header {
           background: #fafafa;
       }
-      .my-item-item-tb .width90 {
+      .my-item-tb .width90 {
           width: 90px;
       }
-      .my-item-item-tb .width243 {
+      .my-item-tb .width243 {
           width: 243px;
       }
-      .my-item-item-tb .width223 {
+      .my-item-tb .width223 {
           width: 223px;
       }
-      .my-item-item-tb th {
+      .my-item-tb th {
           font-weight: 400;
           text-align: left;
           padding: 9px 12px;
       }
-      .my-item-item-tb-content td {
+      .my-item-tb-content td {
         padding: 16px 0;
         padding-left: 12px;
       }
 
-      .my-item-item-tb td {
+      .my-item-tb td {
           text-align: left;
       }
       .swk-status-wrap {
@@ -195,16 +212,16 @@ width: 200px;
           display: block;
           position: relative;
       }
-      .my-item-item-tb-content-option {
+      .my-item-tb-content-option {
           width: 135px;
           float: right;
       }
-      .my-item-item-content-left-title {
+      .my-item-content-left-title {
           color: #313131;
           font-weight: 700;
           cursor: pointer;
       }
-      .my-item-item-tb-content-option span {
+      .my-item-tb-content-option span {
           float: left;
           position: relative;
           max-height: 31px;

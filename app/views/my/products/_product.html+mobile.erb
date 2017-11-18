@@ -1,33 +1,33 @@
-<div class="my-item-item" style="padding:15px 0;border-bottom:1px #ddd solid;">
-  <table class="my-item-item-tb" style="height:auto;">
+<div class="my-item" style="padding:15px 0;border-bottom:1px #ddd solid;">
+  <table class="my-item-tb" style="height:auto;">
     <tbody>
-      <tr class="my-item-item-tb-content disp">
-        <td class="my-item-item-tb-content-img-td width90">
+      <tr class="my-item-tb-content disp">
+        <td class="my-item-tb-content-img-td width90">
           <%=link_to product_path(product), target:"_blank" do %>
             <%= image_tag(product.cover_url, alt: product.title, class:"pull-left", style:"width:110px;height:110px;") %>
           <% end %>
         </td>
         <td class="width223">
-          <div class="my-item-item-tb-content-titles" style="margin-left:10px;">
-            <p class="my-item-item-content-left-title">
+          <div class="my-item-tb-content-titles" style="margin-left:10px;">
+            <p class="my-item-content-left-title">
               <%=link_to product.title, product_path(product), target:"_blank" %>
             </p>
-            <p class="my-item-item-content-left-date"><%= product.published_at.to_s(:db) %></p>
-            <p class="my-item-item-content-left-detail">
+            <p class="my-item-content-left-date"><%= product.published_at.to_s(:db) %></p>
+            <p class="my-item-content-left-detail">
               <%== category_breadscrambs(product.category)%>
             </p>
-            <p class="my-item-item-tb-content-states-p1"><span><%=t(product.status)%></span></p>
+            <p class="my-item-tb-content-states-p1"><span><%=t(product.status)%></span></p>
           </div>
         </td>
       </tr>
-      <tr class="my-item-item-tb-content disp">
+      <tr class="my-item-tb-content disp">
         <td>
-          <div class="my-item-item-tb-content-states">
-            <span class="my-item-item-tb-content-states-p2">浏览 <%=product.visits%></span>
+          <div class="my-item-tb-content-states">
+            <span class="my-item-tb-content-states-p2">浏览 <%=product.visits%></span>
           </div>
         </td>
         <td>
-          <div class="my-item-item-tb-content-option" style="margin-left:10px;">
+          <div class="my-item-tb-content-option" style="margin-left:10px;">
             <span>
               <%=link_to "修改", edit_my_product_path(product), target:"_blank" %>
             </span

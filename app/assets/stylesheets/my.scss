@@ -1,0 +1,43 @@
+/*
+ *= require_tree .
+ *= require jquery.fileupload
+ *= require jquery.fileupload-ui
+ *= require_self
+ */
+.no_border{
+  border:none;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.panel-title
+{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.my
+{
+  .my-edit-product
+  {
+    #product_images{
+      .box{
+        display: table;
+        width: 100%;
+        .preview{
+          display: table-cell;
+          vertical-align: middle;
+          height: 160px;
+          text-align: center;
+        }
+        img, canvas{
+          max-height: 155px;/*canvas on chrome has 5px extra height.*/
+          max-width: 251px;
+          width: auto;
+        }
+      }
+    }
+  }
+}

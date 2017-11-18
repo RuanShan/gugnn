@@ -19,14 +19,12 @@
         margin-bottom: 10px;
         font-size: 14px;
 
-      #backtoindex {
-          position: absolute;
-          left: 0;
-      }
-      #goReg {
-          position: absolute;
-          right: 0;
-      }
+        #backtoindex {
+            float: left;
+        }
+        #goReg {
+          float: right;
+        }
     }
     .authform-wrap{
       padding-top: 39px;
@@ -58,14 +56,12 @@
       height: 20px;
       margin-bottom: 10px;
       font-size: 14px;
-
+      padding: 0 5px;
     #backtoindex {
-        position: absolute;
-        left: 0;
+        float: left;
     }
     #goReg {
-        position: absolute;
-        right: 0;
+      float: right;
     }
     a {
       color: #fff;

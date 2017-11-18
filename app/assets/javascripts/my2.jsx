@@ -274,6 +274,22 @@ $(function () {
         },
         {action: 'saveImage'},
     ]
+  }).on('fileuploadprocessalways', function (e, data) {
+    var index = data.index,
+        file = data.files[index],
+        node = $(data.context.children()[index]);
+        console.log( data );
+        console.log( node );
+    if (file.preview) {
+      node
+        .prepend('<br/>')
+        .prepend(file.preview)
+    }
+    if (file.error) {
+      node
+        .append('<br/>')
+        .append($('<span class="text-danger"/>').text(file.error));
+    }
   }).bind('fileuploadprocessdone', function (e, data) {
     var i = data.index, blob = data.files[i];
     $(data.fileInput[i]).data('blob', blob);
@@ -332,14 +348,34 @@ $(function () {
       var formElement = document.getElementById(form_id);
       var formData = new FormData(formElement);
       var blobs =[];
+      if($(".preview canvas").length > 0){
+        for(i=0;i<$("#selected_files input").length;i++){
+          var imgtag_name = "product[images_attributes]["+i+"][photo]";
+          var scaledImages = [];
+          var scaledImage = loadImage.scale(
+            document.getElementById("product_images_attributes_"+i+"_photo_img"), // img or canvas element
+            { maxWidth: 800,
+              canvas:true
+            }
+          );
+          var tblob = scaledImage.toBlob(
+            function (blob) {
+              blobs.push(blob)
+              if(blobs.length==$(".preview canvas").length){
+                for(j=0;j<blobs.length;j++){
+                  var imgtag_name = "product[images_attributes]["+j+"][photo]";
+                  formData.set(imgtag_name, blobs[j], $("[name='"+imgtag_name+"']").val());
+                }
+                build_formdata_ajax(form_id, formData)
+              }
+            },
+            'image/jpeg'
+          );
 
-      $("#selected_files input").each(function(i, element){
-        var file_tag_name = "product[images_attributes]["+i+"][photo]";
-        var $file = $("[name='"+file_tag_name+"']");
-        formData.set(file_tag_name, $file.data('blob'), $file.val());
-      });
-
-      build_formdata_ajax(form_id, formData);
+        }
+      }else{
+        build_formdata_ajax(form_id, formData);
+      }
 
     }
   );

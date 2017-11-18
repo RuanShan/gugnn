@@ -69,3 +69,13 @@ http://www.cnblogs.com/mazhiyuan/archive/2011/06/16/mazhiyuan.html
 
 #postgresql
 https://yq.aliyun.com/articles/2999
+
+
+#图片压缩上传说明
+https://github.com/blueimp
+
+https://github.com/blueimp/JavaScript-Load-Image
+https://github.com/blueimp/JavaScript-Canvas-to-Blob
+https://github.com/blueimp/jQuery-File-Upload/wiki/Options
+support IE 8,9
+https://github.com/jimmywarting/FormData

@@ -12,11 +12,11 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="personal">
-        <div class="my-item-item" style="margin:15px 0;">
-          <table class="my-item-item-tb" style="height:auto;width:100%;">
+        <div class="my-item" style="margin:15px 0;">
+          <table class="my-item-tb" style="height:auto;width:100%;">
             <tbody>
-              <tr class="my-item-item-tb-content disp">
-                <td class="my-item-item-tb-content-img-td width90">
+              <tr class="my-item-tb-content disp">
+                <td class="my-item-tb-content-img-td width90">
                   <%= image_tag("auth_p", size: "110x110", alt: "个人身份证认证") %>
                 </td>
                 <td class="width223">
@@ -24,17 +24,17 @@
                   <div><span style="font-weight:bold;margin-left:16px;"> <%= User.translate_enum_name('id_auth_status', @user.id_auth_status)  %></span></div>
                 </td>
               </tr>
-              <tr class="my-item-item-tb-content disp">
+              <tr class="my-item-tb-content disp">
                 <td class="width243" colspan="2">
-                  <div class="my-item-item-tb-content-states" style="margin-top:10px;">
-                    <p class="my-item-item-tb-content-states-p1"><span> • 需清晰的手持身份证照片</span></p>
-                    <p class="my-item-item-tb-content-states-p2"><span> • 3-5个工作日完成认证</span></p>
+                  <div class="my-item-tb-content-states" style="margin-top:10px;">
+                    <p class="my-item-tb-content-states-p1"><span> • 需清晰的手持身份证照片</span></p>
+                    <p class="my-item-tb-content-states-p2"><span> • 3-5个工作日完成认证</span></p>
                   </div>
                 </td>
               </tr>
-              <tr class="my-item-item-tb-content disp">
+              <tr class="my-item-tb-content disp">
                 <td colspan="2" style="text-align:center">
-                  <div class="my-item-item-tb-content-option">
+                  <div class="my-item-tb-content-option">
                     <span>
                       <% if @user.id_auth_status_none? %>
                         <%=link_to '申请认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
@@ -51,11 +51,11 @@
 
       </div>
       <div role="tabpanel" class="tab-pane " id="company">
-        <div class="my-item-item" style="margin:15px 0;">
-          <table class="my-item-item-tb" style="height:auto;width:100%;">
+        <div class="my-item" style="margin:15px 0;">
+          <table class="my-item-tb" style="height:auto;width:100%;">
             <tbody>
-              <tr class="my-item-item-tb-content disp">
-                <td class="my-item-item-tb-content-img-td width90">
+              <tr class="my-item-tb-content disp">
+                <td class="my-item-tb-content-img-td width90">
                   <%= image_tag("auth_c", size: "110x110", alt: "营业执照认证") %>
                 </td>
                 <td class="width223">
@@ -63,17 +63,17 @@
                   <div><span style="font-weight:bold;margin-left:16px;"> <%= User.translate_enum_name('id_auth_status', @user.id_auth_status)  %></span></div>
                 </td>
               </tr>
-              <tr class="my-item-item-tb-content disp">
+              <tr class="my-item-tb-content disp">
                 <td class="width243" colspan="2">
-                  <div class="my-item-item-tb-content-states" style="margin-top:10px;">
-                    <p class="my-item-item-tb-content-states-p1"><span> • 需上传清晰营业执照照片</span></p>
-                    <p class="my-item-item-tb-content-states-p2"><span> • 3-5个工作日完成</span></p>
+                  <div class="my-item-tb-content-states" style="margin-top:10px;">
+                    <p class="my-item-tb-content-states-p1"><span> • 需上传清晰营业执照照片</span></p>
+                    <p class="my-item-tb-content-states-p2"><span> • 3-5个工作日完成</span></p>
                   </div>
                 </td>
               </tr>
-              <tr class="my-item-item-tb-content disp">
+              <tr class="my-item-tb-content disp">
                 <td colspan="2" style="text-align:center">
-                  <div class="my-item-item-tb-content-option">
+                  <div class="my-item-tb-content-option">
                     <span>
                       <% if @user.licence_auth_status_none? %>
                         <%=link_to '申请认证', auth_licence_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
