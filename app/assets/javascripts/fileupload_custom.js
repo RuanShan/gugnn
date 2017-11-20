@@ -1,7 +1,7 @@
 //= require jquery-fileupload/vendor/jquery.ui.widget
 //= require jquery-fileupload/vendor/tmpl
-//= require jquery-fileupload/vendor/load-image.all.min
-//= require jquery-fileupload/vendor/canvas-to-blob
+//= require load-image.all.min
+//= require canvas-to-blob.min
 //= require jquery-fileupload/jquery.iframe-transport
 //= require jquery-fileupload/jquery.fileupload
 //= require jquery-fileupload/jquery.fileupload-process

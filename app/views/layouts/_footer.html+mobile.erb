@@ -1,26 +1,34 @@
 <div class="">
           <div class="footer-nav">
             <div class="width-1-5 nav-item-wrap">
+              <%= link_to root_path do %>
               <span class="glyphicon glyphicon-home font-icon" aria-hidden="true"></span>
-              <div class="nav-item"> <%= link_to '首页', root_path  %> </div>
+              <div class="nav-item"> 首页 </div>
+              <% end %>
             </div>
             <div class="width-1-5 nav-item-wrap">
+              <%= link_to root_path do %>
               <span class="glyphicon glyphicon-search font-icon" aria-hidden="true"></span>
-              <div class="nav-item"> <a> 发现  </a></div>
+              <div class="nav-item"> 发现</div>
+              <% end %>
             </div>
             <div class="width-1-5 nav-item-wrap">
-              <span class="glyphicon glyphicon-edit font-icon" aria-hidden="true"></span>
-              <div class="nav-item"> <a> 发布  </a></div>
+              <%= link_to new_my_product_path do %>
+                <span class="glyphicon glyphicon-edit font-icon" aria-hidden="true"></span>
+                <div class="nav-item">发布</div>
+              <% end %>
             </div>
             <div class="width-1-5 nav-item-wrap">
-              <span class="glyphicon glyphicon-envelope font-icon" aria-hidden="true"></span>
-              <div class="nav-item"> <a> 消息  </a></div>
+              <%= link_to root_path do %>
+                <span class="glyphicon glyphicon-envelope font-icon" aria-hidden="true"></span>
+                <div class="nav-item"> 消息 </div>
+              <% end %>
             </div>
             <div class="width-1-5 nav-item-wrap">
-              <span class="glyphicon glyphicon-user font-icon" aria-hidden="true"></span>
-              <div class="nav-item"> <%= link_to '我的', my_root_path %> </div>
+              <%= link_to my_root_path do %>
+                <span class="glyphicon glyphicon-user font-icon" aria-hidden="true"></span>
+                <div class="nav-item">我的</div>
+              <% end %>
             </div>
-
           </div>
-
 </div>

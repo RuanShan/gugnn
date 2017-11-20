@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <% if @category_options.length > 0 %>
+    <% @category_options.in_groups_of( (@category_options.length+1)/2, nil ).each{|group| %>
+      <tr>
+      <% group.each{ |category_option| %>
+        <% if category_option %>
+        <% product_option_value = category_option.get_product_option_value( @product )  %>
+          <th> <%= category_option.title %> </th> <td> <%= product_option_value.title %>  </td>
+        <% else %>
+          <th> </th> <td> </td>
+        <% end %>
+      <% } %>
+      </tr>
+      <% } %>
+    <% end %>
+</table>

@@ -1,27 +1,30 @@
 <%= product_form.input :category_id, as: "hidden" %>
 
-<%= product_form.input :title, placeholder: "请填写标题" %>
+<%= product_form.input :title, placeholder: "请填写标题", input_html: { class: 'width770' }  %>
 <div class="form-group form-inline product-desc-wrap clearfix">
   <%= product_form.label :desc, class: 'control-label' %>
-  <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写商品描述",  ckeditor: { language: 'zh-CN', height: 240, width:600 }%>
+  <div class="input-group">
+    <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写商品描述",  ckeditor: { language: 'zh-CN', toolbar: 'standard', height: 240, width:770   }%>
+  </div>
 </div>
 <div class="form-group form-inline product-lease-desc-wrap clearfix">
   <%= product_form.label :lease_desc, class: 'control-label' %>
-  <%= product_form.cktext_area :lease_desc , class: 'form-control', placeholder: "请填写租赁说明",  ckeditor: { language: 'zh-CN', toolbar: 'mini', height: 120, width:600 }%>
+  <%= product_form.cktext_area :lease_desc , class: 'form-control', placeholder: "请填写租赁说明",  ckeditor: { language: 'zh-CN', toolbar: 'mini', height: 120, width:770 }%>
 </div>
 
 <div class="form-group form-inline ">
   <%= product_form.label :price, class: 'control-label' %>
   <div class="input-group"> <%= product_form.number_field :price , class: 'form-control'%>
     <div class="input-group-addon">元</div>
+    <span class="input-group-btn">
+      <%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control'  %>
+    </span>
   </div>
-  / <%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control'  %>
 </div>
 
 <div class="form-group form-inline ">
-  <%= product_form.label :deposit, class: 'control-label' %>
-  <div class="input-group">
-    <%= product_form.number_field :deposit , class: 'form-control'%>
+  <%= product_form.label :deposit, class: 'control-label' -%>
+  <div class="input-group"><%= product_form.number_field :deposit , class: 'form-control'%>
     <div class="input-group-addon">元</div>
   </div>
 </div>
@@ -29,20 +32,22 @@
 
 <div id="address_mark" class="form-group form-inline">
   <%= product_form.label :latlng_address, class: 'control-label' %>
-  <%= product_form.text_field :latlng_address, class: 'form-control', style: 'width:70%;', readonly: true %>
-  <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
-    <i class="glyphicon glyphicon-pushpin"></i>
-    <span>地图上标记地址</span>
-  <% end %>
+  <div class="input-group"><%= product_form.text_field :latlng_address, class: 'form-control', style: '', readonly: true %>
+    <span class="input-group-btn">
+      <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
+        <i class="glyphicon glyphicon-pushpin"></i>
+         地图上标记地址
+      <% end %>
+    </span>
+  </div>
+
   <%= product_form.input :lat, as: "hidden" %>
   <%= product_form.input :lng, as: "hidden" %>
 </div>
 
 <div class="form-group form-inline ">
-  <%= product_form.label :address, class: 'control-label' %>
-  <div class="input-group">
-    <%= product_form.text_field :address , class: 'form-control'%>
-  </div>
+  <%= product_form.label :address, class: 'control-label' -%>
+  <div class="input-group"><%= product_form.text_field :address , class: 'form-control'%></div>
 </div>
 
 <div id="product_images" >

@@ -1,10 +1,4 @@
 <% @avatar_url ||= @user.present? ? @user.avatar.url : ""%>
-  <div style="margin:50px 10px;">
-    <%= link_to image_tag( "logo-dark.png", alt: '光棍租生活', class: 'logo'), root_path, class:'logo' %>
-    <div class="pull-right">
-      <%= link_to "发布", new_my_product_path, id:'new_product_btn' %>
-    </div>
-  </div>
 
   <table id="cover_table" style="width:100%; margin-bottom: -65px;">
     <tr>

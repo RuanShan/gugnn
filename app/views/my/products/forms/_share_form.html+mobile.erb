@@ -3,16 +3,20 @@
 <%= product_form.input :title, placeholder: "请填写标题" %>
 <div class="form-group form-inline product-desc-wrap clearfix">
   <%= product_form.label :desc, class: 'control-label' %>
-  <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写产品描述",  ckeditor: { toolbar: 'mini', language: 'zh-CN', height: 300 }%>
+  <%= product_form.cktext_area :desc , class: 'form-control', placeholder: "请填写产品描述",  ckeditor: { toolbar: 'mini', language: 'zh-CN', height: 200 }%>
+</div>
+<div class="form-group form-inline product-lease-desc-wrap clearfix">
+  <%= product_form.label :lease_desc, class: 'control-label' %>
+  <%= product_form.cktext_area :lease_desc , class: 'form-control', placeholder: "请填写租赁说明",  ckeditor: { language: 'zh-CN', toolbar: 'mini', height: 80}%>
 </div>
 
 <div class="form-group form-inline ">
   <%= product_form.label :price, class: 'control-label' %>
-  <div style="display: table;">
-    <div class="input-group" style="width:150px;float:left;"> <%= product_form.number_field :price , class: 'form-control', style:""%>
-      <div class="input-group-addon">元</div>
-    </div>
-    <div style="float:left;padding:5px 10px;">/</div><%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control', style:"width:100px;float:left;"  %>
+  <div class="input-group"> <%= product_form.number_field :price , class: 'form-control'%>
+    <div class="input-group-addon">元</div>
+    <span class="input-group-btn">
+      <%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control'  %>
+    </span>
   </div>
 </div>
 
@@ -32,7 +36,8 @@
     <%= product_form.text_field :latlng_address, class: 'form-control' %>
     <span class="input-group-btn">
       <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
-        <i class="glyphicon glyphicon-pushpin"></i>    地图
+        <i class="glyphicon glyphicon-pushpin"></i>
+         地图
       <% end %>
     </span>
     <%= product_form.input :lat, as: "hidden" %>

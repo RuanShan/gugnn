@@ -23,7 +23,7 @@ class Product < ApplicationRecord
   attribute :latlng, :point
   # parent_category需要
   validates :category, presence: true
-  validates :title, presence: true, length: { in: 6..50 }
+  validates :title, presence: true, length: { in: 6..100 }
   validates :desc, length: { in: 10..5000 }, allow_blank:true
   validates :price, numericality: true
   validates :address, length: { in: 6..64 }, allow_blank:true
