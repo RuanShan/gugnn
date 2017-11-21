@@ -11,7 +11,7 @@
         <%= f.input :cellphone, required: true %>
           <div style="float:left;width:50%;" class="form-group string optional user_verification_code">
             <%= f.label :verification_code %>
-              <div class="input-group">
+            <div class="input-group">
               <%= f.text_field :verification_code, placeholder: t(:input_only_change_phone), class: 'form-control string optional' %>
               <span class="input-group-btn">
                 <%= button_tag t(:get_verify_code), type: :button, id:"obtainVerifyCode", class: 'btn btn-default' %>

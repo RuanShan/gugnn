@@ -8,7 +8,7 @@ end
 gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin]
 #fix bcrypt.rb:12:in `require': 126: 找不到指定的模块。
 #https://stackoverflow.com/questions/42016137/bcrypt-ruby-on-rails-with-devise-windows-issue
-gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
+gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt', platforms: [:mingw, :mswin]
 
 gem 'rails', '~> 5.0.3'
 gem 'puma', '~> 3.0'
