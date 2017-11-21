@@ -1,5 +1,4 @@
 <div style="height:270px;">
-
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">本地头像</a></li>
@@ -24,10 +23,14 @@
           </div>
         </div>
         <div style="width:100%;float:left;">
-          <span class="btn btn-success fileinput-button" style="margin:10px;">
+          <span class="btn btn-success fileinput-button" style="margin:10px 0;">
             <i class="glyphicon glyphicon-plus"></i>
             <span>上传头像</span>
             <input type="file" name="user[avatar]" id="user_avatar">
+          </span>
+          <span id="edit-user-avatar-btn" class="btn btn-success fileinput-button" style="margin:10px 0;">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>上传头像2</span>
           </span>
         </div>
       </div>
@@ -72,3 +75,23 @@
     <div class="preview"><span class="fade"></span></div>
   </div>
 </script>
+
+
+<div id="edit-avatar-container">
+  <div class="imageBox">
+     <div class="thumbBox"></div>
+     <div class="spinner" >Loading...</div>
+   </div>
+   <div class="action">
+     <div class="new-contentarea tc">
+       <a href="javascript:void(0)" class="upload-img">
+           <label for="upload-file">上传图像</label>
+       </a>
+       <input type="file" class="" name="upload-file" id="upload-file" />
+     </div>
+     <input type="button" id="btnCrop"  class="Btnsty_peyton" value="裁切">
+     <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+"  >
+     <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
+   </div>
+   <div class="cropped"></div>
+</div>

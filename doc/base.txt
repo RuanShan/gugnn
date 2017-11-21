@@ -79,3 +79,8 @@ https://github.com/blueimp/JavaScript-Canvas-to-Blob
 https://github.com/blueimp/jQuery-File-Upload/wiki/Options
 support IE 8,9
 https://github.com/jimmywarting/FormData
+
+#头像上传，裁剪实现
+https://github.com/fengyuanchen/cropper
+https://www.cnblogs.com/devilyouwei/p/6322737.html
+https://github.com/flitrue/cropper

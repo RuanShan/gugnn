@@ -23,8 +23,7 @@
 //= require ckeditor/init
 //= require_tree .
 //= require cityselect
-// require load-image.all.min
-// require canvas-to-blob.min
+//= require layer.custom
 
 $('#categories_li').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);

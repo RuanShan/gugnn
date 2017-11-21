@@ -1,16 +1,11 @@
 /*
- *= require_tree .
+ *= require 'pc/application'
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
+ *= require cropper
  *= require_self
  */
-.no_border{
-  border:none;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-}
+
 
 .panel-title
 {

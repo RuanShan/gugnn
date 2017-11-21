@@ -1,6 +1,6 @@
 //= require application
 //= require fileupload_custom
-
+//= require cropper
 
 var CurrentMap=null;
 $(function(){
@@ -172,6 +172,18 @@ $(function(){
       })
       error.appendTo(element.parent());
     }
+  });
+
+  //编辑头像
+  $('#edit-user-avatar-btn').on('click', function(){
+    //弹出即全屏
+    var index = layer.open({
+      type: 1,
+      content: 'abc',//$('#edit-avatar-container'),
+      area: ['320px', '195px'],
+      maxmin: true
+    });
+    layer.full(index);
   });
 
 });
