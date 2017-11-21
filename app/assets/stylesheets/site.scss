@@ -181,7 +181,7 @@
     }
     .image-wrapper{
       width: auto;
-      height: 200px;
+      max-height: 165px;
       margin: 0 auto;
       img{ width: 100%; }
       overflow:hidden;
@@ -427,7 +427,7 @@
       padding: 8px 0;
       .image-wrapper
       {
-        height: auto;
+        max-height: 165px;
       }
       .swiper-slide
       {
