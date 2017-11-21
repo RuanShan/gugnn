@@ -13,9 +13,8 @@
 <div class="form-group form-inline ">
   <%= product_form.label :price, class: 'control-label' %>
   <div class="input-group"> <%= product_form.number_field :price , class: 'form-control'%>
-    <div class="input-group-addon">元</div>
-    <span class="input-group-btn">
-      <%= product_form.select :tenancy, Product.translate_enum_collection(:tenancies) , {},class: 'form-control'  %>
+    <span class="input-group-btn" style="width:auto;background-color: #eeeeee;">
+      <%= product_form.select :tenancy, tenancy_option_collection , {}, class: 'form-control', style:'border-left: 0 none;'  %>
     </span>
   </div>
 </div>
@@ -35,7 +34,7 @@
   <div class=" input-group">
     <%= product_form.text_field :latlng_address, class: 'form-control' %>
     <span class="input-group-btn">
-      <%= link_to nil, href:"#", class:"btn btn-success", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
+      <%= link_to nil, href:"#", class:"btn btn-success form-control", "data-toggle":"modal", "data-target":"#gugnnMapModal", "data-title":"请在地图中标记您的地址" do %>
         <i class="glyphicon glyphicon-pushpin"></i>
          地图
       <% end %>

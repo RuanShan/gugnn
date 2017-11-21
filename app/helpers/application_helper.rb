@@ -59,8 +59,12 @@ module ApplicationHelper
     return path_hash[:controller], path_hash[:action]
   end
 
-
   def build_clickable_id( pageable, clickable)
     "#{pageable.class.name.underscore}-#{pageable.id}-#{  clickable.class.name.underscore}-#{clickable.id}"
+  end
+
+  def tenancy_option_collection
+    #[['小时','hour'],['天','day']] =>[['元/小时','hour'],['元/天','day']]
+    Product.translate_enum_collection(:tenancies).each{|option| option[0] = "元/#{ option[0]}"}
   end
 end
