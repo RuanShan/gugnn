@@ -13,7 +13,7 @@
       <div class="upload-avatar" data-upload-template-id="template-upload-avatar">
         <div class="defaultImgBorder userImgBorder">
           <div class="files">
-            <div class="for_avatar" style="margin:10px;">
+            <div class="current-avatar" style="margin:10px;">
               <% preview_url = @user.avatar.url %>
               <% if @user.errors.keys.include? :avatar%>
                 <% preview_url = "" %>
@@ -37,7 +37,7 @@
       <div class="clearfix">
         <%= f.input :avatar_remote_url, label: false, as:"hidden"%>
 
-        <div id="defaultImgLiBorder" class="defaultImgBorder userImgBorder" style="margin:10px;">
+        <div id="defaultImgLiBorder" class="defaultImgBorder userImgBorder" style="margin:0 0 10px 0;">
             <%=image_tag @user.avatar.url, width:"150", height:"150"%>
         </div>
 
@@ -62,8 +62,8 @@
 </div>
 
 <script id="template-upload-avatar" type="text/x-tmpl">
-  {% $('.for_avatar').remove(); %}
-  <div class="template-upload fade for_avatar">
+  {% $('.current-avatar').remove(); %}
+  <div class="template-upload fade current-avatar">
     <div class="preview"><span class="fade"></span></div>
   </div>
 </script>

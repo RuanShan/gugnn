@@ -312,10 +312,18 @@ width: 200px;
       {
         overflow: hidden;
       }
-      .preview
-      {
+      .preview{
+        display: table-cell;
+        vertical-align: middle;
+        height: 150px;
         text-align: center;
+        img, canvas{
+          max-height: 150px;/*canvas on chrome has 5px extra height.*/
+          max-width: 150px;
+          width: auto;
+        }
       }
+
     }
   }
 }
@@ -401,4 +409,26 @@ width: 200px;
       }
   }
 
+  .gg-account
+  {
+    .upload-avatar
+    {
+      .defaultImgBorder
+      {
+        overflow: hidden;
+      }
+      .preview{
+        display: table-cell;
+        vertical-align: middle;
+        height: 150px;
+        text-align: center;
+        img, canvas{
+          max-height: 150px;/*canvas on chrome has 5px extra height.*/
+          max-width: 150px;
+          width: auto;
+        }
+      }
+
+    }
+  }
 }

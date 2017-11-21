@@ -212,9 +212,17 @@
         &.even{
           padding-left: 5px;
         }
+        .product-info
+        {
+          width: 100%;
+        }
         .ptitle{
-          height: 35px;
+          position:relative;
+          line-height:1.2em;
+          /* 2 times the line-height to show 2 lines */
+          height: 2.4em;
           overflow: hidden;
+
         }
         .pimage-wrap{
           height: 120px;

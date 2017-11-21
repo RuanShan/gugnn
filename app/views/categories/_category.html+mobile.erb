@@ -32,13 +32,15 @@
       <ul class="list-group clearfix">
         <% @products.each_with_index{|product, i| %>
           <li class="product clearfix <%= cycle('odd', 'even') -%>">
-            <div class="pimage-wrap"> <%= product_image product %> </div>
-            <div class="product-info pull-left">
-              <div class="pprice ">
-                  <span> <%== display_price(product) %> </span>
-              </div>
-              <p class="ptitle"> <%= link_to product.title, product_path( product) %> </p>
-             </div>
+            <%= link_to product_path( product)  do %>
+              <div class="pimage-wrap"> <%= product_image product %> </div>
+              <div class="product-info pull-left">
+                <div class="pprice ">
+                    <span> <%== display_price(product) %> </span>
+                </div>
+                <p class="ptitle"> <%= product.title %> </p>
+               </div>
+            <% end %>
           </li>
           <% } %>
       </ul>

@@ -19,6 +19,7 @@ $(function(){
     modal.find('.modal-body').load(ajax_url, function(){eval(ajax_callback);});
   });
 
+  // 用户选择系统头像
   $("#systemImgBox img").click(function(){
     var image_url = $(this).attr('src');
     $("#defaultImgLiBorder img").attr("src", image_url);
@@ -173,7 +174,6 @@ $(function(){
     }
   });
 
-
 });
 
 function toggle_category(category_id){
@@ -207,22 +207,12 @@ function resize_image(form_id, imgtag_name, image_id){
   var formElement = document.getElementById(form_id);
   var formData = new FormData(formElement);
   if($("#"+image_id).length > 0){
-    var scaledImage = loadImage.scale(
-      document.getElementById(image_id), // img or canvas element
-      {
-        maxWidth: 800,
-        canvas:true
-      }
-    );
-    scaledImage.toBlob(
-      function (blob) {
-          // Do something with the blob object,
-          // e.g. creating a multipart form for file uploads:
-          formData.set(imgtag_name, blob, $("[name='"+imgtag_name+"']").val());
-          build_formdata_ajax(form_id, formData)
-      },
-      'image/jpeg'
-    );
+
+    var file_tag_name = imgtag_name;
+    var $file = $("[name='"+file_tag_name+"']");
+    formData.set(file_tag_name, $file.data('blob'), $file.val());
+    build_formdata_ajax(form_id, formData)
+
   }else{
     build_formdata_ajax(form_id, formData)
   }
@@ -280,16 +270,31 @@ $(function () {
   });
 
   //上传头像
-  $('.upload-avatar').each(function () {
-    $(this).fileupload({
+  $('.upload-avatar').fileupload({
       downloadTemplateId: false,
       replaceFileInput: false,
       previewMaxWidth:140,
       previewMaxHeight:140,
       //imageCrop: false,
       //previewCanvas: false,
-      dropZone: $(this) //enable it later
-    });
+      dropZone: $(this), //enable it later
+      disableImageResize: false,
+      processQueuex: [
+          {
+              action: 'loadImage',
+              fileTypes: /^image\/(gif|jpeg|png)$/,
+              maxFileSize: 1000000 // 1MB
+          },
+          {
+              action: 'resizeImage',
+              maxWidth: 1280,
+              maxHeight: 1024
+          },
+          {action: 'saveImage'},
+      ]
+  }).bind('fileuploadprocessdone', function (e, data) {
+    var i = data.index, blob = data.files[i];
+    $(data.fileInput[i]).data('blob', blob);
   });
 
   if($("#user_avatar").length>0){
@@ -322,7 +327,7 @@ $(function () {
       }
     }
   );
-
+  // 创建租赁信息
   $('#publish_product_button').click(
     function (e) {
       var form_id = "publish_product_form";

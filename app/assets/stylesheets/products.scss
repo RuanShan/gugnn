@@ -72,6 +72,11 @@ body {
   .product-info
   {
     height: 485px;
+    .name{
+      font-size: 26px;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
     .house-chat-entry {
         height: 75px;
         position: absolute;
@@ -227,7 +232,14 @@ body {
   .breadcrumb-wrap
   {
     padding: 0;
+    .breadcrumb > .active {
+      max-width: 30%;
+      height: 1.2em;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
   }
+
   .show-product
   {
     .product-images-wrapper .swiper-container.gallery-large {
@@ -241,6 +253,8 @@ body {
        .name{
          font-size: 26px;
          margin-top: 12px;
+         overflow-x: hidden;
+         text-overflow: ellipsis;
        }
       .pay-price {
         .high-light-red .two, .high-light-red .first {
@@ -248,7 +262,7 @@ body {
         }
         .pay-re {
             color: #555;
-            padding: 0 6px;
+            padding: 0 0 0 6px;
             float: left;
             position: relative;
         }
