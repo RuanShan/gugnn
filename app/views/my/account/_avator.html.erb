@@ -9,27 +9,27 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
 
-      <div class="upload-avatar" data-upload-template-id="template-upload-avatar">
+      <div class="upload-avatar clearfix" data-upload-template-id="template-upload-avatar" >
         <div class="defaultImgBorder userImgBorder">
           <div class="files">
-            <div class="for_avatar">
+            <div class="avatar">
               <% preview_url = @user.avatar.url %>
               <% if @user.errors.keys.include? :avatar%>
                 <% preview_url = "" %>
                 <span style="color:red;"><%=@user.errors[:avatar].first%></span>
               <% end %>
-              <div class="preview"><%=image_tag preview_url, width:"200", height:"200"%></div>
+              <div class="preview"><%=image_tag preview_url, width:"200", height:"200", data: { toggle: "tooltip", placement: "top"}, title: "点击上传" %></div>
             </div>
           </div>
         </div>
         <div style="width:100%;float:left;">
           <span class="btn btn-success fileinput-button" style="margin:10px 0;">
-            <i class="glyphicon glyphicon-plus"></i>
+            <i class="fa fa-plus"></i>
             <span>上传头像</span>
             <input type="file" name="user[avatar]" id="user_avatar">
           </span>
           <span id="edit-user-avatar-btn" class="btn btn-success fileinput-button" style="margin:10px 0;">
-            <i class="glyphicon glyphicon-plus"></i>
+            <i class="fa fa-plus"></i>
             <span>上传头像2</span>
           </span>
         </div>
@@ -70,14 +70,14 @@
 </div>
 
 <script id="template-upload-avatar" type="text/x-tmpl">
-  {% $('.for_avatar').remove(); %}
-  <div class="template-upload fade for_avatar">
+  {% $('.avatar').remove(); %}
+  <div class="template-upload fade avatar">
     <div class="preview"><span class="fade"></span></div>
   </div>
 </script>
 
 
-<div id="edit-avatar-container">
+<div id="edit-avatar-containerx">
   <div class="imageBox">
      <div class="thumbBox"></div>
      <div class="spinner" >Loading...</div>
@@ -94,4 +94,40 @@
      <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-" >
    </div>
    <div class="cropped"></div>
+</div>
+
+<div id="edit-avatar-container" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">修改头像</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <span class="btn btn-success fileinput-button" style="margin:10px 0;">
+            <i class="fa fa-cloud-upload"></i>
+            <span>上传头像</span>
+            <input type="file" name="user-avatar" class="user-avatar" >
+          </span>
+        </div>
+        <div class="am-g clearfix" >
+      		<div class="up-pre-before up-frame-radius">
+      			<img alt="" src="" class="avatar-image" >
+      		</div>
+      		<div class="up-pre-after up-frame-radius">
+      		</div>
+    	  </div>
+
+        <div class="am-g am-fl">
+          <div class="up-control-btns">
+            <span class="am-icon-rotate-left"  onclick="rotateimgleft()"></span>
+            <span class="am-icon-rotate-right" onclick="rotateimgright()"></span>
+            <span class="am-icon-check" id="up-btn-ok" url="admin/user/upload.action"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

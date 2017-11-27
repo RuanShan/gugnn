@@ -35,6 +35,8 @@ gem 'administrate-field-enum'
 
 gem "jquery-fileupload-rails"
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
+
 gem 'bourbon'
 gem 'devise'
 #gem 'devise-i18n'

@@ -148,7 +148,7 @@ function baidu_address_container(instance)
       $("#"+instance+"_lat").val(e.point.lat);
       $("#"+instance+"_lng").val(e.point.lng);
       $("#marked").removeClass()
-      $("#marked").addClass("glyphicon glyphicon-ok")
+      $("#marked").addClass("fa fa-check")
     })
   }else{
     map.centerAndZoom(city, 11);
@@ -164,6 +164,6 @@ function baidu_address_container(instance)
     $("#"+instance+"_lat").val(e.point.lat);
     $("#"+instance+"_lng").val(e.point.lng);
     $("#marked").removeClass()
-    $("#marked").addClass("glyphicon glyphicon-ok")
+    $("#marked").addClass("fa fa-check")
   });
 }
