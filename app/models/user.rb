@@ -107,12 +107,18 @@ class User < ApplicationRecord
     cellphone[0,3]+"****"+cellphone[7,4]
   end
 
+  #使用URL来设置头像
   def avatar_remote_url=(url_value)
     self.avatar = url_value
     # Assuming url_value is http://example.com/photos/face.png
     # avatar_file_name == "face.png"
     # avatar_content_type == "image/png"
     @avatar_remote_url = url_value
+  end
+
+  #读取当前头像的url
+  def avatar_url
+    avatar.url
   end
 
   # 由于用户手机号码注册时，nickname为空， link_to current_user.nickname 会显示路径 my/account/

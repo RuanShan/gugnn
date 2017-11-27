@@ -1,8 +1,8 @@
 module My
-  class AccountController < BaseController
+  class AccountsController < BaseController
     before_action :set_user, only: [:change_password, :change_profile, :authentication, :auth_idcard, :auth_licence]
 
-    def index
+    def show
       @user = current_user
       #@products = current_user.products.page(params[:page])
       @authenticated_products = current_user.products.where(status: :authenticated).page(params[:page])
@@ -44,6 +44,18 @@ module My
       end
     end
 
+    def update
+      respond_to do |format|
+        if @user.update(profile_params)
+          format.html { redirect_to action: :index, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
     def authentication
     end
 
@@ -73,7 +85,7 @@ module My
     private
 
     def set_user
-      @user = User.find_by_id(params[:id])
+      @user = current_user
     end
 
     def password_params

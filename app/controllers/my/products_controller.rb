@@ -77,7 +77,7 @@ module My
     # DELETE /products/1.json
     def destroy
       @product.destroy
-      redirect_url = session[:main_page].present? ? my_account_index_path : my_products_path
+      redirect_url = session[:main_page].present? ? my_account_path : my_products_path
       respond_to do |format|
         format.html { redirect_to  redirect_url, notice: '信息删除成功' }
         format.json { head :no_content }
@@ -88,7 +88,7 @@ module My
     def withdraw
       @product.withdrawed!
       @product.touch(:withdraw_at)
-      redirect_url = session[:main_page].present? ? my_account_index_path : my_products_path
+      redirect_url = session[:main_page].present? ? my_account_path : my_products_path
       respond_to do |format|
         format.html { redirect_to  redirect_url, notice: '信息下架成功.' }
         format.json { head :no_content }
@@ -98,7 +98,7 @@ module My
     def unwithdraw
       @product.authenticated!
       @product.touch(:withdraw_at)
-      redirect_url = session[:main_page].present? ? my_account_index_path : my_products_path
+      redirect_url = session[:main_page].present? ? my_account_path : my_products_path
       respond_to do |format|
         format.html { redirect_to  redirect_url, notice: '信息上架成功.' }
         format.json { head :no_content }

@@ -1,16 +1,5 @@
 $(document).ready( function(){
 
-  //编辑头像
-  $('#edit-user-avatar-btnx').on('click', function(){
-    //弹出即全屏
-    var index = layer.open({
-      type: 1,
-      content: $('#edit-avatar-container'),
-      area: ['320px', '195px'],
-      maxmin: true
-    });
-    layer.full(index);
-  });
   // 点击头像上传提示
   $('.upload-avatar [data-toggle="tooltip"]').tooltip()
   // 点击头像弹出对话框
@@ -22,7 +11,7 @@ $(document).ready( function(){
   var $image = $('.avatar-image');
   $image.cropper({
       aspectRatio: '1',
-      autoCropArea:0.8,
+      autoCropArea:1,
       preview: '.up-pre-after',
 
   });
@@ -62,6 +51,32 @@ $(document).ready( function(){
   } else {
       $inputImage.prop('disabled', true).parent().addClass('disabled');
   }
+
+
+  $('#up-btn-ok').on('click',function(){
+
+    var $form = $('#change_avatar_form');
+
+    var canvas=$image.cropper('getCroppedCanvas');
+    var data= canvas.toDataURL(); //转成base64
+
+    $.ajax( {
+      url: $form.attr('action'),
+      dataType:'json',
+      type: "POST",
+      data: {"user[avatar]": data.toString()},
+      success: function(data, textStatus){
+        console.log(data );
+        if(data.avatar_url){
+          $("#edit-avatar-container").modal('hide');
+          $(".avatar img").attr("src",data.avatar_url);
+        }
+      },
+      error: function(){
+        $("#edit-avatar-container .error").html("上传文件失败了！");
+      }
+    });
+  });
 });
 
 

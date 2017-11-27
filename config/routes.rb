@@ -92,18 +92,14 @@ Rails.application.routes.draw do
         end
       end
       resources :collections
-      resources :account do
-        collection do
-        end
-        member do
+      resource :account do
           match 'change_password', via: [:get, :patch]
           match 'change_profile', via: [:get, :patch]
           match 'authentication', via: [:get]
           match 'auth_idcard', via: [:get, :patch]
           match 'auth_licence', via: [:get, :patch]
-        end
       end
-      root to: "account#index"
+      root to: "account#show"
     end
 
 

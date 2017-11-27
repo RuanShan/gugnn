@@ -1,7 +1,7 @@
 <div class="main-menu container">
   <%= link_to image_tag( "logo-dark.png", alt: '光棍租生活', class: 'logo'), root_path, class:'logo' %>
   <div class="pull-right">
-    <%= link_to "个人中心", my_account_index_path %>
+    <%= link_to "个人中心", my_account_path %>
     <%= link_to "账户设置", change_profile_my_account_path(current_user) %>
     <%= link_to "发布信息", new_my_product_path, id:'new_product_btn' %>
   </div>

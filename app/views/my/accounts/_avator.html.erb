@@ -1,0 +1,76 @@
+<div style="height:270px;">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">本地头像</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+      <div class="upload-avatar clearfix" data-upload-template-id="template-upload-avatar" >
+        <div class="defaultImgBorder userImgBorder">
+          <div class="files">
+            <div class="avatar">
+              <% if @user.errors.keys.include? :avatar%>
+                <span style="color:red;"><%=@user.errors[:avatar].first%></span>
+              <% end %>
+              <div class="preview"><%=image_tag @user.avatar.url, width:"200", height:"200", data: { toggle: "tooltip", placement: "top"}, title: "点击上传" %></div>
+            </div>
+          </div>
+        </div>
+        <div style="width:100%;float:left;">
+          <span class="btn btn-success fileinput-button" style="margin:10px 0;">
+            <i class="fa fa-plus"></i>
+            <span>上传头像</span>
+            <input type="file" name="user[avatar]" id="user_avatar">
+          </span>
+          <span id="edit-user-avatar-btn" class="btn btn-success fileinput-button" style="margin:10px 0;">
+            <i class="fa fa-plus"></i>
+            <span>上传头像2</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="edit-avatar-container" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">修改头像</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error"> </div>
+        <div>
+          <span class="btn btn-success fileinput-button" style="margin:10px 0;">
+            <i class="fa fa-cloud-upload"></i>
+            <span>上传头像</span>
+            <input type="file" name="user[avatar]" id="user_avatar" alt=""class="user-avatar">
+          </span>
+        </div>
+        <div class="am-g clearfix" >
+      		<div class="up-pre-before up-frame-radius">
+            <%= image_tag  @user.avatar.url, class:'avatar-image' %>
+      		</div>
+      		<div class="up-pre-after up-frame-radius">
+      		</div>
+    	  </div>
+
+        <div class="am-g am-fl" style="text-align:center; margin: 10px 0;">
+          <div class="btn-group" role="group" aria-label="...">
+
+            <button type="button" class="btn btn-default" onclick="Gugnn.fn.rotateimgleft('.avatar-image')"><span class="fa fa-rotate-left"></span></button>
+            <button type="button" class="btn btn-default" onclick="Gugnn.fn.rotateimgright('.avatar-image')"><span class="fa fa-rotate-right"></span></button>
+            <button type="button" class="btn btn-default"><span class="fa fa-check" id="up-btn-ok" ></span></button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

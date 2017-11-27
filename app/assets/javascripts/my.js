@@ -2,6 +2,7 @@
 //= require fileupload_custom
 //= require cropper
 //= require avatar.js
+//= require util/ajax_spinner.js
 
 var CurrentMap=null;
 $(function(){
@@ -272,32 +273,32 @@ $(function () {
   });
 
   //上传头像
-  $('.upload-avatar').fileupload({
-      downloadTemplateId: false,
-      replaceFileInput: false,
-      previewMaxWidth:140,
-      previewMaxHeight:140,
-      //imageCrop: false,
-      //previewCanvas: false,
-      dropZone: $(this), //enable it later
-      disableImageResize: false,
-      processQueuex: [
-          {
-              action: 'loadImage',
-              fileTypes: /^image\/(gif|jpeg|png)$/,
-              maxFileSize: 1000000 // 1MB
-          },
-          {
-              action: 'resizeImage',
-              maxWidth: 1280,
-              maxHeight: 1024
-          },
-          {action: 'saveImage'},
-      ]
-  }).bind('fileuploadprocessdone', function (e, data) {
-    var i = data.index, blob = data.files[i];
-    $(data.fileInput[i]).data('blob', blob);
-  });
+  //$('.upload-avatar').fileupload({
+  //    downloadTemplateId: false,
+  //    replaceFileInput: false,
+  //    previewMaxWidth:140,
+  //    previewMaxHeight:140,
+  //    //imageCrop: false,
+  //    //previewCanvas: false,
+  //    dropZone: $(this), //enable it later
+  //    disableImageResize: false,
+  //    processQueuex: [
+  //        {
+  //            action: 'loadImage',
+  //            fileTypes: /^image\/(gif|jpeg|png)$/,
+  //            maxFileSize: 1000000 // 1MB
+  //        },
+  //        {
+  //            action: 'resizeImage',
+  //            maxWidth: 1280,
+  //            maxHeight: 1024
+  //        },
+  //        {action: 'saveImage'},
+  //    ]
+  //}).bind('fileuploadprocessdone', function (e, data) {
+  //  var i = data.index, blob = data.files[i];
+  //  $(data.fileInput[i]).data('blob', blob);
+  //});
 
   if($("#user_avatar").length>0){
     document.getElementById('user_avatar').onchange = function (e) {

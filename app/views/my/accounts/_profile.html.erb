@@ -1,14 +1,14 @@
 <div>
   <div class="clearfix">
     <div class="uc-leftside clearfix">
-      <%=link_to change_profile_my_account_path(current_user), target:"_blank" do %>
+      <%=link_to change_profile_my_account_path(), target:"_blank" do %>
         <%= image_tag(current_user.avatar.url, size: "110x110", alt: current_user.nickname, class:"uc-head-img") %>
       <% end %>
       <div class="uc-user-info">
-        <%=link_to current_user.nickname, change_profile_my_account_path(current_user), target:"_blank" %>
+        <%=link_to current_user.nickname, change_profile_my_account_path(), target:"_blank" %>
       </div>
       <div class="uc-user-limits">
-      	<%=link_to change_profile_my_account_path(current_user), target:"_blank" do %>
+      	<%=link_to change_profile_my_account_path(), target:"_blank" do %>
           <span class="uc-user-limits-mobile-number"><%=current_user.mask_phone%></span>
         <% end %>
       </div>
