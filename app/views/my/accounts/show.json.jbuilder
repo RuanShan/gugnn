@@ -1,1 +1,1 @@
-json.partial! "my/account/user", user: @user
+json.partial! "my/accounts/user", user: @user

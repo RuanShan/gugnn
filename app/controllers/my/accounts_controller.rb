@@ -1,6 +1,6 @@
 module My
   class AccountsController < BaseController
-    before_action :set_user, only: [:change_password, :change_profile, :authentication, :auth_idcard, :auth_licence]
+    before_action :set_user, only: [:update, :change_password, :change_profile, :authentication, :auth_idcard, :auth_licence]
 
     def show
       @user = current_user
@@ -48,7 +48,7 @@ module My
       respond_to do |format|
         if @user.update(profile_params)
           format.html { redirect_to action: :index, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
+          format.json { render :show, status: :ok, location: my_account_path }
         else
           format.html { render :edit }
           format.json { render json: @user.errors, status: :unprocessable_entity }

@@ -4,7 +4,7 @@ $(function () {
             $.ajaxSetup({
                 layerIndex:-1,
                 beforeSend: function () {
-                    this.layerIndex = layer.load(0, { shade: [0.5, '#393D49'] });
+                    this.layerIndex = layer.load(2, { shade: [0.5, '#c0c0c0'] });
                 },
                 complete: function () {
                     layer.close(this.layerIndex);

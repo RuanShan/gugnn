@@ -61,9 +61,9 @@ $(document).ready( function(){
     var data= canvas.toDataURL(); //转成base64
 
     $.ajax( {
-      url: $form.attr('action'),
+      url: Gugnn.routes.my_account_path ,
       dataType:'json',
-      type: "POST",
+      type: "PUT",
       data: {"user[avatar]": data.toString()},
       success: function(data, textStatus){
         console.log(data );

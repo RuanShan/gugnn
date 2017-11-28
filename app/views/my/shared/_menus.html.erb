@@ -3,7 +3,6 @@
   <li>
     <div class="leftmenu-content-header">
       <%= link_to my_account_path do %>
-        <i class="menu-icon fa fa-tachometer"></i>
         <span class="menu-text"> 个人中心 </span>
         <i class="menu-expand"></i>
       <% end %>
@@ -17,15 +16,14 @@
   <li>
     <div class="leftmenu-content-header">
       <a class="menu-dropdown" href="#">
-        <i class="menu-icon fa fa-arrow-up"></i>
         <span class="menu-text"> 账户设置 </span>
         <i class="menu-expand"></i>
       </a>
     </div>
     <ul class="leftmenu-content-ul" data-turbolinks="false">
-        <li><%=link_to "修改资料", change_profile_my_account_path(current_user) %></li>
-        <li><%=link_to "修改密码", change_password_my_account_path(current_user) %></li>
-        <li><%=link_to "认证管理", authentication_my_account_path(current_user) %></li>
+        <li><%=link_to "修改资料", change_profile_my_account_path() %></li>
+        <li><%=link_to "修改密码", change_password_my_account_path() %></li>
+        <li><%=link_to "认证管理", authentication_my_account_path() %></li>
     </ul>
   </li>
 
