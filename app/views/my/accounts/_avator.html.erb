@@ -1,4 +1,4 @@
-<div style="margin-bottom:20px;">
+<div style="">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">本地头像</a></li>
@@ -14,7 +14,7 @@
               <% if @user.errors.keys.include? :avatar%>
                 <span style="color:red;"><%=@user.errors[:avatar].first%></span>
               <% end %>
-              <div class="preview"><%=image_tag @user.avatar.url, width:"200", height:"200", data: { toggle: "tooltip", placement: "top"}, title: "点击上传" %></div>
+              <div class="preview"><%=image_tag @user.avatar.url, data: { toggle: "tooltip", placement: "top"}, title: "点击上传" %></div>
             </div>
           </div>
         </div>

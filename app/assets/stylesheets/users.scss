@@ -308,6 +308,8 @@ width: 200px;
   {
     .upload-avatar
     {
+      margin-bottom:20px;
+
       .defaultImgBorder
       {
         overflow: hidden;
@@ -318,8 +320,8 @@ width: 200px;
         height: 150px;
         text-align: center;
         img, canvas{
-          max-height: 150px;/*canvas on chrome has 5px extra height.*/
-          max-width: 150px;
+          /*max-height: 150px;canvas on chrome has 5px extra height.
+          max-width: 150px;*/
           width: auto;
         }
       }
@@ -413,6 +415,7 @@ width: 200px;
   {
     .upload-avatar
     {
+      margin:10px 0;
       .defaultImgBorder
       {
         overflow: hidden;
