@@ -10,6 +10,7 @@ $(document).ready( function(){
   // 初始化
   var $image = $('.avatar-image');
   $image.cropper({
+    viewMode:1,
       aspectRatio: '1',
       autoCropArea:1,
       preview: '.up-pre-after',
@@ -52,13 +53,13 @@ $(document).ready( function(){
       $inputImage.prop('disabled', true).parent().addClass('disabled');
   }
 
-
+  //提交头像
   $('#up-btn-ok').on('click',function(){
 
     var $form = $('#change_avatar_form');
 
     var canvas=$image.cropper('getCroppedCanvas');
-    var data= canvas.toDataURL(); //转成base64
+    var data= canvas.toDataURL('image/jpeg'); //转成base64
 
     $.ajax( {
       url: Gugnn.routes.my_account_path ,
