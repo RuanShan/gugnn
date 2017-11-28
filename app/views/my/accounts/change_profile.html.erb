@@ -3,10 +3,9 @@
     <h2 class="panel-title"><%= t(:change_profile) %></h2>
   </div>
   <div class="panel-body">
-    <% Rails.logger.debug @user %>
-    <%= simple_form_for(@user, url: change_profile_my_account_path(), :html => {:method => :patch, :multipart => true, id:"change_avatar_form"}) do |f| %>
-      <%= render partial: 'avator', locals:{f: f} %>
-    <% end %>
+
+    <%= render partial: 'avator' %>
+
     <%= simple_form_for(@user, url: change_profile_my_account_path(), :html => {:method => :patch, :multipart => true, id:"change_profile_form"}) do |f| %>
       <div class="form-inputs">
         <%= f.input :nickname%>

@@ -1,4 +1,4 @@
-<div style="height:270px;">
+<div style="margin-bottom:20px;">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" style="margin-bottom: -2px" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">本地头像</a></li>
@@ -7,7 +7,6 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-
       <div class="upload-avatar clearfix" data-upload-template-id="template-upload-avatar" >
         <div class="defaultImgBorder userImgBorder">
           <div class="files">
@@ -18,17 +17,6 @@
               <div class="preview"><%=image_tag @user.avatar.url, width:"200", height:"200", data: { toggle: "tooltip", placement: "top"}, title: "点击上传" %></div>
             </div>
           </div>
-        </div>
-        <div style="width:100%;float:left;">
-          <span class="btn btn-success fileinput-button" style="margin:10px 0;">
-            <i class="fa fa-plus"></i>
-            <span>上传头像</span>
-            <input type="file" name="user[avatar]" id="user_avatar">
-          </span>
-          <span id="edit-user-avatar-btn" class="btn btn-success fileinput-button" style="margin:10px 0;">
-            <i class="fa fa-plus"></i>
-            <span>上传头像2</span>
-          </span>
         </div>
       </div>
     </div>
@@ -45,7 +33,7 @@
       </div>
       <div class="modal-body">
         <div class="error"> </div>
-        <div>
+        <div class="actions">
           <span class="btn btn-success fileinput-button" style="margin:10px 0;">
             <i class="fa fa-cloud-upload"></i>
             <span>上传头像</span>

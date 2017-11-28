@@ -25,6 +25,7 @@
 //= require layer.mobile
 // other custom js file
 //= require common
+//= require avatar
 //= require map
 //= require common
 //= require users

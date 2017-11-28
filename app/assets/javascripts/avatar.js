@@ -10,11 +10,10 @@ $(document).ready( function(){
   // 初始化
   var $image = $('.avatar-image');
   $image.cropper({
-    viewMode:1,
+      viewMode:1,
       aspectRatio: '1',
       autoCropArea:1,
       preview: '.up-pre-after',
-
   });
 
   // 上传图片
