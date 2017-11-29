@@ -17,7 +17,7 @@
             <tbody>
               <tr class="item-content disp">
                 <td class="item-content-img-td width90">
-                  <%= image_tag("auth_p", size: "110x110", alt: "个人身份证认证") %>
+                  <%= fa_icon "id-card-o 4x", class:'red-font' %>
                 </td>
                 <td class="width223">
                   <div><span style="font-weight:bold;font-size:18px;margin-left:16px;"> 个人身份证认证 </span></div>
@@ -33,9 +33,9 @@
                   <div class="item-content-option">
                     <span>
                       <% if @user.id_auth_status_none? %>
-                        <%=link_to '申请认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                        <%=link_to '申请认证', auth_idcard_my_account_path, class:"btn btn-success", target:"_blank" %>
                       <% else %>
-                        <%=link_to '查看认证', auth_idcard_my_account_path(@user), class:"btn btn-success", target:"_blank" %>
+                        <%=link_to '查看认证', auth_idcard_my_account_path, class:"btn btn-success", target:"_blank" %>
                       <% end %>
                     </span
                   </div>
@@ -52,7 +52,7 @@
             <tbody>
               <tr class="item-content disp">
                 <td class="item-content-img-td width90">
-                  <%= image_tag("auth_c", size: "110x110", alt: "营业执照认证") %>
+                   <%= fa_icon "newspaper-o 4x", class:'red-font' %>
                 </td>
                 <td class="width223">
                   <div><span style="font-weight:bold;font-size:18px;margin-left:15px;"> 营业执照认证 </span></div>

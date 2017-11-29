@@ -118,6 +118,9 @@ zh-CN:
       product_option_value:
         one: 商品属性值
         other: 商品属性值
+  authenticating: "审核中"
+  authenticated: "显示中"
+  change_city: "置换城市"
   defaults:
     city: '大连市'
     unknown_city: "未知城市"
@@ -126,8 +129,8 @@ zh-CN:
     other: ! '当前共有%{count}个错误'
   gugnn: "光棍租机"
   gugnn_member: "光棍租机-会员中心"
-
-  change_city: "置换城市"
+  titles:
+    collections: '我的收藏'
   please_input_city: "请输入城市"
 
   sign_up: "注册"
@@ -170,8 +173,6 @@ zh-CN:
   input_only_change_phone: "不改手机号可不填"
   profile_updated: "个人资料修改成功"
 
-  authenticating: "审核中"
-  authenticated: "显示中"
   withdrawed: "已下架"
   tenancy:
     prompts:
