@@ -8,7 +8,7 @@ class SiteController < ApplicationController
     #手机版使用
     if mobile?
       #default search category
-            
+
       @cities = HotCity.order(:ppinyin,:province, :position).to_a
       @popular_cities = []
       #{ a=>[城市], b=>[城市] }手机版使用
@@ -26,11 +26,10 @@ class SiteController < ApplicationController
     policy = Pundit.policy(current_user, Product.new)
     #用户是否有发布信息的？
     unless policy.create?
-
       if current_user
         #当前用户可能登录
         flash[:notice] = '请先申请个人或企业认证，通过后获得信息发布权限！'
-        redirect_to authentication_my_account_path( current_user )
+        redirect_to authentication_my_account_path(  )
       else
         #也可能没有登录
         session[:apply_to_be_renter]

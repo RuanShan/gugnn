@@ -21,9 +21,10 @@
 // require lightbox.min
 //= require swiper.jquery.min
 //= require ckeditor/init
-//= require_tree .
 //= require cityselect
 //= require layer.custom
+//= require products
+//= require users
 
 $('#categories_li').hover(function() {
   $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -59,19 +60,3 @@ $(function(){
     });
   }
 });
-
-function verification_code_time(code_id, wait) {
-  var code_button = $("#"+code_id);
-  if (wait == 0) {
-    code_button.removeAttr("disabled");
-    code_button.val("获取验证码");
-  } else {
-    code_button.attr("disabled", true);
-    code_button.html("重新发送(" + wait + ")");
-    wait = wait-1;
-    setTimeout(function() {
-      verification_code_time(code_id, wait)
-    },
-    1000)
-  }
-}
