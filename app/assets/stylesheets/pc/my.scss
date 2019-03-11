@@ -15,7 +15,20 @@
 
 .my
 {
-  .my-edit-product
+  //工商执照居中
+  .fileupload{
+    .preview{
+      text-align: center;
+    }
+  }
+  #authentication_form{
+    .preview{
+      img{
+        height: 270px;
+      }
+    }
+  }
+  .product-form
   {
     #product_images{
       .box{
